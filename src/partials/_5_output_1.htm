@@ -1,0 +1,58 @@
+<div class="output">
+
+  <table class="output-scaffold">
+
+    <tr>
+      <td>
+
+        <table class="output-section">
+          <tr>
+            <td class="output-section-header" colspan="2">Customer Information</td>
+          </tr>
+
+          <tr>
+            <td class="title-column">Name</td>
+            <td class="data-column">{{ title }} {{ firstname }} {{ surname }}</td>
+          </tr>
+          <tr>
+            <td class="title-column">Address</td>
+            <td class="data-column output-address">
+              <span>{{ address }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="title-column">Telephone no.</td>
+            <td class="data-column">{{ telephone }}</td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+
+
+    <tr>
+      <td>
+
+        <table class="output-section">
+          <tr>
+            <td class="output-section-header">Software</td>
+          </tr>
+
+          <!--
+          <tr v-for="(key, application) in software">
+            <td class="output-line">Application: {{ key.application }}<div class="tickbox"></div></td>
+          </tr>
+          -->
+
+          <tr v-for="line in software" :line="line" key="name" is="lineitem"></tr>
+
+
+        </table>
+
+      </td>
+    </tr>
+
+  </table>
+
+</div>

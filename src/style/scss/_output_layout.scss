@@ -1,0 +1,43 @@
+  .output {
+    text-align: left;
+    padding: 0 4em;
+  }
+
+  .output {
+    .output-scaffold {
+      width: 100%;
+      padding: 0 4em;
+      margin-bottom: 4em;
+    }
+    .output-section {
+      width: 100%;
+      margin: 2em auto;
+    }
+    .output-section-header {
+      text-align: center;
+    }
+    .title-column,
+    .data-column,
+    .output-line {
+      padding: 0.5em;
+      border: 0.05em solid black;
+    }
+    .title-column {
+      width: 25%;
+      vertical-align: top;
+    }
+    .data-column {
+      width: 75%;
+    }
+    .output-line {
+      position: relative;
+    }
+    .tickbox {
+      border: 0.05em solid black;
+      width: 2.15em;
+      height: 2.15em;
+      position: absolute;
+      top: -0.05em;
+      right: -0.05em;
+    }
+  }

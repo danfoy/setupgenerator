@@ -1,0 +1,20 @@
+{
+  "name": "setupgenerator",
+  "version": "1.0.0",
+  "description": "Generates a setup form",
+  "main": "index.htm",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dan Foy",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^14.4.0",
+    "grunt": "^1.0.1",
+    "grunt-browserify": "^5.0.0",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}

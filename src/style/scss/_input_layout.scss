@@ -1,0 +1,54 @@
+.input {
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.input {
+  fieldset {
+    position: relative;
+    padding: 2em;
+    margin: 8em 2em;
+    box-sizing: border-box;
+  }
+  input,
+  select {
+    margin-right: 0.5em;
+    display: inline-block;
+  }
+  input,
+  select,
+  textarea {
+    padding: 0.5em;
+  }
+  textarea {
+    width: 100%;
+    margin: 1em 0;
+    height: 6em;
+    box-sizing: border-box;
+  }
+  textarea::placeholder {
+    line-height: 6em;
+    vertical-align: middle;
+  }
+  select {
+    height: 2.3em;
+  }
+  fieldset label:first-of-type {
+    position: absolute;
+    height: 1.5em;
+    left: 2em;
+    top: -3em;
+    background: #fff;
+    width: auto;
+    padding: 1.1em 1.5em 0.2em 1.5em;
+  }
+}
+
+.input .software {
+  label {
+    display: inline-block;
+    width: 50%;
+    padding: 0.5em;
+  }
+}
