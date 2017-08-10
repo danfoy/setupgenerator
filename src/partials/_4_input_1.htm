@@ -20,7 +20,8 @@
 
         <fieldset name="software" class="software">
           <label for="software">Software</label>
-          <label><input type="checkbox" v-model="software.licenses" value="{name: McAfee}">McAfee</label>
+          <checkbox-item line="random" v-model="software">random item</checkbox-item>
+          <label><input type="checkbox" v-model="software" value="McAfee">McAfee</label>
           <label><input type="checkbox" v-model="software" value="Office">Office</label>
           <label><input type="checkbox" v-model="software" value="iTunes">iTunes</label>
           <label><input type="checkbox" v-model="software" value="Adobe Reader">Adobe Reader</label>

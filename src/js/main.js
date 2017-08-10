@@ -10055,6 +10055,7 @@ Vue$3.compile = compileToFunctions;
 return Vue$3;
 
 })));
+
 /* global console, Vue */
 
 // Data Object
@@ -10084,6 +10085,16 @@ var data = {
 Vue.component('lineitem', {
   template: '<tr><td class="output-line">Application: {{ line.name }}<div class="tickbox"></div></td></tr>',
   props: ['line']
+});
+
+Vue.component('checkboxItem', {
+  template: '<label><input type="checkbox" v-bind:value="line" @change="onChange"><slot>{{ line }}</slot></label>',
+  props: ['line'],
+  methods: {
+    onChange: function(event){
+      this.$emit('input', event.target.checked);
+    }
+  }
 });
 
 

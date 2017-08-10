@@ -29,8 +29,14 @@ Vue.component('lineitem', {
   props: ['line']
 });
 
-Vue.component('checkboxitem', {
-  template: '<label><input type="checkbox"  value="{name: McAfee}">{{ item }} </label>'
+Vue.component('checkboxItem', {
+  template: '<label><input type="checkbox" v-bind:value="line" @change="onChange"><slot>{{ line }}</slot></label>',
+  props: ['line'],
+  methods: {
+    onChange: function(event){
+      this.$emit('input', event.target.checked);
+    }
+  }
 });
 
 

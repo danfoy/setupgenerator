@@ -7,6 +7,7 @@
   <title>Setup Generator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
+
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -531,10 +532,12 @@ body {
 </head>
 
 <body>
+
 <div id="app">
 
   <h1 class="app-title">Setup Generator</h1>
   <span class="app-version">v{{ version }}</span>
+
 
     <div class="input">
       <form id="inputform">
@@ -557,7 +560,8 @@ body {
 
         <fieldset name="software" class="software">
           <label for="software">Software</label>
-          <label><input type="checkbox" v-model="software.licenses" value="{name: McAfee}">McAfee</label>
+          <checkbox-item line="random" v-model="software">random item</checkbox-item>
+          <label><input type="checkbox" v-model="software" value="McAfee">McAfee</label>
           <label><input type="checkbox" v-model="software" value="Office">Office</label>
           <label><input type="checkbox" v-model="software" value="iTunes">iTunes</label>
           <label><input type="checkbox" v-model="software" value="Adobe Reader">Adobe Reader</label>
@@ -565,6 +569,7 @@ body {
 
       </form>
     </div>
+
 <div class="output">
 
   <table class="output-scaffold">
@@ -628,6 +633,7 @@ body {
   </div>
 
   <script type="text/javascript">
+
 /*!
  * Vue.js v2.4.0
  * (c) 2014-2017 Evan You
@@ -10685,6 +10691,7 @@ Vue$3.compile = compileToFunctions;
 return Vue$3;
 
 })));
+
 /* global console, Vue */
 
 // Data Object
@@ -10714,6 +10721,16 @@ var data = {
 Vue.component('lineitem', {
   template: '<tr><td class="output-line">Application: {{ line.name }}<div class="tickbox"></div></td></tr>',
   props: ['line']
+});
+
+Vue.component('checkboxItem', {
+  template: '<label><input type="checkbox" v-bind:value="line" @change="onChange"><slot>{{ line }}</slot></label>',
+  props: ['line'],
+  methods: {
+    onChange: function(event){
+      this.$emit('input', event.target.checked);
+    }
+  }
 });
 
 
