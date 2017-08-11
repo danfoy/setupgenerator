@@ -18,14 +18,28 @@
           <input  type="tel" placeholder="Telephone Number" v-model="telephone">
         </fieldset>
 
+        
         <fieldset name="software" class="software">
           <label for="software">Software</label>
-          <checkbox-item line="random" v-model="software">random item</checkbox-item>
+          <!--
+          <checkbox-item line="foo" v-model="software">foo</checkbox-item>
+          <checkbox-item line="bar" v-model="software">bar</checkbox-item>
+          -->
           <label><input type="checkbox" v-model="software" value="McAfee">McAfee</label>
           <label><input type="checkbox" v-model="software" value="Office">Office</label>
           <label><input type="checkbox" v-model="software" value="iTunes">iTunes</label>
           <label><input type="checkbox" v-model="software" value="Adobe Reader">Adobe Reader</label>
         </fieldset>
+        
+        
+        <!-- 
+        <fieldset name="software" class="software">
+          <label for="software">Software</label>
+          <new-checkbox v-for="line in software" :line="line" key="name"></new-checkbox>
+        </fieldset>
+        -->
+        
+        
 
       </form>
     </div>

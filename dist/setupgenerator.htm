@@ -484,9 +484,11 @@ body {
   text-transform: uppercase;
   font-size: 0.8em;
   font-weight: 700;
-  text-align: center;
+  letter-spacing: 0.1em;
   vertical-align: middle;
   color: #aaa; }
+.input textarea::placeholder {
+  text-align: center; }
 
 .output {
   text-align: left;
@@ -522,7 +524,9 @@ body {
   right: -0.05em; }
 
 .output .output-scaffold {
-  background: #fff; }
+  background: #fff;
+  box-shadow: 0.25em 0.25em 0 #999;
+  border: 0.05em solid #555; }
 .output .output-section-header {
   font-size: 1.25em; }
 .output .output-address {
@@ -558,14 +562,28 @@ body {
           <input  type="tel" placeholder="Telephone Number" v-model="telephone">
         </fieldset>
 
+        
         <fieldset name="software" class="software">
           <label for="software">Software</label>
-          <checkbox-item line="random" v-model="software">random item</checkbox-item>
+          <!--
+          <checkbox-item line="foo" v-model="software">foo</checkbox-item>
+          <checkbox-item line="bar" v-model="software">bar</checkbox-item>
+          -->
           <label><input type="checkbox" v-model="software" value="McAfee">McAfee</label>
           <label><input type="checkbox" v-model="software" value="Office">Office</label>
           <label><input type="checkbox" v-model="software" value="iTunes">iTunes</label>
           <label><input type="checkbox" v-model="software" value="Adobe Reader">Adobe Reader</label>
         </fieldset>
+        
+        
+        <!-- 
+        <fieldset name="software" class="software">
+          <label for="software">Software</label>
+          <new-checkbox v-for="line in software" :line="line" key="name"></new-checkbox>
+        </fieldset>
+        -->
+        
+        
 
       </form>
     </div>
@@ -607,15 +625,10 @@ body {
       <td>
 
         <table class="output-section">
-          <tr>
+
+          <tr v-if="software[0]">
             <td class="output-section-header">Software</td>
           </tr>
-
-          <!--
-          <tr v-for="(key, application) in software">
-            <td class="output-line">Application: {{ key.application }}<div class="tickbox"></div></td>
-          </tr>
-          -->
 
           <tr v-for="line in software" :line="line" key="name" is="lineitem"></tr>
 
@@ -10703,35 +10716,30 @@ var data = {
   surname: '',
   address: '',
   telephone: '',
-  software: [
-    {
-      name: 'iTunes',
-      licenses: 1
-    },
-    {
-      name: "Office",
-      licenses: 2
-    }
-  ]
+  software: []
 };
 
 
 // Components
 
 Vue.component('lineitem', {
-  template: '<tr><td class="output-line">Application: {{ line.name }}<div class="tickbox"></div></td></tr>',
+  template: '<tr><td class="output-line">{{ line }}<div class="tickbox"></div></td></tr>',
   props: ['line']
 });
 
+/*
 Vue.component('checkboxItem', {
-  template: '<label><input type="checkbox" v-bind:value="line" @change="onChange"><slot>{{ line }}</slot></label>',
-  props: ['line'],
+  template: '<label><input type="checkbox" @change="onChange"><slot>{{ line }}</slot></label>',
+  props: ['line', 'value'],
   methods: {
     onChange: function(event){
+      this.$emit('change', event.target.checked);
       this.$emit('input', event.target.checked);
     }
   }
 });
+*/
+
 
 
 // Root Vue.js instance
@@ -10741,7 +10749,6 @@ var vm = new Vue({
   data: data
 
 });
-
 </script>
 
 </body>

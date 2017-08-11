@@ -27,8 +27,11 @@ $fieldset-border: 0.2em solid #000;
     text-transform: uppercase;
     font-size: 0.8em;
     font-weight: 700;
-    text-align: center;
+    letter-spacing: 0.1em;
     vertical-align: middle;
     color: #aaa;
+  }
+  textarea::placeholder {
+    text-align: center;
   }
 }

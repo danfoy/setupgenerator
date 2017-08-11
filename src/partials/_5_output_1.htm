@@ -35,15 +35,10 @@
       <td>
 
         <table class="output-section">
-          <tr>
+
+          <tr v-if="software[0]">
             <td class="output-section-header">Software</td>
           </tr>
-
-          <!--
-          <tr v-for="(key, application) in software">
-            <td class="output-line">Application: {{ key.application }}<div class="tickbox"></div></td>
-          </tr>
-          -->
 
           <tr v-for="line in software" :line="line" key="name" is="lineitem"></tr>
 

@@ -474,9 +474,11 @@ body {
   text-transform: uppercase;
   font-size: 0.8em;
   font-weight: 700;
-  text-align: center;
+  letter-spacing: 0.1em;
   vertical-align: middle;
   color: #aaa; }
+.input textarea::placeholder {
+  text-align: center; }
 
 .output {
   text-align: left;
@@ -512,7 +514,9 @@ body {
   right: -0.05em; }
 
 .output .output-scaffold {
-  background: #fff; }
+  background: #fff;
+  box-shadow: 0.25em 0.25em 0 #999;
+  border: 0.05em solid #555; }
 .output .output-section-header {
   font-size: 1.25em; }
 .output .output-address {
