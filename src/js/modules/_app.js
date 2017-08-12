@@ -21,13 +21,15 @@ Vue.component('lineitem', {
 });
 
 /*
+
+TODO: Make checkbox item to simplify entering label>textbox elements in the template.
+
 Vue.component('checkboxItem', {
-  template: '<label><input type="checkbox" @change="onChange"><slot>{{ line }}</slot></label>',
-  props: ['line', 'value'],
+  template: '<label><input type="checkbox" :v-model="category" :value="line" @change="onChange">{{ line }}</label>',
+  props: ['line', 'category'],
   methods: {
     onChange: function(event){
-      this.$emit('change', event.target.checked);
-      this.$emit('input', event.target.checked);
+        this.$emit('input', event.target.checked);
     }
   }
 });
