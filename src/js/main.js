@@ -10062,11 +10062,13 @@ return Vue$3;
 
 var data = {
   version: '0.1.0',
-  title: '',
-  firstname: '',
-  surname: '',
-  address: '',
-  telephone: '',
+  customerinfo: {
+    title: '',
+    firstname: '',
+    surname: '',
+    address: '',
+    telephone: ''
+  },
   software: [],
   notes: ''
 };

@@ -327,9 +327,9 @@ body {
 <div class="input">
   <form id="inputform">
 
-    <fieldset name="personalinfo">
-      <legend class="section-label" for="personalinfo">Customer Information</legend>
-      <select v-model="title">
+    <fieldset name="customerinfo">
+      <legend class="section-label" for="customerinfo">Customer Information</legend>
+      <select v-model="customerinfo.title">
             <option disabled value="">Title</option>
             <option value="Mr">Mr</option>
             <option value="Miss">Miss</option>
@@ -337,10 +337,10 @@ body {
             <option value="Ms">Ms</option>
             <option value="Dr">Dr</option>
           </select>
-      <input type="text" placeholder="First Name" v-model="firstname">
-      <input type="text" placeholder="Surname" v-model="surname">
-      <textarea placeholder="Address and Postcode" v-model="address"></textarea>
-      <input type="tel" placeholder="Telephone Number" v-model="telephone">
+      <input type="text" placeholder="First Name" v-model="customerinfo.firstname">
+      <input type="text" placeholder="Surname" v-model="customerinfo.surname">
+      <textarea placeholder="Address and Postcode" v-model="customerinfo.address"></textarea>
+      <input type="tel" placeholder="Telephone Number" v-model="customerinfo.telephone">
     </fieldset>
 
 
@@ -397,17 +397,17 @@ body {
 
           <tr>
             <td class="title-column">Name</td>
-            <td class="data-column">{{ title }} {{ firstname }} {{ surname }}</td>
+            <td class="data-column">{{ customerinfo.title }} {{ customerinfo.firstname }} {{ customerinfo.surname }}</td>
           </tr>
           <tr>
             <td class="title-column">Address</td>
             <td class="data-column output-address">
-              <span>{{ address }}</span>
+              <span>{{ customerinfo.address }}</span>
             </td>
           </tr>
           <tr>
             <td class="title-column">Telephone no.</td>
-            <td class="data-column">{{ telephone }}</td>
+            <td class="data-column">{{ customerinfo.telephone }}</td>
           </tr>
 
         </table>
@@ -10528,11 +10528,13 @@ return Vue$3;
 
 var data = {
   version: '0.1.0',
-  title: '',
-  firstname: '',
-  surname: '',
-  address: '',
-  telephone: '',
+  customerinfo: {
+    title: '',
+    firstname: '',
+    surname: '',
+    address: '',
+    telephone: ''
+  },
   software: [],
   notes: ''
 };

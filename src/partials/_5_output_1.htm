@@ -14,17 +14,17 @@
 
           <tr>
             <td class="title-column">Name</td>
-            <td class="data-column">{{ title }} {{ firstname }} {{ surname }}</td>
+            <td class="data-column">{{ customerinfo.title }} {{ customerinfo.firstname }} {{ customerinfo.surname }}</td>
           </tr>
           <tr>
             <td class="title-column">Address</td>
             <td class="data-column output-address">
-              <span>{{ address }}</span>
+              <span>{{ customerinfo.address }}</span>
             </td>
           </tr>
           <tr>
             <td class="title-column">Telephone no.</td>
-            <td class="data-column">{{ telephone }}</td>
+            <td class="data-column">{{ customerinfo.telephone }}</td>
           </tr>
 
         </table>
