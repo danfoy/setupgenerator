@@ -4,7 +4,9 @@ Creates a printable worksheet based on user input. Personal project in very earl
 
 ## Usage
 
-Open `dist/setupgenerator.htm` to run. The output is self-contained and will work fine if moved elsewhere and even without an internet connection.
+Open `dist/setupgenerator.htm` to run. Requires an internet browser, and is targeted at IE11 for operational reasons. Development during testing and on new branches is done in the latest version of Chrome, however, for practical reasons.
+
+The output is self-contained and will work fine if moved elsewhere, including without an internet connection.
 
 ## Compiling
 
