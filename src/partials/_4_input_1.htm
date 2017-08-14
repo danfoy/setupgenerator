@@ -2,7 +2,7 @@
   <form id="inputform">
 
     <fieldset name="personalinfo">
-      <h2 class="section-label" for="personalinfo">Customer Information</h2>
+      <legend class="section-label" for="personalinfo">Customer Information</legend>
       <select v-model="title">
             <option disabled value="">Title</option>
             <option value="Mr">Mr</option>
@@ -19,7 +19,7 @@
 
 
     <fieldset name="software" class="software">
-      <h2 class="section-label" for="software">Software</h2>
+      <legend class="section-label" for="software">Software</legend>
       <!--
           <checkbox-item line="foo" v-model="software">foo</checkbox-item>
           <checkbox-item line="bar" v-model="software">bar</checkbox-item>
@@ -35,6 +35,11 @@
         <li><label><input type="checkbox" v-model="software" value="World of Warcraft">World of Warcraft</label></li>
         <li><label><input type="checkbox" v-model="software" value="Links Bundle">Links Bundle</label></li>
       </ul>
+    </fieldset>
+    
+    <fieldset name="notes" class="notes">
+      <legend class="section-label" for="notes">Notes</legend>
+      <textarea placeholder="Notes" v-model="notes"></textarea>
     </fieldset>
 
 

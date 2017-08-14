@@ -7,7 +7,9 @@
 
         <table class="output-section">
           <tr class="output-section-header-row">
-            <td colspan="2"><h2 class="output-section-header">Customer Information</h2></td>
+            <td colspan="2">
+              <h2 class="output-section-header">Customer Information</h2>
+            </td>
           </tr>
 
           <tr>
@@ -37,12 +39,34 @@
         <table class="output-section">
 
           <tr class="output-section-header-row">
-            <td><h2 class="output-section-header">Software</h2></td>
+            <td>
+              <h2 class="output-section-header">Software</h2>
+            </td>
           </tr>
 
           <tr v-for="line in software" :line="line" key="name" is="lineitem"></tr>
 
 
+        </table>
+
+      </td>
+    </tr>
+
+    <tr v-if="notes">
+      <td>
+
+        <table class="output-section">
+          <tr class="output-section-header-row">
+            <td>
+              <h2 class="output-section-header">Notes</h2>
+            </td>
+          </tr>
+          
+          <tr>
+            <td class="output-notes">
+              <span class="output-notes-data">{{ notes }}</span>
+            </td>
+          </tr>
         </table>
 
       </td>

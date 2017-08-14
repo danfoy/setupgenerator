@@ -205,7 +205,8 @@ body {
   height: 2.3em; }
 .input .section-label {
   position: absolute;
-  height: 1.5em;
+  display: inline-block;
+  height: 3.81em;
   left: 2em;
   top: -3.825em;
   background: #fff;
@@ -269,9 +270,13 @@ body {
   position: relative; }
 .output .title-column,
 .output .data-column,
-.output .output-line {
+.output .output-line,
+.output .output-notes {
   padding: 0.5em;
   border: 0.05em solid black; }
+.output .output-notes-data {
+  display: block;
+  min-height: 5em; }
 .output .title-column {
   width: 25%;
   vertical-align: top; }
@@ -295,5 +300,6 @@ body {
   font-size: 1em;
   font-weight: 700;
   margin: 0.25em 0; }
-.output .output-address {
+.output .output-address,
+.output .output-notes-data {
   white-space: pre-line; }

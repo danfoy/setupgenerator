@@ -215,7 +215,8 @@ body {
   height: 2.3em; }
 .input .section-label {
   position: absolute;
-  height: 1.5em;
+  display: inline-block;
+  height: 3.81em;
   left: 2em;
   top: -3.825em;
   background: #fff;
@@ -279,9 +280,13 @@ body {
   position: relative; }
 .output .title-column,
 .output .data-column,
-.output .output-line {
+.output .output-line,
+.output .output-notes {
   padding: 0.5em;
   border: 0.05em solid black; }
+.output .output-notes-data {
+  display: block;
+  min-height: 5em; }
 .output .title-column {
   width: 25%;
   vertical-align: top; }
@@ -305,7 +310,8 @@ body {
   font-size: 1em;
   font-weight: 700;
   margin: 0.25em 0; }
-.output .output-address {
+.output .output-address,
+.output .output-notes-data {
   white-space: pre-line; }
 
 </style>
@@ -322,7 +328,7 @@ body {
   <form id="inputform">
 
     <fieldset name="personalinfo">
-      <h2 class="section-label" for="personalinfo">Customer Information</h2>
+      <legend class="section-label" for="personalinfo">Customer Information</legend>
       <select v-model="title">
             <option disabled value="">Title</option>
             <option value="Mr">Mr</option>
@@ -339,7 +345,7 @@ body {
 
 
     <fieldset name="software" class="software">
-      <h2 class="section-label" for="software">Software</h2>
+      <legend class="section-label" for="software">Software</legend>
       <!--
           <checkbox-item line="foo" v-model="software">foo</checkbox-item>
           <checkbox-item line="bar" v-model="software">bar</checkbox-item>
@@ -355,6 +361,11 @@ body {
         <li><label><input type="checkbox" v-model="software" value="World of Warcraft">World of Warcraft</label></li>
         <li><label><input type="checkbox" v-model="software" value="Links Bundle">Links Bundle</label></li>
       </ul>
+    </fieldset>
+    
+    <fieldset name="notes" class="notes">
+      <legend class="section-label" for="notes">Notes</legend>
+      <textarea placeholder="Notes" v-model="notes"></textarea>
     </fieldset>
 
 
@@ -379,7 +390,9 @@ body {
 
         <table class="output-section">
           <tr class="output-section-header-row">
-            <td colspan="2"><h2 class="output-section-header">Customer Information</h2></td>
+            <td colspan="2">
+              <h2 class="output-section-header">Customer Information</h2>
+            </td>
           </tr>
 
           <tr>
@@ -409,12 +422,34 @@ body {
         <table class="output-section">
 
           <tr class="output-section-header-row">
-            <td><h2 class="output-section-header">Software</h2></td>
+            <td>
+              <h2 class="output-section-header">Software</h2>
+            </td>
           </tr>
 
           <tr v-for="line in software" :line="line" key="name" is="lineitem"></tr>
 
 
+        </table>
+
+      </td>
+    </tr>
+
+    <tr v-if="notes">
+      <td>
+
+        <table class="output-section">
+          <tr class="output-section-header-row">
+            <td>
+              <h2 class="output-section-header">Notes</h2>
+            </td>
+          </tr>
+          
+          <tr>
+            <td class="output-notes">
+              <span class="output-notes-data">{{ notes }}</span>
+            </td>
+          </tr>
         </table>
 
       </td>
@@ -10498,7 +10533,8 @@ var data = {
   surname: '',
   address: '',
   telephone: '',
-  software: []
+  software: [],
+  notes: ''
 };
 
 

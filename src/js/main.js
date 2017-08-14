@@ -10067,7 +10067,8 @@ var data = {
   surname: '',
   address: '',
   telephone: '',
-  software: []
+  software: [],
+  notes: ''
 };
 
 
