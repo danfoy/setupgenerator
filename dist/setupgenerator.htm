@@ -213,18 +213,24 @@ body {
   vertical-align: middle; }
 .input select {
   height: 2.3em; }
-.input fieldset label:first-of-type {
+.input .section-label {
   position: absolute;
   height: 1.5em;
   left: 2em;
-  top: -3em;
+  top: -3.825em;
   background: #fff;
   width: auto;
   padding: 1.1em 1.5em 0.2em 1.5em; }
 
+.input .software ul {
+  position: relative;
+  list-style-type: none;
+  padding: 0; }
+.input .software li {
+  display: inline-block;
+  width: 30%; }
 .input .software label {
   display: inline-block;
-  width: 50%;
   padding: 0.5em; }
 
 .input fieldset {
@@ -232,7 +238,7 @@ body {
   border-radius: 0.25em;
   background: #fff;
   box-shadow: 0 0 1em 0.2em #ccc; }
-.input fieldset label:first-of-type {
+.input .section-label {
   border-radius: 0.25em;
   font-size: 0.8em;
   font-weight: 700;
@@ -264,12 +270,13 @@ body {
 .output .output-scaffold {
   width: 100%;
   padding: 0 4em;
+  padding-top: 2em;
+  padding-bottom: 4em;
   margin-bottom: 4em; }
 .output .output-section {
   width: 100%;
-  margin: 2em auto; }
-.output .output-section-header {
-  text-align: center; }
+  margin-top: 2em;
+  position: relative; }
 .output .title-column,
 .output .data-column,
 .output .output-line {
@@ -295,7 +302,9 @@ body {
   box-shadow: 0.25em 0.25em 0 #999;
   border: 0.05em solid #555; }
 .output .output-section-header {
-  font-size: 1.25em; }
+  font-size: 1em;
+  font-weight: 700;
+  margin: 0.25em 0; }
 .output .output-address {
   white-space: pre-line; }
 
@@ -309,13 +318,12 @@ body {
   <h1 class="app-title">Setup Generator</h1>
   <span class="app-version">v{{ version }}</span>
 
+<div class="input">
+  <form id="inputform">
 
-    <div class="input">
-      <form id="inputform">
-
-        <fieldset name="personalinfo">
-          <label for="personalinfo">Customer Information</label>
-          <select v-model="title">
+    <fieldset name="personalinfo">
+      <h2 class="section-label" for="personalinfo">Customer Information</h2>
+      <select v-model="title">
             <option disabled value="">Title</option>
             <option value="Mr">Mr</option>
             <option value="Miss">Miss</option>
@@ -323,42 +331,44 @@ body {
             <option value="Ms">Ms</option>
             <option value="Dr">Dr</option>
           </select>
-          <input type="text" placeholder="First Name" v-model="firstname">
-          <input type="text" placeholder="Surname" v-model="surname">
-          <textarea placeholder="Address and Postcode" v-model="address"></textarea>
-          <input  type="tel" placeholder="Telephone Number" v-model="telephone">
-        </fieldset>
+      <input type="text" placeholder="First Name" v-model="firstname">
+      <input type="text" placeholder="Surname" v-model="surname">
+      <textarea placeholder="Address and Postcode" v-model="address"></textarea>
+      <input type="tel" placeholder="Telephone Number" v-model="telephone">
+    </fieldset>
 
-        
-        <fieldset name="software" class="software">
-          <label for="software">Software</label>
-          <!--
+
+    <fieldset name="software" class="software">
+      <h2 class="section-label" for="software">Software</h2>
+      <!--
           <checkbox-item line="foo" v-model="software">foo</checkbox-item>
           <checkbox-item line="bar" v-model="software">bar</checkbox-item>
           -->
-          <label><input type="checkbox" v-model="software" value="Knowhow Cloud">Knowhow Cloud</label>
-          <label><input type="checkbox" v-model="software" value="Office">Office</label>
-          <label><input type="checkbox" v-model="software" value="McAfee">McAfee</label>
-          <label><input type="checkbox" v-model="software" value="Norton">Norton</label>
-          <label><input type="checkbox" v-model="software" value="iTunes">iTunes</label>
-          <label><input type="checkbox" v-model="software" value="Adobe Reader">Adobe Reader</label>
-          <label><input type="checkbox" v-model="software" value="CinemaNow">CinemaNow</label>
-          <label><input type="checkbox" v-model="software" value="World of Warcraft">World of Warcraft</label>
-          <label><input type="checkbox" v-model="software" value="Links Bundle">Links Bundle</label>
-        </fieldset>
-        
-        
-        <!-- 
+      <ul>
+        <li><label><input type="checkbox" v-model="software" value="Knowhow Cloud">Knowhow Cloud</label></li>
+        <li><label><input type="checkbox" v-model="software" value="Office">Office</label></li>
+        <li><label><input type="checkbox" v-model="software" value="McAfee">McAfee</label></li>
+        <li><label><input type="checkbox" v-model="software" value="Norton">Norton</label></li>
+        <li><label><input type="checkbox" v-model="software" value="iTunes">iTunes</label></li>
+        <li><label><input type="checkbox" v-model="software" value="Adobe Reader">Adobe Reader</label></li>
+        <li><label><input type="checkbox" v-model="software" value="CinemaNow">CinemaNow</label></li>
+        <li><label><input type="checkbox" v-model="software" value="World of Warcraft">World of Warcraft</label></li>
+        <li><label><input type="checkbox" v-model="software" value="Links Bundle">Links Bundle</label></li>
+      </ul>
+    </fieldset>
+
+
+    <!-- 
         <fieldset name="software" class="software">
           <label for="software">Software</label>
           <new-checkbox v-for="line in software" :line="line" key="name"></new-checkbox>
         </fieldset>
         -->
-        
-        
 
-      </form>
-    </div>
+
+
+  </form>
+</div>
 
 <div class="output">
 
@@ -368,8 +378,8 @@ body {
       <td>
 
         <table class="output-section">
-          <tr>
-            <td class="output-section-header" colspan="2">Customer Information</td>
+          <tr class="output-section-header-row">
+            <td colspan="2"><h2 class="output-section-header">Customer Information</h2></td>
           </tr>
 
           <tr>
@@ -393,13 +403,13 @@ body {
     </tr>
 
 
-    <tr>
+    <tr v-if="software[0]">
       <td>
 
         <table class="output-section">
 
-          <tr v-if="software[0]">
-            <td class="output-section-header">Software</td>
+          <tr class="output-section-header-row">
+            <td><h2 class="output-section-header">Software</h2></td>
           </tr>
 
           <tr v-for="line in software" :line="line" key="name" is="lineitem"></tr>

@@ -203,18 +203,24 @@ body {
   vertical-align: middle; }
 .input select {
   height: 2.3em; }
-.input fieldset label:first-of-type {
+.input .section-label {
   position: absolute;
   height: 1.5em;
   left: 2em;
-  top: -3em;
+  top: -3.825em;
   background: #fff;
   width: auto;
   padding: 1.1em 1.5em 0.2em 1.5em; }
 
+.input .software ul {
+  position: relative;
+  list-style-type: none;
+  padding: 0; }
+.input .software li {
+  display: inline-block;
+  width: 30%; }
 .input .software label {
   display: inline-block;
-  width: 50%;
   padding: 0.5em; }
 
 .input fieldset {
@@ -222,7 +228,7 @@ body {
   border-radius: 0.25em;
   background: #fff;
   box-shadow: 0 0 1em 0.2em #ccc; }
-.input fieldset label:first-of-type {
+.input .section-label {
   border-radius: 0.25em;
   font-size: 0.8em;
   font-weight: 700;
@@ -254,12 +260,13 @@ body {
 .output .output-scaffold {
   width: 100%;
   padding: 0 4em;
+  padding-top: 2em;
+  padding-bottom: 4em;
   margin-bottom: 4em; }
 .output .output-section {
   width: 100%;
-  margin: 2em auto; }
-.output .output-section-header {
-  text-align: center; }
+  margin-top: 2em;
+  position: relative; }
 .output .title-column,
 .output .data-column,
 .output .output-line {
@@ -285,6 +292,8 @@ body {
   box-shadow: 0.25em 0.25em 0 #999;
   border: 0.05em solid #555; }
 .output .output-section-header {
-  font-size: 1.25em; }
+  font-size: 1em;
+  font-weight: 700;
+  margin: 0.25em 0; }
 .output .output-address {
   white-space: pre-line; }

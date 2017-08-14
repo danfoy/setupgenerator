@@ -34,11 +34,11 @@
   select {
     height: 2.3em;
   }
-  fieldset label:first-of-type {
+   .section-label {
     position: absolute;
     height: 1.5em;
     left: 2em;
-    top: -3em;
+    top: -3.825em;
     background: #fff;
     width: auto;
     padding: 1.1em 1.5em 0.2em 1.5em;
@@ -46,9 +46,17 @@
 }
 
 .input .software {
+  ul {
+    position: relative;
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    display: inline-block;
+    width: 30%;
+  }
   label {
     display: inline-block;
-    width: 50%;
     padding: 0.5em;
   }
 }

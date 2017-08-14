@@ -7,14 +7,19 @@
     .output-scaffold {
       width: 100%;
       padding: 0 4em;
+      padding-top: 2em;
+      padding-bottom: 4em;
       margin-bottom: 4em;
     }
     .output-section {
       width: 100%;
-      margin: 2em auto;
+      margin-top: 2em;
+      position: relative;
+    }
+    .output-section-header-row {
     }
     .output-section-header {
-      text-align: center;
+      
     }
     .title-column,
     .data-column,
