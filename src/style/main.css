@@ -176,15 +176,26 @@ body {
   margin: 0.5em 0; }
 
 .input {
-  display: inline-block;
   box-sizing: border-box;
   text-align: left; }
 
-.input fieldset {
+.input .input-section {
   position: relative;
   padding: 2em;
-  margin: 8em 2em;
+  margin: 8em 4em;
   box-sizing: border-box; }
+.input .input-section fieldset {
+  margin: 2em;
+  padding: 2em;
+  border-color: #999; }
+.input .input-section fieldset legend {
+  padding: 0.5em 1em;
+  background: #fff;
+  border: 0.15em solid #999;
+  border-top-color: deeppink;
+  border-radius: 0.25em;
+  font-size: 0.8em;
+  font-weight: 700; }
 .input input,
 .input select {
   margin-right: 0.5em;
@@ -303,3 +314,14 @@ body {
 .output .output-address,
 .output .output-notes-data {
   white-space: pre-line; }
+
+.input .basicinfo .colleague,
+.input .basicinfo .model {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  width: 40%; }
+.input .basicinfo .platform {
+  text-align: center; }
+.input .basicinfo .platform label {
+  padding: 0 1em; }

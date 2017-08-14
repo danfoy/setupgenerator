@@ -1,16 +1,31 @@
 .input {
-  display: inline-block;
   box-sizing: border-box;
   text-align: left;
 }
 
 .input {
-  fieldset {
+  .input-section {
     position: relative;
     padding: 2em;
-    margin: 8em 2em;
+    margin: 8em 4em;
     box-sizing: border-box;
   }
+  .input-section fieldset {
+    margin: 2em;
+    padding: 2em;
+    border-color: #999;
+  }
+  
+  .input-section fieldset legend {
+    padding: 0.5em 1em;
+    background: #fff;
+    border: 0.15em solid #999;
+    border-top-color: deeppink;
+    border-radius: 0.25em;
+    font-size: 0.8em;
+    font-weight: 700;
+  }
+  
   input,
   select {
     margin-right: 0.5em;

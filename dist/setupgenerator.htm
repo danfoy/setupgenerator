@@ -186,15 +186,26 @@ body {
   margin: 0.5em 0; }
 
 .input {
-  display: inline-block;
   box-sizing: border-box;
   text-align: left; }
 
-.input fieldset {
+.input .input-section {
   position: relative;
   padding: 2em;
-  margin: 8em 2em;
+  margin: 8em 4em;
   box-sizing: border-box; }
+.input .input-section fieldset {
+  margin: 2em;
+  padding: 2em;
+  border-color: #999; }
+.input .input-section fieldset legend {
+  padding: 0.5em 1em;
+  background: #fff;
+  border: 0.15em solid #999;
+  border-top-color: deeppink;
+  border-radius: 0.25em;
+  font-size: 0.8em;
+  font-weight: 700; }
 .input input,
 .input select {
   margin-right: 0.5em;
@@ -314,6 +325,17 @@ body {
 .output .output-notes-data {
   white-space: pre-line; }
 
+.input .basicinfo .colleague,
+.input .basicinfo .model {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  width: 40%; }
+.input .basicinfo .platform {
+  text-align: center; }
+.input .basicinfo .platform label {
+  padding: 0 1em; }
+
 </style>
 </head>
 
@@ -327,7 +349,23 @@ body {
 <div class="input">
   <form id="inputform">
 
-    <fieldset name="customerinfo">
+    <fieldset name="basicinfo" class="input-section basicinfo">
+      <legend class="section-label" for="basicinfo">Preliminary Information</legend>
+
+      <input type="text" placeholder="Colleague Name" v-model="basicinfo.colleague" class="colleague">
+
+      <fieldset name="platform" class="platform">
+        <legend for="platform">Platform</legend>
+        <label><input type="radio" name="platform" value="Windows" v-model="basicinfo.platform">Windows</label>
+        <label><input type="radio" name="platform" value="Mac" v-model="basicinfo.platform">Mac</label>
+        <label><input type="radio" name="platform" value="iOS" v-model="basicinfo.platform">iOS</label>
+        <label><input type="radio" name="platform" value="Android" v-model="basicinfo.platform">Android</label>
+      </fieldset>
+      <input type="text" placeholder="model" v-model="basicinfo.model" class="model">
+
+    </fieldset>
+
+    <fieldset name="customerinfo" class="input-section customerinfo">
       <legend class="section-label" for="customerinfo">Customer Information</legend>
       <select v-model="customerinfo.title">
             <option disabled value="">Title</option>
@@ -344,7 +382,7 @@ body {
     </fieldset>
 
 
-    <fieldset name="software" class="software">
+    <fieldset name="software" class="input-section software">
       <legend class="section-label" for="software">Software</legend>
       <!--
           <checkbox-item line="foo" v-model="software">foo</checkbox-item>
@@ -362,8 +400,8 @@ body {
         <li><label><input type="checkbox" v-model="software" value="Links Bundle">Links Bundle</label></li>
       </ul>
     </fieldset>
-    
-    <fieldset name="notes" class="notes">
+
+    <fieldset name="notes" class="input-section notes">
       <legend class="section-label" for="notes">Notes</legend>
       <textarea placeholder="Notes" v-model="notes"></textarea>
     </fieldset>
@@ -10524,10 +10562,33 @@ return Vue$3;
 
 /* global console, Vue */
 
-// Data Object
 
+// Gets the creation date in UK format
+var creationDate = function() {
+  var machineDate = new Date();
+  var dateOptions = {
+    day: 'numeric',
+    weekday: 'long',
+    month: 'long',
+    year: 'numeric',
+    hour12: false,
+    hour: '2-digit',
+    minute: '2-digit'
+  };
+  var localDate = machineDate.toLocaleString('en-GB', dateOptions);
+  return localDate;
+};
+
+
+// THE DATA OBJECT
 var data = {
   version: '0.1.0',
+  basicinfo: {
+    colleague: '',
+    date: creationDate(),
+    platform: '',
+    model: ''
+  },
   customerinfo: {
     title: '',
     firstname: '',
@@ -10571,6 +10632,7 @@ var vm = new Vue({
   data: data
 
 });
+
 </script>
 
 </body>

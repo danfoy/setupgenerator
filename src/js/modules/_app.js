@@ -1,9 +1,32 @@
 /* global console, Vue */
 
-// Data Object
 
+// Gets the creation date in UK format
+var creationDate = function() {
+  var machineDate = new Date();
+  var dateOptions = {
+    day: 'numeric',
+    weekday: 'long',
+    month: 'long',
+    year: 'numeric',
+    hour12: false,
+    hour: '2-digit',
+    minute: '2-digit'
+  };
+  var localDate = machineDate.toLocaleString('en-GB', dateOptions);
+  return localDate;
+};
+
+
+// THE DATA OBJECT
 var data = {
   version: '0.1.0',
+  basicinfo: {
+    colleague: '',
+    date: creationDate(),
+    platform: '',
+    model: ''
+  },
   customerinfo: {
     title: '',
     firstname: '',
