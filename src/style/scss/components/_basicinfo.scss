@@ -1,18 +1,11 @@
 .input .basicinfo {
-  
+  text-align: center;
   .colleague,
-  .model {
-    display: block;
+  .productsku {
     text-align: center;
-    margin: 0 auto;
     width: 40%;
   }
-  
   .platform {
     text-align: center;
-  }
-  
-  .platform label {
-    padding: 0 1em;
   }
 }

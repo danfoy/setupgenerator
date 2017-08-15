@@ -178,62 +178,53 @@ body {
 .input {
   box-sizing: border-box;
   text-align: left; }
-
-.input .input-section {
-  position: relative;
-  padding: 2em;
-  margin: 8em 4em;
-  box-sizing: border-box; }
-.input .input-section fieldset {
-  margin: 2em;
-  padding: 2em;
-  border-color: #999; }
-.input .input-section fieldset legend {
-  padding: 0.5em 1em;
-  background: #fff;
-  border: 0.15em solid #999;
-  border-top-color: deeppink;
-  border-radius: 0.25em;
-  font-size: 0.8em;
-  font-weight: 700; }
-.input input,
-.input select {
-  margin-right: 0.5em;
-  display: inline-block; }
-.input input,
-.input select,
-.input textarea {
-  padding: 0.5em; }
-.input textarea {
-  width: 100%;
-  margin: 1em 0;
-  height: 6em;
-  box-sizing: border-box; }
-.input textarea::placeholder {
-  line-height: 6em;
-  vertical-align: middle; }
-.input select {
-  height: 2.3em; }
-.input .section-label {
-  position: absolute;
-  display: inline-block;
-  height: 3.81em;
-  left: 2em;
-  top: -3.825em;
-  background: #fff;
-  width: auto;
-  padding: 1.1em 1.5em 0.2em 1.5em; }
-
-.input .software ul {
-  position: relative;
-  list-style-type: none;
-  padding: 0; }
-.input .software li {
-  display: inline-block;
-  width: 30%; }
-.input .software label {
-  display: inline-block;
-  padding: 0.5em; }
+  .input .input-section {
+    position: relative;
+    padding: 2em;
+    margin: 8em 4em;
+    box-sizing: border-box; }
+  .input .section-label {
+    position: absolute;
+    display: inline-block;
+    height: 3.81em;
+    left: 2em;
+    top: -3.825em;
+    background: #fff;
+    width: auto;
+    padding: 1.1em 1.5em 0.2em 1.5em; }
+  .input .input-section fieldset {
+    margin: 2em;
+    padding: 2em;
+    border-color: #999;
+    position: relative; }
+  .input .input-section fieldset legend {
+    padding: 0.5em 1em;
+    background: #fff;
+    border: 0.15em solid #999;
+    border-top-color: deeppink;
+    border-radius: 0.25em;
+    font-size: 0.8em;
+    font-weight: 700; }
+  .input label {
+    padding: 0 1em; }
+  .input input,
+  .input select {
+    margin-right: 0.5em;
+    display: inline-block; }
+  .input input,
+  .input select,
+  .input textarea {
+    padding: 0.5em; }
+  .input textarea {
+    width: 100%;
+    margin: 1em 0;
+    height: 6em;
+    box-sizing: border-box; }
+  .input textarea::placeholder {
+    line-height: 6em;
+    vertical-align: middle; }
+  .input select {
+    height: 2.3em; }
 
 .input fieldset {
   border: 0.2em solid #000;
@@ -248,6 +239,10 @@ body {
   border-top-color: deeppink;
   border-left: 0.2em solid #000;
   border-right: 0.2em solid #000; }
+.input .section-label.complete {
+  border-top-color: lightgreen;
+  border-top-width: 0.4em;
+  padding: 0.9em 1.5em 0.2em 1.5em; }
 .input input,
 .input select,
 .input textarea,
@@ -297,10 +292,10 @@ body {
   position: relative; }
 .output .tickbox {
   border: 0.05em solid black;
-  width: 2.15em;
-  height: 2.15em;
+  width: 2.1em;
+  height: 2.1em;
   position: absolute;
-  top: -0.05em;
+  top: -0.07em;
   right: -0.05em; }
 
 .output .output-scaffold {
@@ -315,13 +310,25 @@ body {
 .output .output-notes-data {
   white-space: pre-line; }
 
-.input .basicinfo .colleague,
-.input .basicinfo .model {
-  display: block;
-  text-align: center;
-  margin: 0 auto;
-  width: 40%; }
-.input .basicinfo .platform {
+.input .basicinfo {
   text-align: center; }
-.input .basicinfo .platform label {
-  padding: 0 1em; }
+  .input .basicinfo .colleague,
+  .input .basicinfo .productsku {
+    text-align: center;
+    width: 40%; }
+  .input .basicinfo .platform {
+    text-align: center; }
+
+.software {
+  text-align: center; }
+  .software ul {
+    position: relative;
+    list-style-type: none;
+    padding: 0; }
+  .software li {
+    display: inline-block;
+    width: 30%;
+    text-align: left; }
+  .software label {
+    display: inline-block;
+    padding: 0.5em; }

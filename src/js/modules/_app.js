@@ -2,7 +2,7 @@
 
 
 // Gets the creation date in UK format
-var creationDate = function() {
+var creationDate = function () {
   var machineDate = new Date();
   var dateOptions = {
     day: 'numeric',
@@ -25,7 +25,8 @@ var data = {
     colleague: '',
     date: creationDate(),
     platform: '',
-    model: ''
+    productsku: '',
+    service: ''
   },
   customerinfo: {
     title: '',
@@ -33,6 +34,9 @@ var data = {
     surname: '',
     address: '',
     telephone: ''
+  },
+  setupoptions: {
+    recoverymedia: true
   },
   software: [],
   notes: ''
@@ -46,27 +50,31 @@ Vue.component('lineitem', {
   props: ['line']
 });
 
+
 /*
-
-TODO: Make checkbox item to simplify entering label>textbox elements in the template.
-
 Vue.component('checkboxItem', {
-  template: '<label><input type="checkbox" :v-model="category" :value="line" @change="onChange">{{ line }}</label>',
-  props: ['line', 'category'],
-  methods: {
-    onChange: function(event){
-        this.$emit('input', event.target.checked);
-    }
+  template: '<label><input type="checkbox" v-bind:true-value="{ name: value, required: true }" v-bind:false-value="{ name: value, required: false }">{{ value }}</label>',
+  props: {
+    checked: Boolean,
+    value: String
   }
 });
 */
-
 
 
 // Root Vue.js instance
 var vm = new Vue({
 
   el: '#app',
-  data: data
+  data: data,
+  computed: {
+    customerInfoComplete: function () {
+      if (this.customerinfo.title && this.customerinfo.firstname && this.customerinfo.surname && this.customerinfo.address && this.customerinfo.telephone) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
 
 });

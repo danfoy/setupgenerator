@@ -1,21 +1,28 @@
 .input {
   box-sizing: border-box;
   text-align: left;
-}
-
-.input {
   .input-section {
     position: relative;
     padding: 2em;
     margin: 8em 4em;
     box-sizing: border-box;
   }
+  .section-label {
+    position: absolute;
+    display: inline-block;
+    height: 3.81em;
+    left: 2em;
+    top: -3.825em;
+    background: #fff;
+    width: auto;
+    padding: 1.1em 1.5em 0.2em 1.5em;
+  }
   .input-section fieldset {
     margin: 2em;
     padding: 2em;
     border-color: #999;
+    position: relative;
   }
-  
   .input-section fieldset legend {
     padding: 0.5em 1em;
     background: #fff;
@@ -25,7 +32,9 @@
     font-size: 0.8em;
     font-weight: 700;
   }
-  
+  label {
+    padding: 0 1em;
+  }
   input,
   select {
     margin-right: 0.5em;
@@ -48,31 +57,5 @@
   }
   select {
     height: 2.3em;
-  }
-   .section-label {
-    position: absolute;
-    display: inline-block;
-    height: 3.81em;
-    left: 2em;
-    top: -3.825em;
-    background: #fff;
-    width: auto;
-    padding: 1.1em 1.5em 0.2em 1.5em;
-  }
-}
-
-.input .software {
-  ul {
-    position: relative;
-    list-style-type: none;
-    padding: 0;
-  }
-  li {
-    display: inline-block;
-    width: 30%;
-  }
-  label {
-    display: inline-block;
-    padding: 0.5em;
   }
 }

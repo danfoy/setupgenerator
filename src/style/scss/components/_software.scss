@@ -1,0 +1,17 @@
+.software {
+  text-align: center;
+  ul {
+    position: relative;
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    display: inline-block;
+    width: 30%;
+    text-align: left;
+  }
+  label {
+    display: inline-block;
+    padding: 0.5em;
+  }
+}

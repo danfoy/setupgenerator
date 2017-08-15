@@ -1,24 +1,10 @@
 <div class="input">
   <form id="inputform">
 
-    <fieldset name="basicinfo" class="input-section basicinfo">
-      <legend class="section-label" for="basicinfo">Preliminary Information</legend>
 
-      <input type="text" placeholder="Colleague Name" v-model="basicinfo.colleague" class="colleague">
-
-      <fieldset name="platform" class="platform">
-        <legend for="platform">Platform</legend>
-        <label><input type="radio" name="platform" value="Windows" v-model="basicinfo.platform">Windows</label>
-        <label><input type="radio" name="platform" value="Mac" v-model="basicinfo.platform">Mac</label>
-        <label><input type="radio" name="platform" value="iOS" v-model="basicinfo.platform">iOS</label>
-        <label><input type="radio" name="platform" value="Android" v-model="basicinfo.platform">Android</label>
-      </fieldset>
-      <input type="text" placeholder="model" v-model="basicinfo.model" class="model">
-
-    </fieldset>
 
     <fieldset name="customerinfo" class="input-section customerinfo">
-      <legend class="section-label" for="customerinfo">Customer Information</legend>
+      <legend class="section-label" for="customerinfo" v-bind:class="{complete: customerInfoComplete}">Customer Information</legend>
       <select v-model="customerinfo.title">
             <option disabled value="">Title</option>
             <option value="Mr">Mr</option>
@@ -34,12 +20,41 @@
     </fieldset>
 
 
+
+    <fieldset name="basicinfo" class="input-section basicinfo">
+      <legend class="section-label" for="basicinfo">Preliminary Information</legend>
+      
+      <input type="text" placeholder="Colleague Name" v-model="basicinfo.colleague" class="colleague">
+      <input type="text" placeholder="Product SKU" v-model="basicinfo.productsku" class="productsku">
+      
+      <fieldset name="platform" class="platform">
+        <legend for="platform">Platform</legend>
+        <label><input type="radio" name="platform" value="Windows" v-model="basicinfo.platform">Windows</label>
+        <label><input type="radio" name="platform" value="Mac" v-model="basicinfo.platform">Mac</label>
+        <label><input type="radio" name="platform" value="iOS" v-model="basicinfo.platform">iOS</label>
+        <label><input type="radio" name="platform" value="Android" v-model="basicinfo.platform">Android</label>
+      </fieldset>
+      
+      <fieldset name="service" class="service">
+        <legend for="service">Service</legend>
+        <label><input type="radio" name="service" value="Walk Out Working" v-model="basicinfo.service">Walk Out Working</label>
+        <label><input type="radio" name="service" value="Setup and Personalise" v-model="basicinfo.service">Setup and Personalise</label>
+        <label><input type="radio" name="service" value="Setup and Showhow" v-model="basicinfo.service">Setup and Showhow</label>
+      </fieldset>
+      
+    </fieldset>
+
+
+
+    <fieldset name="setupoptions" class="input-section setupoptions">
+      <legend for="setupoptions" class="section-label">Options</legend>
+      <label><input type="checkbox" v-model="setupoptions.recoverymedia">Create Recovery Media</label>
+    </fieldset>
+
+
+
     <fieldset name="software" class="input-section software">
       <legend class="section-label" for="software">Software</legend>
-      <!--
-          <checkbox-item line="foo" v-model="software">foo</checkbox-item>
-          <checkbox-item line="bar" v-model="software">bar</checkbox-item>
-          -->
       <ul>
         <li><label><input type="checkbox" v-model="software" value="Knowhow Cloud">Knowhow Cloud</label></li>
         <li><label><input type="checkbox" v-model="software" value="Office">Office</label></li>
@@ -52,6 +67,8 @@
         <li><label><input type="checkbox" v-model="software" value="Links Bundle">Links Bundle</label></li>
       </ul>
     </fieldset>
+
+
 
     <fieldset name="notes" class="input-section notes">
       <legend class="section-label" for="notes">Notes</legend>
