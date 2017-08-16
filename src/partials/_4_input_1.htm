@@ -2,31 +2,22 @@
   <form id="inputform">
 
 
-
-    <fieldset name="customerinfo" class="input-section customerinfo">
-      <legend class="section-label" for="customerinfo" v-bind:class="{complete: customerInfoComplete}">Customer Information</legend>
-      <select v-model="customerinfo.title">
-            <option disabled value="">Title</option>
-            <option value="Mr">Mr</option>
-            <option value="Miss">Miss</option>
-            <option value="Mrs">Mrs</option>
-            <option value="Ms">Ms</option>
-            <option value="Dr">Dr</option>
-          </select>
-      <input type="text" placeholder="First Name" v-model="customerinfo.firstname">
-      <input type="text" placeholder="Surname" v-model="customerinfo.surname">
-      <textarea placeholder="Address and Postcode" v-model="customerinfo.address"></textarea>
-      <input type="tel" placeholder="Telephone Number" v-model="customerinfo.telephone">
-    </fieldset>
-
-
-
     <fieldset name="basicinfo" class="input-section basicinfo">
-      <legend class="section-label" for="basicinfo">Preliminary Information</legend>
-      
+      <legend class="section-label" for="basicinfo">Basic Information</legend>
+
       <input type="text" placeholder="Colleague Name" v-model="basicinfo.colleague" class="colleague">
       <input type="text" placeholder="Product SKU" v-model="basicinfo.sku" class="productsku">
-      
+
+      <fieldset name="customerinfo" class="customerinfo">
+        <legend for="customerinfo" v-bind:class="{complete: customerInfoComplete}">Customer Information</legend>
+        <input type="text" placeholder="title" v-model="customerinfo.title" class="customerinfo-title">
+        <input type="text" placeholder="First Name" v-model="customerinfo.firstname"class="customerinfo-firstname">
+        <input type="text" placeholder="Surname" v-model="customerinfo.surname"class="customerinfo-surname">
+        <textarea placeholder="Address and Postcode" v-model="customerinfo.address" class="customerinfo-address"></textarea>
+        <input type="tel" placeholder="Telephone Number" v-model="customerinfo.telephone" class="customerinfo-telephone">
+        <input type="tel" placeholder="Alternate Telephone Number" v-model="customerinfo.alttelephone" class="customerinfo-alttelephone">
+      </fieldset>
+
       <fieldset name="platform" class="platform">
         <legend for="platform">Platform</legend>
         <label><input type="radio" name="platform" value="Windows" v-model="basicinfo.platform">Windows</label>
@@ -34,14 +25,14 @@
         <label><input type="radio" name="platform" value="iOS" v-model="basicinfo.platform">iOS</label>
         <label><input type="radio" name="platform" value="Android" v-model="basicinfo.platform">Android</label>
       </fieldset>
-      
+
       <fieldset name="service" class="service">
         <legend for="service">Service</legend>
         <label><input type="radio" name="service" value="Walk Out Working" v-model="basicinfo.service">Walk Out Working</label>
         <label><input type="radio" name="service" value="Setup and Personalise" v-model="basicinfo.service">Setup and Personalise</label>
         <label><input type="radio" name="service" value="Setup and Showhow" v-model="basicinfo.service">Setup and Showhow</label>
       </fieldset>
-      
+
     </fieldset>
 
 

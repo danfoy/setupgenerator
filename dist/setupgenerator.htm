@@ -188,25 +188,78 @@ body {
 .input {
   box-sizing: border-box;
   text-align: left; }
+  .input fieldset {
+    border: 0.2em solid #000;
+    border-radius: 0.25em;
+    background: #fff;
+    box-shadow: 0 0 1em 0.2em #ccc; }
+  .input label {
+    padding: 0 2.5%; }
+  .input input,
+  .input select,
+  .input textarea,
+  .input checkbox {
+    border: 1px solid black;
+    border-bottom-width: 2px;
+    border-radius: 0.25em;
+    box-sizing: border-box; }
+  .input input,
+  .input select,
+  .input textarea {
+    padding: 0.5em; }
+  .input input[type='checkbox'],
+  .input input[type='radio'] {
+    margin-right: 0.5em;
+    display: inline-block; }
+  .input textarea {
+    width: 100%;
+    margin: 1em 0;
+    height: 6em;
+    box-sizing: border-box; }
+  .input ::placeholder {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    vertical-align: middle;
+    color: #aaa; }
+  .input textarea::placeholder {
+    line-height: 6em;
+    vertical-align: middle;
+    text-align: center; }
+  .input select {
+    height: 2.3em; }
   .input .input-section {
     position: relative;
-    padding: 2em;
-    margin: 8em 4em;
+    padding: 3%;
+    margin: 8em 5%;
     box-sizing: border-box; }
   .input .section-label {
     position: absolute;
     display: inline-block;
-    height: 3.81em;
     left: 2em;
     top: -3.825em;
-    background: #fff;
+    height: 3.81em;
     width: auto;
-    padding: 1.1em 1.5em 0.2em 1.5em; }
+    border-top: 0.2em solid #000;
+    border-top-color: deeppink;
+    border-left: 0.2em solid #000;
+    border-right: 0.2em solid #000;
+    border-radius: 0.25em;
+    padding: 1.1em 1.5em 0.2em 1.5em;
+    background: #fff;
+    font-size: 0.8em;
+    font-weight: 700; }
+  .input .section-label.complete {
+    border-top-color: lightgreen;
+    border-top-width: 0.4em;
+    padding: 0.9em 1.5em 0.2em 1.5em; }
   .input .input-section fieldset {
-    margin: 2em;
-    padding: 2em;
+    margin: 3%;
+    padding: 3%;
     border-color: #999;
-    position: relative; }
+    position: relative;
+    box-sizing: border-box; }
   .input .input-section fieldset legend {
     padding: 0.5em 1em;
     background: #fff;
@@ -215,60 +268,17 @@ body {
     border-radius: 0.25em;
     font-size: 0.8em;
     font-weight: 700; }
-  .input label {
-    padding: 0 1em; }
-  .input input,
-  .input select {
-    margin-right: 0.5em;
-    display: inline-block; }
-  .input input,
-  .input select,
-  .input textarea {
-    padding: 0.5em; }
-  .input textarea {
-    width: 100%;
-    margin: 1em 0;
-    height: 6em;
-    box-sizing: border-box; }
-  .input textarea::placeholder {
-    line-height: 6em;
-    vertical-align: middle; }
-  .input select {
-    height: 2.3em; }
-
-.input fieldset {
-  border: 0.2em solid #000;
-  border-radius: 0.25em;
-  background: #fff;
-  box-shadow: 0 0 1em 0.2em #ccc; }
-.input .section-label {
-  border-radius: 0.25em;
-  font-size: 0.8em;
-  font-weight: 700;
-  border-top: 0.2em solid #000;
-  border-top-color: deeppink;
-  border-left: 0.2em solid #000;
-  border-right: 0.2em solid #000; }
-.input .section-label.complete {
-  border-top-color: lightgreen;
-  border-top-width: 0.4em;
-  padding: 0.9em 1.5em 0.2em 1.5em; }
-.input input,
-.input select,
-.input textarea,
-.input checkbox {
-  border: 1px solid black;
-  border-bottom-width: 2px;
-  border-radius: 0.25em; }
-.input ::placeholder {
-  text-transform: uppercase;
-  font-size: 0.8em;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  vertical-align: middle;
-  color: #aaa; }
-.input textarea::placeholder {
-  text-align: center; }
+  .input .customerinfo input,
+  .input .customerinfo textarea {
+    margin: inherit 2.5%; }
+  .input .customerinfo .customerinfo-title {
+    width: 15%; }
+  .input .customerinfo .customerinfo-firstname,
+  .input .customerinfo .customerinfo-surname {
+    width: 41.5%; }
+  .input .customerinfo .customerinfo-telephone,
+  .input .customerinfo .customerinfo-alttelephone {
+    width: 49%; }
 
 .output {
   text-align: left;
@@ -382,31 +392,22 @@ body {
   <form id="inputform">
 
 
-
-    <fieldset name="customerinfo" class="input-section customerinfo">
-      <legend class="section-label" for="customerinfo" v-bind:class="{complete: customerInfoComplete}">Customer Information</legend>
-      <select v-model="customerinfo.title">
-            <option disabled value="">Title</option>
-            <option value="Mr">Mr</option>
-            <option value="Miss">Miss</option>
-            <option value="Mrs">Mrs</option>
-            <option value="Ms">Ms</option>
-            <option value="Dr">Dr</option>
-          </select>
-      <input type="text" placeholder="First Name" v-model="customerinfo.firstname">
-      <input type="text" placeholder="Surname" v-model="customerinfo.surname">
-      <textarea placeholder="Address and Postcode" v-model="customerinfo.address"></textarea>
-      <input type="tel" placeholder="Telephone Number" v-model="customerinfo.telephone">
-    </fieldset>
-
-
-
     <fieldset name="basicinfo" class="input-section basicinfo">
-      <legend class="section-label" for="basicinfo">Preliminary Information</legend>
-      
+      <legend class="section-label" for="basicinfo">Basic Information</legend>
+
       <input type="text" placeholder="Colleague Name" v-model="basicinfo.colleague" class="colleague">
       <input type="text" placeholder="Product SKU" v-model="basicinfo.sku" class="productsku">
-      
+
+      <fieldset name="customerinfo" class="customerinfo">
+        <legend for="customerinfo" v-bind:class="{complete: customerInfoComplete}">Customer Information</legend>
+        <input type="text" placeholder="title" v-model="customerinfo.title" class="customerinfo-title">
+        <input type="text" placeholder="First Name" v-model="customerinfo.firstname"class="customerinfo-firstname">
+        <input type="text" placeholder="Surname" v-model="customerinfo.surname"class="customerinfo-surname">
+        <textarea placeholder="Address and Postcode" v-model="customerinfo.address" class="customerinfo-address"></textarea>
+        <input type="tel" placeholder="Telephone Number" v-model="customerinfo.telephone" class="customerinfo-telephone">
+        <input type="tel" placeholder="Alternate Telephone Number" v-model="customerinfo.alttelephone" class="customerinfo-alttelephone">
+      </fieldset>
+
       <fieldset name="platform" class="platform">
         <legend for="platform">Platform</legend>
         <label><input type="radio" name="platform" value="Windows" v-model="basicinfo.platform">Windows</label>
@@ -414,14 +415,14 @@ body {
         <label><input type="radio" name="platform" value="iOS" v-model="basicinfo.platform">iOS</label>
         <label><input type="radio" name="platform" value="Android" v-model="basicinfo.platform">Android</label>
       </fieldset>
-      
+
       <fieldset name="service" class="service">
         <legend for="service">Service</legend>
         <label><input type="radio" name="service" value="Walk Out Working" v-model="basicinfo.service">Walk Out Working</label>
         <label><input type="radio" name="service" value="Setup and Personalise" v-model="basicinfo.service">Setup and Personalise</label>
         <label><input type="radio" name="service" value="Setup and Showhow" v-model="basicinfo.service">Setup and Showhow</label>
       </fieldset>
-      
+
     </fieldset>
 
 
@@ -489,7 +490,7 @@ body {
             <td class="title-column">Name</td>
             <td class="data-column">{{ customerinfo.title }} {{ customerinfo.firstname }} {{ customerinfo.surname }}</td>
           </tr>
-          <tr>
+          <tr v-if="customerinfo.address">
             <td class="title-column">Address</td>
             <td class="data-column output-address">
               <span>{{ customerinfo.address }}</span>
@@ -10691,7 +10692,8 @@ var data = {
     firstname: '',
     surname: '',
     address: '',
-    telephone: ''
+    telephone: '',
+    alttelephone: ''
   },
   setupoptions: {
     recoverymedia: true

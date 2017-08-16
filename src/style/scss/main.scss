@@ -7,10 +7,9 @@
 
 @import 'globals';
 
-@import 'input_layout';
-@import 'input_display';
+@import 'input';
 
-@import '_output';
+@import 'output';
 
 @import 'components/basicinfo';
 @import 'components/software'

@@ -10091,7 +10091,8 @@ var data = {
     firstname: '',
     surname: '',
     address: '',
-    telephone: ''
+    telephone: '',
+    alttelephone: ''
   },
   setupoptions: {
     recoverymedia: true

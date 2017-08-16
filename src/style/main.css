@@ -178,25 +178,78 @@ body {
 .input {
   box-sizing: border-box;
   text-align: left; }
+  .input fieldset {
+    border: 0.2em solid #000;
+    border-radius: 0.25em;
+    background: #fff;
+    box-shadow: 0 0 1em 0.2em #ccc; }
+  .input label {
+    padding: 0 2.5%; }
+  .input input,
+  .input select,
+  .input textarea,
+  .input checkbox {
+    border: 1px solid black;
+    border-bottom-width: 2px;
+    border-radius: 0.25em;
+    box-sizing: border-box; }
+  .input input,
+  .input select,
+  .input textarea {
+    padding: 0.5em; }
+  .input input[type='checkbox'],
+  .input input[type='radio'] {
+    margin-right: 0.5em;
+    display: inline-block; }
+  .input textarea {
+    width: 100%;
+    margin: 1em 0;
+    height: 6em;
+    box-sizing: border-box; }
+  .input ::placeholder {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    vertical-align: middle;
+    color: #aaa; }
+  .input textarea::placeholder {
+    line-height: 6em;
+    vertical-align: middle;
+    text-align: center; }
+  .input select {
+    height: 2.3em; }
   .input .input-section {
     position: relative;
-    padding: 2em;
-    margin: 8em 4em;
+    padding: 3%;
+    margin: 8em 5%;
     box-sizing: border-box; }
   .input .section-label {
     position: absolute;
     display: inline-block;
-    height: 3.81em;
     left: 2em;
     top: -3.825em;
-    background: #fff;
+    height: 3.81em;
     width: auto;
-    padding: 1.1em 1.5em 0.2em 1.5em; }
+    border-top: 0.2em solid #000;
+    border-top-color: deeppink;
+    border-left: 0.2em solid #000;
+    border-right: 0.2em solid #000;
+    border-radius: 0.25em;
+    padding: 1.1em 1.5em 0.2em 1.5em;
+    background: #fff;
+    font-size: 0.8em;
+    font-weight: 700; }
+  .input .section-label.complete {
+    border-top-color: lightgreen;
+    border-top-width: 0.4em;
+    padding: 0.9em 1.5em 0.2em 1.5em; }
   .input .input-section fieldset {
-    margin: 2em;
-    padding: 2em;
+    margin: 3%;
+    padding: 3%;
     border-color: #999;
-    position: relative; }
+    position: relative;
+    box-sizing: border-box; }
   .input .input-section fieldset legend {
     padding: 0.5em 1em;
     background: #fff;
@@ -205,60 +258,17 @@ body {
     border-radius: 0.25em;
     font-size: 0.8em;
     font-weight: 700; }
-  .input label {
-    padding: 0 1em; }
-  .input input,
-  .input select {
-    margin-right: 0.5em;
-    display: inline-block; }
-  .input input,
-  .input select,
-  .input textarea {
-    padding: 0.5em; }
-  .input textarea {
-    width: 100%;
-    margin: 1em 0;
-    height: 6em;
-    box-sizing: border-box; }
-  .input textarea::placeholder {
-    line-height: 6em;
-    vertical-align: middle; }
-  .input select {
-    height: 2.3em; }
-
-.input fieldset {
-  border: 0.2em solid #000;
-  border-radius: 0.25em;
-  background: #fff;
-  box-shadow: 0 0 1em 0.2em #ccc; }
-.input .section-label {
-  border-radius: 0.25em;
-  font-size: 0.8em;
-  font-weight: 700;
-  border-top: 0.2em solid #000;
-  border-top-color: deeppink;
-  border-left: 0.2em solid #000;
-  border-right: 0.2em solid #000; }
-.input .section-label.complete {
-  border-top-color: lightgreen;
-  border-top-width: 0.4em;
-  padding: 0.9em 1.5em 0.2em 1.5em; }
-.input input,
-.input select,
-.input textarea,
-.input checkbox {
-  border: 1px solid black;
-  border-bottom-width: 2px;
-  border-radius: 0.25em; }
-.input ::placeholder {
-  text-transform: uppercase;
-  font-size: 0.8em;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  vertical-align: middle;
-  color: #aaa; }
-.input textarea::placeholder {
-  text-align: center; }
+  .input .customerinfo input,
+  .input .customerinfo textarea {
+    margin: inherit 2.5%; }
+  .input .customerinfo .customerinfo-title {
+    width: 15%; }
+  .input .customerinfo .customerinfo-firstname,
+  .input .customerinfo .customerinfo-surname {
+    width: 41.5%; }
+  .input .customerinfo .customerinfo-telephone,
+  .input .customerinfo .customerinfo-alttelephone {
+    width: 49%; }
 
 .output {
   text-align: left;

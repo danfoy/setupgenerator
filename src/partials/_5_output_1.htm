@@ -19,7 +19,7 @@
             <td class="title-column">Name</td>
             <td class="data-column">{{ customerinfo.title }} {{ customerinfo.firstname }} {{ customerinfo.surname }}</td>
           </tr>
-          <tr>
+          <tr v-if="customerinfo.address">
             <td class="title-column">Address</td>
             <td class="data-column output-address">
               <span>{{ customerinfo.address }}</span>
