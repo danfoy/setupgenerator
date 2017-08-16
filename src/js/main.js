@@ -10083,7 +10083,7 @@ var data = {
     colleague: '',
     date: creationDate(),
     platform: '',
-    productsku: '',
+    sku: '',
     service: ''
   },
   customerinfo: {

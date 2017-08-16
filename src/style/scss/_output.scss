@@ -1,0 +1,104 @@
+$output-border: 0.05em solid black;
+
+.output {
+  text-align: left;
+  padding: 0 4em;
+}
+
+.output {
+  .output-scaffold {
+    width: 100%;
+    padding: 0 4em;
+    padding-top: 2em;
+    padding-bottom: 4em;
+    margin-bottom: 4em;
+    background: #fff;
+    box-shadow: 0.25em 0.25em 0 #999;
+    border: 0.05em solid #555;
+  }
+  .output-section {
+    width: 100%;
+    margin-top: 1em;
+    position: relative;
+  }
+  .output-section td {
+    padding: 0.5em;
+    border: $output-border;
+    height: 1em;
+  }
+  .output-section-header {
+    font-size: 1em;
+    font-weight: 700;
+    margin: 0.25em 0;
+    color: #000;
+  }
+  .output-section-header-row td {
+    border: 0;
+    padding-bottom: 0;
+  }
+  
+  .header-title {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  .header-sku {
+    float: right;
+  }
+  .header-byline {
+    font-style: italic;
+    font-size: 0.8em;
+    color: #555;
+  }
+  
+  .output-section-contact {
+    color: #999;
+    .date-column,
+    .time-column {
+      width: 12.5%;
+    }
+    .notes-column {
+      width: 75%;
+    }
+  }
+  
+  .output-section-signature {
+    td {
+      width: 25%;
+      height: 2em;
+    }
+    .signature-section-title {
+      border: 0;
+      text-align: right;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+  }
+  
+  .output-notes-data {
+    display: block;
+    min-height: 3em;
+  }
+  .title-column {
+    width: 25%;
+    vertical-align: top;
+  }
+  .data-column {
+    width: 75%;
+  }
+  .output-line {
+    position: relative;
+  }
+  .output-address,
+  .output-notes-data {
+    white-space: pre-line;
+  }
+  .tickbox {
+    border: $output-border;
+    width: 2.1em;
+    height: 2.1em;
+    position: absolute;
+    top: -0.07em;
+    right: -0.05em;
+  }
+}

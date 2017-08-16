@@ -279,20 +279,54 @@ body {
   padding: 0 4em;
   padding-top: 2em;
   padding-bottom: 4em;
-  margin-bottom: 4em; }
+  margin-bottom: 4em;
+  background: #fff;
+  box-shadow: 0.25em 0.25em 0 #999;
+  border: 0.05em solid #555; }
 .output .output-section {
   width: 100%;
-  margin-top: 2em;
+  margin-top: 1em;
   position: relative; }
-.output .title-column,
-.output .data-column,
-.output .output-line,
-.output .output-notes {
+.output .output-section td {
   padding: 0.5em;
-  border: 0.05em solid black; }
+  border: 0.05em solid black;
+  height: 1em; }
+.output .output-section-header {
+  font-size: 1em;
+  font-weight: 700;
+  margin: 0.25em 0;
+  color: #000; }
+.output .output-section-header-row td {
+  border: 0;
+  padding-bottom: 0; }
+.output .header-title {
+  font-size: 1.6em;
+  font-weight: bold;
+  margin-bottom: 0; }
+.output .header-sku {
+  float: right; }
+.output .header-byline {
+  font-style: italic;
+  font-size: 0.8em;
+  color: #555; }
+.output .output-section-contact {
+  color: #999; }
+  .output .output-section-contact .date-column,
+  .output .output-section-contact .time-column {
+    width: 12.5%; }
+  .output .output-section-contact .notes-column {
+    width: 75%; }
+.output .output-section-signature td {
+  width: 25%;
+  height: 2em; }
+.output .output-section-signature .signature-section-title {
+  border: 0;
+  text-align: right;
+  font-weight: 700;
+  vertical-align: middle; }
 .output .output-notes-data {
   display: block;
-  min-height: 5em; }
+  min-height: 3em; }
 .output .title-column {
   width: 25%;
   vertical-align: top; }
@@ -300,6 +334,9 @@ body {
   width: 75%; }
 .output .output-line {
   position: relative; }
+.output .output-address,
+.output .output-notes-data {
+  white-space: pre-line; }
 .output .tickbox {
   border: 0.05em solid black;
   width: 2.1em;
@@ -307,18 +344,6 @@ body {
   position: absolute;
   top: -0.07em;
   right: -0.05em; }
-
-.output .output-scaffold {
-  background: #fff;
-  box-shadow: 0.25em 0.25em 0 #999;
-  border: 0.05em solid #555; }
-.output .output-section-header {
-  font-size: 1em;
-  font-weight: 700;
-  margin: 0.25em 0; }
-.output .output-address,
-.output .output-notes-data {
-  white-space: pre-line; }
 
 .input .basicinfo {
   text-align: center; }
@@ -380,7 +405,7 @@ body {
       <legend class="section-label" for="basicinfo">Preliminary Information</legend>
       
       <input type="text" placeholder="Colleague Name" v-model="basicinfo.colleague" class="colleague">
-      <input type="text" placeholder="Product SKU" v-model="basicinfo.productsku" class="productsku">
+      <input type="text" placeholder="Product SKU" v-model="basicinfo.sku" class="productsku">
       
       <fieldset name="platform" class="platform">
         <legend for="platform">Platform</legend>
@@ -449,7 +474,10 @@ body {
 
     <tr>
       <td>
-
+        
+        <h1 v-if="basicinfo.platform && basicinfo.service" class="header-title">{{ basicinfo.platform }} {{ basicinfo.service }}<span class="header-sku">{{  basicinfo.sku }}</span></h1>
+        <div v-if="basicinfo.colleague && basicinfo.date" class="header-byline">Submitted by {{ basicinfo.colleague }} on {{ basicinfo.date }}</div>
+        
         <table class="output-section">
           <tr class="output-section-header-row">
             <td colspan="2">
@@ -506,7 +534,7 @@ body {
               <h2 class="output-section-header">Notes</h2>
             </td>
           </tr>
-          
+
           <tr>
             <td class="output-notes">
               <span class="output-notes-data">{{ notes }}</span>
@@ -514,6 +542,50 @@ body {
           </tr>
         </table>
 
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <table class="output-section output-section-contact">
+          <tr class="output-section-header-row">
+            <td colspan="3">
+              <h2 class="output-section-header">Contact Log</h2>
+            </td>
+          </tr>
+          
+          <tr>
+            <td class="date-column">Date</td>
+            <td class="time-column">Time</td>
+            <td class="notes-column">Notes</td>
+          </tr>
+          <tr>
+            <td class="date-column">Date</td>
+            <td class="time-column">Time</td>
+            <td class="notes-column">Notes</td>
+          </tr>
+          <tr>
+            <td class="date-column">Date</td>
+            <td class="time-column">Time</td>
+            <td class="notes-column">Notes</td>
+          </tr>
+          
+        </table>
+      </td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td>
+        <table class="output-section output-section-signature">
+          <tr>
+            <td class="signature-section-title">Collection Date:</td>
+            <td></td>
+            <td class="signature-section-title">Signature:</td>
+            <td></td>
+          </tr>
+        </table>
       </td>
     </tr>
 
@@ -10611,7 +10683,7 @@ var data = {
     colleague: '',
     date: creationDate(),
     platform: '',
-    productsku: '',
+    sku: '',
     service: ''
   },
   customerinfo: {

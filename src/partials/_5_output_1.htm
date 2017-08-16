@@ -4,7 +4,10 @@
 
     <tr>
       <td>
-
+        
+        <h1 v-if="basicinfo.platform && basicinfo.service" class="header-title">{{ basicinfo.platform }} {{ basicinfo.service }}<span class="header-sku">{{  basicinfo.sku }}</span></h1>
+        <div v-if="basicinfo.colleague && basicinfo.date" class="header-byline">Submitted by {{ basicinfo.colleague }} on {{ basicinfo.date }}</div>
+        
         <table class="output-section">
           <tr class="output-section-header-row">
             <td colspan="2">
@@ -61,7 +64,7 @@
               <h2 class="output-section-header">Notes</h2>
             </td>
           </tr>
-          
+
           <tr>
             <td class="output-notes">
               <span class="output-notes-data">{{ notes }}</span>
@@ -69,6 +72,50 @@
           </tr>
         </table>
 
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <table class="output-section output-section-contact">
+          <tr class="output-section-header-row">
+            <td colspan="3">
+              <h2 class="output-section-header">Contact Log</h2>
+            </td>
+          </tr>
+          
+          <tr>
+            <td class="date-column">Date</td>
+            <td class="time-column">Time</td>
+            <td class="notes-column">Notes</td>
+          </tr>
+          <tr>
+            <td class="date-column">Date</td>
+            <td class="time-column">Time</td>
+            <td class="notes-column">Notes</td>
+          </tr>
+          <tr>
+            <td class="date-column">Date</td>
+            <td class="time-column">Time</td>
+            <td class="notes-column">Notes</td>
+          </tr>
+          
+        </table>
+      </td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td>
+        <table class="output-section output-section-signature">
+          <tr>
+            <td class="signature-section-title">Collection Date:</td>
+            <td></td>
+            <td class="signature-section-title">Signature:</td>
+            <td></td>
+          </tr>
+        </table>
       </td>
     </tr>
 
