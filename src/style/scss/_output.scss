@@ -77,7 +77,6 @@ $output-border: 0.05em solid black;
   
   .output-notes-data {
     display: block;
-    min-height: 3em;
   }
   .title-column {
     width: 25%;
@@ -100,5 +99,11 @@ $output-border: 0.05em solid black;
     position: absolute;
     top: -0.07em;
     right: -0.05em;
+    line-height: 2.1em;
+    text-align: center;
+    color: #ccc;
+  }
+  .prechecked .tickbox {
+    color: #000;
   }
 }

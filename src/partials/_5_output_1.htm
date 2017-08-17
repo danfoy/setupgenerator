@@ -4,10 +4,12 @@
 
     <tr>
       <td>
-        
-        <h1 v-if="basicinfo.platform && basicinfo.service" class="header-title">{{ basicinfo.platform }} <span v-if="setupinfo.exdemo">Ex-Demo </span>{{ basicinfo.service }}<span class="header-sku">{{  basicinfo.sku }}</span></h1>
+
+        <h1 v-if="basicinfo.platform && setupinfo.service" class="header-title">{{ basicinfo.platform }} <span v-if="setupinfo.exdemo">Ex-Demo </span>{{ setupinfo.service }}<span class="header-sku">{{  basicinfo.sku }}</span></h1>
         <div v-if="basicinfo.colleague && basicinfo.date" class="header-byline">Submitted by {{ basicinfo.colleague }} on {{ basicinfo.date }}</div>
-        
+
+
+
         <table class="output-section">
           <tr class="output-section-header-row">
             <td colspan="2">
@@ -36,24 +38,61 @@
     </tr>
 
 
+
+    <tr v-if="setupinfo.exdemo || setupoptions.recoverymedia || setupoptions.datatransfer || setupoptions.existingemail || setupoptions.installsoftware || setupoptions.runupdates">
+      <td>
+        <table class="output-section setupoptions">
+          <tr class="output-section-header-row">
+            <td>
+              <h2 class="output-section-header">Procedures</h2>
+            </td>
+          </tr>
+
+          <tr v-if="setupinfo.exdemo" line="Reset to factory defaults" is="lineitem"></tr>
+          <tr v-if="(basicinfo.platform=='Windows' && setupinfo.service!='Factory Reset') || setupoptions.recoverymedia" line="Create recovery media" v-bind:class="{'prechecked': setupinfo.presetup}" is="lineitem"></tr>
+          <tr v-if="setupoptions.runupdates" line="Run updates" is="lineitem"></tr>
+          <tr v-if="setupinfo.exdemo" line="Clean ex-display item" is="lineitem"></tr>
+        </table>
+      </td>
+    </tr>
+
+
+
+    <tr v-if="setupoptions.datatransfer">
+      <td>
+        <table class="output-section datatransfer">
+          <tr class="output-section-header-row">
+            <td>
+              <h2 class="output-section-header">Data Transfer<span v-if="datatransfer.source"> from {{ datatransfer.source }}<span v-if="datatransfer.media"> via {{ datatransfer.media }}</span></span></h2>
+            </td>
+          </tr>
+          <tr v-if="datatransfer.account1.username">
+            <td>Username: {{ datatransfer.account1.username }}<span v-if="datatransfer.account1.password">, password: {{ datatransfer.account1.password }}</span></td>
+          </tr>
+          <td v-if="datatransfer.notes" class="output-notes">
+              <span class="output-notes-data">{{ datatransfer.notes }}</span>
+            </td>
+          <tr line="Transfer successful" is="lineitem"></tr>
+        </table>
+      </td>
+    </tr>
+
+
+
     <tr v-if="software[0]">
       <td>
-
         <table class="output-section">
-
           <tr class="output-section-header-row">
             <td>
               <h2 class="output-section-header">Software</h2>
             </td>
           </tr>
-
           <tr v-for="line in software" :line="line" key="name" is="lineitem"></tr>
-
-
         </table>
-
       </td>
     </tr>
+
+
 
     <tr v-if="notes">
       <td>
@@ -83,7 +122,7 @@
               <h2 class="output-section-header">Contact Log</h2>
             </td>
           </tr>
-          
+
           <tr>
             <td class="date-column">Date</td>
             <td class="time-column">Time</td>
@@ -99,13 +138,13 @@
             <td class="time-column">Time</td>
             <td class="notes-column">Notes</td>
           </tr>
-          
+
         </table>
       </td>
     </tr>
-    
-    
-    
+
+
+
     <tr>
       <td>
         <table class="output-section output-section-signature">

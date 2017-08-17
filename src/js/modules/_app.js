@@ -25,12 +25,7 @@ var data = {
     colleague: '',
     date: creationDate(),
     platform: '',
-    sku: '',
-    service: ''
-  },
-  setupinfo: {
-    presetup: false,
-    exdemo: false
+    sku: ''
   },
   customerinfo: {
     title: '',
@@ -40,8 +35,26 @@ var data = {
     telephone: '',
     alttelephone: ''
   },
+  setupinfo: {
+    presetup: false,
+    exdemo: false,
+    service: ''
+  },
   setupoptions: {
-    recoverymedia: false
+    recoverymedia: false,
+    datatransfer: false,
+    existingemail: false,
+    installsoftware: false,
+    runupdates: false
+  },
+  datatransfer: {
+    account1: {
+      username: '',
+      password: ''
+    },
+    source: '',
+    media: '',
+    notes: ''
   },
   software: [],
   notes: ''
@@ -51,8 +64,14 @@ var data = {
 // Components
 
 Vue.component('lineitem', {
-  template: '<tr><td class="output-line">{{ line }}<div class="tickbox"></div></td></tr>',
-  props: ['line']
+  template: '<tr><td class="output-line">{{ line }}<div class="tickbox"><span class="tick">&#10004;</span></div></td></tr>',
+  props: {
+    line: String,
+    prechecked: {
+      type: Boolean,
+      default: false
+    }
+  }
 });
 
 

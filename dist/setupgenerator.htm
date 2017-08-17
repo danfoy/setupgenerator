@@ -203,7 +203,8 @@ body {
     border: 1px solid black;
     border-bottom-width: 2px;
     border-radius: 0.25em;
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    margin-bottom: 1%; }
   .input input,
   .input select,
   .input textarea {
@@ -213,8 +214,9 @@ body {
     margin-right: 0.5em;
     display: inline-block; }
   .input textarea {
-    width: 100%;
-    margin: 1em 0;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
     height: 6em;
     box-sizing: border-box; }
   .input ::placeholder {
@@ -269,6 +271,8 @@ body {
     border-radius: 0.25em;
     font-size: 0.8em;
     font-weight: 700; }
+  .input .infoblock {
+    padding: 0 15% 2.5% 15%; }
   .input .basicinfo {
     text-align: center; }
     .input .basicinfo .colleague,
@@ -292,6 +296,34 @@ body {
     text-align: center; }
     .input .setupinfo label {
       display: inline-block; }
+  .input .setupoptions,
+  .input .software {
+    text-align: center; }
+    .input .setupoptions ul,
+    .input .software ul {
+      position: relative;
+      list-style-type: none;
+      padding: 0; }
+    .input .setupoptions li,
+    .input .software li {
+      display: inline-block;
+      width: 30%;
+      text-align: left; }
+    .input .setupoptions label,
+    .input .software label {
+      display: inline-block;
+      padding: 0.5em; }
+  .input .datatransfer .transferuser,
+  .input .datatransfer .transferpassword {
+    width: 46.7%; }
+  .input .datatransfer .transferuser {
+    margin-left: 2.5%; }
+  .input .datatransfer .transferpassword {
+    margin-left: 1%; }
+  .input .datatransfer .transfermedia,
+  .input .datatransfer .transfersource {
+    width: 95%;
+    margin-left: 2.5%; }
 
 .output {
   text-align: left;
@@ -348,8 +380,7 @@ body {
   font-weight: 700;
   vertical-align: middle; }
 .output .output-notes-data {
-  display: block;
-  min-height: 3em; }
+  display: block; }
 .output .title-column {
   width: 25%;
   vertical-align: top; }
@@ -366,21 +397,12 @@ body {
   height: 2.1em;
   position: absolute;
   top: -0.07em;
-  right: -0.05em; }
-
-.software {
-  text-align: center; }
-  .software ul {
-    position: relative;
-    list-style-type: none;
-    padding: 0; }
-  .software li {
-    display: inline-block;
-    width: 30%;
-    text-align: left; }
-  .software label {
-    display: inline-block;
-    padding: 0.5em; }
+  right: -0.05em;
+  line-height: 2.1em;
+  text-align: center;
+  color: #ccc; }
+.output .prechecked .tickbox {
+  color: #000; }
 
 </style>
 </head>
@@ -424,34 +446,38 @@ body {
       <fieldset name="platform" class="platform">
         <legend for="platform">Platform</legend>
         <label><input type="radio" name="platform" value="Windows" v-model="basicinfo.platform">Windows</label>
-        <label><input type="radio" name="platform" value="Mac" v-model="basicinfo.platform">Mac</label>
-        <label><input type="radio" name="platform" value="iOS" v-model="basicinfo.platform">iOS</label>
-        <label><input type="radio" name="platform" value="Android" v-model="basicinfo.platform">Android</label>
+        <label v-if="!setupinfo.presetup"><input type="radio" name="platform" value="Mac" v-model="basicinfo.platform">Mac</label>
+        <label v-if="!setupinfo.presetup"><input type="radio" name="platform" value="iOS" v-model="basicinfo.platform">iOS</label>
+        <label v-if="!setupinfo.presetup"><input type="radio" name="platform" value="Android" v-model="basicinfo.platform">Android</label>
       </fieldset>
 
-      <fieldset name="service" class="service">
+      <fieldset v-if="basicinfo.platform" name="service" class="service">
         <legend for="service">Service</legend>
-        <label><input type="radio" name="service" value="Walk Out Working" v-model="basicinfo.service">Walk Out Working</label>
-        <label><input type="radio" name="service" value="Setup and Personalise" v-model="basicinfo.service">Setup and Personalise</label>
-        <label><input type="radio" name="service" value="Setup and Showhow" v-model="basicinfo.service">Setup and Showhow</label>
-        <label v-if="setupinfo.exdemo"><input type="radio" name="service" value="Factory Reset" v-model="basicinfo.service">Factory Reset Only</label>
+        <label v-if="basicinfo.platform=='Windows'"><input type="radio" name="service" value="Walk Out Working" v-model="setupinfo.service">Walk Out Working</label>
+        <label><input type="radio" name="service" value="Setup and Personalise" v-model="setupinfo.service">Setup and Personalise</label>
+        <label><input type="radio" name="service" value="Setup and Showhow" v-model="setupinfo.service">Setup and Showhow</label>
+        <label v-if="setupinfo.exdemo"><input type="radio" name="service" value="Factory Reset" v-model="setupinfo.service">Factory Reset Only</label>
       </fieldset>
       
     </fieldset>
 
+    
 
-    <!--
-    TODO
-
-    <fieldset name="setupoptions" class="input-section setupoptions">
+    <fieldset v-if="basicinfo.platform && setupinfo.service" name="setupoptions" class="input-section setupoptions">
       <legend for="setupoptions" class="section-label">Options</legend>
-      <label><input type="checkbox" v-model="setupoptions.recoverymedia">Create Recovery Media</label>
+      <ul>
+        <li><label><input type="checkbox" v-model="setupoptions.recoverymedia">Create Recovery Media</label></li>
+        <li><label><input type="checkbox" v-model="setupoptions.existingemail">Set up existing Email account</label></li>
+        <li><label><input type="checkbox" v-model="setupoptions.datatransfer">Data Transfer</label></li>
+        <li><label><input type="checkbox" v-model="setupoptions.installsoftware">Install software</label></li>
+        <li><label><input type="checkbox" v-model="setupoptions.runupdates">Run updates</label></li>
+      </ul>
     </fieldset>
-  -->
+  
 
 
 
-    <fieldset name="software" class="input-section software">
+    <fieldset v-if="setupoptions.installsoftware" name="software" class="input-section software">
       <legend class="section-label" for="software">Software</legend>
       <ul>
         <li><label><input type="checkbox" v-model="software" value="Knowhow Cloud">Knowhow Cloud</label></li>
@@ -464,6 +490,19 @@ body {
         <li><label><input type="checkbox" v-model="software" value="World of Warcraft">World of Warcraft</label></li>
         <li><label><input type="checkbox" v-model="software" value="Links Bundle">Links Bundle</label></li>
       </ul>
+    </fieldset>
+    
+    
+    
+    <fieldset v-if="setupoptions.datatransfer" name="notes" class="input-section datatransfer">
+      <legend class="section-label" for="datatransfer">Data Transfer</legend>
+      <div class="infoblock"><p>We will attempt to transfer all files from each user's account folder. This includes your documents, photos, and desktop folders. If you have any files stored elsewhere on the machine please describe them in the notes section below.</p>
+      <p>Note that we are unable to transfer applications.</p></div>
+      <input type="text" v-model="datatransfer.account1.username" placeholder="Username" class="transferuser">
+      <input type="text" v-model="datatransfer.account1.password" placeholder="Password" class="transferpassword">
+      <input type="text" v-model="datatransfer.source" placeholder="Describe transfer source (e.g. 'Dell Tower', 'HP Laptop')" class="transfersource">
+      <input type="text" v-model="datatransfer.media" placeholder="Describe transfer media (e.g. '1TB Seagate harddrive')" class="transfermedia">
+      <textarea placeholder="Notes" v-model="datatransfer.notes" class="transfernotes"></textarea>
     </fieldset>
 
 
@@ -492,10 +531,12 @@ body {
 
     <tr>
       <td>
-        
-        <h1 v-if="basicinfo.platform && basicinfo.service" class="header-title">{{ basicinfo.platform }} <span v-if="setupinfo.exdemo">Ex-Demo </span>{{ basicinfo.service }}<span class="header-sku">{{  basicinfo.sku }}</span></h1>
+
+        <h1 v-if="basicinfo.platform && setupinfo.service" class="header-title">{{ basicinfo.platform }} <span v-if="setupinfo.exdemo">Ex-Demo </span>{{ setupinfo.service }}<span class="header-sku">{{  basicinfo.sku }}</span></h1>
         <div v-if="basicinfo.colleague && basicinfo.date" class="header-byline">Submitted by {{ basicinfo.colleague }} on {{ basicinfo.date }}</div>
-        
+
+
+
         <table class="output-section">
           <tr class="output-section-header-row">
             <td colspan="2">
@@ -524,24 +565,61 @@ body {
     </tr>
 
 
+
+    <tr v-if="setupinfo.exdemo || setupoptions.recoverymedia || setupoptions.datatransfer || setupoptions.existingemail || setupoptions.installsoftware || setupoptions.runupdates">
+      <td>
+        <table class="output-section setupoptions">
+          <tr class="output-section-header-row">
+            <td>
+              <h2 class="output-section-header">Procedures</h2>
+            </td>
+          </tr>
+
+          <tr v-if="setupinfo.exdemo" line="Reset to factory defaults" is="lineitem"></tr>
+          <tr v-if="(basicinfo.platform=='Windows' && setupinfo.service!='Factory Reset') || setupoptions.recoverymedia" line="Create recovery media" v-bind:class="{'prechecked': setupinfo.presetup}" is="lineitem"></tr>
+          <tr v-if="setupoptions.runupdates" line="Run updates" is="lineitem"></tr>
+          <tr v-if="setupinfo.exdemo" line="Clean ex-display item" is="lineitem"></tr>
+        </table>
+      </td>
+    </tr>
+
+
+
+    <tr v-if="setupoptions.datatransfer">
+      <td>
+        <table class="output-section datatransfer">
+          <tr class="output-section-header-row">
+            <td>
+              <h2 class="output-section-header">Data Transfer<span v-if="datatransfer.source"> from {{ datatransfer.source }}<span v-if="datatransfer.media"> via {{ datatransfer.media }}</span></span></h2>
+            </td>
+          </tr>
+          <tr v-if="datatransfer.account1.username">
+            <td>Username: {{ datatransfer.account1.username }}<span v-if="datatransfer.account1.password">, password: {{ datatransfer.account1.password }}</span></td>
+          </tr>
+          <td v-if="datatransfer.notes" class="output-notes">
+              <span class="output-notes-data">{{ datatransfer.notes }}</span>
+            </td>
+          <tr line="Transfer successful" is="lineitem"></tr>
+        </table>
+      </td>
+    </tr>
+
+
+
     <tr v-if="software[0]">
       <td>
-
         <table class="output-section">
-
           <tr class="output-section-header-row">
             <td>
               <h2 class="output-section-header">Software</h2>
             </td>
           </tr>
-
           <tr v-for="line in software" :line="line" key="name" is="lineitem"></tr>
-
-
         </table>
-
       </td>
     </tr>
+
+
 
     <tr v-if="notes">
       <td>
@@ -571,7 +649,7 @@ body {
               <h2 class="output-section-header">Contact Log</h2>
             </td>
           </tr>
-          
+
           <tr>
             <td class="date-column">Date</td>
             <td class="time-column">Time</td>
@@ -587,13 +665,13 @@ body {
             <td class="time-column">Time</td>
             <td class="notes-column">Notes</td>
           </tr>
-          
+
         </table>
       </td>
     </tr>
-    
-    
-    
+
+
+
     <tr>
       <td>
         <table class="output-section output-section-signature">
@@ -10701,12 +10779,7 @@ var data = {
     colleague: '',
     date: creationDate(),
     platform: '',
-    sku: '',
-    service: ''
-  },
-  setupinfo: {
-    presetup: false,
-    exdemo: false
+    sku: ''
   },
   customerinfo: {
     title: '',
@@ -10716,8 +10789,26 @@ var data = {
     telephone: '',
     alttelephone: ''
   },
+  setupinfo: {
+    presetup: false,
+    exdemo: false,
+    service: ''
+  },
   setupoptions: {
-    recoverymedia: false
+    recoverymedia: false,
+    datatransfer: false,
+    existingemail: false,
+    installsoftware: false,
+    runupdates: false
+  },
+  datatransfer: {
+    account1: {
+      username: '',
+      password: ''
+    },
+    source: '',
+    media: '',
+    notes: ''
   },
   software: [],
   notes: ''
@@ -10727,8 +10818,14 @@ var data = {
 // Components
 
 Vue.component('lineitem', {
-  template: '<tr><td class="output-line">{{ line }}<div class="tickbox"></div></td></tr>',
-  props: ['line']
+  template: '<tr><td class="output-line">{{ line }}<div class="tickbox"><span class="tick">&#10004;</span></div></td></tr>',
+  props: {
+    line: String,
+    prechecked: {
+      type: Boolean,
+      default: false
+    }
+  }
 });
 
 

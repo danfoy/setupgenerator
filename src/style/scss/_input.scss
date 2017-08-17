@@ -18,6 +18,7 @@
       border-bottom-width: 2px;
       border-radius: 0.25em;
       box-sizing: border-box;
+      margin-bottom: 1%;
     }
     input,
     select,
@@ -30,8 +31,9 @@
       display: inline-block;
     }
     textarea {
-      width: 100%;
-      margin: 1em 0;
+      width: 95%;
+      margin-left: 2.5%;
+      margin-right: 2.5%;
       height: 6em;
       box-sizing: border-box;
     }
@@ -97,6 +99,9 @@
       font-size: 0.8em;
       font-weight: 700;
     }
+    .infoblock {
+      padding: 0 15% 2.5% 15%;
+    }
     .basicinfo {
       text-align: center;
       .colleague,
@@ -126,9 +131,45 @@
       }
     }
     .setupinfo {
-        text-align: center;
+      text-align: center;
       label {
         display: inline-block;
       }
+    }
+    .setupoptions,
+    .software {
+      text-align: center;
+      ul {
+        position: relative;
+        list-style-type: none;
+        padding: 0;
       }
+      li {
+        display: inline-block;
+        width: 30%;
+        text-align: left;
+      }
+      label {
+        display: inline-block;
+        padding: 0.5em;
+      }
+    }
+    .datatransfer {
+      
+      .transferuser,
+      .transferpassword {
+        width: 46.7%;
+      }
+      .transferuser {
+        margin-left: 2.5%;
+      }
+      .transferpassword {
+        margin-left: 1%
+      }
+      .transfermedia,
+      .transfersource {
+        width: 95%;
+        margin-left: 2.5%;
+      }
+    }
   }
