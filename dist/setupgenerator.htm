@@ -194,7 +194,8 @@ body {
     background: #fff;
     box-shadow: 0 0 1em 0.2em #ccc; }
   .input label {
-    padding: 0 2.5%; }
+    padding: 0 2.5%;
+    margin-bottom: 2.5%; }
   .input input,
   .input select,
   .input textarea,
@@ -256,7 +257,7 @@ body {
     padding: 0.9em 1.5em 0.2em 1.5em; }
   .input .input-section fieldset {
     margin: 3%;
-    padding: 3%;
+    padding: 2.5% 2.5% 1.5% 2.5%;
     border-color: #999;
     position: relative;
     box-sizing: border-box; }
@@ -268,6 +269,14 @@ body {
     border-radius: 0.25em;
     font-size: 0.8em;
     font-weight: 700; }
+  .input .basicinfo {
+    text-align: center; }
+    .input .basicinfo .colleague,
+    .input .basicinfo .productsku {
+      text-align: center;
+      width: 40%; }
+    .input .basicinfo .platform {
+      text-align: center; }
   .input .customerinfo input,
   .input .customerinfo textarea {
     margin: inherit 2.5%; }
@@ -279,6 +288,10 @@ body {
   .input .customerinfo .customerinfo-telephone,
   .input .customerinfo .customerinfo-alttelephone {
     width: 49%; }
+  .input .setupinfo {
+    text-align: center; }
+    .input .setupinfo label {
+      display: inline-block; }
 
 .output {
   text-align: left;
@@ -355,15 +368,6 @@ body {
   top: -0.07em;
   right: -0.05em; }
 
-.input .basicinfo {
-  text-align: center; }
-  .input .basicinfo .colleague,
-  .input .basicinfo .productsku {
-    text-align: center;
-    width: 40%; }
-  .input .basicinfo .platform {
-    text-align: center; }
-
 .software {
   text-align: center; }
   .software ul {
@@ -401,13 +405,22 @@ body {
       <fieldset name="customerinfo" class="customerinfo">
         <legend for="customerinfo" v-bind:class="{complete: customerInfoComplete}">Customer Information</legend>
         <input type="text" placeholder="title" v-model="customerinfo.title" class="customerinfo-title">
-        <input type="text" placeholder="First Name" v-model="customerinfo.firstname"class="customerinfo-firstname">
-        <input type="text" placeholder="Surname" v-model="customerinfo.surname"class="customerinfo-surname">
+        <input type="text" placeholder="First Name" v-model="customerinfo.firstname" class="customerinfo-firstname">
+        <input type="text" placeholder="Surname" v-model="customerinfo.surname" class="customerinfo-surname">
         <textarea placeholder="Address and Postcode" v-model="customerinfo.address" class="customerinfo-address"></textarea>
         <input type="tel" placeholder="Telephone Number" v-model="customerinfo.telephone" class="customerinfo-telephone">
         <input type="tel" placeholder="Alternate Telephone Number" v-model="customerinfo.alttelephone" class="customerinfo-alttelephone">
       </fieldset>
 
+    </fieldset>
+
+
+    <fieldset name="setupinfo" class="input-section setupinfo">
+      <legend for="setupinfo" class="section-label">Setup Information</legend>
+      
+      <label><input type="checkbox" v-model="setupinfo.presetup">Unit is pre-setup</label>
+      <label><input type="checkbox" v-model="setupinfo.exdemo">Unit is ex-demo</label>
+      
       <fieldset name="platform" class="platform">
         <legend for="platform">Platform</legend>
         <label><input type="radio" name="platform" value="Windows" v-model="basicinfo.platform">Windows</label>
@@ -421,16 +434,20 @@ body {
         <label><input type="radio" name="service" value="Walk Out Working" v-model="basicinfo.service">Walk Out Working</label>
         <label><input type="radio" name="service" value="Setup and Personalise" v-model="basicinfo.service">Setup and Personalise</label>
         <label><input type="radio" name="service" value="Setup and Showhow" v-model="basicinfo.service">Setup and Showhow</label>
+        <label v-if="setupinfo.exdemo"><input type="radio" name="service" value="Factory Reset" v-model="basicinfo.service">Factory Reset Only</label>
       </fieldset>
-
+      
     </fieldset>
 
 
+    <!--
+    TODO
 
     <fieldset name="setupoptions" class="input-section setupoptions">
       <legend for="setupoptions" class="section-label">Options</legend>
       <label><input type="checkbox" v-model="setupoptions.recoverymedia">Create Recovery Media</label>
     </fieldset>
+  -->
 
 
 
@@ -476,7 +493,7 @@ body {
     <tr>
       <td>
         
-        <h1 v-if="basicinfo.platform && basicinfo.service" class="header-title">{{ basicinfo.platform }} {{ basicinfo.service }}<span class="header-sku">{{  basicinfo.sku }}</span></h1>
+        <h1 v-if="basicinfo.platform && basicinfo.service" class="header-title">{{ basicinfo.platform }} <span v-if="setupinfo.exdemo">Ex-Demo </span>{{ basicinfo.service }}<span class="header-sku">{{  basicinfo.sku }}</span></h1>
         <div v-if="basicinfo.colleague && basicinfo.date" class="header-byline">Submitted by {{ basicinfo.colleague }} on {{ basicinfo.date }}</div>
         
         <table class="output-section">
@@ -10687,6 +10704,10 @@ var data = {
     sku: '',
     service: ''
   },
+  setupinfo: {
+    presetup: false,
+    exdemo: false
+  },
   customerinfo: {
     title: '',
     firstname: '',
@@ -10696,7 +10717,7 @@ var data = {
     alttelephone: ''
   },
   setupoptions: {
-    recoverymedia: true
+    recoverymedia: false
   },
   software: [],
   notes: ''

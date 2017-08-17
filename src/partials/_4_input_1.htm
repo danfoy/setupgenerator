@@ -11,13 +11,22 @@
       <fieldset name="customerinfo" class="customerinfo">
         <legend for="customerinfo" v-bind:class="{complete: customerInfoComplete}">Customer Information</legend>
         <input type="text" placeholder="title" v-model="customerinfo.title" class="customerinfo-title">
-        <input type="text" placeholder="First Name" v-model="customerinfo.firstname"class="customerinfo-firstname">
-        <input type="text" placeholder="Surname" v-model="customerinfo.surname"class="customerinfo-surname">
+        <input type="text" placeholder="First Name" v-model="customerinfo.firstname" class="customerinfo-firstname">
+        <input type="text" placeholder="Surname" v-model="customerinfo.surname" class="customerinfo-surname">
         <textarea placeholder="Address and Postcode" v-model="customerinfo.address" class="customerinfo-address"></textarea>
         <input type="tel" placeholder="Telephone Number" v-model="customerinfo.telephone" class="customerinfo-telephone">
         <input type="tel" placeholder="Alternate Telephone Number" v-model="customerinfo.alttelephone" class="customerinfo-alttelephone">
       </fieldset>
 
+    </fieldset>
+
+
+    <fieldset name="setupinfo" class="input-section setupinfo">
+      <legend for="setupinfo" class="section-label">Setup Information</legend>
+      
+      <label><input type="checkbox" v-model="setupinfo.presetup">Unit is pre-setup</label>
+      <label><input type="checkbox" v-model="setupinfo.exdemo">Unit is ex-demo</label>
+      
       <fieldset name="platform" class="platform">
         <legend for="platform">Platform</legend>
         <label><input type="radio" name="platform" value="Windows" v-model="basicinfo.platform">Windows</label>
@@ -31,16 +40,20 @@
         <label><input type="radio" name="service" value="Walk Out Working" v-model="basicinfo.service">Walk Out Working</label>
         <label><input type="radio" name="service" value="Setup and Personalise" v-model="basicinfo.service">Setup and Personalise</label>
         <label><input type="radio" name="service" value="Setup and Showhow" v-model="basicinfo.service">Setup and Showhow</label>
+        <label v-if="setupinfo.exdemo"><input type="radio" name="service" value="Factory Reset" v-model="basicinfo.service">Factory Reset Only</label>
       </fieldset>
-
+      
     </fieldset>
 
 
+    <!--
+    TODO
 
     <fieldset name="setupoptions" class="input-section setupoptions">
       <legend for="setupoptions" class="section-label">Options</legend>
       <label><input type="checkbox" v-model="setupoptions.recoverymedia">Create Recovery Media</label>
     </fieldset>
+  -->
 
 
 

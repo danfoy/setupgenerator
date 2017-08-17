@@ -184,7 +184,8 @@ body {
     background: #fff;
     box-shadow: 0 0 1em 0.2em #ccc; }
   .input label {
-    padding: 0 2.5%; }
+    padding: 0 2.5%;
+    margin-bottom: 2.5%; }
   .input input,
   .input select,
   .input textarea,
@@ -246,7 +247,7 @@ body {
     padding: 0.9em 1.5em 0.2em 1.5em; }
   .input .input-section fieldset {
     margin: 3%;
-    padding: 3%;
+    padding: 2.5% 2.5% 1.5% 2.5%;
     border-color: #999;
     position: relative;
     box-sizing: border-box; }
@@ -258,6 +259,14 @@ body {
     border-radius: 0.25em;
     font-size: 0.8em;
     font-weight: 700; }
+  .input .basicinfo {
+    text-align: center; }
+    .input .basicinfo .colleague,
+    .input .basicinfo .productsku {
+      text-align: center;
+      width: 40%; }
+    .input .basicinfo .platform {
+      text-align: center; }
   .input .customerinfo input,
   .input .customerinfo textarea {
     margin: inherit 2.5%; }
@@ -269,6 +278,10 @@ body {
   .input .customerinfo .customerinfo-telephone,
   .input .customerinfo .customerinfo-alttelephone {
     width: 49%; }
+  .input .setupinfo {
+    text-align: center; }
+    .input .setupinfo label {
+      display: inline-block; }
 
 .output {
   text-align: left;
@@ -344,15 +357,6 @@ body {
   position: absolute;
   top: -0.07em;
   right: -0.05em; }
-
-.input .basicinfo {
-  text-align: center; }
-  .input .basicinfo .colleague,
-  .input .basicinfo .productsku {
-    text-align: center;
-    width: 40%; }
-  .input .basicinfo .platform {
-    text-align: center; }
 
 .software {
   text-align: center; }

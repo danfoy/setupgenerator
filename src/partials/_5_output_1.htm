@@ -5,7 +5,7 @@
     <tr>
       <td>
         
-        <h1 v-if="basicinfo.platform && basicinfo.service" class="header-title">{{ basicinfo.platform }} {{ basicinfo.service }}<span class="header-sku">{{  basicinfo.sku }}</span></h1>
+        <h1 v-if="basicinfo.platform && basicinfo.service" class="header-title">{{ basicinfo.platform }} <span v-if="setupinfo.exdemo">Ex-Demo </span>{{ basicinfo.service }}<span class="header-sku">{{  basicinfo.sku }}</span></h1>
         <div v-if="basicinfo.colleague && basicinfo.date" class="header-byline">Submitted by {{ basicinfo.colleague }} on {{ basicinfo.date }}</div>
         
         <table class="output-section">

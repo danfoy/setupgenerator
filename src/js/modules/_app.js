@@ -28,6 +28,10 @@ var data = {
     sku: '',
     service: ''
   },
+  setupinfo: {
+    presetup: false,
+    exdemo: false
+  },
   customerinfo: {
     title: '',
     firstname: '',
@@ -37,7 +41,7 @@ var data = {
     alttelephone: ''
   },
   setupoptions: {
-    recoverymedia: true
+    recoverymedia: false
   },
   software: [],
   notes: ''
