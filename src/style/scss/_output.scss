@@ -2,19 +2,12 @@ $output-border: 0.05em solid black;
 
 .output {
   text-align: left;
-  padding: 0 4em;
 }
 
 .output {
   .output-scaffold {
-    width: 100%;
-    padding: 0 4em;
-    padding-top: 2em;
-    padding-bottom: 4em;
-    margin-bottom: 4em;
     background: #fff;
-    box-shadow: 0.25em 0.25em 0 #999;
-    border: 0.05em solid #555;
+    width: 100%;
   }
   .output-section {
     width: 100%;
@@ -96,15 +89,15 @@ $output-border: 0.05em solid black;
     white-space: pre-line;
   }
   .tickbox {
-    border: $output-border;
+    border-left: $output-border;
     width: 2.1em;
-    height: 2.1em;
+    height: 100%;
     position: absolute;
-    top: -0.07em;
-    right: -0.05em;
-    line-height: 2.1em;
+    top: 0;
+    right: 0;
+    line-height: 2.2em;
     text-align: center;
-    color: #ccc;
+    color: #eee;
   }
   .prechecked .tickbox {
     color: #000;
