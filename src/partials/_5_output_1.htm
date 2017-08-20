@@ -55,28 +55,51 @@
         </table>
       </td>
     </tr>
-    
-    
-<!--
-SECTION TEMPLATE
 
-    <tr>
+
+
+    <tr v-if="basicinfo.platform=='Mac' || basicinfo.platform=='iOS'">
       <td>
-        <table class="output-section THIS SECTION CLASS">
+        <table class="output-section appleid">
+          
           <tr class="output-section-header-row">
             <td>
-              <h2 class="output-section-header">SECTION TITLE HERE</h2>
+              <h2 class="output-section-header"><span v-if="appleid.type=='new'">New </span><span v-if="appleid.type=='existing'">Existing </span>Apple ID</h2>
             </td>
           </tr>
-          <tr>
-            <td>
-              THIS SECTION CONTENT HERE
-            </td>
+          
+          <tr v-if="appleid.type=='existing'">
+            <td><span class="inline-title">Apple ID:</span> {{ appleid.existingemail }}<span v-if="appleid.existingpassword">; Password:</span> {{ appleid.existingpassword }}</td>
           </tr>
+          <tr v-if="appleid.type=='existing'" line="Logged in with Apple ID" is="lineitem"></tr>
+          
+          <tr v-if="appleid.type=='new'">
+            <td class="appleid-id"><span class="inline-title">ID:</span> {{ appleid.newemail }} <span class="emaildomain">@icloud.com</span></td>
+            <td class="appleid-password"><span class="inline-title">Password:</span> {{ appleid.newpassword }}</td>
+            <td class="appleid-dob"><span class="inline-title">DOB:</span> {{ appleid.dob }}</td>
+          </tr>
+          
+          <tr v-if="appleid.type=='new'">
+            <td><span class="inline-title">Actual:</span> <span class="emaildomain">@icloud.com</span></td>
+            <td colspan="2"><span class="inline-title">Actual:</span></td>
+          </tr>
+          
+          <tr v-if="appleid.recoveryquestion1.question && appleid.recoveryquestion1.answer" class="recoveryquestionpair">
+            <td class="recoveryquestion-question">{{ appleid.recoveryquestion1.question }}</td>
+            <td class="recoveryquestion-answer" colspan="2">{{ appleid.recoveryquestion1.answer }}</td>
+          </tr>
+           <tr v-if="appleid.recoveryquestion2.question && appleid.recoveryquestion2.answer" class="recoveryquestionpair">
+            <td class="recoveryquestion-question">{{ appleid.recoveryquestion2.question }}</td>
+            <td class="recoveryquestion-answer" colspan="2">{{ appleid.recoveryquestion2.answer }}</td>
+          </tr>
+           <tr v-if="appleid.recoveryquestion3.question && appleid.recoveryquestion3.answer" class="recoveryquestionpair">
+            <td class="recoveryquestion-question">{{ appleid.recoveryquestion3.question }}</td>
+            <td class="recoveryquestion-answer" colspan="2">{{ appleid.recoveryquestion3.answer }}</td>
+          </tr>
+          
         </table>
       </td>
     </tr>
--->
 
 
 
@@ -85,15 +108,16 @@ SECTION TEMPLATE
         <table class="output-section datatransfer">
           <tr class="output-section-header-row">
             <td>
-              <h2 class="output-section-header">Data Transfer<span v-if="datatransfer.source"> from {{ datatransfer.source }}<span v-if="datatransfer.media"> via {{ datatransfer.media }}</span></span></h2>
+              <h2 class="output-section-header">Data Transfer<span v-if="datatransfer.source"> from {{ datatransfer.source }}<span v-if="datatransfer.media"> via {{ datatransfer.media }}</span></span>
+              </h2>
             </td>
           </tr>
           <tr v-if="datatransfer.account1.username">
             <td>Username: {{ datatransfer.account1.username }}<span v-if="datatransfer.account1.password">, password: {{ datatransfer.account1.password }}</span></td>
           </tr>
           <td v-if="datatransfer.notes" class="output-notes">
-              <span class="output-notes-data">{{ datatransfer.notes }}</span>
-            </td>
+            <span class="output-notes-data">{{ datatransfer.notes }}</span>
+          </td>
           <tr line="Transfer successful" is="lineitem"></tr>
         </table>
       </td>
@@ -179,9 +203,9 @@ SECTION TEMPLATE
         </table>
       </td>
     </tr>
-    
-    
-    
+
+
+
     <!--
 SECTION TEMPLATE
 
@@ -202,8 +226,8 @@ SECTION TEMPLATE
       </td>
     </tr>
 -->
-    
-    
+
+
 
   </table>
 

@@ -100,7 +100,11 @@
       font-weight: 700;
     }
     .infoblock {
-      padding: 0 15% 2.5% 15%;
+      padding: 2.5% 15% 5% 15%;
+      text-align: left;
+      color: #555;
+      font-size: 0.9em;
+      font-style: italic;
     }
     .basicinfo {
       text-align: center;
@@ -152,6 +156,24 @@
       label {
         display: inline-block;
         padding: 0.5em;
+      }
+    }
+    .appleid {
+      text-align: center;
+      .appleid-existingemail,
+      .appleid-existingpassword {
+        width: 45%;
+      }
+      .appleid-newemail,
+      .appleid-newpassword,
+      .appleid-dob {
+        width: 28%;
+      }
+      .recoveryquestion-question {
+        width: 65%;
+      }
+      .recoveryquestion-answer {
+        width: 30%;
       }
     }
     .datatransfer {

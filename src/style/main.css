@@ -262,7 +262,11 @@ body {
     font-size: 0.8em;
     font-weight: 700; }
   .input .infoblock {
-    padding: 0 15% 2.5% 15%; }
+    padding: 2.5% 15% 5% 15%;
+    text-align: left;
+    color: #555;
+    font-size: 0.9em;
+    font-style: italic; }
   .input .basicinfo {
     text-align: center; }
     .input .basicinfo .colleague,
@@ -303,6 +307,19 @@ body {
     .input .software label {
       display: inline-block;
       padding: 0.5em; }
+  .input .appleid {
+    text-align: center; }
+    .input .appleid .appleid-existingemail,
+    .input .appleid .appleid-existingpassword {
+      width: 45%; }
+    .input .appleid .appleid-newemail,
+    .input .appleid .appleid-newpassword,
+    .input .appleid .appleid-dob {
+      width: 28%; }
+    .input .appleid .recoveryquestion-question {
+      width: 65%; }
+    .input .appleid .recoveryquestion-answer {
+      width: 30%; }
   .input .datatransfer .transferuser,
   .input .datatransfer .transferpassword {
     width: 46.7%; }
@@ -354,6 +371,8 @@ body {
   font-style: italic;
   font-size: 0.8em;
   color: #555; }
+.output .inline-title {
+  font-weight: bold; }
 .output .output-section-contact {
   color: #999; }
   .output .output-section-contact .date-column,
@@ -393,3 +412,11 @@ body {
   color: #ccc; }
 .output .prechecked .tickbox {
   color: #000; }
+.output .emaildomain {
+  float: right; }
+.output .appleid .appleid-id {
+  width: 50%; }
+.output .appleid .appleid-password {
+  width: 30%; }
+.output .appleid .appleid-dob {
+  width: 20%; }

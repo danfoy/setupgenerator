@@ -50,6 +50,9 @@ $output-border: 0.05em solid black;
     font-size: 0.8em;
     color: #555;
   }
+  .inline-title {
+    font-weight: bold;
+  }
   
   .output-section-contact {
     color: #999;
@@ -105,5 +108,19 @@ $output-border: 0.05em solid black;
   }
   .prechecked .tickbox {
     color: #000;
+  }
+  .emaildomain {
+    float: right;
+  }
+  .appleid {
+    .appleid-id {
+      width: 50%;
+    }
+    .appleid-password {
+      width: 30%;
+    }
+    .appleid-dob {
+      width: 20%;
+    }
   }
 }

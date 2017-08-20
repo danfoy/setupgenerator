@@ -47,6 +47,26 @@ var data = {
     installsoftware: false,
     runupdates: false
   },
+  appleid: {
+    type: '',
+    existingemail: '',
+    existingpassword: '',
+    newemail: '',
+    newpassword: '',
+    dob: '',
+    recoveryquestion1: {
+      question: '',
+      answer: ''
+    },
+    recoveryquestion2: {
+      question: '',
+      answer: ''
+    },
+    recoveryquestion3: {
+      question: '',
+      answer: ''
+    }
+  },
   datatransfer: {
     account1: {
       username: '',
