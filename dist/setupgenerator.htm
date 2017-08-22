@@ -710,8 +710,12 @@ SECTION TEMPLATE
             </td>
           </tr>
           <tr>
-            <td class="title-column">Telephone no.</td>
+            <td class="title-column">Tel</td>
             <td class="data-column">{{ customerinfo.telephone }}</td>
+          </tr>
+          <tr v-if="customerinfo.alttelephone">
+            <td class="title-column">Alt. Tel</td>
+            <td class="data-column">{{ customerinfo.alttelephone }}</td>
           </tr>
 
         </table>
