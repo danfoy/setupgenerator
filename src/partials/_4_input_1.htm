@@ -2,6 +2,7 @@
   <form id="inputform">
 
 
+    <!-- Basic Info -->
     <fieldset name="basicinfo" class="input-section basicinfo">
       <legend class="section-label" for="basicinfo">Basic Information</legend>
 
@@ -20,7 +21,7 @@
     </fieldset>
 
 
-
+    <!-- Setup Info -->
     <fieldset name="setupinfo" class="input-section setupinfo">
       <legend for="setupinfo" class="section-label">Setup Information</legend>
 
@@ -46,7 +47,7 @@
     </fieldset>
 
 
-
+    <!-- Setup Options -->
     <fieldset v-if="basicinfo.platform && setupinfo.service" name="setupoptions" class="input-section setupoptions">
       <legend for="setupoptions" class="section-label">Options</legend>
       <ul>
@@ -59,7 +60,7 @@
     </fieldset>
 
 
-
+    <!-- Apple ID -->
     <fieldset v-if="basicinfo.platform=='Mac' || basicinfo.platform=='iOS'" name="appleid" class="input-section appleid">
       <legend for="appleid" class="section-label">Apple ID</legend>
 
@@ -131,7 +132,7 @@
     </fieldset>
 
 
-
+    <!-- Software -->
     <fieldset v-if="setupoptions.installsoftware" name="software" class="input-section software">
       <legend class="section-label" for="software">Software</legend>
       <ul>
@@ -148,8 +149,7 @@
     </fieldset>
 
 
-
-
+    <!-- Email -->
     <fieldset v-if="setupoptions.email" name="email" class="input-section email">
       <legend for="email" class="section-label">Email Accounts</legend>
       
@@ -164,14 +164,14 @@
       
       <fieldset v-if="email.existingemail" name="existingemail">
         <legend for="existing">Existing Email Account</legend>
-        <input type="text" v-model="email.existing.account1.address" placeholder="Email Address" class="email-existing-address"></label>
+        <input type="text" v-model="email.existing.account1.address" placeholder="Email Address" class="email-existing-address">
         <input type="text" v-model="email.existing.account1.password" placeholder="password" class="email-existing-password">
       </fieldset>
       
     </fieldset>
 
 
-
+    <!-- Data Transfer -->
     <fieldset v-if="setupoptions.datatransfer" name="notes" class="input-section datatransfer">
       <legend class="section-label" for="datatransfer">Data Transfer</legend>
       <div class="infoblock">
@@ -186,7 +186,7 @@
     </fieldset>
 
 
-
+    <!-- Notes -->
     <fieldset name="notes" class="input-section notes">
       <legend class="section-label" for="notes">Notes</legend>
       <textarea placeholder="Notes" v-model="notes"></textarea>
