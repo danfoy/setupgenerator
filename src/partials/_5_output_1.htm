@@ -1,7 +1,9 @@
 <section class="output">
   <h1></h1>
   <table class="output-scaffold">
-
+    
+    
+    <!-- Header and Basic Info -->
     <tr>
       <td>
 
@@ -38,7 +40,7 @@
     </tr>
 
 
-
+    <!-- Setup Options -->
     <tr v-if="setupinfo.exdemo || setupoptions.recoverymedia || setupoptions.datatransfer || setupoptions.existingemail || setupoptions.installsoftware || setupoptions.runupdates">
       <td>
         <table class="output-section setupoptions">
@@ -57,7 +59,7 @@
     </tr>
 
 
-
+    <!-- Apple ID -->
     <tr v-if="basicinfo.platform=='Mac' || basicinfo.platform=='iOS'">
       <td>
         <table class="output-section appleid">
@@ -100,9 +102,35 @@
         </table>
       </td>
     </tr>
+    
+    
+    <!-- Email Accounts -->
+    <tr v-if="email.newemail || email.existingemail">
+      <td>
+        <table class="output-section email">
+          <tr class="output-section-header-row">
+            <td>
+              <h2 class="output-section-header">Email Accounts</h2>
+            </td>
+          </tr>
+          <tr v-if="email.existingemail">
+            <td>
+              <span v-if="email.existing.account1.address"><strong>Existing Account:</strong> {{ email.existing.account1.address }}; </span><span v-if="email.existing.account1.password"><strong>Password:</strong> {{ email.existing.account1.password }}</span>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+          <tr v-if="email.newemail">
+            <td>
+              <span v-if="email.new.account1.address"><strong>New Account:</strong> {{ email.new.account1.address }}; </span><span v-if="email.new.account1.password"><strong>Password:</strong> {{ email.new.account1.password }}</span>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
 
 
-
+    <!-- Data Transfer -->
     <tr v-if="setupoptions.datatransfer">
       <td>
         <table class="output-section datatransfer">
@@ -124,7 +152,7 @@
     </tr>
 
 
-
+    <!-- Software -->
     <tr v-if="software[0]">
       <td>
         <table class="output-section">
@@ -139,7 +167,7 @@
     </tr>
 
 
-
+    <!-- Notes -->
     <tr v-if="notes">
       <td>
 
@@ -159,7 +187,9 @@
 
       </td>
     </tr>
-
+    
+    
+    <!-- Contact -->
     <tr>
       <td>
         <table class="output-section output-section-contact">
@@ -190,7 +220,7 @@
     </tr>
 
 
-
+    <!-- Signature -->
     <tr>
       <td>
         <table class="output-section output-section-signature">
@@ -206,9 +236,7 @@
 
 
 
-    <!--
-SECTION TEMPLATE
-
+    <!-- SECTION TEMPLATE
     <tr>
       <td>
         <table class="output-section THIS SECTION CLASS">

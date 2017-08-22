@@ -20,6 +20,7 @@
     </fieldset>
 
 
+
     <fieldset name="setupinfo" class="input-section setupinfo">
       <legend for="setupinfo" class="section-label">Setup Information</legend>
 
@@ -50,7 +51,7 @@
       <legend for="setupoptions" class="section-label">Options</legend>
       <ul>
         <li><label><input type="checkbox" v-model="setupoptions.recoverymedia">Create Recovery Media</label></li>
-        <li><label><input type="checkbox" v-model="setupoptions.existingemail">Set up existing Email account</label></li>
+        <li><label><input type="checkbox" v-model="setupoptions.email">Set Up Email Accounts</label></li>
         <li><label><input type="checkbox" v-model="setupoptions.datatransfer">Data Transfer</label></li>
         <li><label><input type="checkbox" v-model="setupoptions.installsoftware">Install software</label></li>
         <li><label><input type="checkbox" v-model="setupoptions.runupdates">Run updates</label></li>
@@ -131,7 +132,6 @@
 
 
 
-
     <fieldset v-if="setupoptions.installsoftware" name="software" class="input-section software">
       <legend class="section-label" for="software">Software</legend>
       <ul>
@@ -145,6 +145,29 @@
         <li><label><input type="checkbox" v-model="software" value="World of Warcraft">World of Warcraft</label></li>
         <li><label><input type="checkbox" v-model="software" value="Links Bundle">Links Bundle</label></li>
       </ul>
+    </fieldset>
+
+
+
+
+    <fieldset v-if="setupoptions.email" name="email" class="input-section email">
+      <legend for="email" class="section-label">Email Accounts</legend>
+      
+      <label><input type="checkbox" v-model="email.newemail">Create a new email account</label>
+      <label><input type="checkbox" v-model="email.existingemail">Sign in to an existing email account</label>
+      
+      <fieldset v-if="email.newemail" name="newemail">
+        <legend for="newemail">New Email Account</legend>
+        <label class="email-new-address"><input type="text" v-model="email.new.account1.address" placeholder="yourname" class="email-new-address-input"><span class="emaildomain outlook">@outlook.com</span></label>
+        <input type="text" v-model="email.new.account1.password" placeholder="password" class="email-new-password">
+      </fieldset>
+      
+      <fieldset v-if="email.existingemail" name="existingemail">
+        <legend for="existing">Existing Email Account</legend>
+        <input type="text" v-model="email.existing.account1.address" placeholder="Email Address" class="email-existing-address"></label>
+        <input type="text" v-model="email.existing.account1.password" placeholder="password" class="email-existing-password">
+      </fieldset>
+      
     </fieldset>
 
 

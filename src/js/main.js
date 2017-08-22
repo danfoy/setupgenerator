@@ -10101,7 +10101,7 @@ var data = {
   setupoptions: {
     recoverymedia: false,
     datatransfer: false,
-    existingemail: false,
+    email: false,
     installsoftware: false,
     runupdates: false
   },
@@ -10135,6 +10135,22 @@ var data = {
     notes: ''
   },
   software: [],
+  email: {
+    newemail: false,
+    existingemail: false,
+    existing: {
+      account1: {
+        address: '',
+        password: ''
+      }
+    },
+    new: {
+      account1: {
+        address: '',
+        password: ''
+      }
+    }
+  },
   notes: ''
 };
 

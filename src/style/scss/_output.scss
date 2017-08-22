@@ -1,5 +1,4 @@
 $output-border: 0.05em solid black;
-
 .output {
   text-align: left;
 }
@@ -13,11 +12,12 @@ $output-border: 0.05em solid black;
     width: 100%;
     margin-top: 1em;
     position: relative;
-  }
-  .output-section td {
-    padding: 0.5em;
-    border: $output-border;
-    height: 1em;
+    td {
+      padding: 0.5em;
+      border: $output-border;
+      height: 1em;
+      position: relative;
+    }
   }
   .output-section-header {
     font-size: 1em;
@@ -29,7 +29,6 @@ $output-border: 0.05em solid black;
     border: 0;
     padding-bottom: 0;
   }
-  
   .header-title {
     font-size: 1.6em;
     font-weight: bold;
@@ -46,7 +45,6 @@ $output-border: 0.05em solid black;
   .inline-title {
     font-weight: bold;
   }
-  
   .output-section-contact {
     color: #999;
     .date-column,
@@ -57,7 +55,6 @@ $output-border: 0.05em solid black;
       width: 75%;
     }
   }
-  
   .output-section-signature {
     td {
       width: 25%;
@@ -70,7 +67,6 @@ $output-border: 0.05em solid black;
       vertical-align: middle;
     }
   }
-  
   .output-notes-data {
     display: block;
   }

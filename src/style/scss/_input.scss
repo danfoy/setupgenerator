@@ -56,6 +56,7 @@
     box-sizing: border-box;
     text-align: left;
     .input-section {
+      text-align: center;
       position: relative;
       padding: 3%;
       margin: 8em 5%;
@@ -135,14 +136,12 @@
       }
     }
     .setupinfo {
-      text-align: center;
       label {
         display: inline-block;
       }
     }
     .setupoptions,
     .software {
-      text-align: center;
       ul {
         position: relative;
         list-style-type: none;
@@ -159,7 +158,6 @@
       }
     }
     .appleid {
-      text-align: center;
       .appleid-existingemail,
       .appleid-existingpassword {
         width: 45%;
@@ -174,6 +172,32 @@
       }
       .recoveryquestion-answer {
         width: 30%;
+      }
+    }
+    .email {
+      .email-new-address,
+      .email-new-password,
+      .email-existing-address,
+      .email-existing-password {
+        display: inline-block;
+        width: 40%;
+      }
+      .email-new-address {
+        position: relative;
+        padding: 0;
+      }
+      .email-new-address-input {
+        width: 100%;
+        padding-right: 6.9em;
+        text-align: right;
+      }
+      .email-new-address-input::placeholder {
+        text-align: left;
+      }
+      .emaildomain.outlook {
+        position: absolute;
+        right: 0.5em;
+        top: 0.55em;
       }
     }
     .datatransfer {

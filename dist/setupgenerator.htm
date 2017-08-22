@@ -235,6 +235,7 @@ body {
   .input select {
     height: 2.3em; }
   .input .input-section {
+    text-align: center;
     position: relative;
     padding: 3%;
     margin: 8em 5%;
@@ -298,40 +299,52 @@ body {
   .input .customerinfo .customerinfo-telephone,
   .input .customerinfo .customerinfo-alttelephone {
     width: 49%; }
-  .input .setupinfo {
-    text-align: center; }
-    .input .setupinfo label {
-      display: inline-block; }
-  .input .setupoptions,
-  .input .software {
-    text-align: center; }
-    .input .setupoptions ul,
-    .input .software ul {
-      position: relative;
-      list-style-type: none;
-      padding: 0; }
-    .input .setupoptions li,
-    .input .software li {
-      display: inline-block;
-      width: 30%;
-      text-align: left; }
-    .input .setupoptions label,
-    .input .software label {
-      display: inline-block;
-      padding: 0.5em; }
-  .input .appleid {
-    text-align: center; }
-    .input .appleid .appleid-existingemail,
-    .input .appleid .appleid-existingpassword {
-      width: 45%; }
-    .input .appleid .appleid-newemail,
-    .input .appleid .appleid-newpassword,
-    .input .appleid .appleid-dob {
-      width: 28%; }
-    .input .appleid .recoveryquestion-question {
-      width: 65%; }
-    .input .appleid .recoveryquestion-answer {
-      width: 30%; }
+  .input .setupinfo label {
+    display: inline-block; }
+  .input .setupoptions ul,
+  .input .software ul {
+    position: relative;
+    list-style-type: none;
+    padding: 0; }
+  .input .setupoptions li,
+  .input .software li {
+    display: inline-block;
+    width: 30%;
+    text-align: left; }
+  .input .setupoptions label,
+  .input .software label {
+    display: inline-block;
+    padding: 0.5em; }
+  .input .appleid .appleid-existingemail,
+  .input .appleid .appleid-existingpassword {
+    width: 45%; }
+  .input .appleid .appleid-newemail,
+  .input .appleid .appleid-newpassword,
+  .input .appleid .appleid-dob {
+    width: 28%; }
+  .input .appleid .recoveryquestion-question {
+    width: 65%; }
+  .input .appleid .recoveryquestion-answer {
+    width: 30%; }
+  .input .email .email-new-address,
+  .input .email .email-new-password,
+  .input .email .email-existing-address,
+  .input .email .email-existing-password {
+    display: inline-block;
+    width: 40%; }
+  .input .email .email-new-address {
+    position: relative;
+    padding: 0; }
+  .input .email .email-new-address-input {
+    width: 100%;
+    padding-right: 6.9em;
+    text-align: right; }
+  .input .email .email-new-address-input::placeholder {
+    text-align: left; }
+  .input .email .emaildomain.outlook {
+    position: absolute;
+    right: 0.5em;
+    top: 0.55em; }
   .input .datatransfer .transferuser,
   .input .datatransfer .transferpassword {
     width: 46.7%; }
@@ -354,10 +367,11 @@ body {
   width: 100%;
   margin-top: 1em;
   position: relative; }
-.output .output-section td {
-  padding: 0.5em;
-  border: 0.05em solid black;
-  height: 1em; }
+  .output .output-section td {
+    padding: 0.5em;
+    border: 0.05em solid black;
+    height: 1em;
+    position: relative; }
 .output .output-section-header {
   font-size: 1em;
   font-weight: 700;
@@ -478,6 +492,7 @@ body {
     </fieldset>
 
 
+
     <fieldset name="setupinfo" class="input-section setupinfo">
       <legend for="setupinfo" class="section-label">Setup Information</legend>
 
@@ -508,7 +523,7 @@ body {
       <legend for="setupoptions" class="section-label">Options</legend>
       <ul>
         <li><label><input type="checkbox" v-model="setupoptions.recoverymedia">Create Recovery Media</label></li>
-        <li><label><input type="checkbox" v-model="setupoptions.existingemail">Set up existing Email account</label></li>
+        <li><label><input type="checkbox" v-model="setupoptions.email">Set Up Email Accounts</label></li>
         <li><label><input type="checkbox" v-model="setupoptions.datatransfer">Data Transfer</label></li>
         <li><label><input type="checkbox" v-model="setupoptions.installsoftware">Install software</label></li>
         <li><label><input type="checkbox" v-model="setupoptions.runupdates">Run updates</label></li>
@@ -589,7 +604,6 @@ body {
 
 
 
-
     <fieldset v-if="setupoptions.installsoftware" name="software" class="input-section software">
       <legend class="section-label" for="software">Software</legend>
       <ul>
@@ -603,6 +617,29 @@ body {
         <li><label><input type="checkbox" v-model="software" value="World of Warcraft">World of Warcraft</label></li>
         <li><label><input type="checkbox" v-model="software" value="Links Bundle">Links Bundle</label></li>
       </ul>
+    </fieldset>
+
+
+
+
+    <fieldset v-if="setupoptions.email" name="email" class="input-section email">
+      <legend for="email" class="section-label">Email Accounts</legend>
+      
+      <label><input type="checkbox" v-model="email.newemail">Create a new email account</label>
+      <label><input type="checkbox" v-model="email.existingemail">Sign in to an existing email account</label>
+      
+      <fieldset v-if="email.newemail" name="newemail">
+        <legend for="newemail">New Email Account</legend>
+        <label class="email-new-address"><input type="text" v-model="email.new.account1.address" placeholder="yourname" class="email-new-address-input"><span class="emaildomain outlook">@outlook.com</span></label>
+        <input type="text" v-model="email.new.account1.password" placeholder="password" class="email-new-password">
+      </fieldset>
+      
+      <fieldset v-if="email.existingemail" name="existingemail">
+        <legend for="existing">Existing Email Account</legend>
+        <input type="text" v-model="email.existing.account1.address" placeholder="Email Address" class="email-existing-address"></label>
+        <input type="text" v-model="email.existing.account1.password" placeholder="password" class="email-existing-password">
+      </fieldset>
+      
     </fieldset>
 
 
@@ -644,7 +681,9 @@ SECTION TEMPLATE
 <section class="output">
   <h1></h1>
   <table class="output-scaffold">
-
+    
+    
+    <!-- Header and Basic Info -->
     <tr>
       <td>
 
@@ -681,7 +720,7 @@ SECTION TEMPLATE
     </tr>
 
 
-
+    <!-- Setup Options -->
     <tr v-if="setupinfo.exdemo || setupoptions.recoverymedia || setupoptions.datatransfer || setupoptions.existingemail || setupoptions.installsoftware || setupoptions.runupdates">
       <td>
         <table class="output-section setupoptions">
@@ -700,7 +739,7 @@ SECTION TEMPLATE
     </tr>
 
 
-
+    <!-- Apple ID -->
     <tr v-if="basicinfo.platform=='Mac' || basicinfo.platform=='iOS'">
       <td>
         <table class="output-section appleid">
@@ -743,9 +782,35 @@ SECTION TEMPLATE
         </table>
       </td>
     </tr>
+    
+    
+    <!-- Email Accounts -->
+    <tr v-if="email.newemail || email.existingemail">
+      <td>
+        <table class="output-section email">
+          <tr class="output-section-header-row">
+            <td>
+              <h2 class="output-section-header">Email Accounts</h2>
+            </td>
+          </tr>
+          <tr v-if="email.existingemail">
+            <td>
+              <span v-if="email.existing.account1.address"><strong>Existing Account:</strong> {{ email.existing.account1.address }}; </span><span v-if="email.existing.account1.password"><strong>Password:</strong> {{ email.existing.account1.password }}</span>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+          <tr v-if="email.newemail">
+            <td>
+              <span v-if="email.new.account1.address"><strong>New Account:</strong> {{ email.new.account1.address }}; </span><span v-if="email.new.account1.password"><strong>Password:</strong> {{ email.new.account1.password }}</span>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
 
 
-
+    <!-- Data Transfer -->
     <tr v-if="setupoptions.datatransfer">
       <td>
         <table class="output-section datatransfer">
@@ -767,7 +832,7 @@ SECTION TEMPLATE
     </tr>
 
 
-
+    <!-- Software -->
     <tr v-if="software[0]">
       <td>
         <table class="output-section">
@@ -782,7 +847,7 @@ SECTION TEMPLATE
     </tr>
 
 
-
+    <!-- Notes -->
     <tr v-if="notes">
       <td>
 
@@ -802,7 +867,9 @@ SECTION TEMPLATE
 
       </td>
     </tr>
-
+    
+    
+    <!-- Contact -->
     <tr>
       <td>
         <table class="output-section output-section-contact">
@@ -833,7 +900,7 @@ SECTION TEMPLATE
     </tr>
 
 
-
+    <!-- Signature -->
     <tr>
       <td>
         <table class="output-section output-section-signature">
@@ -849,9 +916,7 @@ SECTION TEMPLATE
 
 
 
-    <!--
-SECTION TEMPLATE
-
+    <!-- SECTION TEMPLATE
     <tr>
       <td>
         <table class="output-section THIS SECTION CLASS">
@@ -10984,7 +11049,7 @@ var data = {
   setupoptions: {
     recoverymedia: false,
     datatransfer: false,
-    existingemail: false,
+    email: false,
     installsoftware: false,
     runupdates: false
   },
@@ -11018,6 +11083,22 @@ var data = {
     notes: ''
   },
   software: [],
+  email: {
+    newemail: false,
+    existingemail: false,
+    existing: {
+      account1: {
+        address: '',
+        password: ''
+      }
+    },
+    new: {
+      account1: {
+        address: '',
+        password: ''
+      }
+    }
+  },
   notes: ''
 };
 
