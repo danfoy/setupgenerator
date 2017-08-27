@@ -42,6 +42,7 @@ var data = {
   },
   setupoptions: {
     recoverymedia: false,
+    customusers: false,
     datatransfer: false,
     email: false,
     installsoftware: false,
@@ -65,6 +66,33 @@ var data = {
     recoveryquestion3: {
       question: '',
       answer: ''
+    }
+  },
+  useraccounts: {
+    count: "1",
+    account1: {
+      username: '',
+      password: '',
+      hint: '',
+      admin: true
+    },
+    account2: {
+      username: '',
+      password: '',
+      hint: '',
+      admin: false
+    },
+    account3: {
+      username: '',
+      password: '',
+      hint: '',
+      admin: false
+    },
+    account4: {
+      username: '',
+      password: '',
+      hint: '',
+      admin: false
     }
   },
   datatransfer: {

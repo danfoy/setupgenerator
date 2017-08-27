@@ -1,8 +1,8 @@
 <section class="output">
   <h1></h1>
   <table class="output-scaffold">
-    
-    
+
+
     <!-- Header and Basic Info -->
     <tr>
       <td>
@@ -67,47 +67,85 @@
     <tr v-if="basicinfo.platform=='Mac' || basicinfo.platform=='iOS'">
       <td>
         <table class="output-section appleid">
-          
+
           <tr class="output-section-header-row">
             <td>
               <h2 class="output-section-header"><span v-if="appleid.type=='new'">New </span><span v-if="appleid.type=='existing'">Existing </span>Apple ID</h2>
             </td>
           </tr>
-          
+
           <tr v-if="appleid.type=='existing'">
             <td><span class="inline-title">Apple ID:</span> {{ appleid.existingemail }}<span v-if="appleid.existingpassword">; Password:</span> {{ appleid.existingpassword }}</td>
           </tr>
           <tr v-if="appleid.type=='existing'" line="Logged in with Apple ID" is="lineitem"></tr>
-          
+
           <tr v-if="appleid.type=='new'">
             <td class="appleid-id"><span class="inline-title">ID:</span> {{ appleid.newemail }} <span class="emaildomain">@icloud.com</span></td>
             <td class="appleid-password"><span class="inline-title">Password:</span> {{ appleid.newpassword }}</td>
             <td class="appleid-dob"><span class="inline-title">DOB:</span> {{ appleid.dob }}</td>
           </tr>
-          
+
           <tr v-if="appleid.type=='new'">
             <td><span class="inline-title">Actual:</span> <span class="emaildomain">@icloud.com</span></td>
             <td colspan="2"><span class="inline-title">Actual:</span></td>
           </tr>
-          
+
           <tr v-if="appleid.recoveryquestion1.question && appleid.recoveryquestion1.answer" class="recoveryquestionpair">
             <td class="recoveryquestion-question">{{ appleid.recoveryquestion1.question }}</td>
             <td class="recoveryquestion-answer" colspan="2">{{ appleid.recoveryquestion1.answer }}</td>
           </tr>
-           <tr v-if="appleid.recoveryquestion2.question && appleid.recoveryquestion2.answer" class="recoveryquestionpair">
+          <tr v-if="appleid.recoveryquestion2.question && appleid.recoveryquestion2.answer" class="recoveryquestionpair">
             <td class="recoveryquestion-question">{{ appleid.recoveryquestion2.question }}</td>
             <td class="recoveryquestion-answer" colspan="2">{{ appleid.recoveryquestion2.answer }}</td>
           </tr>
-           <tr v-if="appleid.recoveryquestion3.question && appleid.recoveryquestion3.answer" class="recoveryquestionpair">
+          <tr v-if="appleid.recoveryquestion3.question && appleid.recoveryquestion3.answer" class="recoveryquestionpair">
             <td class="recoveryquestion-question">{{ appleid.recoveryquestion3.question }}</td>
             <td class="recoveryquestion-answer" colspan="2">{{ appleid.recoveryquestion3.answer }}</td>
           </tr>
-          
+
         </table>
       </td>
     </tr>
-    
-    
+
+
+    <!-- User Accounts -->
+    <tr v-if="setupoptions.customusers && useraccounts.account1.username">
+      <td>
+        <table class="output-section useraccounts">
+          <tr class="output-section-header-row">
+            <td>
+              <h2 class="output-section-header">Create User Accounts</h2>
+            </td>
+          </tr>
+          <tr v-if="useraccounts.account1.username">
+            <td>
+              <strong>Username:</strong> {{ useraccounts.account1.username }}<span v-if="useraccounts.account1.password"><strong> Password:</strong> {{ useraccounts.account1.password }}<span v-if="useraccounts.account1.hint"><strong> Hint:</strong> {{ useraccounts.account1.hint }}</span></span><span v-if="useraccounts.account1.admin"><strong> (Admin)</strong></span>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+          <tr v-if="useraccounts.account2.username">
+            <td>
+              <strong>Username:</strong> {{ useraccounts.account2.username }}<span v-if="useraccounts.account2.password"><strong> Password:</strong> {{ useraccounts.account2.password }}<span v-if="useraccounts.account2.hint"><strong> Hint:</strong> {{ useraccounts.account2.hint }}</span></span><span v-if="useraccounts.account2.admin"><strong> (Admin)</strong></span>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+          <tr v-if="useraccounts.account3.username">
+            <td>
+              <strong>Username:</strong> {{ useraccounts.account3.username }}<span v-if="useraccounts.account3.password"><strong> Password:</strong> {{ useraccounts.account3.password }}<span v-if="useraccounts.account3.hint"><strong> Hint:</strong> {{ useraccounts.account3.hint }}</span></span><span v-if="useraccounts.account3.admin"><strong> (Admin)</strong></span>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+          <tr v-if="useraccounts.account4.username">
+            <td>
+              <strong>Username:</strong> {{ useraccounts.account1.username }}<span v-if="useraccounts.account4.password"><strong> Password:</strong> {{ useraccounts.account4.password }}<span v-if="useraccounts.account4.hint"><strong> Hint:</strong> {{ useraccounts.account4.hint }}</span></span><span v-if="useraccounts.account4.admin"><strong> (Admin)</strong></span>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
     <!-- Email Accounts -->
     <tr v-if="email.newemail || email.existingemail">
       <td>
@@ -191,8 +229,8 @@
 
       </td>
     </tr>
-    
-    
+
+
     <!-- Contact -->
     <tr>
       <td>

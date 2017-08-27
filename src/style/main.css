@@ -316,6 +316,17 @@ body {
     width: 65%; }
   .input .appleid .recoveryquestion-answer {
     width: 30%; }
+  .input .useraccounts .accountname,
+  .input .useraccounts .accountpassword {
+    width: 40%; }
+  .input .useraccounts .accounthint {
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto; }
+  .input .useraccounts .accountadmin {
+    display: block;
+    margin-top: 2.5%; }
   .input .email .email-new-address,
   .input .email .email-new-password,
   .input .email .email-existing-address,
@@ -358,7 +369,7 @@ body {
   margin-top: 1em;
   position: relative; }
   .output .output-section td {
-    padding: 0.5em;
+    padding: 0.5em 2.5em 0.5em 0.5em;
     border: 0.05em solid black;
     height: 1em;
     position: relative; }

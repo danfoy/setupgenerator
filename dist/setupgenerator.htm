@@ -326,6 +326,17 @@ body {
     width: 65%; }
   .input .appleid .recoveryquestion-answer {
     width: 30%; }
+  .input .useraccounts .accountname,
+  .input .useraccounts .accountpassword {
+    width: 40%; }
+  .input .useraccounts .accounthint {
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto; }
+  .input .useraccounts .accountadmin {
+    display: block;
+    margin-top: 2.5%; }
   .input .email .email-new-address,
   .input .email .email-new-password,
   .input .email .email-existing-address,
@@ -368,7 +379,7 @@ body {
   margin-top: 1em;
   position: relative; }
   .output .output-section td {
-    padding: 0.5em;
+    padding: 0.5em 2.5em 0.5em 0.5em;
     border: 0.05em solid black;
     height: 1em;
     position: relative; }
@@ -524,6 +535,7 @@ body {
       <legend for="setupoptions" class="section-label">Options</legend>
       <ul>
         <li><label><input type="checkbox" v-model="setupoptions.recoverymedia">Create Recovery Media</label></li>
+        <li><label><input type="checkbox" v-model="setupoptions.customusers">Customise User Accounts</label></li>
         <li><label><input type="checkbox" v-model="setupoptions.email">Set Up Email Accounts</label></li>
         <li><label><input type="checkbox" v-model="setupoptions.datatransfer">Data Transfer</label></li>
         <li><label><input type="checkbox" v-model="setupoptions.installsoftware">Install software</label></li>
@@ -604,6 +616,53 @@ body {
     </fieldset>
 
 
+    <!-- User Accounts -->
+    <fieldset v-if="setupoptions.customusers" name="useraccounts" class="input-section useraccounts">
+      <legend for="useraccounts" class="section-label">User Accounts</legend>
+
+      <div>
+        <p>Number of accounts:</p>
+        <label><input type="radio" name="accountcount" v-model="useraccounts.count" value="1">1</label>
+        <label><input type="radio" name="accountcount" v-model="useraccounts.count" value="2">2</label>
+        <label><input type="radio" name="accountcount" v-model="useraccounts.count" value="3">3</label>
+        <label><input type="radio" name="accountcount" v-model="useraccounts.count" value="4">4</label>
+      </div>
+
+      <fieldset name="account1" class="useraccount">
+        <legend for="account1">User Account 1</legend>
+        <input type="text" v-model="useraccounts.account1.username" placeholder="Account Name" class="accountname">
+        <input type="text" v-model="useraccounts.account1.password" placeholder="Password (optional)" class="accountpassword">
+        <input type="text" v-if="useraccounts.account1.password" v-model="useraccounts.account1.hint" placeholder="Password Hint" class="accounthint">
+        <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account1.admin" disabled>Administrator</label>
+      </fieldset>
+      
+      <fieldset v-if="useraccounts.count >= 2" name="account2" class="useraccount">
+        <legend for="account2">User Account 2</legend>
+        <input type="text" v-model="useraccounts.account2.username" placeholder="Account Name" class="accountname">
+        <input type="text" v-model="useraccounts.account2.password" placeholder="Password (optional)" class="accountpassword">
+        <input type="text" v-if="useraccounts.account2.password" v-model="useraccounts.account2.hint" placeholder="Password Hint" class="accounthint">
+        <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account2.admin">Administrator</label>
+      </fieldset>
+      
+      <fieldset v-if="useraccounts.count >= 3" name="account3" class="useraccount">
+        <legend for="account3">User Account 3</legend>
+        <input type="text" v-model="useraccounts.account3.username" placeholder="Account Name" class="accountname">
+        <input type="text" v-model="useraccounts.account3.password" placeholder="Password (optional)" class="accountpassword">
+        <input type="text" v-if="useraccounts.account3.password" v-model="useraccounts.account3.hint" placeholder="Password Hint" class="accounthint">
+        <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account3.admin">Administrator</label>
+      </fieldset>
+      
+      <fieldset v-if="useraccounts.count >= 4" name="account4" class="useraccount">
+        <legend for="account4">User Account 4</legend>
+        <input type="text" v-model="useraccounts.account4.username" placeholder="Account Name" class="accountname">
+        <input type="text" v-model="useraccounts.account4.password" placeholder="Password (optional)" class="accountpassword">
+        <input type="text" v-if="useraccounts.account4.password" v-model="useraccounts.account4.hint" placeholder="Password Hint" class="accounthint">
+        <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account4.admin">Administrator</label>
+      </fieldset>
+
+    </fieldset>
+
+
     <!-- Software -->
     <fieldset v-if="setupoptions.installsoftware" name="software" class="input-section software">
       <legend class="section-label" for="software">Software</legend>
@@ -624,22 +683,22 @@ body {
     <!-- Email -->
     <fieldset v-if="setupoptions.email" name="email" class="input-section email">
       <legend for="email" class="section-label">Email Accounts</legend>
-      
+
       <label><input type="checkbox" v-model="email.newemail">Create a new email account</label>
       <label><input type="checkbox" v-model="email.existingemail">Sign in to an existing email account</label>
-      
+
       <fieldset v-if="email.newemail" name="newemail">
         <legend for="newemail">New Email Account</legend>
         <label class="email-new-address"><input type="text" v-model="email.new.account1.address" placeholder="yourname" class="email-new-address-input"><span class="emaildomain outlook">@outlook.com</span></label>
         <input type="text" v-model="email.new.account1.password" placeholder="password" class="email-new-password">
       </fieldset>
-      
+
       <fieldset v-if="email.existingemail" name="existingemail">
         <legend for="existing">Existing Email Account</legend>
         <input type="text" v-model="email.existing.account1.address" placeholder="Email Address" class="email-existing-address">
         <input type="text" v-model="email.existing.account1.password" placeholder="password" class="email-existing-password">
       </fieldset>
-      
+
     </fieldset>
 
 
@@ -681,8 +740,8 @@ SECTION TEMPLATE
 <section class="output">
   <h1></h1>
   <table class="output-scaffold">
-    
-    
+
+
     <!-- Header and Basic Info -->
     <tr>
       <td>
@@ -747,47 +806,85 @@ SECTION TEMPLATE
     <tr v-if="basicinfo.platform=='Mac' || basicinfo.platform=='iOS'">
       <td>
         <table class="output-section appleid">
-          
+
           <tr class="output-section-header-row">
             <td>
               <h2 class="output-section-header"><span v-if="appleid.type=='new'">New </span><span v-if="appleid.type=='existing'">Existing </span>Apple ID</h2>
             </td>
           </tr>
-          
+
           <tr v-if="appleid.type=='existing'">
             <td><span class="inline-title">Apple ID:</span> {{ appleid.existingemail }}<span v-if="appleid.existingpassword">; Password:</span> {{ appleid.existingpassword }}</td>
           </tr>
           <tr v-if="appleid.type=='existing'" line="Logged in with Apple ID" is="lineitem"></tr>
-          
+
           <tr v-if="appleid.type=='new'">
             <td class="appleid-id"><span class="inline-title">ID:</span> {{ appleid.newemail }} <span class="emaildomain">@icloud.com</span></td>
             <td class="appleid-password"><span class="inline-title">Password:</span> {{ appleid.newpassword }}</td>
             <td class="appleid-dob"><span class="inline-title">DOB:</span> {{ appleid.dob }}</td>
           </tr>
-          
+
           <tr v-if="appleid.type=='new'">
             <td><span class="inline-title">Actual:</span> <span class="emaildomain">@icloud.com</span></td>
             <td colspan="2"><span class="inline-title">Actual:</span></td>
           </tr>
-          
+
           <tr v-if="appleid.recoveryquestion1.question && appleid.recoveryquestion1.answer" class="recoveryquestionpair">
             <td class="recoveryquestion-question">{{ appleid.recoveryquestion1.question }}</td>
             <td class="recoveryquestion-answer" colspan="2">{{ appleid.recoveryquestion1.answer }}</td>
           </tr>
-           <tr v-if="appleid.recoveryquestion2.question && appleid.recoveryquestion2.answer" class="recoveryquestionpair">
+          <tr v-if="appleid.recoveryquestion2.question && appleid.recoveryquestion2.answer" class="recoveryquestionpair">
             <td class="recoveryquestion-question">{{ appleid.recoveryquestion2.question }}</td>
             <td class="recoveryquestion-answer" colspan="2">{{ appleid.recoveryquestion2.answer }}</td>
           </tr>
-           <tr v-if="appleid.recoveryquestion3.question && appleid.recoveryquestion3.answer" class="recoveryquestionpair">
+          <tr v-if="appleid.recoveryquestion3.question && appleid.recoveryquestion3.answer" class="recoveryquestionpair">
             <td class="recoveryquestion-question">{{ appleid.recoveryquestion3.question }}</td>
             <td class="recoveryquestion-answer" colspan="2">{{ appleid.recoveryquestion3.answer }}</td>
           </tr>
-          
+
         </table>
       </td>
     </tr>
-    
-    
+
+
+    <!-- User Accounts -->
+    <tr v-if="setupoptions.customusers && useraccounts.account1.username">
+      <td>
+        <table class="output-section useraccounts">
+          <tr class="output-section-header-row">
+            <td>
+              <h2 class="output-section-header">Create User Accounts</h2>
+            </td>
+          </tr>
+          <tr v-if="useraccounts.account1.username">
+            <td>
+              <strong>Username:</strong> {{ useraccounts.account1.username }}<span v-if="useraccounts.account1.password"><strong> Password:</strong> {{ useraccounts.account1.password }}<span v-if="useraccounts.account1.hint"><strong> Hint:</strong> {{ useraccounts.account1.hint }}</span></span><span v-if="useraccounts.account1.admin"><strong> (Admin)</strong></span>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+          <tr v-if="useraccounts.account2.username">
+            <td>
+              <strong>Username:</strong> {{ useraccounts.account2.username }}<span v-if="useraccounts.account2.password"><strong> Password:</strong> {{ useraccounts.account2.password }}<span v-if="useraccounts.account2.hint"><strong> Hint:</strong> {{ useraccounts.account2.hint }}</span></span><span v-if="useraccounts.account2.admin"><strong> (Admin)</strong></span>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+          <tr v-if="useraccounts.account3.username">
+            <td>
+              <strong>Username:</strong> {{ useraccounts.account3.username }}<span v-if="useraccounts.account3.password"><strong> Password:</strong> {{ useraccounts.account3.password }}<span v-if="useraccounts.account3.hint"><strong> Hint:</strong> {{ useraccounts.account3.hint }}</span></span><span v-if="useraccounts.account3.admin"><strong> (Admin)</strong></span>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+          <tr v-if="useraccounts.account4.username">
+            <td>
+              <strong>Username:</strong> {{ useraccounts.account1.username }}<span v-if="useraccounts.account4.password"><strong> Password:</strong> {{ useraccounts.account4.password }}<span v-if="useraccounts.account4.hint"><strong> Hint:</strong> {{ useraccounts.account4.hint }}</span></span><span v-if="useraccounts.account4.admin"><strong> (Admin)</strong></span>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
     <!-- Email Accounts -->
     <tr v-if="email.newemail || email.existingemail">
       <td>
@@ -871,8 +968,8 @@ SECTION TEMPLATE
 
       </td>
     </tr>
-    
-    
+
+
     <!-- Contact -->
     <tr>
       <td>
@@ -11052,6 +11149,7 @@ var data = {
   },
   setupoptions: {
     recoverymedia: false,
+    customusers: false,
     datatransfer: false,
     email: false,
     installsoftware: false,
@@ -11075,6 +11173,33 @@ var data = {
     recoveryquestion3: {
       question: '',
       answer: ''
+    }
+  },
+  useraccounts: {
+    count: "1",
+    account1: {
+      username: '',
+      password: '',
+      hint: '',
+      admin: true
+    },
+    account2: {
+      username: '',
+      password: '',
+      hint: '',
+      admin: false
+    },
+    account3: {
+      username: '',
+      password: '',
+      hint: '',
+      admin: false
+    },
+    account4: {
+      username: '',
+      password: '',
+      hint: '',
+      admin: false
     }
   },
   datatransfer: {

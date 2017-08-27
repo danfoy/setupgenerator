@@ -52,6 +52,7 @@
       <legend for="setupoptions" class="section-label">Options</legend>
       <ul>
         <li><label><input type="checkbox" v-model="setupoptions.recoverymedia">Create Recovery Media</label></li>
+        <li><label><input type="checkbox" v-model="setupoptions.customusers">Customise User Accounts</label></li>
         <li><label><input type="checkbox" v-model="setupoptions.email">Set Up Email Accounts</label></li>
         <li><label><input type="checkbox" v-model="setupoptions.datatransfer">Data Transfer</label></li>
         <li><label><input type="checkbox" v-model="setupoptions.installsoftware">Install software</label></li>
@@ -132,6 +133,53 @@
     </fieldset>
 
 
+    <!-- User Accounts -->
+    <fieldset v-if="setupoptions.customusers" name="useraccounts" class="input-section useraccounts">
+      <legend for="useraccounts" class="section-label">User Accounts</legend>
+
+      <div>
+        <p>Number of accounts:</p>
+        <label><input type="radio" name="accountcount" v-model="useraccounts.count" value="1">1</label>
+        <label><input type="radio" name="accountcount" v-model="useraccounts.count" value="2">2</label>
+        <label><input type="radio" name="accountcount" v-model="useraccounts.count" value="3">3</label>
+        <label><input type="radio" name="accountcount" v-model="useraccounts.count" value="4">4</label>
+      </div>
+
+      <fieldset name="account1" class="useraccount">
+        <legend for="account1">User Account 1</legend>
+        <input type="text" v-model="useraccounts.account1.username" placeholder="Account Name" class="accountname">
+        <input type="text" v-model="useraccounts.account1.password" placeholder="Password (optional)" class="accountpassword">
+        <input type="text" v-if="useraccounts.account1.password" v-model="useraccounts.account1.hint" placeholder="Password Hint" class="accounthint">
+        <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account1.admin" disabled>Administrator</label>
+      </fieldset>
+      
+      <fieldset v-if="useraccounts.count >= 2" name="account2" class="useraccount">
+        <legend for="account2">User Account 2</legend>
+        <input type="text" v-model="useraccounts.account2.username" placeholder="Account Name" class="accountname">
+        <input type="text" v-model="useraccounts.account2.password" placeholder="Password (optional)" class="accountpassword">
+        <input type="text" v-if="useraccounts.account2.password" v-model="useraccounts.account2.hint" placeholder="Password Hint" class="accounthint">
+        <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account2.admin">Administrator</label>
+      </fieldset>
+      
+      <fieldset v-if="useraccounts.count >= 3" name="account3" class="useraccount">
+        <legend for="account3">User Account 3</legend>
+        <input type="text" v-model="useraccounts.account3.username" placeholder="Account Name" class="accountname">
+        <input type="text" v-model="useraccounts.account3.password" placeholder="Password (optional)" class="accountpassword">
+        <input type="text" v-if="useraccounts.account3.password" v-model="useraccounts.account3.hint" placeholder="Password Hint" class="accounthint">
+        <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account3.admin">Administrator</label>
+      </fieldset>
+      
+      <fieldset v-if="useraccounts.count >= 4" name="account4" class="useraccount">
+        <legend for="account4">User Account 4</legend>
+        <input type="text" v-model="useraccounts.account4.username" placeholder="Account Name" class="accountname">
+        <input type="text" v-model="useraccounts.account4.password" placeholder="Password (optional)" class="accountpassword">
+        <input type="text" v-if="useraccounts.account4.password" v-model="useraccounts.account4.hint" placeholder="Password Hint" class="accounthint">
+        <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account4.admin">Administrator</label>
+      </fieldset>
+
+    </fieldset>
+
+
     <!-- Software -->
     <fieldset v-if="setupoptions.installsoftware" name="software" class="input-section software">
       <legend class="section-label" for="software">Software</legend>
@@ -152,22 +200,22 @@
     <!-- Email -->
     <fieldset v-if="setupoptions.email" name="email" class="input-section email">
       <legend for="email" class="section-label">Email Accounts</legend>
-      
+
       <label><input type="checkbox" v-model="email.newemail">Create a new email account</label>
       <label><input type="checkbox" v-model="email.existingemail">Sign in to an existing email account</label>
-      
+
       <fieldset v-if="email.newemail" name="newemail">
         <legend for="newemail">New Email Account</legend>
         <label class="email-new-address"><input type="text" v-model="email.new.account1.address" placeholder="yourname" class="email-new-address-input"><span class="emaildomain outlook">@outlook.com</span></label>
         <input type="text" v-model="email.new.account1.password" placeholder="password" class="email-new-password">
       </fieldset>
-      
+
       <fieldset v-if="email.existingemail" name="existingemail">
         <legend for="existing">Existing Email Account</legend>
         <input type="text" v-model="email.existing.account1.address" placeholder="Email Address" class="email-existing-address">
         <input type="text" v-model="email.existing.account1.password" placeholder="password" class="email-existing-password">
       </fieldset>
-      
+
     </fieldset>
 
 
