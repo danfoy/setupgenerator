@@ -45,7 +45,7 @@
 
 
     <!-- Setup Options -->
-    <tr v-if="setupinfo.exdemo || setupoptions.recoverymedia || setupoptions.datatransfer || setupoptions.existingemail || setupoptions.installsoftware || setupoptions.runupdates">
+    <tr v-if="setupinfo.exdemo || setupinfo.presetup || setupinfo.service == 'Walk Out Working' || setupoptions.recoverymedia || setupoptions.datatransfer || setupoptions.existingemail || setupoptions.installsoftware || setupoptions.runupdates">
       <td>
         <table class="output-section setupoptions">
           <tr class="output-section-header-row">

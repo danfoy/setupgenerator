@@ -298,19 +298,19 @@ body {
     width: 41.5%; }
   .input .customerinfo .customerinfo-telephone,
   .input .customerinfo .customerinfo-alttelephone {
-    width: 49%; }
+    width: 49.5%; }
   .input .setupinfo label {
     display: inline-block; }
   .input .setupoptions ul,
   .input .software ul {
     position: relative;
     list-style-type: none;
-    padding: 0; }
+    padding: 0 0 0 12%;
+    text-align: left; }
   .input .setupoptions li,
   .input .software li {
     display: inline-block;
-    width: 30%;
-    text-align: left; }
+    width: 32%; }
   .input .setupoptions label,
   .input .software label {
     display: inline-block;
@@ -358,15 +358,10 @@ body {
     top: 0.55em; }
   .input .datatransfer .transferuser,
   .input .datatransfer .transferpassword {
-    width: 46.7%; }
-  .input .datatransfer .transferuser {
-    margin-left: 2.5%; }
-  .input .datatransfer .transferpassword {
-    margin-left: 1%; }
+    width: 47.2%; }
   .input .datatransfer .transfermedia,
   .input .datatransfer .transfersource {
-    width: 95%;
-    margin-left: 2.5%; }
+    width: 95%; }
 
 .output {
   text-align: left; }
@@ -492,7 +487,7 @@ body {
       <input type="text" placeholder="Colleague Name" v-model="basicinfo.colleague" class="colleague">
       <input type="text" placeholder="Product SKU" v-model="basicinfo.sku" class="productsku">
 
-      <fieldset name="customerinfo" class="customerinfo">
+      <fieldset v-if="basicinfo.colleague && basicinfo.sku" name="customerinfo" class="customerinfo">
         <legend for="customerinfo" v-bind:class="{complete: customerInfoComplete}">Customer Information</legend>
         <input type="text" placeholder="title" v-model="customerinfo.title" class="customerinfo-title">
         <input type="text" placeholder="First Name" v-model="customerinfo.firstname" class="customerinfo-firstname">
@@ -505,7 +500,7 @@ body {
 
 
     <!-- Setup Info -->
-    <fieldset name="setupinfo" class="input-section setupinfo">
+    <fieldset v-if="customerinfo.title && customerinfo.firstname && customerinfo.surname && customerinfo.telephone" name="setupinfo" class="input-section setupinfo">
       <legend for="setupinfo" class="section-label">Setup Information</legend>
 
       <label><input type="checkbox" v-model="setupinfo.presetup">Unit is pre-setup</label>
@@ -521,7 +516,7 @@ body {
 
       <fieldset v-if="basicinfo.platform" name="service" class="service">
         <legend for="service">Service</legend>
-        <label v-if="basicinfo.platform=='Windows'"><input type="radio" name="service" value="Walk Out Working" v-model="setupinfo.service">Walk Out Working</label>
+        <label v-if="basicinfo.platform == 'Windows' && setupinfo.presetup == false"><input type="radio" name="service" value="Walk Out Working" v-model="setupinfo.service">Walk Out Working</label>
         <label><input type="radio" name="service" value="Setup and Personalise" v-model="setupinfo.service">Setup and Personalise</label>
         <label><input type="radio" name="service" value="Setup and Showhow" v-model="setupinfo.service">Setup and Showhow</label>
         <label v-if="setupinfo.exdemo"><input type="radio" name="service" value="Factory Reset" v-model="setupinfo.service">Factory Reset Only</label>
@@ -531,11 +526,11 @@ body {
 
 
     <!-- Setup Options -->
-    <fieldset v-if="basicinfo.platform && setupinfo.service" name="setupoptions" class="input-section setupoptions">
+    <fieldset v-if="basicinfo.platform && setupinfo.service && setupinfo.service != 'Walk Out Working'" name="setupoptions" class="input-section setupoptions">
       <legend for="setupoptions" class="section-label">Options</legend>
       <ul>
-        <li><label><input type="checkbox" v-model="setupoptions.recoverymedia">Create Recovery Media</label></li>
-        <li><label><input type="checkbox" v-model="setupoptions.customusers">Customise User Accounts</label></li>
+        <li v-if="basicinfo.platform == 'Windows' && setupinfo.presetup == false"><label><input type="checkbox" v-model="setupoptions.recoverymedia">Create Recovery Media</label></li>
+        <li v-if="basicinfo.platform == 'Windows' || basicinfo.platform == 'Mac'"><label><input type="checkbox" v-model="setupoptions.customusers">Customise User Accounts</label></li>
         <li><label><input type="checkbox" v-model="setupoptions.email">Set Up Email Accounts</label></li>
         <li><label><input type="checkbox" v-model="setupoptions.datatransfer">Data Transfer</label></li>
         <li><label><input type="checkbox" v-model="setupoptions.installsoftware">Install software</label></li>
@@ -635,7 +630,7 @@ body {
         <input type="text" v-if="useraccounts.account1.password" v-model="useraccounts.account1.hint" placeholder="Password Hint" class="accounthint">
         <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account1.admin" disabled>Administrator</label>
       </fieldset>
-      
+
       <fieldset v-if="useraccounts.count >= 2" name="account2" class="useraccount">
         <legend for="account2">User Account 2</legend>
         <input type="text" v-model="useraccounts.account2.username" placeholder="Account Name" class="accountname">
@@ -643,7 +638,7 @@ body {
         <input type="text" v-if="useraccounts.account2.password" v-model="useraccounts.account2.hint" placeholder="Password Hint" class="accounthint">
         <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account2.admin">Administrator</label>
       </fieldset>
-      
+
       <fieldset v-if="useraccounts.count >= 3" name="account3" class="useraccount">
         <legend for="account3">User Account 3</legend>
         <input type="text" v-model="useraccounts.account3.username" placeholder="Account Name" class="accountname">
@@ -651,7 +646,7 @@ body {
         <input type="text" v-if="useraccounts.account3.password" v-model="useraccounts.account3.hint" placeholder="Password Hint" class="accounthint">
         <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account3.admin">Administrator</label>
       </fieldset>
-      
+
       <fieldset v-if="useraccounts.count >= 4" name="account4" class="useraccount">
         <legend for="account4">User Account 4</legend>
         <input type="text" v-model="useraccounts.account4.username" placeholder="Account Name" class="accountname">
@@ -671,11 +666,11 @@ body {
         <li><label><input type="checkbox" v-model="software" value="Office">Office</label></li>
         <li><label><input type="checkbox" v-model="software" value="McAfee">McAfee</label></li>
         <li><label><input type="checkbox" v-model="software" value="Norton">Norton</label></li>
-        <li><label><input type="checkbox" v-model="software" value="iTunes">iTunes</label></li>
-        <li><label><input type="checkbox" v-model="software" value="Adobe Reader">Adobe Reader</label></li>
-        <li><label><input type="checkbox" v-model="software" value="CinemaNow">CinemaNow</label></li>
-        <li><label><input type="checkbox" v-model="software" value="World of Warcraft">World of Warcraft</label></li>
-        <li><label><input type="checkbox" v-model="software" value="Links Bundle">Links Bundle</label></li>
+        <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="iTunes">iTunes</label></li>
+        <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="Adobe Reader">Adobe Reader</label></li>
+        <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="CinemaNow">CinemaNow</label></li>
+        <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="World of Warcraft">World of Warcraft</label></li>
+        <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="Links Bundle">Links Bundle</label></li>
       </ul>
     </fieldset>
 
@@ -724,14 +719,13 @@ body {
     </fieldset>
 
 
-    <!--
-SECTION TEMPLATE
+    <!-- SECTION TEMPLATE
 
     <fieldset name="SECTIONNAME" class="input-section SECTIONNAME">
       <legend for="SECTIONNAME" class="section-label">SECTION TITLE</legend>
       SECTION CONTENT HERE
     </fieldset>
--->
+    -->
 
 
   </form>
@@ -784,7 +778,7 @@ SECTION TEMPLATE
 
 
     <!-- Setup Options -->
-    <tr v-if="setupinfo.exdemo || setupoptions.recoverymedia || setupoptions.datatransfer || setupoptions.existingemail || setupoptions.installsoftware || setupoptions.runupdates">
+    <tr v-if="setupinfo.exdemo || setupinfo.presetup || setupinfo.service == 'Walk Out Working' || setupoptions.recoverymedia || setupoptions.datatransfer || setupoptions.existingemail || setupoptions.installsoftware || setupoptions.runupdates">
       <td>
         <table class="output-section setupoptions">
           <tr class="output-section-header-row">
@@ -11264,7 +11258,9 @@ var vm = new Vue({
   data: data,
   computed: {
     customerInfoComplete: function () {
-      if (this.customerinfo.title && this.customerinfo.firstname && this.customerinfo.surname && this.customerinfo.address && this.customerinfo.telephone) {
+      if (
+        this.customerinfo.title && this.customerinfo.firstname && this.customerinfo.surname && this.customerinfo.telephone
+      ) { 
         return true;
       } else {
         return false;

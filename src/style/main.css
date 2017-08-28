@@ -288,19 +288,19 @@ body {
     width: 41.5%; }
   .input .customerinfo .customerinfo-telephone,
   .input .customerinfo .customerinfo-alttelephone {
-    width: 49%; }
+    width: 49.5%; }
   .input .setupinfo label {
     display: inline-block; }
   .input .setupoptions ul,
   .input .software ul {
     position: relative;
     list-style-type: none;
-    padding: 0; }
+    padding: 0 0 0 12%;
+    text-align: left; }
   .input .setupoptions li,
   .input .software li {
     display: inline-block;
-    width: 30%;
-    text-align: left; }
+    width: 32%; }
   .input .setupoptions label,
   .input .software label {
     display: inline-block;
@@ -348,15 +348,10 @@ body {
     top: 0.55em; }
   .input .datatransfer .transferuser,
   .input .datatransfer .transferpassword {
-    width: 46.7%; }
-  .input .datatransfer .transferuser {
-    margin-left: 2.5%; }
-  .input .datatransfer .transferpassword {
-    margin-left: 1%; }
+    width: 47.2%; }
   .input .datatransfer .transfermedia,
   .input .datatransfer .transfersource {
-    width: 95%;
-    margin-left: 2.5%; }
+    width: 95%; }
 
 .output {
   text-align: left; }

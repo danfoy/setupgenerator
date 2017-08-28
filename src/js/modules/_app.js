@@ -157,7 +157,9 @@ var vm = new Vue({
   data: data,
   computed: {
     customerInfoComplete: function () {
-      if (this.customerinfo.title && this.customerinfo.firstname && this.customerinfo.surname && this.customerinfo.address && this.customerinfo.telephone) {
+      if (
+        this.customerinfo.title && this.customerinfo.firstname && this.customerinfo.surname && this.customerinfo.telephone
+      ) { 
         return true;
       } else {
         return false;
