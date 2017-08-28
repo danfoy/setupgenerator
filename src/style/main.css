@@ -191,7 +191,7 @@ body {
   .input input,
   .input select,
   .input textarea,
-  .input checkbox {
+  .input button {
     border: 1px solid black;
     border-bottom-width: 2px;
     border-radius: 0.25em;
@@ -199,12 +199,16 @@ body {
     margin-bottom: 1%; }
   .input input,
   .input select,
-  .input textarea {
+  .input textarea,
+  .input button {
     padding: 0.5em; }
   .input input[type='checkbox'],
   .input input[type='radio'] {
     margin-right: 0.5em;
     display: inline-block; }
+  .input button {
+    background: #fff;
+    cursor: pointer; }
   .input textarea {
     width: 95%;
     margin-left: 2.5%;
@@ -305,6 +309,18 @@ body {
   .input .software label {
     display: inline-block;
     padding: 0.5em; }
+  .input .setupoptions .customsoftware,
+  .input .software .customsoftware {
+    margin-top: 1.5em; }
+    .input .setupoptions .customsoftware ul,
+    .input .software .customsoftware ul {
+      margin-bottom: 2.5em; }
+    .input .setupoptions .customsoftware input[type='text'],
+    .input .software .customsoftware input[type='text'] {
+      width: 40%; }
+    .input .setupoptions .customsoftware button,
+    .input .software .customsoftware button {
+      width: 29%; }
   .input .appleid .appleid-existingemail,
   .input .appleid .appleid-existingpassword {
     width: 45%; }

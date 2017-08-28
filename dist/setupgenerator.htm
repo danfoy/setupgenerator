@@ -201,7 +201,7 @@ body {
   .input input,
   .input select,
   .input textarea,
-  .input checkbox {
+  .input button {
     border: 1px solid black;
     border-bottom-width: 2px;
     border-radius: 0.25em;
@@ -209,12 +209,16 @@ body {
     margin-bottom: 1%; }
   .input input,
   .input select,
-  .input textarea {
+  .input textarea,
+  .input button {
     padding: 0.5em; }
   .input input[type='checkbox'],
   .input input[type='radio'] {
     margin-right: 0.5em;
     display: inline-block; }
+  .input button {
+    background: #fff;
+    cursor: pointer; }
   .input textarea {
     width: 95%;
     margin-left: 2.5%;
@@ -315,6 +319,18 @@ body {
   .input .software label {
     display: inline-block;
     padding: 0.5em; }
+  .input .setupoptions .customsoftware,
+  .input .software .customsoftware {
+    margin-top: 1.5em; }
+    .input .setupoptions .customsoftware ul,
+    .input .software .customsoftware ul {
+      margin-bottom: 2.5em; }
+    .input .setupoptions .customsoftware input[type='text'],
+    .input .software .customsoftware input[type='text'] {
+      width: 40%; }
+    .input .setupoptions .customsoftware button,
+    .input .software .customsoftware button {
+      width: 29%; }
   .input .appleid .appleid-existingemail,
   .input .appleid .appleid-existingpassword {
     width: 45%; }
@@ -672,6 +688,15 @@ body {
         <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="World of Warcraft">World of Warcraft</label></li>
         <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="Links Bundle">Links Bundle</label></li>
       </ul>
+      <fieldset name="customsoftware" class="customsoftware">
+        <legend for="customsoftware">Custom Software</legend>
+        <ul v-if="customsoftware[0]">
+          <li v-for="software in customsoftware"><label><input type="checkbox" checked disabled>{{ software }}</label></li>
+        </ul>
+        <input type="text" v-model="temp.customsoftware" placeholder="Custom Software">
+        <button type="button" v-on:click="addCustomSoftware">Add to list</button>
+        <button type="button" v-on:click="resetCustomSoftware">Reset</button>
+      </fieldset>
     </fieldset>
 
 
@@ -928,7 +953,7 @@ body {
 
 
     <!-- Software -->
-    <tr v-if="software[0]">
+    <tr v-if="software[0] || customsoftware[0]">
       <td>
         <table class="output-section">
           <tr class="output-section-header-row">
@@ -936,7 +961,8 @@ body {
               <h2 class="output-section-header">Software</h2>
             </td>
           </tr>
-          <tr v-for="line in software" :line="line" key="name" is="lineitem"></tr>
+          <tr v-if="software[0]" v-for="line in software" :line="line" key="name" is="lineitem"></tr>
+          <tr v-if="customsoftware[0]" v-for="line in customsoftware" :line="line" key="name" is="lineitem"></tr>
         </table>
       </td>
     </tr>
@@ -11147,12 +11173,12 @@ var data = {
     service: ''
   },
   setupoptions: {
-    recoverymedia: false,
+    recoverymedia: true,
     customusers: false,
     datatransfer: false,
     email: false,
     installsoftware: false,
-    runupdates: false
+    runupdates: true
   },
   appleid: {
     type: '',
@@ -11211,6 +11237,7 @@ var data = {
     notes: ''
   },
   software: [],
+  customsoftware: [],
   email: {
     newemail: false,
     existingemail: false,
@@ -11227,7 +11254,10 @@ var data = {
       }
     }
   },
-  notes: ''
+  notes: '',
+  temp: {
+    customsoftware: ''
+  }
 };
 
 
@@ -11270,6 +11300,16 @@ var vm = new Vue({
       } else {
         return false;
       }
+    }
+  },
+  methods: {
+    addCustomSoftware: function () {
+      this.customsoftware.push(this.temp.customsoftware);
+      this.temp.customsoftware = '';
+    },
+    resetCustomSoftware: function () {
+      this.customsoftware = [];
+      this.temp.customsoftware = '';
     }
   }
 

@@ -13,7 +13,7 @@
     input,
     select,
     textarea,
-    checkbox {
+    button {
       border: 1px solid black;
       border-bottom-width: 2px;
       border-radius: 0.25em;
@@ -22,13 +22,18 @@
     }
     input,
     select,
-    textarea {
+    textarea,
+    button {
       padding: 0.5em;
     }
     input[type='checkbox'],
     input[type='radio'] {
       margin-right: 0.5em;
       display: inline-block;
+    }
+    button {
+      background: #fff;
+      cursor: pointer;
     }
     textarea {
       width: 95%;
@@ -156,6 +161,18 @@
         display: inline-block;
         padding: 0.5em;
       }
+      .customsoftware {
+        margin-top: 1.5em;
+        ul {
+          margin-bottom: 2.5em;
+        }
+        input[type='text'] {
+          width: 40%;
+        }
+        button {
+          width: 29%;
+        }
+      }
     }
     .appleid {
       .appleid-existingemail,
@@ -179,7 +196,7 @@
       .accountpassword {
         width: 40%;
       }
-      .accounthint{
+      .accounthint {
         display: block;
         width: 80%;
         margin-left: auto;
@@ -188,7 +205,7 @@
       .accountadmin {
         display: block;
         margin-top: 2.5%;
-      } 
+      }
     }
     .email {
       .email-new-address,
@@ -217,7 +234,6 @@
       }
     }
     .datatransfer {
-      
       .transferuser,
       .transferpassword {
         width: 47.2%;

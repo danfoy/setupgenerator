@@ -194,6 +194,15 @@
         <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="World of Warcraft">World of Warcraft</label></li>
         <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="Links Bundle">Links Bundle</label></li>
       </ul>
+      <fieldset name="customsoftware" class="customsoftware">
+        <legend for="customsoftware">Custom Software</legend>
+        <ul v-if="customsoftware[0]">
+          <li v-for="software in customsoftware"><label><input type="checkbox" checked disabled>{{ software }}</label></li>
+        </ul>
+        <input type="text" v-model="temp.customsoftware" placeholder="Custom Software">
+        <button type="button" v-on:click="addCustomSoftware">Add to list</button>
+        <button type="button" v-on:click="resetCustomSoftware">Reset</button>
+      </fieldset>
     </fieldset>
 
 

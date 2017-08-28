@@ -41,12 +41,12 @@ var data = {
     service: ''
   },
   setupoptions: {
-    recoverymedia: false,
+    recoverymedia: true,
     customusers: false,
     datatransfer: false,
     email: false,
     installsoftware: false,
-    runupdates: false
+    runupdates: true
   },
   appleid: {
     type: '',
@@ -105,6 +105,7 @@ var data = {
     notes: ''
   },
   software: [],
+  customsoftware: [],
   email: {
     newemail: false,
     existingemail: false,
@@ -121,7 +122,10 @@ var data = {
       }
     }
   },
-  notes: ''
+  notes: '',
+  temp: {
+    customsoftware: ''
+  }
 };
 
 
@@ -164,6 +168,16 @@ var vm = new Vue({
       } else {
         return false;
       }
+    }
+  },
+  methods: {
+    addCustomSoftware: function () {
+      this.customsoftware.push(this.temp.customsoftware);
+      this.temp.customsoftware = '';
+    },
+    resetCustomSoftware: function () {
+      this.customsoftware = [];
+      this.temp.customsoftware = '';
     }
   }
 

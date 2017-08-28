@@ -195,7 +195,7 @@
 
 
     <!-- Software -->
-    <tr v-if="software[0]">
+    <tr v-if="software[0] || customsoftware[0]">
       <td>
         <table class="output-section">
           <tr class="output-section-header-row">
@@ -203,7 +203,8 @@
               <h2 class="output-section-header">Software</h2>
             </td>
           </tr>
-          <tr v-for="line in software" :line="line" key="name" is="lineitem"></tr>
+          <tr v-if="software[0]" v-for="line in software" :line="line" key="name" is="lineitem"></tr>
+          <tr v-if="customsoftware[0]" v-for="line in customsoftware" :line="line" key="name" is="lineitem"></tr>
         </table>
       </td>
     </tr>
