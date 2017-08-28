@@ -393,6 +393,11 @@ body {
   border: 0;
   padding-bottom: 0;
   font-weight: bold; }
+.output .output-section-subheader-row td {
+  border: 0;
+  padding-bottom: 0;
+  font-weight: bold;
+  font-size: 80%; }
 .output .header-title {
   font-size: 1.6em;
   font-weight: bold;

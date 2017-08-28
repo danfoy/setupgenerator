@@ -403,6 +403,11 @@ body {
   border: 0;
   padding-bottom: 0;
   font-weight: bold; }
+.output .output-section-subheader-row td {
+  border: 0;
+  padding-bottom: 0;
+  font-weight: bold;
+  font-size: 80%; }
 .output .header-title {
   font-size: 1.6em;
   font-weight: bold;
@@ -738,7 +743,7 @@ body {
 
 
     <!-- Notes -->
-    <fieldset name="notes" class="input-section notes">
+    <fieldset v-if="basicinfo.colleague && basicinfo.sku" name="notes" class="input-section notes">
       <legend class="section-label" for="notes">Notes</legend>
       <textarea placeholder="Notes" v-model="notes"></textarea>
     </fieldset>
@@ -1000,7 +1005,7 @@ body {
             </td>
           </tr>
 
-          <tr class="output-section-header-row">
+          <tr class="output-section-subheader-row">
             <td class="date-column">Date</td>
             <td class="time-column">Time</td>
             <td class="notes-column">Notes</td>
