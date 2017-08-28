@@ -375,7 +375,8 @@ body {
   color: #000; }
 .output .output-section-header-row td {
   border: 0;
-  padding-bottom: 0; }
+  padding-bottom: 0;
+  font-weight: bold; }
 .output .header-title {
   font-size: 1.6em;
   font-weight: bold;
@@ -388,13 +389,11 @@ body {
   color: #555; }
 .output .inline-title {
   font-weight: bold; }
-.output .output-section-contact {
-  color: #999; }
-  .output .output-section-contact .date-column,
-  .output .output-section-contact .time-column {
-    width: 12.5%; }
-  .output .output-section-contact .notes-column {
-    width: 75%; }
+.output .output-section-contact .date-column,
+.output .output-section-contact .time-column {
+  width: 12.5%; }
+.output .output-section-contact .notes-column {
+  width: 75%; }
 .output .output-section-signature td {
   width: 25%;
   height: 2em; }
@@ -423,10 +422,11 @@ body {
   top: 0;
   right: 0;
   line-height: 2.2em;
-  text-align: center;
-  color: #eee; }
-.output .prechecked .tickbox {
-  color: #000; }
+  text-align: center; }
+.output .tickbox .tick {
+  display: none; }
+.output .prechecked .tickbox .tick {
+  display: inline-block; }
 .output .emaildomain {
   float: right; }
 .output .appleid .appleid-id {

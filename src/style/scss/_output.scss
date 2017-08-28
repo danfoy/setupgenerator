@@ -28,6 +28,7 @@ $output-border: 0.05em solid black;
   .output-section-header-row td {
     border: 0;
     padding-bottom: 0;
+    font-weight: bold;
   }
   .header-title {
     font-size: 1.6em;
@@ -46,7 +47,6 @@ $output-border: 0.05em solid black;
     font-weight: bold;
   }
   .output-section-contact {
-    color: #999;
     .date-column,
     .time-column {
       width: 12.5%;
@@ -93,10 +93,12 @@ $output-border: 0.05em solid black;
     right: 0;
     line-height: 2.2em;
     text-align: center;
-    color: #eee;
   }
-  .prechecked .tickbox {
-    color: #000;
+  .tickbox .tick {
+    display: none;
+  }
+  .prechecked .tickbox .tick {
+    display: inline-block;
   }
   .emaildomain {
     float: right;
