@@ -335,6 +335,9 @@ body {
   .input .appleid .appleid-newpassword,
   .input .appleid .appleid-dob {
     width: 28%; }
+  .input .appleid .appleid-newemail {
+    padding-left: 0;
+    padding-right: 1%; }
   .input .appleid .recoveryquestion-question {
     width: 65%; }
   .input .appleid .recoveryquestion-answer {
@@ -486,11 +489,11 @@ body {
 .output .emaildomain {
   float: right; }
 .output .appleid .appleid-id {
-  width: 50%; }
+  width: 35%; }
 .output .appleid .appleid-password {
-  width: 30%; }
+  width: 35%; }
 .output .appleid .appleid-dob {
-  width: 20%; }
+  width: 30%; }
 .output .googleaccount .googleaccount-address,
 .output .googleaccount .googleaccount-password {
   width: 50%; }

@@ -75,19 +75,18 @@
           </tr>
 
           <tr v-if="appleid.type=='existing'">
-            <td><span class="inline-title">Apple ID:</span> {{ appleid.existingemail }}<span v-if="appleid.existingpassword">; Password:</span> {{ appleid.existingpassword }}</td>
+            <td>
+              <strong>Apple ID:</strong> {{ appleid.existingemail }}
+            </td>
+            <td>
+              <strong>Password:</strong> {{ appleid.existingpassword }}
+            </td>
           </tr>
-          <tr v-if="appleid.type=='existing'" line="Logged in with Apple ID" is="lineitem"></tr>
 
           <tr v-if="appleid.type=='new'">
-            <td class="appleid-id"><span class="inline-title">ID:</span> {{ appleid.newemail }} <span class="emaildomain">@icloud.com</span></td>
+            <td class="appleid-id"><strong>ID:</strong> {{ appleid.newemail }}<span v-if="appleid.newemail">@icloud.com</span></td>
             <td class="appleid-password"><span class="inline-title">Password:</span> {{ appleid.newpassword }}</td>
             <td class="appleid-dob"><span class="inline-title">DOB:</span> {{ appleid.dob }}</td>
-          </tr>
-
-          <tr v-if="appleid.type=='new'">
-            <td><span class="inline-title">Actual:</span> <span class="emaildomain">@icloud.com</span></td>
-            <td colspan="2"><span class="inline-title">Actual:</span></td>
           </tr>
 
           <tr v-if="appleid.recoveryquestion1.question && appleid.recoveryquestion1.answer" class="recoveryquestionpair">
@@ -101,6 +100,19 @@
           <tr v-if="appleid.recoveryquestion3.question && appleid.recoveryquestion3.answer" class="recoveryquestionpair">
             <td class="recoveryquestion-question">{{ appleid.recoveryquestion3.question }}</td>
             <td class="recoveryquestion-answer" colspan="2">{{ appleid.recoveryquestion3.answer }}</td>
+          </tr>
+
+          <tr v-if="appleid.type == 'new'">
+            <td colspan="3">
+              <strong>Corrections:</strong>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+          <tr v-if="appleid.type == 'existing'">
+            <td colspan="2">
+              <strong>Corrections:</strong>
+              <div class="tickbox"></div>
+            </td>
           </tr>
 
         </table>
