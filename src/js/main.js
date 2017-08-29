@@ -10056,11 +10056,6 @@ return Vue$3;
 
 })));
 
-/* global console, Vue */
-
-
-// Gets the creation date in UK format
-
 var creationDate = function () {
   var machineDate = new Date();
   var dateOptions = {
@@ -10076,13 +10071,6 @@ var creationDate = function () {
   return localDate;
 };
 
-// The printing function
-// Using execCommand() to get around an IE11 bug with print stylesheets
-
-
-
-
-// THE DATA OBJECT
 var data = {
   version: '0.1.0',
   meta: {
@@ -10194,9 +10182,39 @@ var data = {
     customsoftware: ''
   }
 };
+/*global document */
 
+/* 
 
-// Components
+printSheet uses document.execCommand() to resolve a bug where IE11 disregards '@media print' media queries.
+
+*/
+
+var methods = {
+  addCustomSoftware: function () {
+      this.customsoftware.push(this.temp.customsoftware);
+      this.temp.customsoftware = '';
+    },
+    resetCustomSoftware: function () {
+      this.customsoftware = [];
+      this.temp.customsoftware = '';
+    },
+    printSheet: function () {
+      document.execCommand('print', false, null);
+    }
+};
+var computed = {
+  customerInfoComplete: function () {
+      if (
+        this.customerinfo.title && this.customerinfo.firstname && this.customerinfo.surname && this.customerinfo.telephone
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+};
+/*global Vue */
 
 Vue.component('lineitem', {
   template: '<tr><td class="output-line">{{ line }}<div class="tickbox"><span class="tick">&#10004;</span></div></td></tr>',
@@ -10219,36 +10237,11 @@ Vue.component('checkboxItem', {
   }
 });
 */
+/*global Vue, data, computed, methods */
 
-
-// Root Vue.js instance
 var vm = new Vue({
-
   el: '#app',
   data: data,
-  computed: {
-    customerInfoComplete: function () {
-      if (
-        this.customerinfo.title && this.customerinfo.firstname && this.customerinfo.surname && this.customerinfo.telephone
-      ) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-  },
-  methods: {
-    addCustomSoftware: function () {
-      this.customsoftware.push(this.temp.customsoftware);
-      this.temp.customsoftware = '';
-    },
-    resetCustomSoftware: function () {
-      this.customsoftware = [];
-      this.temp.customsoftware = '';
-    },
-    printSheet: function () {
-      document.execCommand('print', false, null);
-    }
-  }
-
+  computed: computed,
+  methods: methods
 });

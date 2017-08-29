@@ -24,6 +24,10 @@ module.exports = function(grunt) {
       scripts: {
         src: [
           'src/js/modules/_vue.js',
+          'src/js/modules/_data.js',
+          'src/js/modules/_methods.js',
+          'src/js/modules/_computed.js',
+          'src/js/modules/_components.js',
           'src/js/modules/_app.js'],
         dest: 'src/js/main.js'
       },
