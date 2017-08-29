@@ -773,16 +773,16 @@ body {
     <fieldset v-if="setupoptions.email" name="email" class="input-section email">
       <legend for="email" class="section-label">Email Accounts</legend>
 
-      <label><input type="checkbox" v-model="email.newemail">Create a new email account</label>
-      <label><input type="checkbox" v-model="email.existingemail">Sign in to an existing email account</label>
+      <label><input type="radio" name="emailtype" v-model="email.type" value="new">Create a new email account</label>
+      <label><input type="radio" name="emailtype" v-model="email.type" value="existing">Sign in to an existing email account</label>
 
-      <fieldset v-if="email.newemail" name="newemail">
+      <fieldset v-if="email.type == 'new'" name="newemail">
         <legend for="newemail">New Email Account</legend>
         <label class="email-new-address"><input type="text" v-model="email.new.account1.address" placeholder="yourname" class="email-new-address-input"><span class="emaildomain outlook">@outlook.com</span></label>
         <input type="text" v-model="email.new.account1.password" placeholder="password" class="email-new-password">
       </fieldset>
 
-      <fieldset v-if="email.existingemail" name="existingemail">
+      <fieldset v-if="email.type == 'existing'" name="existingemail">
         <legend for="existing">Existing Email Account</legend>
         <input type="text" v-model="email.existing.account1.address" placeholder="Email Address" class="email-existing-address">
         <input type="text" v-model="email.existing.account1.password" placeholder="password" class="email-existing-password">
@@ -11259,7 +11259,7 @@ var creationDate = function () {
 };
 
 var data = {
-  version: '0.9.0',
+  version: '0.9.1',
   meta: {
     printpreview: false
   },
@@ -11354,8 +11354,7 @@ var data = {
   software: [],
   customsoftware: [],
   email: {
-    newemail: false,
-    existingemail: false,
+    type: '',
     existing: {
       account1: {
         address: '',

@@ -10072,7 +10072,7 @@ var creationDate = function () {
 };
 
 var data = {
-  version: '0.9.0',
+  version: '0.9.1',
   meta: {
     printpreview: false
   },
@@ -10167,8 +10167,7 @@ var data = {
   software: [],
   customsoftware: [],
   email: {
-    newemail: false,
-    existingemail: false,
+    type: '',
     existing: {
       account1: {
         address: '',
