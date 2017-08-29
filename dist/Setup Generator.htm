@@ -349,6 +349,9 @@ body {
     width: 65%; }
   .input .appleid .recoveryquestion-answer {
     width: 30%; }
+  .input .googleaccount .googleaccount-address,
+  .input .googleaccount .googleaccount-password {
+    width: 40%; }
   .input .useraccounts .accountname,
   .input .useraccounts .accountpassword {
     width: 40%; }
@@ -498,6 +501,9 @@ body {
   width: 30%; }
 .output .appleid .appleid-dob {
   width: 20%; }
+.output .googleaccount .googleaccount-address,
+.output .googleaccount .googleaccount-password {
+  width: 50%; }
 
 .printpreview .output {
   display: block; }
@@ -667,6 +673,23 @@ body {
           <input type="text" v-model="appleid.recoveryquestion3.answer" class="recoveryquestion-answer" placeholder="Answer">
         </div>
       </fieldset>
+    </fieldset>
+    
+    
+    
+    <!-- Google Account -->
+    <fieldset v-if="basicinfo.platform == 'Android'" name="googleaccount" class="input-section googleaccount">
+      <legend for="googleaccount" class="section-label">Google Account</legend>
+
+      <label><input type="radio" name="googleaccounttype" v-model="googleaccount.type" value="new">Create a new Google Account</label>
+      <label><input type="radio" name="googleaccounttype" v-model="googleaccount.type" value="existing">Use an existing Google Account</label>
+
+      <fieldset v-if="googleaccount.type" name="googleaccountdetails">
+        <legend for="googleaccountdetails"><span v-if="googleaccount.type == 'existing'">Existing </span><span v-if="googleaccount.type == 'new'">New </span>Google Account</legend>
+        <input type="text" v-model="googleaccount.address" placeholder="youraccount@gmail.com" class="googleaccount-address">
+        <input type="text" v-model="googleaccount.password" placeholder="Password" class="googleaccount-password">
+      </fieldset>
+
     </fieldset>
 
 
@@ -908,6 +931,34 @@ body {
             <td class="recoveryquestion-answer" colspan="2">{{ appleid.recoveryquestion3.answer }}</td>
           </tr>
 
+        </table>
+      </td>
+    </tr>
+
+
+    <!-- Google Account -->
+    <tr>
+      <td>
+        <table class="output-section googleaccount">
+          <tr class="output-section-header-row">
+            <td>
+              <h2 class="output-section-header"><span v-if="googleaccount.type == 'existing'">Existing </span><span v-if="googleaccount.type == 'new'">New </span>Google Account</h2>
+            </td>
+          </tr>
+          <tr>
+            <td class="googleaccount-address">
+              <strong>Account:</strong> {{ googleaccount.address }}
+            </td>
+            <td class="googleaccount-password">
+              <strong>Password:</strong> {{ googleaccount.password }}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <strong>Corrections:</strong>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
         </table>
       </td>
     </tr>
@@ -11243,6 +11294,11 @@ var data = {
       question: '',
       answer: ''
     }
+  },
+  googleaccount: {
+    type: '',
+    address: '',
+    password: ''
   },
   useraccounts: {
     count: "1",

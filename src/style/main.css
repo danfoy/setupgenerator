@@ -339,6 +339,9 @@ body {
     width: 65%; }
   .input .appleid .recoveryquestion-answer {
     width: 30%; }
+  .input .googleaccount .googleaccount-address,
+  .input .googleaccount .googleaccount-password {
+    width: 40%; }
   .input .useraccounts .accountname,
   .input .useraccounts .accountpassword {
     width: 40%; }
@@ -488,6 +491,9 @@ body {
   width: 30%; }
 .output .appleid .appleid-dob {
   width: 20%; }
+.output .googleaccount .googleaccount-address,
+.output .googleaccount .googleaccount-password {
+  width: 50%; }
 
 .printpreview .output {
   display: block; }

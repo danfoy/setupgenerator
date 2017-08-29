@@ -65,6 +65,11 @@ var data = {
       answer: ''
     }
   },
+  googleaccount: {
+    type: '',
+    address: '',
+    password: ''
+  },
   useraccounts: {
     count: "1",
     account1: {

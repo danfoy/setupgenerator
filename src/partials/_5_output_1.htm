@@ -108,6 +108,34 @@
     </tr>
 
 
+    <!-- Google Account -->
+    <tr>
+      <td>
+        <table class="output-section googleaccount">
+          <tr class="output-section-header-row">
+            <td>
+              <h2 class="output-section-header"><span v-if="googleaccount.type == 'existing'">Existing </span><span v-if="googleaccount.type == 'new'">New </span>Google Account</h2>
+            </td>
+          </tr>
+          <tr>
+            <td class="googleaccount-address">
+              <strong>Account:</strong> {{ googleaccount.address }}
+            </td>
+            <td class="googleaccount-password">
+              <strong>Password:</strong> {{ googleaccount.password }}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <strong>Corrections:</strong>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
     <!-- User Accounts -->
     <tr v-if="setupoptions.customusers && useraccounts.account1.username">
       <td>
