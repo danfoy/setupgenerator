@@ -10072,7 +10072,7 @@ var creationDate = function () {
 };
 
 var data = {
-  version: '0.9.1',
+  version: '0.9.2',
   meta: {
     printpreview: false
   },

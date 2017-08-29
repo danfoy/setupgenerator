@@ -594,7 +594,7 @@ body {
 
 
     <!-- Setup Options -->
-    <fieldset v-if="basicinfo.platform && setupinfo.service && setupinfo.service != 'Walk Out Working'" name="setupoptions" class="input-section setupoptions">
+    <fieldset v-if="basicinfo.platform && setupinfo.service && setupinfo.service != 'Walk Out Working' && setupinfo.service != 'Factory Reset'" name="setupoptions" class="input-section setupoptions">
       <legend for="setupoptions" class="section-label">Options</legend>
       <ul>
         <li v-if="basicinfo.platform == 'Windows' && setupinfo.presetup == false"><label><input type="checkbox" v-model="setupoptions.recoverymedia">Create Recovery Media</label></li>
@@ -11259,7 +11259,7 @@ var creationDate = function () {
 };
 
 var data = {
-  version: '0.9.1',
+  version: '0.9.2',
   meta: {
     printpreview: false
   },
