@@ -11,7 +11,7 @@
 
       <fieldset v-if="basicinfo.colleague && basicinfo.sku" name="customerinfo" class="customerinfo">
         <legend for="customerinfo" v-bind:class="{complete: customerInfoComplete}">Customer Information</legend>
-        <input type="text" placeholder="title" v-model="customerinfo.title" class="customerinfo-title">
+        <input type="text" placeholder="Title" v-model="customerinfo.title" class="customerinfo-title">
         <input type="text" placeholder="First Name" v-model="customerinfo.firstname" class="customerinfo-firstname">
         <input type="text" placeholder="Surname" v-model="customerinfo.surname" class="customerinfo-surname">
         <input type="tel" placeholder="Telephone Number" v-model="customerinfo.telephone" class="customerinfo-telephone">

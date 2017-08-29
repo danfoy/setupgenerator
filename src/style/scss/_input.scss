@@ -52,10 +52,24 @@
       vertical-align: middle;
       color: #aaa;
     }
+     :-ms-input-placeholder {
+      text-transform: uppercase !important;
+      font-size: 0.8em !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.1em !important;
+      vertical-align: middle !important;
+      color: #aaa !important;
+       /* IE11 sadly requires all these !important flags */
+    }
     textarea::placeholder {
       line-height: 6em;
       vertical-align: middle;
       text-align: center;
+    }
+    textarea:-ms-input-placeholder {
+      line-height: 6em !important;
+      vertical-align: middle !important;
+      text-align: center !important;
     }
     select {
       height: 2.3em;
@@ -66,7 +80,7 @@
       text-align: center;
       position: relative;
       padding: 3%;
-      margin: 8em 5%;
+      margin: 4.5em 5%;
       box-sizing: border-box;
     }
     .section-label {
@@ -258,6 +272,7 @@
     }
     .printcontrols {
       text-align: center;
+      margin-top: 6em;
       margin-bottom: 5em;
       .previewbutton,
       .printbutton {

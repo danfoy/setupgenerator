@@ -173,23 +173,23 @@ body {
 @media screen {
   body {
     background: #eee; } }
-.app-title {
-  margin: 1em 2em 0 2em;
-  padding: 0 0 0 0;
-  text-transform: uppercase;
-  display: inline-block;
-  border-bottom: 1px solid #aaa;
-  font-size: 2.7em;
-  cursor: default; }
-
-.app-version {
-  font-size: 0.6em;
-  color: #aaa;
-  margin: 0.5em 0;
-  text-decoration: none; }
-
-.app-version:hover {
-  color: black; }
+.appheader {
+  margin-bottom: 8em; }
+  .appheader .app-title {
+    margin: 1em 2em 0 2em;
+    padding: 0 0 0 0;
+    text-transform: uppercase;
+    display: inline-block;
+    border-bottom: 1px solid #aaa;
+    font-size: 2.7em;
+    cursor: default; }
+  .appheader .app-version {
+    font-size: 0.6em;
+    color: #aaa;
+    margin: 0.5em 0;
+    text-decoration: none; }
+  .appheader .app-version:hover {
+    color: black; }
 
 .input {
   box-sizing: border-box;
@@ -238,17 +238,29 @@ body {
     letter-spacing: 0.1em;
     vertical-align: middle;
     color: #aaa; }
+  .input :-ms-input-placeholder {
+    text-transform: uppercase !important;
+    font-size: 0.8em !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+    vertical-align: middle !important;
+    color: #aaa !important;
+    /* IE11 sadly requires all these !important flags */ }
   .input textarea::placeholder {
     line-height: 6em;
     vertical-align: middle;
     text-align: center; }
+  .input textarea:-ms-input-placeholder {
+    line-height: 6em !important;
+    vertical-align: middle !important;
+    text-align: center !important; }
   .input select {
     height: 2.3em; }
   .input .input-section {
     text-align: center;
     position: relative;
     padding: 3%;
-    margin: 8em 5%;
+    margin: 4.5em 5%;
     box-sizing: border-box; }
   .input .section-label {
     position: absolute;
@@ -393,6 +405,7 @@ body {
     width: 95%; }
   .input .printcontrols {
     text-align: center;
+    margin-top: 6em;
     margin-bottom: 5em; }
     .input .printcontrols .previewbutton,
     .input .printcontrols .printbutton {
@@ -539,7 +552,7 @@ body {
 
 <div id="app" :class="{ 'printpreview': meta.printpreview }">
 
-  <header>
+  <header class="appheader">
     <h1 class="app-title">Setup Generator</h1>
     <div><a href="https://github.com/danfoy/setupgenerator/commits/master" target="_blank" class="app-version">v{{ version }}</a></div>
   </header>
@@ -557,7 +570,7 @@ body {
 
       <fieldset v-if="basicinfo.colleague && basicinfo.sku" name="customerinfo" class="customerinfo">
         <legend for="customerinfo" v-bind:class="{complete: customerInfoComplete}">Customer Information</legend>
-        <input type="text" placeholder="title" v-model="customerinfo.title" class="customerinfo-title">
+        <input type="text" placeholder="Title" v-model="customerinfo.title" class="customerinfo-title">
         <input type="text" placeholder="First Name" v-model="customerinfo.firstname" class="customerinfo-firstname">
         <input type="text" placeholder="Surname" v-model="customerinfo.surname" class="customerinfo-surname">
         <input type="tel" placeholder="Telephone Number" v-model="customerinfo.telephone" class="customerinfo-telephone">
