@@ -1,4 +1,6 @@
-<div id="app" class="printmode">
+<div id="app" :class="{ 'printpreview': meta.printpreview }">
 
-  <h1 class="app-title">Setup Generator</h1>
-  <span class="app-version">v{{ version }}</span>
+  <header>
+    <h1 class="app-title">Setup Generator</h1>
+    <div><a href="https://github.com/danfoy/setupgenerator/commits/master" target="_blank" class="app-version">v{{ version }}</a></div>
+  </header>

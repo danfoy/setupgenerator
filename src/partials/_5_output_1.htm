@@ -204,7 +204,7 @@
             </td>
           </tr>
           <tr v-if="software[0]" v-for="line in software" :line="line" key="name" is="lineitem"></tr>
-          <tr v-if="customsoftware[0]" v-for="line in customsoftware" :line="line" key="name" is="lineitem"></tr>
+          <tr v-if="customsoftware[0]" v-for="line in customsoftware" :line="line" key="name" is="lineitem" class="customline"></tr>
         </table>
       </td>
     </tr>

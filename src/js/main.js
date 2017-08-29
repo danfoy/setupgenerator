@@ -10060,6 +10060,7 @@ return Vue$3;
 
 
 // Gets the creation date in UK format
+
 var creationDate = function () {
   var machineDate = new Date();
   var dateOptions = {
@@ -10075,10 +10076,18 @@ var creationDate = function () {
   return localDate;
 };
 
+// The printing function
+// Using execCommand() to get around an IE11 bug with print stylesheets
+
+
+
 
 // THE DATA OBJECT
 var data = {
   version: '0.1.0',
+  meta: {
+    printpreview: false
+  },
   basicinfo: {
     colleague: '',
     date: creationDate(),
@@ -10099,12 +10108,12 @@ var data = {
     service: ''
   },
   setupoptions: {
-    recoverymedia: true,
+    recoverymedia: false,
     customusers: false,
     datatransfer: false,
     email: false,
     installsoftware: false,
-    runupdates: true
+    runupdates: false
   },
   appleid: {
     type: '',
@@ -10221,7 +10230,7 @@ var vm = new Vue({
     customerInfoComplete: function () {
       if (
         this.customerinfo.title && this.customerinfo.firstname && this.customerinfo.surname && this.customerinfo.telephone
-      ) { 
+      ) {
         return true;
       } else {
         return false;
@@ -10236,6 +10245,9 @@ var vm = new Vue({
     resetCustomSoftware: function () {
       this.customsoftware = [];
       this.temp.customsoftware = '';
+    },
+    printSheet: function () {
+      document.execCommand('print', false, null);
     }
   }
 

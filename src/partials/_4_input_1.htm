@@ -249,6 +249,10 @@
       <textarea placeholder="Notes" v-model="notes"></textarea>
     </fieldset>
 
+    <div class="printcontrols">
+      <button type="button" class="printbutton" @click="printSheet">Print</button><label class="previewbutton"><input type="checkbox" v-model="meta.printpreview"> Worksheet Preview</label>
+    </div>
+
 
     <!-- SECTION TEMPLATE
 

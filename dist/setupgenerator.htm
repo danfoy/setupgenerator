@@ -179,13 +179,17 @@ body {
   text-transform: uppercase;
   display: inline-block;
   border-bottom: 1px solid #aaa;
-  font-size: 2.7em; }
+  font-size: 2.7em;
+  cursor: default; }
 
 .app-version {
   font-size: 0.6em;
   color: #aaa;
-  display: block;
-  margin: 0.5em 0; }
+  margin: 0.5em 0;
+  text-decoration: none; }
+
+.app-version:hover {
+  color: black; }
 
 .input {
   box-sizing: border-box;
@@ -197,7 +201,8 @@ body {
     box-shadow: 0 0 1em 0.2em #ccc; }
   .input label {
     padding: 0 2.5%;
-    margin-bottom: 2.5%; }
+    margin-bottom: 2.5%;
+    cursor: pointer; }
   .input input,
   .input select,
   .input textarea,
@@ -215,7 +220,8 @@ body {
   .input input[type='checkbox'],
   .input input[type='radio'] {
     margin-right: 0.5em;
-    display: inline-block; }
+    display: inline-block;
+    cursor: pointer; }
   .input button {
     background: #fff;
     cursor: pointer; }
@@ -259,7 +265,8 @@ body {
     padding: 1.1em 1.5em 0.2em 1.5em;
     background: #fff;
     font-size: 0.8em;
-    font-weight: 700; }
+    font-weight: 700;
+    cursor: default; }
   .input .section-label.complete {
     border-top-color: lightgreen;
     border-top-width: 0.4em;
@@ -378,9 +385,32 @@ body {
   .input .datatransfer .transfermedia,
   .input .datatransfer .transfersource {
     width: 95%; }
+  .input .printcontrols {
+    text-align: center;
+    margin-bottom: 5em; }
+    .input .printcontrols .previewbutton,
+    .input .printcontrols .printbutton {
+      margin: 1em auto; }
+    .input .printcontrols .printbutton {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.5em;
+      padding: 1em 2.5em 1em 3em;
+      font-size: 1.5em;
+      font-weight: bold;
+      border: 0.2em solid;
+      border-color: black;
+      border-width: 0.2em;
+      border-bottom-color: deeppink;
+      border-bottom-width: 0.4em; }
+    .input .printcontrols .printbutton:hover {
+      background: deeppink;
+      color: white;
+      border-bottom-color: white; }
 
 .output {
-  text-align: left; }
+  text-align: left;
+  display: none; }
 
 .output .output-scaffold {
   background: #fff;
@@ -408,6 +438,8 @@ body {
   padding-bottom: 0;
   font-weight: bold;
   font-size: 80%; }
+.output .customline {
+  font-style: italic; }
 .output .header-title {
   font-size: 1.6em;
   font-weight: bold;
@@ -467,6 +499,9 @@ body {
 .output .appleid .appleid-dob {
   width: 20%; }
 
+.printpreview .output {
+  display: block; }
+
 @media screen {
   .output {
     padding: 0 4em; }
@@ -485,17 +520,20 @@ body {
     display: none; }
 
   .output {
-    font-size: 10pt; } }
+    font-size: 10pt;
+    display: block; } }
 
 </style>
 </head>
 
 <body>
 
-<div id="app" class="printmode">
+<div id="app" :class="{ 'printpreview': meta.printpreview }">
 
-  <h1 class="app-title">Setup Generator</h1>
-  <span class="app-version">v{{ version }}</span>
+  <header>
+    <h1 class="app-title">Setup Generator</h1>
+    <div><a href="https://github.com/danfoy/setupgenerator/commits/master" target="_blank" class="app-version">v{{ version }}</a></div>
+  </header>
 
 <div class="input">
   <form id="inputform">
@@ -748,6 +786,10 @@ body {
       <textarea placeholder="Notes" v-model="notes"></textarea>
     </fieldset>
 
+    <div class="printcontrols">
+      <button type="button" class="printbutton" @click="printSheet">Print</button><label class="previewbutton"><input type="checkbox" v-model="meta.printpreview"> Worksheet Preview</label>
+    </div>
+
 
     <!-- SECTION TEMPLATE
 
@@ -967,7 +1009,7 @@ body {
             </td>
           </tr>
           <tr v-if="software[0]" v-for="line in software" :line="line" key="name" is="lineitem"></tr>
-          <tr v-if="customsoftware[0]" v-for="line in customsoftware" :line="line" key="name" is="lineitem"></tr>
+          <tr v-if="customsoftware[0]" v-for="line in customsoftware" :line="line" key="name" is="lineitem" class="customline"></tr>
         </table>
       </td>
     </tr>
@@ -11139,6 +11181,7 @@ return Vue$3;
 
 
 // Gets the creation date in UK format
+
 var creationDate = function () {
   var machineDate = new Date();
   var dateOptions = {
@@ -11154,10 +11197,18 @@ var creationDate = function () {
   return localDate;
 };
 
+// The printing function
+// Using execCommand() to get around an IE11 bug with print stylesheets
+
+
+
 
 // THE DATA OBJECT
 var data = {
   version: '0.1.0',
+  meta: {
+    printpreview: false
+  },
   basicinfo: {
     colleague: '',
     date: creationDate(),
@@ -11178,12 +11229,12 @@ var data = {
     service: ''
   },
   setupoptions: {
-    recoverymedia: true,
+    recoverymedia: false,
     customusers: false,
     datatransfer: false,
     email: false,
     installsoftware: false,
-    runupdates: true
+    runupdates: false
   },
   appleid: {
     type: '',
@@ -11300,7 +11351,7 @@ var vm = new Vue({
     customerInfoComplete: function () {
       if (
         this.customerinfo.title && this.customerinfo.firstname && this.customerinfo.surname && this.customerinfo.telephone
-      ) { 
+      ) {
         return true;
       } else {
         return false;
@@ -11315,6 +11366,9 @@ var vm = new Vue({
     resetCustomSoftware: function () {
       this.customsoftware = [];
       this.temp.customsoftware = '';
+    },
+    printSheet: function () {
+      document.execCommand('print', false, null);
     }
   }
 

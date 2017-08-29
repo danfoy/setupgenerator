@@ -1,6 +1,7 @@
 $output-border: 0.05em solid black;
 .output {
   text-align: left;
+  display: none;
 }
 
 .output {
@@ -35,6 +36,9 @@ $output-border: 0.05em solid black;
     padding-bottom: 0;
     font-weight: bold;
     font-size: 80%;
+  }
+  .customline {
+    font-style: italic;
   }
   .header-title {
     font-size: 1.6em;
@@ -120,4 +124,8 @@ $output-border: 0.05em solid black;
       width: 20%;
     }
   }
+}
+
+.printpreview .output {
+  display: block;
 }
