@@ -43,7 +43,7 @@ module.exports = function(grunt) {
           'src/js/main.js',
           'src/partials/_7_footer_2.htm'
         ],
-        dest: 'dist/setupgenerator.htm'
+        dest: 'dist/Setup Generator.htm'
       }
     },
 
