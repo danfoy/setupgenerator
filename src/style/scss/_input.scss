@@ -51,6 +51,7 @@
       letter-spacing: 0.1em;
       vertical-align: middle;
       color: #aaa;
+      padding: 0.5em !important;
     }
      :-ms-input-placeholder {
       text-transform: uppercase;
@@ -59,6 +60,7 @@
       letter-spacing: 0.1em;
       vertical-align: middle;
       color: #aaa;
+      padding: 0.5em !important;
        /* IE11 sadly requires all these !important flags */
     }
     textarea::placeholder {
