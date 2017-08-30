@@ -54,11 +54,6 @@
     }
      :-ms-input-placeholder {
       text-transform: uppercase !important;
-      font-size: 0.8em !important;
-      font-weight: 700 !important;
-      letter-spacing: 0.1em !important;
-      vertical-align: middle !important;
-      color: #aaa !important;
        /* IE11 sadly requires all these !important flags */
     }
     textarea::placeholder {
@@ -67,9 +62,6 @@
       text-align: center;
     }
     textarea:-ms-input-placeholder {
-      line-height: 6em !important;
-      vertical-align: middle !important;
-      text-align: center !important;
     }
     select {
       height: 2.3em;

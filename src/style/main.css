@@ -230,20 +230,11 @@ body {
     color: #aaa; }
   .input :-ms-input-placeholder {
     text-transform: uppercase !important;
-    font-size: 0.8em !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.1em !important;
-    vertical-align: middle !important;
-    color: #aaa !important;
     /* IE11 sadly requires all these !important flags */ }
   .input textarea::placeholder {
     line-height: 6em;
     vertical-align: middle;
     text-align: center; }
-  .input textarea:-ms-input-placeholder {
-    line-height: 6em !important;
-    vertical-align: middle !important;
-    text-align: center !important; }
   .input select {
     height: 2.3em; }
   .input .input-section {
@@ -530,9 +521,8 @@ body {
     box-shadow: 0.25em 0.25em 0 #999;
     border: 0.05em solid #555; } }
 @media print {
-  .input,
-  .app-title,
-  .app-version {
+  .appheader,
+  .input {
     display: none; }
 
   .output {

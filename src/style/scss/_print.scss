@@ -13,9 +13,8 @@
 }
 
 @media print {
-  .input,
-  .app-title,
-  .app-version {
+  .appheader,
+  .input {
     display: none;
   }
   .output {
