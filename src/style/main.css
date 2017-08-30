@@ -229,7 +229,12 @@ body {
     vertical-align: middle;
     color: #aaa; }
   .input :-ms-input-placeholder {
-    text-transform: uppercase !important;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    vertical-align: middle;
+    color: #aaa;
     /* IE11 sadly requires all these !important flags */ }
   .input textarea::placeholder {
     line-height: 6em;
