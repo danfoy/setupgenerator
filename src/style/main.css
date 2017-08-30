@@ -286,7 +286,8 @@ body {
     border-top-color: deeppink;
     border-radius: 0.25em;
     font-size: 0.8em;
-    font-weight: 700; }
+    font-weight: 700;
+    cursor: default; }
   .input .infoblock {
     padding: 2.5% 15% 5% 15%;
     text-align: left;
@@ -509,6 +510,9 @@ body {
   width: 30%; }
 .output .googleaccount .googleaccount-address,
 .output .googleaccount .googleaccount-password {
+  width: 50%; }
+.output .email .email-address,
+.output .email .email-password {
   width: 50%; }
 
 .printpreview .output {

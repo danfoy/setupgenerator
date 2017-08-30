@@ -187,23 +187,33 @@
 
 
     <!-- Email Accounts -->
-    <tr v-if="email.newemail || email.existingemail">
+    <tr v-if="email.type">
       <td>
         <table class="output-section email">
           <tr class="output-section-header-row">
             <td>
-              <h2 class="output-section-header">Email Accounts</h2>
+              <h2 class="output-section-header">Add <span v-if="email.type == 'existing'">Existing</span><span v-if="email.type == 'new'">New</span> Email Account</h2>
             </td>
           </tr>
-          <tr v-if="email.existingemail">
-            <td>
-              <span v-if="email.existing.account1.address"><strong>Existing Account:</strong> {{ email.existing.account1.address }}; </span><span v-if="email.existing.account1.password"><strong>Password:</strong> {{ email.existing.account1.password }}</span>
-              <div class="tickbox"></div>
+          <tr v-if="email.type == 'existing'">
+            <td class="email-address">
+              <strong>Email:</strong> {{ email.existing.account1.address }}
+            </td>
+            <td class="email-password">
+              <strong>Password:</strong> {{ email.existing.account1.password }}
             </td>
           </tr>
-          <tr v-if="email.newemail">
-            <td>
-              <span v-if="email.new.account1.address"><strong>New Account:</strong> {{ email.new.account1.address }}; </span><span v-if="email.new.account1.password"><strong>Password:</strong> {{ email.new.account1.password }}</span>
+          <tr v-if="email.type == 'existing'">
+            <td class="email-address">
+              <strong>Email:</strong> {{ email.new.account1.address }}
+            </td>
+            <td class="email-password">
+              <strong>Password:</strong> {{ email.new.account1.password }}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <strong>Corrections:</strong>
               <div class="tickbox"></div>
             </td>
           </tr>
