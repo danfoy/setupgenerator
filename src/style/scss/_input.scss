@@ -53,7 +53,7 @@
       color: #aaa;
       padding: 0.5em !important;
     }
-     :-ms-input-placeholder {
+     input:-ms-input-placeholder {
       text-transform: uppercase;
       font-size: 0.8em;
       font-weight: 700;
@@ -61,15 +61,14 @@
       vertical-align: middle;
       color: #aaa;
       padding: 0.5em !important;
-       /* IE11 sadly requires all these !important flags */
+      /* IE11 sadly requires all these !important flags */
     }
     textarea::placeholder {
       line-height: 6em;
       vertical-align: middle;
       text-align: center;
     }
-    textarea:-ms-input-placeholder {
-    }
+    textarea:-ms-input-placeholder {}
     select {
       height: 2.3em;
     }
