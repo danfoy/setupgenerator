@@ -10072,7 +10072,7 @@ var creationDate = function () {
 };
 
 var data = {
-  version: '0.9.6',
+  version: '0.9.7',
   meta: {
     printpreview: false
   },
@@ -10105,22 +10105,26 @@ var data = {
   },
   appleid: {
     type: '',
-    existingemail: '',
-    existingpassword: '',
-    newemail: '',
-    newpassword: '',
-    dob: '',
-    recoveryquestion1: {
-      question: '',
-      answer: ''
+    existing: {
+      email: '',
+      password: ''
     },
-    recoveryquestion2: {
-      question: '',
-      answer: ''
-    },
-    recoveryquestion3: {
-      question: '',
-      answer: ''
+    new: {
+      email: '',
+      password: '',
+      dob: '',
+      recoveryquestion1: {
+        question: '',
+        answer: ''
+      },
+      recoveryquestion2: {
+        question: '',
+        answer: ''
+      },
+      recoveryquestion3: {
+        question: '',
+        answer: ''
+      }
     }
   },
   googleaccount: {

@@ -73,8 +73,8 @@
       <fieldset v-if="appleid.type=='existing'" name="appleid-existing" class="appleid-existing">
         <legend for="appleid-existing">Existing Apple ID</legend>
         <div>
-          <input type="text" v-model="appleid.existingemail" placeholder="Email Address" class="appleid-existingemail">
-          <input type="text" v-model="appleid.existingpassword" placeholder="Password" class="appleid-existingpassword">
+          <input type="text" v-model="appleid.existing.email" placeholder="Email Address" class="appleid-existingemail">
+          <input type="text" v-model="appleid.existing.password" placeholder="Password" class="appleid-existingpassword">
           <div class="infoblock">
             <p>We will attempt to log in to your existing Apple ID.</p>
             <p>If your account has two-factor authentication enabled, we may need to contact you for additional information, such as a code we send to your mobile phone and/or the unlock passcode for your iPhone or iPad.</p>
@@ -86,15 +86,15 @@
       <fieldset v-if="appleid.type=='new'" name="appleid-new" class="appleid-new">
         <legend for="appleid-new">New Apple ID</legend>
         <div>
-          <label class="appleid-newemail"><input type="text" v-model="appleid.newemail" placeholder="new username">@icloud.com</label>
-          <input class="appleid-newpassword" type="text" v-model="appleid.newpassword" placeholder="Password">
-          <input class="appleid-dob" type="text" v-model="appleid.dob" placeholder="Date of Birth" class="dob">
+          <label class="appleid-newemail"><input type="text" v-model="appleid.new.email" placeholder="new username">@icloud.com</label>
+          <input class="appleid-newpassword" type="text" v-model="appleid.new.password" placeholder="Password">
+          <input class="appleid-dob" type="text" v-model="appleid.new.dob" placeholder="Date of Birth" class="dob">
         </div>
         <textarea placeholder="Address and Postcode" v-model="customerinfo.address" class="customerinfo-address"></textarea>
 
 
         <div class="recoveryquestion">
-          <select v-model="appleid.recoveryquestion1.question" class="recoveryquestion-question">
+          <select v-model="appleid.new.recoveryquestion1.question" class="recoveryquestion-question">
           <option value="" disabled>Select Recovery Question 1</option>
           <option>What is your favourite children's book?</option>
           <option>What is your dream job?</option>
@@ -103,10 +103,10 @@
           <option>Who was your favourite band or singer as a child?</option>
           <option>Who was your favourite childhood actor or character?</option>
         </select>
-          <input type="text" v-model="appleid.recoveryquestion1.answer" class="recoveryquestion-answer" placeholder="Answer">
+          <input type="text" v-model="appleid.new.recoveryquestion1.answer" class="recoveryquestion-answer" placeholder="Answer">
         </div>
         <div class="recoveryquestion">
-          <select v-model="appleid.recoveryquestion2.question" class="recoveryquestion-question">
+          <select v-model="appleid.new.recoveryquestion2.question" class="recoveryquestion-question">
           <option value="" disabled>Select Recovery Question 2</option>
           <option>What was the name of your first manager?</option>
           <option>In which city did your parents meet?</option>
@@ -115,10 +115,10 @@
           <option>What was the first film you saw at the cinema?</option>
           <option>What was the first dish you learned to cook?</option>
         </select>
-          <input type="text" v-model="appleid.recoveryquestion2.answer" class="recoveryquestion-answer" placeholder="Answer">
+          <input type="text" v-model="appleid.new.recoveryquestion2.answer" class="recoveryquestion-answer" placeholder="Answer">
         </div>
         <div class="recoveryquestion">
-          <select v-model="appleid.recoveryquestion3.question" class="recoveryquestion-question">
+          <select v-model="appleid.new.recoveryquestion3.question" class="recoveryquestion-question">
           <option value="" disabled>Select Recovery Question 3</option>
           <option>What was the name of your favourite school teacher?</option>
           <option>Where did you first fly in an aeroplane?</option>
@@ -127,7 +127,7 @@
           <option>What was the first album you purchased?</option>
           <option>What is your favourite sports team?</option>
         </select>
-          <input type="text" v-model="appleid.recoveryquestion3.answer" class="recoveryquestion-answer" placeholder="Answer">
+          <input type="text" v-model="appleid.new.recoveryquestion3.answer" class="recoveryquestion-answer" placeholder="Answer">
         </div>
       </fieldset>
     </fieldset>

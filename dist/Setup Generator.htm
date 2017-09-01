@@ -515,11 +515,15 @@ body {
   display: inline-block; }
 .output .emaildomain {
   float: right; }
-.output .appleid .appleid-id,
-.output .appleid .appleid-password {
+.output .appleid-existing .appleid-email,
+.output .appleid-existing .appleid-password {
+  width: 50%; }
+.output .appleid-new .appleid-email {
+  width: 40%; }
+.output .appleid-new .appleid-password {
   width: 35%; }
-.output .appleid .appleid-dob {
-  width: 30%; }
+.output .appleid-new .appleid-dob {
+  width: 25%; }
 .output .googleaccount-existing .googleaccount-address,
 .output .googleaccount-existing .googleaccount-password {
   width: 50%; }
@@ -643,8 +647,8 @@ body {
       <fieldset v-if="appleid.type=='existing'" name="appleid-existing" class="appleid-existing">
         <legend for="appleid-existing">Existing Apple ID</legend>
         <div>
-          <input type="text" v-model="appleid.existingemail" placeholder="Email Address" class="appleid-existingemail">
-          <input type="text" v-model="appleid.existingpassword" placeholder="Password" class="appleid-existingpassword">
+          <input type="text" v-model="appleid.existing.email" placeholder="Email Address" class="appleid-existingemail">
+          <input type="text" v-model="appleid.existing.password" placeholder="Password" class="appleid-existingpassword">
           <div class="infoblock">
             <p>We will attempt to log in to your existing Apple ID.</p>
             <p>If your account has two-factor authentication enabled, we may need to contact you for additional information, such as a code we send to your mobile phone and/or the unlock passcode for your iPhone or iPad.</p>
@@ -656,15 +660,15 @@ body {
       <fieldset v-if="appleid.type=='new'" name="appleid-new" class="appleid-new">
         <legend for="appleid-new">New Apple ID</legend>
         <div>
-          <label class="appleid-newemail"><input type="text" v-model="appleid.newemail" placeholder="new username">@icloud.com</label>
-          <input class="appleid-newpassword" type="text" v-model="appleid.newpassword" placeholder="Password">
-          <input class="appleid-dob" type="text" v-model="appleid.dob" placeholder="Date of Birth" class="dob">
+          <label class="appleid-newemail"><input type="text" v-model="appleid.new.email" placeholder="new username">@icloud.com</label>
+          <input class="appleid-newpassword" type="text" v-model="appleid.new.password" placeholder="Password">
+          <input class="appleid-dob" type="text" v-model="appleid.new.dob" placeholder="Date of Birth" class="dob">
         </div>
         <textarea placeholder="Address and Postcode" v-model="customerinfo.address" class="customerinfo-address"></textarea>
 
 
         <div class="recoveryquestion">
-          <select v-model="appleid.recoveryquestion1.question" class="recoveryquestion-question">
+          <select v-model="appleid.new.recoveryquestion1.question" class="recoveryquestion-question">
           <option value="" disabled>Select Recovery Question 1</option>
           <option>What is your favourite children's book?</option>
           <option>What is your dream job?</option>
@@ -673,10 +677,10 @@ body {
           <option>Who was your favourite band or singer as a child?</option>
           <option>Who was your favourite childhood actor or character?</option>
         </select>
-          <input type="text" v-model="appleid.recoveryquestion1.answer" class="recoveryquestion-answer" placeholder="Answer">
+          <input type="text" v-model="appleid.new.recoveryquestion1.answer" class="recoveryquestion-answer" placeholder="Answer">
         </div>
         <div class="recoveryquestion">
-          <select v-model="appleid.recoveryquestion2.question" class="recoveryquestion-question">
+          <select v-model="appleid.new.recoveryquestion2.question" class="recoveryquestion-question">
           <option value="" disabled>Select Recovery Question 2</option>
           <option>What was the name of your first manager?</option>
           <option>In which city did your parents meet?</option>
@@ -685,10 +689,10 @@ body {
           <option>What was the first film you saw at the cinema?</option>
           <option>What was the first dish you learned to cook?</option>
         </select>
-          <input type="text" v-model="appleid.recoveryquestion2.answer" class="recoveryquestion-answer" placeholder="Answer">
+          <input type="text" v-model="appleid.new.recoveryquestion2.answer" class="recoveryquestion-answer" placeholder="Answer">
         </div>
         <div class="recoveryquestion">
-          <select v-model="appleid.recoveryquestion3.question" class="recoveryquestion-question">
+          <select v-model="appleid.new.recoveryquestion3.question" class="recoveryquestion-question">
           <option value="" disabled>Select Recovery Question 3</option>
           <option>What was the name of your favourite school teacher?</option>
           <option>Where did you first fly in an aeroplane?</option>
@@ -697,7 +701,7 @@ body {
           <option>What was the first album you purchased?</option>
           <option>What is your favourite sports team?</option>
         </select>
-          <input type="text" v-model="appleid.recoveryquestion3.answer" class="recoveryquestion-answer" placeholder="Answer">
+          <input type="text" v-model="appleid.new.recoveryquestion3.answer" class="recoveryquestion-answer" placeholder="Answer">
         </div>
       </fieldset>
     </fieldset>
@@ -930,56 +934,62 @@ body {
     <!-- Apple ID -->
     <tr v-if="basicinfo.platform=='Mac' || basicinfo.platform=='iOS'">
       <td>
-        <table class="output-section appleid">
+        <table v-if="appleid.type=='existing'" class="output-section appleid-existing">
 
           <tr class="output-section-header-row">
             <td>
-              <h2 class="output-section-header"><span v-if="appleid.type=='new'">New </span><span v-if="appleid.type=='existing'">Existing </span>Apple ID</h2>
+              <h2 class="output-section-header">Existing Apple ID</h2>
             </td>
           </tr>
-
-          <tr v-if="appleid.type=='existing'">
-            <td>
-              <strong>Apple ID:</strong> {{ appleid.existingemail }}
+          <tr>
+            <td class="appleid-email">
+              <strong>Apple ID:</strong> {{ appleid.existing.email }}
             </td>
-            <td>
-              <strong>Password:</strong> {{ appleid.existingpassword }}
-            </td>
-          </tr>
-
-          <tr v-if="appleid.type=='new'">
-            <td class="appleid-id"><strong>ID:</strong> {{ appleid.newemail }}<span v-if="appleid.newemail">@icloud.com</span></td>
-            <td class="appleid-password"><span class="inline-title">Password:</span> {{ appleid.newpassword }}</td>
-            <td class="appleid-dob"><span class="inline-title">DOB:</span> {{ appleid.dob }}</td>
-          </tr>
-
-          <tr v-if="appleid.recoveryquestion1.question && appleid.recoveryquestion1.answer" class="recoveryquestionpair">
-            <td class="recoveryquestion-question">{{ appleid.recoveryquestion1.question }}</td>
-            <td class="recoveryquestion-answer" colspan="2">{{ appleid.recoveryquestion1.answer }}</td>
-          </tr>
-          <tr v-if="appleid.recoveryquestion2.question && appleid.recoveryquestion2.answer" class="recoveryquestionpair">
-            <td class="recoveryquestion-question">{{ appleid.recoveryquestion2.question }}</td>
-            <td class="recoveryquestion-answer" colspan="2">{{ appleid.recoveryquestion2.answer }}</td>
-          </tr>
-          <tr v-if="appleid.recoveryquestion3.question && appleid.recoveryquestion3.answer" class="recoveryquestionpair">
-            <td class="recoveryquestion-question">{{ appleid.recoveryquestion3.question }}</td>
-            <td class="recoveryquestion-answer" colspan="2">{{ appleid.recoveryquestion3.answer }}</td>
-          </tr>
-
-          <tr v-if="appleid.type == 'new'">
-            <td colspan="3">
-              <strong>Corrections:</strong>
-              <div class="tickbox"></div>
+            <td class="appleid-password">
+              <strong>Password:</strong> {{ appleid.existing.password }}
             </td>
           </tr>
-          <tr v-if="appleid.type == 'existing'">
+          <tr>
             <td colspan="2">
               <strong>Corrections:</strong>
               <div class="tickbox"></div>
             </td>
           </tr>
-
         </table>
+
+        <table v-if="appleid.type=='new'" class="output-section appleid-new">
+          <tr class="output-section-header-row">
+            <td>
+              <h2 class="output-section-header">New Apple ID</h2>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="appleid-email"><strong>ID:</strong> {{ appleid.new.email }}@icloud.com</td>
+            <td class="appleid-password"><span class="inline-title">Password:</span> {{ appleid.new.password }}</td>
+            <td class="appleid-dob"><span class="inline-title">DOB:</span> {{ appleid.new.dob }}</td>
+          </tr>
+
+          <tr v-if="appleid.new.recoveryquestion1.question && appleid.new.recoveryquestion1.answer" class="recoveryquestionpair">
+            <td class="recoveryquestion-question" colspan="2">{{ appleid.new.recoveryquestion1.question }}</td>
+            <td class="recoveryquestion-answer">{{ appleid.new.recoveryquestion1.answer }}</td>
+          </tr>
+          <tr v-if="appleid.new.recoveryquestion2.question && appleid.new.recoveryquestion2.answer" class="recoveryquestionpair">
+            <td class="recoveryquestion-question" colspan="2">{{ appleid.new.recoveryquestion2.question }}</td>
+            <td class="recoveryquestion-answer">{{ appleid.new.recoveryquestion2.answer }}</td>
+          </tr>
+          <tr v-if="appleid.new.recoveryquestion3.question && appleid.new.recoveryquestion3.answer" class="recoveryquestionpair">
+            <td class="recoveryquestion-question" colspan="2">{{ appleid.new.recoveryquestion3.question }}</td>
+            <td class="recoveryquestion-answer">{{ appleid.new.recoveryquestion3.answer }}</td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <strong>Corrections:</strong>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+        </table>
+        
       </td>
     </tr>
 
@@ -987,7 +997,7 @@ body {
     <!-- Google Account -->
     <tr v-if="basicinfo.platform == 'Android'">
       <td>
-        
+
         <table v-if="googleaccount.type == 'existing'" class="output-section googleaccount googleaccount-existing">
           <tr class="output-section-header-row">
             <td>
@@ -1009,7 +1019,7 @@ body {
             </td>
           </tr>
         </table>
-        
+
         <table v-if="googleaccount.type == 'new'" class="output-section googleaccount-new">
           <tr class="output-section-header-row">
             <td>
@@ -1034,7 +1044,7 @@ body {
             </td>
           </tr>
         </table>
-        
+
       </td>
     </tr>
 
@@ -11329,7 +11339,7 @@ var creationDate = function () {
 };
 
 var data = {
-  version: '0.9.6',
+  version: '0.9.7',
   meta: {
     printpreview: false
   },
@@ -11362,22 +11372,26 @@ var data = {
   },
   appleid: {
     type: '',
-    existingemail: '',
-    existingpassword: '',
-    newemail: '',
-    newpassword: '',
-    dob: '',
-    recoveryquestion1: {
-      question: '',
-      answer: ''
+    existing: {
+      email: '',
+      password: ''
     },
-    recoveryquestion2: {
-      question: '',
-      answer: ''
-    },
-    recoveryquestion3: {
-      question: '',
-      answer: ''
+    new: {
+      email: '',
+      password: '',
+      dob: '',
+      recoveryquestion1: {
+        question: '',
+        answer: ''
+      },
+      recoveryquestion2: {
+        question: '',
+        answer: ''
+      },
+      recoveryquestion3: {
+        question: '',
+        answer: ''
+      }
     }
   },
   googleaccount: {

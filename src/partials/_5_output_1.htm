@@ -66,56 +66,62 @@
     <!-- Apple ID -->
     <tr v-if="basicinfo.platform=='Mac' || basicinfo.platform=='iOS'">
       <td>
-        <table class="output-section appleid">
+        <table v-if="appleid.type=='existing'" class="output-section appleid-existing">
 
           <tr class="output-section-header-row">
             <td>
-              <h2 class="output-section-header"><span v-if="appleid.type=='new'">New </span><span v-if="appleid.type=='existing'">Existing </span>Apple ID</h2>
+              <h2 class="output-section-header">Existing Apple ID</h2>
             </td>
           </tr>
-
-          <tr v-if="appleid.type=='existing'">
-            <td>
-              <strong>Apple ID:</strong> {{ appleid.existingemail }}
+          <tr>
+            <td class="appleid-email">
+              <strong>Apple ID:</strong> {{ appleid.existing.email }}
             </td>
-            <td>
-              <strong>Password:</strong> {{ appleid.existingpassword }}
-            </td>
-          </tr>
-
-          <tr v-if="appleid.type=='new'">
-            <td class="appleid-id"><strong>ID:</strong> {{ appleid.newemail }}<span v-if="appleid.newemail">@icloud.com</span></td>
-            <td class="appleid-password"><span class="inline-title">Password:</span> {{ appleid.newpassword }}</td>
-            <td class="appleid-dob"><span class="inline-title">DOB:</span> {{ appleid.dob }}</td>
-          </tr>
-
-          <tr v-if="appleid.recoveryquestion1.question && appleid.recoveryquestion1.answer" class="recoveryquestionpair">
-            <td class="recoveryquestion-question">{{ appleid.recoveryquestion1.question }}</td>
-            <td class="recoveryquestion-answer" colspan="2">{{ appleid.recoveryquestion1.answer }}</td>
-          </tr>
-          <tr v-if="appleid.recoveryquestion2.question && appleid.recoveryquestion2.answer" class="recoveryquestionpair">
-            <td class="recoveryquestion-question">{{ appleid.recoveryquestion2.question }}</td>
-            <td class="recoveryquestion-answer" colspan="2">{{ appleid.recoveryquestion2.answer }}</td>
-          </tr>
-          <tr v-if="appleid.recoveryquestion3.question && appleid.recoveryquestion3.answer" class="recoveryquestionpair">
-            <td class="recoveryquestion-question">{{ appleid.recoveryquestion3.question }}</td>
-            <td class="recoveryquestion-answer" colspan="2">{{ appleid.recoveryquestion3.answer }}</td>
-          </tr>
-
-          <tr v-if="appleid.type == 'new'">
-            <td colspan="3">
-              <strong>Corrections:</strong>
-              <div class="tickbox"></div>
+            <td class="appleid-password">
+              <strong>Password:</strong> {{ appleid.existing.password }}
             </td>
           </tr>
-          <tr v-if="appleid.type == 'existing'">
+          <tr>
             <td colspan="2">
               <strong>Corrections:</strong>
               <div class="tickbox"></div>
             </td>
           </tr>
-
         </table>
+
+        <table v-if="appleid.type=='new'" class="output-section appleid-new">
+          <tr class="output-section-header-row">
+            <td>
+              <h2 class="output-section-header">New Apple ID</h2>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="appleid-email"><strong>ID:</strong> {{ appleid.new.email }}@icloud.com</td>
+            <td class="appleid-password"><span class="inline-title">Password:</span> {{ appleid.new.password }}</td>
+            <td class="appleid-dob"><span class="inline-title">DOB:</span> {{ appleid.new.dob }}</td>
+          </tr>
+
+          <tr v-if="appleid.new.recoveryquestion1.question && appleid.new.recoveryquestion1.answer" class="recoveryquestionpair">
+            <td class="recoveryquestion-question" colspan="2">{{ appleid.new.recoveryquestion1.question }}</td>
+            <td class="recoveryquestion-answer">{{ appleid.new.recoveryquestion1.answer }}</td>
+          </tr>
+          <tr v-if="appleid.new.recoveryquestion2.question && appleid.new.recoveryquestion2.answer" class="recoveryquestionpair">
+            <td class="recoveryquestion-question" colspan="2">{{ appleid.new.recoveryquestion2.question }}</td>
+            <td class="recoveryquestion-answer">{{ appleid.new.recoveryquestion2.answer }}</td>
+          </tr>
+          <tr v-if="appleid.new.recoveryquestion3.question && appleid.new.recoveryquestion3.answer" class="recoveryquestionpair">
+            <td class="recoveryquestion-question" colspan="2">{{ appleid.new.recoveryquestion3.question }}</td>
+            <td class="recoveryquestion-answer">{{ appleid.new.recoveryquestion3.answer }}</td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <strong>Corrections:</strong>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+        </table>
+        
       </td>
     </tr>
 
@@ -123,7 +129,7 @@
     <!-- Google Account -->
     <tr v-if="basicinfo.platform == 'Android'">
       <td>
-        
+
         <table v-if="googleaccount.type == 'existing'" class="output-section googleaccount googleaccount-existing">
           <tr class="output-section-header-row">
             <td>
@@ -145,7 +151,7 @@
             </td>
           </tr>
         </table>
-        
+
         <table v-if="googleaccount.type == 'new'" class="output-section googleaccount-new">
           <tr class="output-section-header-row">
             <td>
@@ -170,7 +176,7 @@
             </td>
           </tr>
         </table>
-        
+
       </td>
     </tr>
 

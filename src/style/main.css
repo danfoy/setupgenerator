@@ -505,11 +505,15 @@ body {
   display: inline-block; }
 .output .emaildomain {
   float: right; }
-.output .appleid .appleid-id,
-.output .appleid .appleid-password {
+.output .appleid-existing .appleid-email,
+.output .appleid-existing .appleid-password {
+  width: 50%; }
+.output .appleid-new .appleid-email {
+  width: 40%; }
+.output .appleid-new .appleid-password {
   width: 35%; }
-.output .appleid .appleid-dob {
-  width: 30%; }
+.output .appleid-new .appleid-dob {
+  width: 25%; }
 .output .googleaccount-existing .googleaccount-address,
 .output .googleaccount-existing .googleaccount-password {
   width: 50%; }

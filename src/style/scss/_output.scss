@@ -113,13 +113,21 @@ $output-border: 0.05em solid black;
   .emaildomain {
     float: right;
   }
-  .appleid {
-    .appleid-id,
+  .appleid-existing {
+    .appleid-email,
+    .appleid-password {
+      width: 50%;
+    }
+  }
+  .appleid-new {
+    .appleid-email {
+      width: 40%;
+    }
     .appleid-password {
       width: 35%;
     }
     .appleid-dob {
-      width: 30%;
+      width: 25%;
     }
   }
   .googleaccount-existing {
