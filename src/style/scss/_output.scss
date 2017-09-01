@@ -114,9 +114,7 @@ $output-border: 0.05em solid black;
     float: right;
   }
   .appleid {
-    .appleid-id {
-      width: 35%;
-    }
+    .appleid-id,
     .appleid-password {
       width: 35%;
     }
@@ -124,10 +122,21 @@ $output-border: 0.05em solid black;
       width: 30%;
     }
   }
-  .googleaccount {
+  .googleaccount-existing {
     .googleaccount-address,
     .googleaccount-password {
       width: 50%;
+    }
+  }
+  .googleaccount-new {
+    .googleaccount-address{
+      width: 40%;
+    }
+    .googleaccount-password {
+      width: 35%;
+    }
+    .googleaccount-dob {
+      width: 25%;
     }
   }
   .email {

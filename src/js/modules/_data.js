@@ -14,7 +14,7 @@ var creationDate = function () {
 };
 
 var data = {
-  version: '0.9.5',
+  version: '0.9.6',
   meta: {
     printpreview: false
   },
@@ -67,8 +67,15 @@ var data = {
   },
   googleaccount: {
     type: '',
-    address: '',
-    password: ''
+    new: {
+      address: '',
+      password: '',
+      dob: ''
+    },
+    existing: {
+      address: '',
+      password: ''
+    }
   },
   useraccounts: {
     count: "1",

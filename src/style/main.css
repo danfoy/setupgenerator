@@ -353,9 +353,14 @@ body {
     width: 65%; }
   .input .appleid .recoveryquestion-answer {
     width: 30%; }
-  .input .googleaccount .googleaccount-address,
-  .input .googleaccount .googleaccount-password {
+  .input .googleaccount-existing .googleaccount-address,
+  .input .googleaccount-existing .googleaccount-password {
     width: 40%; }
+  .input .googleaccount-new .googleaccount-address,
+  .input .googleaccount-new .googleaccount-password {
+    width: 35%; }
+  .input .googleaccount-new .googleaccount-dob {
+    width: 22%; }
   .input .useraccounts .accountname,
   .input .useraccounts .accountpassword {
     width: 40%; }
@@ -500,15 +505,20 @@ body {
   display: inline-block; }
 .output .emaildomain {
   float: right; }
-.output .appleid .appleid-id {
-  width: 35%; }
+.output .appleid .appleid-id,
 .output .appleid .appleid-password {
   width: 35%; }
 .output .appleid .appleid-dob {
   width: 30%; }
-.output .googleaccount .googleaccount-address,
-.output .googleaccount .googleaccount-password {
+.output .googleaccount-existing .googleaccount-address,
+.output .googleaccount-existing .googleaccount-password {
   width: 50%; }
+.output .googleaccount-new .googleaccount-address {
+  width: 40%; }
+.output .googleaccount-new .googleaccount-password {
+  width: 35%; }
+.output .googleaccount-new .googleaccount-dob {
+  width: 25%; }
 .output .email .email-address,
 .output .email .email-password {
   width: 50%; }

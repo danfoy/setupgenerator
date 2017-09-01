@@ -53,7 +53,7 @@
       color: #aaa;
       padding: 0.5em !important;
     }
-     input:-ms-input-placeholder {
+    input:-ms-input-placeholder {
       text-transform: uppercase;
       font-size: 0.8em;
       font-weight: 700;
@@ -211,10 +211,19 @@
         width: 30%;
       }
     }
-    .googleaccount {
+    .googleaccount-existing {
       .googleaccount-address,
       .googleaccount-password {
         width: 40%;
+      }
+    }
+    .googleaccount-new {
+      .googleaccount-address,
+      .googleaccount-password {
+        width: 35%;
+      }
+      .googleaccount-dob {
+        width: 22%;
       }
     }
     .useraccounts {

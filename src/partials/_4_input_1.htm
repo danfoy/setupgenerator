@@ -131,20 +131,29 @@
         </div>
       </fieldset>
     </fieldset>
-    
-    
-    
+
+
+
     <!-- Google Account -->
     <fieldset v-if="basicinfo.platform == 'Android'" name="googleaccount" class="input-section googleaccount">
       <legend for="googleaccount" class="section-label">Google Account</legend>
 
-      <label><input type="radio" name="googleaccounttype" v-model="googleaccount.type" value="new">Create a new Google Account</label>
-      <label><input type="radio" name="googleaccounttype" v-model="googleaccount.type" value="existing">Use an existing Google Account</label>
+      <div>
+        <label><input type="radio" name="googleaccounttype" v-model="googleaccount.type" value="new">Create a new Google Account</label>
+        <label><input type="radio" name="googleaccounttype" v-model="googleaccount.type" value="existing">Use an existing Google Account</label>
+      </div>
 
-      <fieldset v-if="googleaccount.type" name="googleaccountdetails">
-        <legend for="googleaccountdetails"><span v-if="googleaccount.type == 'existing'">Existing </span><span v-if="googleaccount.type == 'new'">New </span>Google Account</legend>
-        <input type="text" v-model="googleaccount.address" placeholder="youraccount@gmail.com" class="googleaccount-address">
-        <input type="text" v-model="googleaccount.password" placeholder="Password" class="googleaccount-password">
+      <fieldset v-if="googleaccount.type == 'new'" name="googleaccount-new" class="googleaccount-new">
+        <legend for="googleaccount-new">New Google Account</legend>
+        <input type="text" v-model="googleaccount.new.address" placeholder="youraccount@gmail.com" class="googleaccount-address">
+        <input type="text" v-model="googleaccount.new.password" placeholder="Password" class="googleaccount-password">
+        <input type="text" v-model="googleaccount.new.dob" placeholder="Date of Birth" class="googleaccount-dob">
+      </fieldset>
+      
+      <fieldset v-if="googleaccount.type == 'existing'" name="googleaccount-new" class="googleaccount-existing">
+        <legend for="googleaccount-new">Existing Google Account</legend>
+        <input type="text" v-model="googleaccount.existing.address" placeholder="youraccount@gmail.com" class="googleaccount-address">
+        <input type="text" v-model="googleaccount.existing.password" placeholder="Password" class="googleaccount-password">
       </fieldset>
 
     </fieldset>

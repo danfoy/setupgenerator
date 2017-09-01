@@ -363,9 +363,14 @@ body {
     width: 65%; }
   .input .appleid .recoveryquestion-answer {
     width: 30%; }
-  .input .googleaccount .googleaccount-address,
-  .input .googleaccount .googleaccount-password {
+  .input .googleaccount-existing .googleaccount-address,
+  .input .googleaccount-existing .googleaccount-password {
     width: 40%; }
+  .input .googleaccount-new .googleaccount-address,
+  .input .googleaccount-new .googleaccount-password {
+    width: 35%; }
+  .input .googleaccount-new .googleaccount-dob {
+    width: 22%; }
   .input .useraccounts .accountname,
   .input .useraccounts .accountpassword {
     width: 40%; }
@@ -510,15 +515,20 @@ body {
   display: inline-block; }
 .output .emaildomain {
   float: right; }
-.output .appleid .appleid-id {
-  width: 35%; }
+.output .appleid .appleid-id,
 .output .appleid .appleid-password {
   width: 35%; }
 .output .appleid .appleid-dob {
   width: 30%; }
-.output .googleaccount .googleaccount-address,
-.output .googleaccount .googleaccount-password {
+.output .googleaccount-existing .googleaccount-address,
+.output .googleaccount-existing .googleaccount-password {
   width: 50%; }
+.output .googleaccount-new .googleaccount-address {
+  width: 40%; }
+.output .googleaccount-new .googleaccount-password {
+  width: 35%; }
+.output .googleaccount-new .googleaccount-dob {
+  width: 25%; }
 .output .email .email-address,
 .output .email .email-password {
   width: 50%; }
@@ -691,20 +701,29 @@ body {
         </div>
       </fieldset>
     </fieldset>
-    
-    
-    
+
+
+
     <!-- Google Account -->
     <fieldset v-if="basicinfo.platform == 'Android'" name="googleaccount" class="input-section googleaccount">
       <legend for="googleaccount" class="section-label">Google Account</legend>
 
-      <label><input type="radio" name="googleaccounttype" v-model="googleaccount.type" value="new">Create a new Google Account</label>
-      <label><input type="radio" name="googleaccounttype" v-model="googleaccount.type" value="existing">Use an existing Google Account</label>
+      <div>
+        <label><input type="radio" name="googleaccounttype" v-model="googleaccount.type" value="new">Create a new Google Account</label>
+        <label><input type="radio" name="googleaccounttype" v-model="googleaccount.type" value="existing">Use an existing Google Account</label>
+      </div>
 
-      <fieldset v-if="googleaccount.type" name="googleaccountdetails">
-        <legend for="googleaccountdetails"><span v-if="googleaccount.type == 'existing'">Existing </span><span v-if="googleaccount.type == 'new'">New </span>Google Account</legend>
-        <input type="text" v-model="googleaccount.address" placeholder="youraccount@gmail.com" class="googleaccount-address">
-        <input type="text" v-model="googleaccount.password" placeholder="Password" class="googleaccount-password">
+      <fieldset v-if="googleaccount.type == 'new'" name="googleaccount-new" class="googleaccount-new">
+        <legend for="googleaccount-new">New Google Account</legend>
+        <input type="text" v-model="googleaccount.new.address" placeholder="youraccount@gmail.com" class="googleaccount-address">
+        <input type="text" v-model="googleaccount.new.password" placeholder="Password" class="googleaccount-password">
+        <input type="text" v-model="googleaccount.new.dob" placeholder="Date of Birth" class="googleaccount-dob">
+      </fieldset>
+      
+      <fieldset v-if="googleaccount.type == 'existing'" name="googleaccount-new" class="googleaccount-existing">
+        <legend for="googleaccount-new">Existing Google Account</legend>
+        <input type="text" v-model="googleaccount.existing.address" placeholder="youraccount@gmail.com" class="googleaccount-address">
+        <input type="text" v-model="googleaccount.existing.password" placeholder="Password" class="googleaccount-password">
       </fieldset>
 
     </fieldset>
@@ -968,18 +987,19 @@ body {
     <!-- Google Account -->
     <tr v-if="basicinfo.platform == 'Android'">
       <td>
-        <table class="output-section googleaccount">
+        
+        <table v-if="googleaccount.type == 'existing'" class="output-section googleaccount googleaccount-existing">
           <tr class="output-section-header-row">
             <td>
-              <h2 class="output-section-header"><span v-if="googleaccount.type == 'existing'">Existing </span><span v-if="googleaccount.type == 'new'">New </span>Google Account</h2>
+              <h2 class="output-section-header">Existing Google Account</h2>
             </td>
           </tr>
           <tr>
             <td class="googleaccount-address">
-              <strong>Account:</strong> {{ googleaccount.address }}
+              <strong>Account:</strong> {{ googleaccount.existing.address }}
             </td>
             <td class="googleaccount-password">
-              <strong>Password:</strong> {{ googleaccount.password }}
+              <strong>Password:</strong> {{ googleaccount.existing.password }}
             </td>
           </tr>
           <tr>
@@ -989,6 +1009,32 @@ body {
             </td>
           </tr>
         </table>
+        
+        <table v-if="googleaccount.type == 'new'" class="output-section googleaccount-new">
+          <tr class="output-section-header-row">
+            <td>
+              <h2 class="output-section-header">New Google Account</h2>
+            </td>
+          </tr>
+          <tr>
+            <td class="googleaccount-address">
+              <strong>Account:</strong> {{ googleaccount.new.address }}
+            </td>
+            <td class="googleaccount-password">
+              <strong>Password:</strong> {{ googleaccount.new.password }}
+            </td>
+            <td class="googleaccount-dob">
+              <strong>DOB:</strong> {{ googleaccount.new.dob }}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <strong>Corrections:</strong>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+        </table>
+        
       </td>
     </tr>
 
@@ -11283,7 +11329,7 @@ var creationDate = function () {
 };
 
 var data = {
-  version: '0.9.5',
+  version: '0.9.6',
   meta: {
     printpreview: false
   },
@@ -11336,8 +11382,15 @@ var data = {
   },
   googleaccount: {
     type: '',
-    address: '',
-    password: ''
+    new: {
+      address: '',
+      password: '',
+      dob: ''
+    },
+    existing: {
+      address: '',
+      password: ''
+    }
   },
   useraccounts: {
     count: "1",
@@ -11397,6 +11450,7 @@ var data = {
     customsoftware: ''
   }
 };
+
 /*global document */
 
 /* 

@@ -123,18 +123,19 @@
     <!-- Google Account -->
     <tr v-if="basicinfo.platform == 'Android'">
       <td>
-        <table class="output-section googleaccount">
+        
+        <table v-if="googleaccount.type == 'existing'" class="output-section googleaccount googleaccount-existing">
           <tr class="output-section-header-row">
             <td>
-              <h2 class="output-section-header"><span v-if="googleaccount.type == 'existing'">Existing </span><span v-if="googleaccount.type == 'new'">New </span>Google Account</h2>
+              <h2 class="output-section-header">Existing Google Account</h2>
             </td>
           </tr>
           <tr>
             <td class="googleaccount-address">
-              <strong>Account:</strong> {{ googleaccount.address }}
+              <strong>Account:</strong> {{ googleaccount.existing.address }}
             </td>
             <td class="googleaccount-password">
-              <strong>Password:</strong> {{ googleaccount.password }}
+              <strong>Password:</strong> {{ googleaccount.existing.password }}
             </td>
           </tr>
           <tr>
@@ -144,6 +145,32 @@
             </td>
           </tr>
         </table>
+        
+        <table v-if="googleaccount.type == 'new'" class="output-section googleaccount-new">
+          <tr class="output-section-header-row">
+            <td>
+              <h2 class="output-section-header">New Google Account</h2>
+            </td>
+          </tr>
+          <tr>
+            <td class="googleaccount-address">
+              <strong>Account:</strong> {{ googleaccount.new.address }}
+            </td>
+            <td class="googleaccount-password">
+              <strong>Password:</strong> {{ googleaccount.new.password }}
+            </td>
+            <td class="googleaccount-dob">
+              <strong>DOB:</strong> {{ googleaccount.new.dob }}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <strong>Corrections:</strong>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+        </table>
+        
       </td>
     </tr>
 
