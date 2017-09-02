@@ -44,7 +44,7 @@
       height: 6em;
       box-sizing: border-box;
     }
-     ::placeholder {
+    /* ::placeholder {
       text-transform: uppercase;
       font-size: 0.8em;
       font-weight: 700;
@@ -53,7 +53,7 @@
       color: #aaa;
       padding: 0.5em !important;
     }
-    input:-ms-input-placeholder {
+    :-ms-input-placeholder {
       text-transform: uppercase;
       font-size: 0.8em;
       font-weight: 700;
@@ -61,7 +61,6 @@
       vertical-align: middle;
       color: #aaa;
       padding: 0.5em !important;
-      /* IE11 sadly requires all these !important flags */
     }
     textarea::placeholder {
       line-height: 6em;
@@ -71,7 +70,7 @@
     textarea:-ms-input-placeholder {}
     select {
       height: 2.3em;
-    }
+    } */
     box-sizing: border-box;
     text-align: left;
     .input-section {
@@ -259,9 +258,9 @@
         padding-right: 6.9em;
         text-align: right;
       }
-      .email-new-address-input::placeholder {
+      /* .email-new-address-input::placeholder {
         text-align: left;
-      }
+      } */
       .emaildomain.outlook {
         position: absolute;
         right: 0.5em;

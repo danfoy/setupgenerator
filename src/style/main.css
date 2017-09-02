@@ -195,6 +195,33 @@ body {
     color: black; }
 
 .input {
+  /* ::placeholder {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    vertical-align: middle;
+    color: #aaa;
+    padding: 0.5em !important;
+  }
+  :-ms-input-placeholder {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    vertical-align: middle;
+    color: #aaa;
+    padding: 0.5em !important;
+  }
+  textarea::placeholder {
+    line-height: 6em;
+    vertical-align: middle;
+    text-align: center;
+  }
+  textarea:-ms-input-placeholder {}
+  select {
+    height: 2.3em;
+  } */
   box-sizing: border-box;
   text-align: left; }
   .input fieldset {
@@ -234,29 +261,6 @@ body {
     margin-right: 2.5%;
     height: 6em;
     box-sizing: border-box; }
-  .input ::placeholder {
-    text-transform: uppercase;
-    font-size: 0.8em;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    vertical-align: middle;
-    color: #aaa;
-    padding: 0.5em !important; }
-  .input input:-ms-input-placeholder {
-    text-transform: uppercase;
-    font-size: 0.8em;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    vertical-align: middle;
-    color: #aaa;
-    padding: 0.5em !important;
-    /* IE11 sadly requires all these !important flags */ }
-  .input textarea::placeholder {
-    line-height: 6em;
-    vertical-align: middle;
-    text-align: center; }
-  .input select {
-    height: 2.3em; }
   .input .input-section {
     text-align: center;
     position: relative;
@@ -385,25 +389,27 @@ body {
   .input .useraccounts .accountadmin {
     display: block;
     margin-top: 2.5%; }
-  .input .email .email-new-address,
-  .input .email .email-new-password,
-  .input .email .email-existing-address,
-  .input .email .email-existing-password {
-    display: inline-block;
-    width: 40%; }
-  .input .email .email-new-address {
-    position: relative;
-    padding: 0; }
-  .input .email .email-new-address-input {
-    width: 100%;
-    padding-right: 6.9em;
-    text-align: right; }
-  .input .email .email-new-address-input::placeholder {
-    text-align: left; }
-  .input .email .emaildomain.outlook {
-    position: absolute;
-    right: 0.5em;
-    top: 0.55em; }
+  .input .email {
+    /* .email-new-address-input::placeholder {
+      text-align: left;
+    } */ }
+    .input .email .email-new-address,
+    .input .email .email-new-password,
+    .input .email .email-existing-address,
+    .input .email .email-existing-password {
+      display: inline-block;
+      width: 40%; }
+    .input .email .email-new-address {
+      position: relative;
+      padding: 0; }
+    .input .email .email-new-address-input {
+      width: 100%;
+      padding-right: 6.9em;
+      text-align: right; }
+    .input .email .emaildomain.outlook {
+      position: absolute;
+      right: 0.5em;
+      top: 0.55em; }
   .input .datatransfer .transferuser,
   .input .datatransfer .transferpassword {
     width: 47.2%; }
