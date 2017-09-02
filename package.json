@@ -2,12 +2,18 @@
   "name": "setupgenerator",
   "version": "0.9.8",
   "description": "Creates a printable worksheet based on user input.",
-  "author": "Dan Foy",
+  "author": {
+    "name": "Dan Foy",
+    "url": "http://www.danfoy.com"
+  },
+  "homepage": "https://github.com/danfoy/setupgenerator",
   "repository": { 
     "type": "git",
     "url": "https://github.com/danfoy/setupgenerator.git"
   },
-  "license": "MIT",
+  "bugs": "https://github.com/danfoy/setupgenerator/issues",
+  "license": "CC-BY-NC-ND-4.0",
+  "private": true,
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
