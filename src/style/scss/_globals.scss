@@ -3,6 +3,22 @@ body {
   text-align: center;
 }
 
+#checkjsmsg {
+  margin-top: 20%;
+  padding: 0 20%;
+  small {
+    display: block;
+    margin-top: 4em;
+    font-size: 80%;
+    color: #777;
+  }
+}
+
+.nojs .appheader,
+.nojs .input {
+  display: none;
+}
+
 @media screen {
   body {
     background: #eee;

@@ -170,6 +170,19 @@ body {
   font-family: sans-serif;
   text-align: center; }
 
+#checkjsmsg {
+  margin-top: 20%;
+  padding: 0 20%; }
+  #checkjsmsg small {
+    display: block;
+    margin-top: 4em;
+    font-size: 80%;
+    color: #777; }
+
+.nojs .appheader,
+.nojs .input {
+  display: none; }
+
 @media screen {
   body {
     background: #eee; } }
@@ -565,13 +578,20 @@ body {
 
 <body>
 
-<div id="app" :class="{ 'printpreview': meta.printpreview }">
+<div id="checkjsmsg">
+    <h1>JavaScript is Disabled</h1>
+    <p>Click 'Allow Blocked Content' or enable JavaScript in your browser.</p>
+    <small>The Setup Generator requires JavaScript to generate the worksheet.
+      <br>Your data is safe: it is not transmitted or saved anywhere.
+      <br>All data is erased when this page is closed or refreshed.</small>
+  </div>
 
+<div id="app" class="nojs" :class="{ 'printpreview': meta.printpreview }">
+  
   <header class="appheader">
     <h1 class="app-title">Setup Generator</h1>
     <div><a href="https://github.com/danfoy/setupgenerator/commits/master" target="_blank" class="app-version">v{{ version }}</a></div>
   </header>
-
 <div class="input">
   <form id="inputform">
 
@@ -1264,6 +1284,17 @@ body {
   </div>
 
   <script type="text/javascript">
+
+/*global document */
+
+function checkjs () {
+  var appel = document.getElementById('app');
+  var checkjsmsg = document.getElementById('checkjsmsg');
+  checkjsmsg.style.display = 'none';
+  appel.classList.remove('nojs');
+}
+
+checkjs();
 
 /*!
  * Vue.js v2.4.0
@@ -11339,7 +11370,7 @@ var creationDate = function () {
 };
 
 var data = {
-  version: '0.9.7',
+  version: '0.9.8',
   meta: {
     printpreview: false
   },

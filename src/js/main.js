@@ -1,3 +1,14 @@
+/*global document */
+
+function checkjs () {
+  var appel = document.getElementById('app');
+  var checkjsmsg = document.getElementById('checkjsmsg');
+  checkjsmsg.style.display = 'none';
+  appel.classList.remove('nojs');
+}
+
+checkjs();
+
 /*!
  * Vue.js v2.4.0
  * (c) 2014-2017 Evan You
@@ -10072,7 +10083,7 @@ var creationDate = function () {
 };
 
 var data = {
-  version: '0.9.7',
+  version: '0.9.8',
   meta: {
     printpreview: false
   },

@@ -1,5 +1,13 @@
-<div id="app" :class="{ 'printpreview': meta.printpreview }">
+<div id="checkjsmsg">
+    <h1>JavaScript is Disabled</h1>
+    <p>Click 'Allow Blocked Content' or enable JavaScript in your browser.</p>
+    <small>The Setup Generator requires JavaScript to generate the worksheet.
+      <br>Your data is safe: it is not transmitted or saved anywhere.
+      <br>All data is erased when this page is closed or refreshed.</small>
+  </div>
 
+<div id="app" class="nojs" :class="{ 'printpreview': meta.printpreview }">
+  
   <header class="appheader">
     <h1 class="app-title">Setup Generator</h1>
     <div><a href="https://github.com/danfoy/setupgenerator/commits/master" target="_blank" class="app-version">v{{ version }}</a></div>
