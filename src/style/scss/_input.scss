@@ -258,9 +258,29 @@
         padding-right: 6.9em;
         text-align: right;
       }
-      /* .email-new-address-input::placeholder {
-        text-align: left;
-      } */
+      .emaildomain.outlook {
+        position: absolute;
+        right: 0.5em;
+        top: 0.55em;
+      }
+    }
+    .microsoftaccount {
+      .microsoftaccount-new-address,
+      .microsoftaccount-new-password,
+      .microsoftaccount-existing-address,
+      .microsoftaccount-existing-password {
+        display: inline-block;
+        width: 40%;
+      }
+      .microsoftaccount-new-address {
+        position: relative;
+        padding: 0;
+      }
+      .microsoftaccount-new-address-input {
+        width: 100%;
+        padding-right: 6.9em;
+        text-align: right;
+      }
       .emaildomain.outlook {
         position: absolute;
         right: 0.5em;

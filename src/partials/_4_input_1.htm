@@ -234,21 +234,29 @@
 
     <!-- Email -->
     <fieldset v-if="setupoptions.email" name="email" class="input-section email">
-      <legend for="email" class="section-label">Email Accounts</legend>
+      <legend for="email" class="section-label">Existing Email Account</legend>
+        <input type="text" v-model="email.account1.address" placeholder="Email Address" class="email-existing-address">
+        <input type="text" v-model="email.account1.password" placeholder="password" class="email-existing-password">
+    </fieldset>
+    
+    
+    <!-- Microsoft Account -->
+    <fieldset v-if="software.includes('Office') || software.includes('McAfee') || software.includes('Norton')" name="microsoftaccount" class="input-section microsoftaccount">
+      <legend for="microsoftaccount" class="section-label">Microsoft Accounts</legend>
 
-      <label><input type="radio" name="emailtype" v-model="email.type" value="new">Create a new email account</label>
-      <label><input type="radio" name="emailtype" v-model="email.type" value="existing">Sign in to an existing email account</label>
+      <label><input type="radio" name="microsoftaccounttype" v-model="microsoftaccount.type" value="new">Create a new Microsoft Account</label>
+      <label><input type="radio" name="microsoftaccounttype" v-model="microsoftaccount.type" value="existing">Sign in to an existing Microsoft Account</label>
 
-      <fieldset v-if="email.type == 'new'" name="newemail">
-        <legend for="newemail">New Email Account</legend>
-        <label class="email-new-address"><input type="text" v-model="email.new.account1.address" placeholder="yourname" class="email-new-address-input"><span class="emaildomain outlook">@outlook.com</span></label>
-        <input type="text" v-model="email.new.account1.password" placeholder="password" class="email-new-password">
+      <fieldset v-if="microsoftaccount.type == 'new'" name="newmicrosoftaccount">
+        <legend for="newmicrosoftaccount">New Microsoft Account</legend>
+        <label class="microsoftaccount-new-address"><input type="text" v-model="microsoftaccount.new.address" placeholder="yourname" class="microsoftaccount-new-address-input"><span class="emaildomain outlook">@outlook.com</span></label>
+        <input type="text" v-model="microsoftaccount.new.password" placeholder="password" class="microsoftaccount-new-password">
       </fieldset>
 
-      <fieldset v-if="email.type == 'existing'" name="existingemail">
-        <legend for="existing">Existing Email Account</legend>
-        <input type="text" v-model="email.existing.account1.address" placeholder="Email Address" class="email-existing-address">
-        <input type="text" v-model="email.existing.account1.password" placeholder="password" class="email-existing-password">
+      <fieldset v-if="microsoftaccount.type == 'existing'" name="existingmicrosoftaccount">
+        <legend for="existingmicrosoftaccount">Existing Email Account</legend>
+        <input type="text" v-model="microsoftaccount.existing.address" placeholder="Email Address" class="microsoftaccount-existing-address">
+        <input type="text" v-model="microsoftaccount.existing.password" placeholder="password" class="microsoftaccount-existing-password">
       </fieldset>
 
     </fieldset>

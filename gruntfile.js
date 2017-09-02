@@ -23,6 +23,7 @@ module.exports = function(grunt) {
     concat: {
       scripts: {
         src: [
+          'src/js/modules/_polyfills.js',
           'src/js/modules/_checkjs.js',
           'src/js/modules/_vue.js',
           'src/js/modules/_data.js',

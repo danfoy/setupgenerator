@@ -220,28 +220,57 @@
 
 
     <!-- Email Accounts -->
-    <tr v-if="email.type">
+    <tr v-if="email.account1.address">
       <td>
         <table class="output-section email">
           <tr class="output-section-header-row">
             <td>
-              <h2 class="output-section-header">Add <span v-if="email.type == 'existing'">Existing</span><span v-if="email.type == 'new'">New</span> Email Account</h2>
+              <h2 class="output-section-header">Add Existing Email Account</h2>
             </td>
           </tr>
-          <tr v-if="email.type == 'existing'">
+          <tr>
             <td class="email-address">
-              <strong>Email:</strong> {{ email.existing.account1.address }}
+              <strong>Email:</strong> {{ email.account1.address }}
             </td>
             <td class="email-password">
-              <strong>Password:</strong> {{ email.existing.account1.password }}
+              <strong>Password:</strong> {{ email.account1.password }}
             </td>
           </tr>
-          <tr v-if="email.type == 'existing'">
+          <tr>
+            <td colspan="2">
+              <strong>Corrections:</strong>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    
+    
+    
+    <!-- Microsoft Account -->
+    <tr v-if="microsoftaccount.type">
+      <td>
+        <table class="output-section microsoftaccount">
+          <tr class="output-section-header-row">
+            <td>
+              <h2 class="output-section-header">Add <span v-if="microsoftaccount.type == 'existing'">Existing</span><span v-if="microsoftaccount.type == 'new'">New</span> Microsoft Account</h2>
+            </td>
+          </tr>
+          <tr v-if="microsoftaccount.type == 'existing'">
             <td class="email-address">
-              <strong>Email:</strong> {{ email.new.account1.address }}
+              <strong>Email:</strong> {{ microsoftaccount.existing.address }}
             </td>
             <td class="email-password">
-              <strong>Password:</strong> {{ email.new.account1.password }}
+              <strong>Password:</strong> {{ microsoftaccount.existing.password }}
+            </td>
+          </tr>
+          <tr v-if="microsoftaccount.type == 'new'">
+            <td class="email-address">
+              <strong>Email:</strong> {{ microsoftaccount.new.address }}@outlook.com
+            </td>
+            <td class="email-password">
+              <strong>Password:</strong> {{ microsoftaccount.new.password }}
             </td>
           </tr>
           <tr>

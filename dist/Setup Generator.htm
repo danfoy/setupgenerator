@@ -399,27 +399,40 @@ body {
   .input .useraccounts .accountadmin {
     display: block;
     margin-top: 2.5%; }
-  .input .email {
-    /* .email-new-address-input::placeholder {
-      text-align: left;
-    } */ }
-    .input .email .email-new-address,
-    .input .email .email-new-password,
-    .input .email .email-existing-address,
-    .input .email .email-existing-password {
-      display: inline-block;
-      width: 40%; }
-    .input .email .email-new-address {
-      position: relative;
-      padding: 0; }
-    .input .email .email-new-address-input {
-      width: 100%;
-      padding-right: 6.9em;
-      text-align: right; }
-    .input .email .emaildomain.outlook {
-      position: absolute;
-      right: 0.5em;
-      top: 0.55em; }
+  .input .email .email-new-address,
+  .input .email .email-new-password,
+  .input .email .email-existing-address,
+  .input .email .email-existing-password {
+    display: inline-block;
+    width: 40%; }
+  .input .email .email-new-address {
+    position: relative;
+    padding: 0; }
+  .input .email .email-new-address-input {
+    width: 100%;
+    padding-right: 6.9em;
+    text-align: right; }
+  .input .email .emaildomain.outlook {
+    position: absolute;
+    right: 0.5em;
+    top: 0.55em; }
+  .input .microsoftaccount .microsoftaccount-new-address,
+  .input .microsoftaccount .microsoftaccount-new-password,
+  .input .microsoftaccount .microsoftaccount-existing-address,
+  .input .microsoftaccount .microsoftaccount-existing-password {
+    display: inline-block;
+    width: 40%; }
+  .input .microsoftaccount .microsoftaccount-new-address {
+    position: relative;
+    padding: 0; }
+  .input .microsoftaccount .microsoftaccount-new-address-input {
+    width: 100%;
+    padding-right: 6.9em;
+    text-align: right; }
+  .input .microsoftaccount .emaildomain.outlook {
+    position: absolute;
+    right: 0.5em;
+    top: 0.55em; }
   .input .datatransfer .transferuser,
   .input .datatransfer .transferpassword {
     width: 47.2%; }
@@ -554,6 +567,9 @@ body {
   width: 25%; }
 .output .email .email-address,
 .output .email .email-password {
+  width: 50%; }
+.output .microsoftaccount .email-address,
+.output .microsoftaccount .email-password {
   width: 50%; }
 
 .printpreview .output {
@@ -834,21 +850,29 @@ body {
 
     <!-- Email -->
     <fieldset v-if="setupoptions.email" name="email" class="input-section email">
-      <legend for="email" class="section-label">Email Accounts</legend>
+      <legend for="email" class="section-label">Existing Email Account</legend>
+        <input type="text" v-model="email.account1.address" placeholder="Email Address" class="email-existing-address">
+        <input type="text" v-model="email.account1.password" placeholder="password" class="email-existing-password">
+    </fieldset>
+    
+    
+    <!-- Microsoft Account -->
+    <fieldset v-if="software.includes('Office') || software.includes('McAfee') || software.includes('Norton')" name="microsoftaccount" class="input-section microsoftaccount">
+      <legend for="microsoftaccount" class="section-label">Microsoft Accounts</legend>
 
-      <label><input type="radio" name="emailtype" v-model="email.type" value="new">Create a new email account</label>
-      <label><input type="radio" name="emailtype" v-model="email.type" value="existing">Sign in to an existing email account</label>
+      <label><input type="radio" name="microsoftaccounttype" v-model="microsoftaccount.type" value="new">Create a new Microsoft Account</label>
+      <label><input type="radio" name="microsoftaccounttype" v-model="microsoftaccount.type" value="existing">Sign in to an existing Microsoft Account</label>
 
-      <fieldset v-if="email.type == 'new'" name="newemail">
-        <legend for="newemail">New Email Account</legend>
-        <label class="email-new-address"><input type="text" v-model="email.new.account1.address" placeholder="yourname" class="email-new-address-input"><span class="emaildomain outlook">@outlook.com</span></label>
-        <input type="text" v-model="email.new.account1.password" placeholder="password" class="email-new-password">
+      <fieldset v-if="microsoftaccount.type == 'new'" name="newmicrosoftaccount">
+        <legend for="newmicrosoftaccount">New Microsoft Account</legend>
+        <label class="microsoftaccount-new-address"><input type="text" v-model="microsoftaccount.new.address" placeholder="yourname" class="microsoftaccount-new-address-input"><span class="emaildomain outlook">@outlook.com</span></label>
+        <input type="text" v-model="microsoftaccount.new.password" placeholder="password" class="microsoftaccount-new-password">
       </fieldset>
 
-      <fieldset v-if="email.type == 'existing'" name="existingemail">
-        <legend for="existing">Existing Email Account</legend>
-        <input type="text" v-model="email.existing.account1.address" placeholder="Email Address" class="email-existing-address">
-        <input type="text" v-model="email.existing.account1.password" placeholder="password" class="email-existing-password">
+      <fieldset v-if="microsoftaccount.type == 'existing'" name="existingmicrosoftaccount">
+        <legend for="existingmicrosoftaccount">Existing Email Account</legend>
+        <input type="text" v-model="microsoftaccount.existing.address" placeholder="Email Address" class="microsoftaccount-existing-address">
+        <input type="text" v-model="microsoftaccount.existing.password" placeholder="password" class="microsoftaccount-existing-password">
       </fieldset>
 
     </fieldset>
@@ -1114,28 +1138,57 @@ body {
 
 
     <!-- Email Accounts -->
-    <tr v-if="email.type">
+    <tr v-if="email.account1.address">
       <td>
         <table class="output-section email">
           <tr class="output-section-header-row">
             <td>
-              <h2 class="output-section-header">Add <span v-if="email.type == 'existing'">Existing</span><span v-if="email.type == 'new'">New</span> Email Account</h2>
+              <h2 class="output-section-header">Add Existing Email Account</h2>
             </td>
           </tr>
-          <tr v-if="email.type == 'existing'">
+          <tr>
             <td class="email-address">
-              <strong>Email:</strong> {{ email.existing.account1.address }}
+              <strong>Email:</strong> {{ email.account1.address }}
             </td>
             <td class="email-password">
-              <strong>Password:</strong> {{ email.existing.account1.password }}
+              <strong>Password:</strong> {{ email.account1.password }}
             </td>
           </tr>
-          <tr v-if="email.type == 'existing'">
+          <tr>
+            <td colspan="2">
+              <strong>Corrections:</strong>
+              <div class="tickbox"></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    
+    
+    
+    <!-- Microsoft Account -->
+    <tr v-if="microsoftaccount.type">
+      <td>
+        <table class="output-section microsoftaccount">
+          <tr class="output-section-header-row">
+            <td>
+              <h2 class="output-section-header">Add <span v-if="microsoftaccount.type == 'existing'">Existing</span><span v-if="microsoftaccount.type == 'new'">New</span> Microsoft Account</h2>
+            </td>
+          </tr>
+          <tr v-if="microsoftaccount.type == 'existing'">
             <td class="email-address">
-              <strong>Email:</strong> {{ email.new.account1.address }}
+              <strong>Email:</strong> {{ microsoftaccount.existing.address }}
             </td>
             <td class="email-password">
-              <strong>Password:</strong> {{ email.new.account1.password }}
+              <strong>Password:</strong> {{ microsoftaccount.existing.password }}
+            </td>
+          </tr>
+          <tr v-if="microsoftaccount.type == 'new'">
+            <td class="email-address">
+              <strong>Email:</strong> {{ microsoftaccount.new.address }}@outlook.com
+            </td>
+            <td class="email-password">
+              <strong>Password:</strong> {{ microsoftaccount.new.password }}
             </td>
           </tr>
           <tr>
@@ -1291,6 +1344,59 @@ body {
 
   <script type="text/javascript">
 
+
+// array.prototype.includes polyfill
+// https://tc39.github.io/ecma262/#sec-array.prototype.includes
+if (!Array.prototype.includes) {
+  Object.defineProperty(Array.prototype, 'includes', {
+    value: function(searchElement, fromIndex) {
+
+      // 1. Let O be ? ToObject(this value).
+      if (this == null) {
+        throw new TypeError('"this" is null or not defined');
+      }
+
+      var o = Object(this);
+
+      // 2. Let len be ? ToLength(? Get(O, "length")).
+      var len = o.length >>> 0;
+
+      // 3. If len is 0, return false.
+      if (len === 0) {
+        return false;
+      }
+
+      // 4. Let n be ? ToInteger(fromIndex).
+      //    (If fromIndex is undefined, this step produces the value 0.)
+      var n = fromIndex | 0;
+
+      // 5. If n ≥ 0, then
+      //  a. Let k be n.
+      // 6. Else n < 0,
+      //  a. Let k be len + n.
+      //  b. If k < 0, let k be 0.
+      var k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+
+      function sameValueZero(x, y) {
+        return x === y || (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y));
+      }
+
+      // 7. Repeat, while k < len
+      while (k < len) {
+        // a. Let elementK be the result of ? Get(O, ! ToString(k)).
+        // b. If SameValueZero(searchElement, elementK) is true, return true.
+        // c. Increase k by 1. 
+        if (sameValueZero(o[k], searchElement)) {
+          return true;
+        }
+        k++;
+      }
+
+      // 8. Return false
+      return false;
+    }
+  });
+}
 /*global document */
 
 function checkjs () {
@@ -11482,18 +11588,20 @@ var data = {
   software: [],
   customsoftware: [],
   email: {
+    account1: {
+      address: '',
+      password: ''
+    }
+  },
+  microsoftaccount: {
     type: '',
     existing: {
-      account1: {
-        address: '',
-        password: ''
-      }
+      address: '',
+      password: ''
     },
     new: {
-      account1: {
-        address: '',
-        password: ''
-      }
+      address: '',
+      password: ''
     }
   },
   notes: '',

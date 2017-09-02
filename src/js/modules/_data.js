@@ -120,18 +120,20 @@ var data = {
   software: [],
   customsoftware: [],
   email: {
+    account1: {
+      address: '',
+      password: ''
+    }
+  },
+  microsoftaccount: {
     type: '',
     existing: {
-      account1: {
-        address: '',
-        password: ''
-      }
+      address: '',
+      password: ''
     },
     new: {
-      account1: {
-        address: '',
-        password: ''
-      }
+      address: '',
+      password: ''
     }
   },
   notes: '',

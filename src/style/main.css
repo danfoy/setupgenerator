@@ -389,27 +389,40 @@ body {
   .input .useraccounts .accountadmin {
     display: block;
     margin-top: 2.5%; }
-  .input .email {
-    /* .email-new-address-input::placeholder {
-      text-align: left;
-    } */ }
-    .input .email .email-new-address,
-    .input .email .email-new-password,
-    .input .email .email-existing-address,
-    .input .email .email-existing-password {
-      display: inline-block;
-      width: 40%; }
-    .input .email .email-new-address {
-      position: relative;
-      padding: 0; }
-    .input .email .email-new-address-input {
-      width: 100%;
-      padding-right: 6.9em;
-      text-align: right; }
-    .input .email .emaildomain.outlook {
-      position: absolute;
-      right: 0.5em;
-      top: 0.55em; }
+  .input .email .email-new-address,
+  .input .email .email-new-password,
+  .input .email .email-existing-address,
+  .input .email .email-existing-password {
+    display: inline-block;
+    width: 40%; }
+  .input .email .email-new-address {
+    position: relative;
+    padding: 0; }
+  .input .email .email-new-address-input {
+    width: 100%;
+    padding-right: 6.9em;
+    text-align: right; }
+  .input .email .emaildomain.outlook {
+    position: absolute;
+    right: 0.5em;
+    top: 0.55em; }
+  .input .microsoftaccount .microsoftaccount-new-address,
+  .input .microsoftaccount .microsoftaccount-new-password,
+  .input .microsoftaccount .microsoftaccount-existing-address,
+  .input .microsoftaccount .microsoftaccount-existing-password {
+    display: inline-block;
+    width: 40%; }
+  .input .microsoftaccount .microsoftaccount-new-address {
+    position: relative;
+    padding: 0; }
+  .input .microsoftaccount .microsoftaccount-new-address-input {
+    width: 100%;
+    padding-right: 6.9em;
+    text-align: right; }
+  .input .microsoftaccount .emaildomain.outlook {
+    position: absolute;
+    right: 0.5em;
+    top: 0.55em; }
   .input .datatransfer .transferuser,
   .input .datatransfer .transferpassword {
     width: 47.2%; }
@@ -544,6 +557,9 @@ body {
   width: 25%; }
 .output .email .email-address,
 .output .email .email-password {
+  width: 50%; }
+.output .microsoftaccount .email-address,
+.output .microsoftaccount .email-password {
   width: 50%; }
 
 .printpreview .output {
