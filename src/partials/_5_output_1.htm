@@ -45,7 +45,7 @@
 
 
     <!-- Setup Options -->
-    <tr v-if="setupinfo.exdemo || setupinfo.presetup || setupinfo.service == 'Walk Out Working' || setupoptions.recoverymedia || setupoptions.datatransfer || setupoptions.existingemail || setupoptions.installsoftware || setupoptions.runupdates">
+    <tr v-if="setupinfo.exdemo || setupinfo.presetup || setupinfo.service == 'Walk Out Working' || (basicinfo.platform==='Windows' && setupoptions.recoverymedia)|| setupoptions.datatransfer || setupoptions.existingemail || setupoptions.installsoftware || setupoptions.runupdates || microsoftaccount.type==='new' || appleid.type==='new' || googleaccount.type==='new'">
       <td>
         <table class="output-section setupoptions">
           <tr class="output-section-header-row">
@@ -55,9 +55,10 @@
           </tr>
 
           <tr v-if="setupinfo.exdemo" line="Reset to factory defaults" is="lineitem"></tr>
-          <tr v-if="(basicinfo.platform=='Windows' && setupinfo.service!='Factory Reset') || setupoptions.recoverymedia" line="Create recovery media" v-bind:class="{'prechecked': setupinfo.presetup}" is="lineitem"></tr>
+          <tr v-if="basicinfo.platform==='Windows' && setupoptions.recoverymedia" line="Create recovery media" v-bind:class="{'prechecked': setupinfo.presetup}" is="lineitem"></tr>
           <tr v-if="setupoptions.runupdates" line="Run updates" is="lineitem"></tr>
           <tr v-if="setupinfo.exdemo" line="Clean ex-display item" is="lineitem"></tr>
+          <tr v-if="microsoftaccount.type==='new' || appleid.type==='new' || googleaccount.type==='new'" line="Printed new account info letter" is="lineitem"></tr>
         </table>
       </td>
     </tr>
@@ -121,7 +122,7 @@
             </td>
           </tr>
         </table>
-        
+
       </td>
     </tr>
 
@@ -245,9 +246,9 @@
         </table>
       </td>
     </tr>
-    
-    
-    
+
+
+
     <!-- Microsoft Account -->
     <tr v-if="microsoftaccount.type">
       <td>
