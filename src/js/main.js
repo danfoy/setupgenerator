@@ -10264,7 +10264,7 @@ var data = {
     }
 };
 
-/*global document */
+/*global document, window */
 
 /* 
 
@@ -10274,17 +10274,21 @@ printSheet uses document.execCommand() to resolve a bug where IE11 disregards '@
 
 var methods = {
   addCustomSoftware: function () {
-      this.customsoftware.push(this.temp.customsoftware);
-      this.temp.customsoftware = '';
-    },
-    resetCustomSoftware: function () {
-      this.customsoftware = [];
-      this.temp.customsoftware = '';
-    },
-    printSheet: function () {
-      document.execCommand('print', false, null);
-    }
+    this.customsoftware.push(this.temp.customsoftware);
+    this.temp.customsoftware = '';
+  },
+  resetCustomSoftware: function () {
+    this.customsoftware = [];
+    this.temp.customsoftware = '';
+  },
+  printSheet: function () {
+    document.execCommand('print', false, null);
+  },
+  resetAll: function () {
+    window.location.reload();
+  }
 };
+
 var computed = {
   customerInfoComplete: function () {
       if (

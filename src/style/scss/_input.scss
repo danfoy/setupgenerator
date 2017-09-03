@@ -1,5 +1,5 @@
   $fieldset-border: 0.2em solid #000;
-  .input {
+  #input {
     fieldset {
       border: $fieldset-border;
       border-radius: 0.25em;
@@ -304,6 +304,18 @@
       .previewbutton,
       .printbutton {
         margin: 1em auto;
+      }
+      .resetbutton,
+      .resetbutton:visited {
+        text-transform: uppercase;
+        font-size: 0.8em;
+        text-decoration: underline;
+        color: black;
+        font-weight: bold;
+      }
+      .resetbutton:hover {
+        text-decoration: none;
+        color: deeppink;
       }
       .printbutton {
         display: block;

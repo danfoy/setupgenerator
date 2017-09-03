@@ -194,7 +194,7 @@ body {
   .appheader .app-version:hover {
     color: black; }
 
-.input {
+#input {
   /* ::placeholder {
     text-transform: uppercase;
     font-size: 0.8em;
@@ -224,50 +224,50 @@ body {
   } */
   box-sizing: border-box;
   text-align: left; }
-  .input fieldset {
+  #input fieldset {
     border: 0.2em solid #000;
     border-radius: 0.25em;
     background: #fff;
     box-shadow: 0 0 1em 0.2em #ccc; }
-  .input label {
+  #input label {
     padding: 0 2.5%;
     margin-bottom: 2.5%;
     cursor: pointer; }
-  .input input,
-  .input select,
-  .input textarea,
-  .input button {
+  #input input,
+  #input select,
+  #input textarea,
+  #input button {
     border: 1px solid black;
     border-bottom-width: 2px;
     border-radius: 0.25em;
     box-sizing: border-box;
     margin-bottom: 1%; }
-  .input input,
-  .input select,
-  .input textarea,
-  .input button {
+  #input input,
+  #input select,
+  #input textarea,
+  #input button {
     padding: 0.5em; }
-  .input input[type='checkbox'],
-  .input input[type='radio'] {
+  #input input[type='checkbox'],
+  #input input[type='radio'] {
     margin-right: 0.5em;
     display: inline-block;
     cursor: pointer; }
-  .input button {
+  #input button {
     background: #fff;
     cursor: pointer; }
-  .input textarea {
+  #input textarea {
     width: 95%;
     margin-left: 2.5%;
     margin-right: 2.5%;
     height: 6em;
     box-sizing: border-box; }
-  .input .input-section {
+  #input .input-section {
     text-align: center;
     position: relative;
     padding: 3%;
     margin: 4.5em 5%;
     box-sizing: border-box; }
-  .input .section-label {
+  #input .section-label {
     position: absolute;
     display: inline-block;
     left: 2em;
@@ -284,17 +284,17 @@ body {
     font-size: 0.8em;
     font-weight: 700;
     cursor: default; }
-  .input .section-label.complete {
+  #input .section-label.complete {
     border-top-color: lightgreen;
     border-top-width: 0.4em;
     padding: 0.9em 1.5em 0.2em 1.5em; }
-  .input .input-section fieldset {
+  #input .input-section fieldset {
     margin: 3%;
     padding: 2.5% 2.5% 1.5% 2.5%;
     border-color: #999;
     position: relative;
     box-sizing: border-box; }
-  .input .input-section fieldset legend {
+  #input .input-section fieldset legend {
     padding: 0.5em 1em;
     background: #fff;
     border: 0.15em solid #999;
@@ -303,140 +303,150 @@ body {
     font-size: 0.8em;
     font-weight: 700;
     cursor: default; }
-  .input .infoblock {
+  #input .infoblock {
     padding: 2.5% 15% 5% 15%;
     text-align: left;
     color: #555;
     font-size: 0.9em;
     font-style: italic; }
-  .input .basicinfo {
+  #input .basicinfo {
     text-align: center; }
-    .input .basicinfo .colleague,
-    .input .basicinfo .productsku {
+    #input .basicinfo .colleague,
+    #input .basicinfo .productsku {
       text-align: center;
       width: 40%; }
-    .input .basicinfo .platform {
+    #input .basicinfo .platform {
       text-align: center; }
-  .input .customerinfo input,
-  .input .customerinfo textarea {
+  #input .customerinfo input,
+  #input .customerinfo textarea {
     margin: inherit 2.5%; }
-  .input .customerinfo .customerinfo-title {
+  #input .customerinfo .customerinfo-title {
     width: 15%; }
-  .input .customerinfo .customerinfo-firstname,
-  .input .customerinfo .customerinfo-surname {
+  #input .customerinfo .customerinfo-firstname,
+  #input .customerinfo .customerinfo-surname {
     width: 41.5%; }
-  .input .customerinfo .customerinfo-telephone,
-  .input .customerinfo .customerinfo-alttelephone {
+  #input .customerinfo .customerinfo-telephone,
+  #input .customerinfo .customerinfo-alttelephone {
     width: 49.5%; }
-  .input .setupinfo label {
+  #input .setupinfo label {
     display: inline-block; }
-  .input .setupoptions ul,
-  .input .software ul {
+  #input .setupoptions ul,
+  #input .software ul {
     position: relative;
     list-style-type: none;
     padding: 0 0 0 12%;
     text-align: left; }
-  .input .setupoptions li,
-  .input .software li {
+  #input .setupoptions li,
+  #input .software li {
     display: inline-block;
     width: 32%; }
-  .input .setupoptions label,
-  .input .software label {
+  #input .setupoptions label,
+  #input .software label {
     display: inline-block;
     padding: 0.5em; }
-  .input .setupoptions .customsoftware,
-  .input .software .customsoftware {
+  #input .setupoptions .customsoftware,
+  #input .software .customsoftware {
     margin-top: 1.5em; }
-    .input .setupoptions .customsoftware ul,
-    .input .software .customsoftware ul {
+    #input .setupoptions .customsoftware ul,
+    #input .software .customsoftware ul {
       margin-bottom: 2.5em; }
-    .input .setupoptions .customsoftware input[type='text'],
-    .input .software .customsoftware input[type='text'] {
+    #input .setupoptions .customsoftware input[type='text'],
+    #input .software .customsoftware input[type='text'] {
       width: 40%; }
-    .input .setupoptions .customsoftware button,
-    .input .software .customsoftware button {
+    #input .setupoptions .customsoftware button,
+    #input .software .customsoftware button {
       width: 29%; }
-  .input .appleid .appleid-existingemail,
-  .input .appleid .appleid-existingpassword {
+  #input .appleid .appleid-existingemail,
+  #input .appleid .appleid-existingpassword {
     width: 45%; }
-  .input .appleid .appleid-newemail,
-  .input .appleid .appleid-newpassword,
-  .input .appleid .appleid-dob {
+  #input .appleid .appleid-newemail,
+  #input .appleid .appleid-newpassword,
+  #input .appleid .appleid-dob {
     width: 28%; }
-  .input .appleid .appleid-newemail {
+  #input .appleid .appleid-newemail {
     padding-left: 0;
     padding-right: 1%; }
-  .input .appleid .recoveryquestion-question {
+  #input .appleid .recoveryquestion-question {
     width: 65%; }
-  .input .appleid .recoveryquestion-answer {
+  #input .appleid .recoveryquestion-answer {
     width: 30%; }
-  .input .googleaccount-existing .googleaccount-address,
-  .input .googleaccount-existing .googleaccount-password {
+  #input .googleaccount-existing .googleaccount-address,
+  #input .googleaccount-existing .googleaccount-password {
     width: 40%; }
-  .input .googleaccount-new .googleaccount-address,
-  .input .googleaccount-new .googleaccount-password {
+  #input .googleaccount-new .googleaccount-address,
+  #input .googleaccount-new .googleaccount-password {
     width: 35%; }
-  .input .googleaccount-new .googleaccount-dob {
+  #input .googleaccount-new .googleaccount-dob {
     width: 22%; }
-  .input .useraccounts .accountname,
-  .input .useraccounts .accountpassword {
+  #input .useraccounts .accountname,
+  #input .useraccounts .accountpassword {
     width: 40%; }
-  .input .useraccounts .accounthint {
+  #input .useraccounts .accounthint {
     display: block;
     width: 80%;
     margin-left: auto;
     margin-right: auto; }
-  .input .useraccounts .accountadmin {
+  #input .useraccounts .accountadmin {
     display: block;
     margin-top: 2.5%; }
-  .input .email .email-new-address,
-  .input .email .email-new-password,
-  .input .email .email-existing-address,
-  .input .email .email-existing-password {
+  #input .email .email-new-address,
+  #input .email .email-new-password,
+  #input .email .email-existing-address,
+  #input .email .email-existing-password {
     display: inline-block;
     width: 40%; }
-  .input .email .email-new-address {
+  #input .email .email-new-address {
     position: relative;
     padding: 0; }
-  .input .email .email-new-address-input {
+  #input .email .email-new-address-input {
     width: 100%;
     padding-right: 6.9em;
     text-align: right; }
-  .input .email .emaildomain.outlook {
+  #input .email .emaildomain.outlook {
     position: absolute;
     right: 0.5em;
     top: 0.55em; }
-  .input .microsoftaccount .microsoftaccount-new-address,
-  .input .microsoftaccount .microsoftaccount-new-password,
-  .input .microsoftaccount .microsoftaccount-existing-address,
-  .input .microsoftaccount .microsoftaccount-existing-password {
+  #input .microsoftaccount .microsoftaccount-new-address,
+  #input .microsoftaccount .microsoftaccount-new-password,
+  #input .microsoftaccount .microsoftaccount-existing-address,
+  #input .microsoftaccount .microsoftaccount-existing-password {
     display: inline-block;
     width: 40%; }
-  .input .microsoftaccount .microsoftaccount-new-address {
+  #input .microsoftaccount .microsoftaccount-new-address {
     position: relative;
     padding: 0; }
-  .input .microsoftaccount .microsoftaccount-new-address-input {
+  #input .microsoftaccount .microsoftaccount-new-address-input {
     width: 100%;
     padding-right: 6.9em;
     text-align: right; }
-  .input .microsoftaccount .emaildomain.outlook {
+  #input .microsoftaccount .emaildomain.outlook {
     position: absolute;
     right: 0.5em;
     top: 0.55em; }
-  .input .datatransfer .transferuser,
-  .input .datatransfer .transferpassword {
+  #input .datatransfer .transferuser,
+  #input .datatransfer .transferpassword {
     width: 47.2%; }
-  .input .datatransfer .transfermedia,
-  .input .datatransfer .transfersource {
+  #input .datatransfer .transfermedia,
+  #input .datatransfer .transfersource {
     width: 95%; }
-  .input .printcontrols {
+  #input .printcontrols {
     text-align: center;
     margin-top: 6em;
     margin-bottom: 5em; }
-    .input .printcontrols .previewbutton,
-    .input .printcontrols .printbutton {
+    #input .printcontrols .previewbutton,
+    #input .printcontrols .printbutton {
       margin: 1em auto; }
-    .input .printcontrols .printbutton {
+    #input .printcontrols .resetbutton,
+    #input .printcontrols .resetbutton:visited {
+      text-transform: uppercase;
+      font-size: 0.8em;
+      text-decoration: underline;
+      color: black;
+      font-weight: bold; }
+    #input .printcontrols .resetbutton:hover {
+      text-decoration: none;
+      color: deeppink; }
+    #input .printcontrols .printbutton {
       display: block;
       text-transform: uppercase;
       letter-spacing: 0.5em;
@@ -448,7 +458,7 @@ body {
       border-width: 0.2em;
       border-bottom-color: deeppink;
       border-bottom-width: 0.4em; }
-    .input .printcontrols .printbutton:hover {
+    #input .printcontrols .printbutton:hover {
       background: deeppink;
       color: white;
       border-bottom-color: white; }
@@ -578,7 +588,7 @@ body {
     border: 0.05em solid #555; } }
 @media print {
   .appheader,
-  .input {
+  #input {
     display: none; }
 
   .output {

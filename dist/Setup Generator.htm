@@ -204,7 +204,7 @@ body {
   .appheader .app-version:hover {
     color: black; }
 
-.input {
+#input {
   /* ::placeholder {
     text-transform: uppercase;
     font-size: 0.8em;
@@ -234,50 +234,50 @@ body {
   } */
   box-sizing: border-box;
   text-align: left; }
-  .input fieldset {
+  #input fieldset {
     border: 0.2em solid #000;
     border-radius: 0.25em;
     background: #fff;
     box-shadow: 0 0 1em 0.2em #ccc; }
-  .input label {
+  #input label {
     padding: 0 2.5%;
     margin-bottom: 2.5%;
     cursor: pointer; }
-  .input input,
-  .input select,
-  .input textarea,
-  .input button {
+  #input input,
+  #input select,
+  #input textarea,
+  #input button {
     border: 1px solid black;
     border-bottom-width: 2px;
     border-radius: 0.25em;
     box-sizing: border-box;
     margin-bottom: 1%; }
-  .input input,
-  .input select,
-  .input textarea,
-  .input button {
+  #input input,
+  #input select,
+  #input textarea,
+  #input button {
     padding: 0.5em; }
-  .input input[type='checkbox'],
-  .input input[type='radio'] {
+  #input input[type='checkbox'],
+  #input input[type='radio'] {
     margin-right: 0.5em;
     display: inline-block;
     cursor: pointer; }
-  .input button {
+  #input button {
     background: #fff;
     cursor: pointer; }
-  .input textarea {
+  #input textarea {
     width: 95%;
     margin-left: 2.5%;
     margin-right: 2.5%;
     height: 6em;
     box-sizing: border-box; }
-  .input .input-section {
+  #input .input-section {
     text-align: center;
     position: relative;
     padding: 3%;
     margin: 4.5em 5%;
     box-sizing: border-box; }
-  .input .section-label {
+  #input .section-label {
     position: absolute;
     display: inline-block;
     left: 2em;
@@ -294,17 +294,17 @@ body {
     font-size: 0.8em;
     font-weight: 700;
     cursor: default; }
-  .input .section-label.complete {
+  #input .section-label.complete {
     border-top-color: lightgreen;
     border-top-width: 0.4em;
     padding: 0.9em 1.5em 0.2em 1.5em; }
-  .input .input-section fieldset {
+  #input .input-section fieldset {
     margin: 3%;
     padding: 2.5% 2.5% 1.5% 2.5%;
     border-color: #999;
     position: relative;
     box-sizing: border-box; }
-  .input .input-section fieldset legend {
+  #input .input-section fieldset legend {
     padding: 0.5em 1em;
     background: #fff;
     border: 0.15em solid #999;
@@ -313,140 +313,150 @@ body {
     font-size: 0.8em;
     font-weight: 700;
     cursor: default; }
-  .input .infoblock {
+  #input .infoblock {
     padding: 2.5% 15% 5% 15%;
     text-align: left;
     color: #555;
     font-size: 0.9em;
     font-style: italic; }
-  .input .basicinfo {
+  #input .basicinfo {
     text-align: center; }
-    .input .basicinfo .colleague,
-    .input .basicinfo .productsku {
+    #input .basicinfo .colleague,
+    #input .basicinfo .productsku {
       text-align: center;
       width: 40%; }
-    .input .basicinfo .platform {
+    #input .basicinfo .platform {
       text-align: center; }
-  .input .customerinfo input,
-  .input .customerinfo textarea {
+  #input .customerinfo input,
+  #input .customerinfo textarea {
     margin: inherit 2.5%; }
-  .input .customerinfo .customerinfo-title {
+  #input .customerinfo .customerinfo-title {
     width: 15%; }
-  .input .customerinfo .customerinfo-firstname,
-  .input .customerinfo .customerinfo-surname {
+  #input .customerinfo .customerinfo-firstname,
+  #input .customerinfo .customerinfo-surname {
     width: 41.5%; }
-  .input .customerinfo .customerinfo-telephone,
-  .input .customerinfo .customerinfo-alttelephone {
+  #input .customerinfo .customerinfo-telephone,
+  #input .customerinfo .customerinfo-alttelephone {
     width: 49.5%; }
-  .input .setupinfo label {
+  #input .setupinfo label {
     display: inline-block; }
-  .input .setupoptions ul,
-  .input .software ul {
+  #input .setupoptions ul,
+  #input .software ul {
     position: relative;
     list-style-type: none;
     padding: 0 0 0 12%;
     text-align: left; }
-  .input .setupoptions li,
-  .input .software li {
+  #input .setupoptions li,
+  #input .software li {
     display: inline-block;
     width: 32%; }
-  .input .setupoptions label,
-  .input .software label {
+  #input .setupoptions label,
+  #input .software label {
     display: inline-block;
     padding: 0.5em; }
-  .input .setupoptions .customsoftware,
-  .input .software .customsoftware {
+  #input .setupoptions .customsoftware,
+  #input .software .customsoftware {
     margin-top: 1.5em; }
-    .input .setupoptions .customsoftware ul,
-    .input .software .customsoftware ul {
+    #input .setupoptions .customsoftware ul,
+    #input .software .customsoftware ul {
       margin-bottom: 2.5em; }
-    .input .setupoptions .customsoftware input[type='text'],
-    .input .software .customsoftware input[type='text'] {
+    #input .setupoptions .customsoftware input[type='text'],
+    #input .software .customsoftware input[type='text'] {
       width: 40%; }
-    .input .setupoptions .customsoftware button,
-    .input .software .customsoftware button {
+    #input .setupoptions .customsoftware button,
+    #input .software .customsoftware button {
       width: 29%; }
-  .input .appleid .appleid-existingemail,
-  .input .appleid .appleid-existingpassword {
+  #input .appleid .appleid-existingemail,
+  #input .appleid .appleid-existingpassword {
     width: 45%; }
-  .input .appleid .appleid-newemail,
-  .input .appleid .appleid-newpassword,
-  .input .appleid .appleid-dob {
+  #input .appleid .appleid-newemail,
+  #input .appleid .appleid-newpassword,
+  #input .appleid .appleid-dob {
     width: 28%; }
-  .input .appleid .appleid-newemail {
+  #input .appleid .appleid-newemail {
     padding-left: 0;
     padding-right: 1%; }
-  .input .appleid .recoveryquestion-question {
+  #input .appleid .recoveryquestion-question {
     width: 65%; }
-  .input .appleid .recoveryquestion-answer {
+  #input .appleid .recoveryquestion-answer {
     width: 30%; }
-  .input .googleaccount-existing .googleaccount-address,
-  .input .googleaccount-existing .googleaccount-password {
+  #input .googleaccount-existing .googleaccount-address,
+  #input .googleaccount-existing .googleaccount-password {
     width: 40%; }
-  .input .googleaccount-new .googleaccount-address,
-  .input .googleaccount-new .googleaccount-password {
+  #input .googleaccount-new .googleaccount-address,
+  #input .googleaccount-new .googleaccount-password {
     width: 35%; }
-  .input .googleaccount-new .googleaccount-dob {
+  #input .googleaccount-new .googleaccount-dob {
     width: 22%; }
-  .input .useraccounts .accountname,
-  .input .useraccounts .accountpassword {
+  #input .useraccounts .accountname,
+  #input .useraccounts .accountpassword {
     width: 40%; }
-  .input .useraccounts .accounthint {
+  #input .useraccounts .accounthint {
     display: block;
     width: 80%;
     margin-left: auto;
     margin-right: auto; }
-  .input .useraccounts .accountadmin {
+  #input .useraccounts .accountadmin {
     display: block;
     margin-top: 2.5%; }
-  .input .email .email-new-address,
-  .input .email .email-new-password,
-  .input .email .email-existing-address,
-  .input .email .email-existing-password {
+  #input .email .email-new-address,
+  #input .email .email-new-password,
+  #input .email .email-existing-address,
+  #input .email .email-existing-password {
     display: inline-block;
     width: 40%; }
-  .input .email .email-new-address {
+  #input .email .email-new-address {
     position: relative;
     padding: 0; }
-  .input .email .email-new-address-input {
+  #input .email .email-new-address-input {
     width: 100%;
     padding-right: 6.9em;
     text-align: right; }
-  .input .email .emaildomain.outlook {
+  #input .email .emaildomain.outlook {
     position: absolute;
     right: 0.5em;
     top: 0.55em; }
-  .input .microsoftaccount .microsoftaccount-new-address,
-  .input .microsoftaccount .microsoftaccount-new-password,
-  .input .microsoftaccount .microsoftaccount-existing-address,
-  .input .microsoftaccount .microsoftaccount-existing-password {
+  #input .microsoftaccount .microsoftaccount-new-address,
+  #input .microsoftaccount .microsoftaccount-new-password,
+  #input .microsoftaccount .microsoftaccount-existing-address,
+  #input .microsoftaccount .microsoftaccount-existing-password {
     display: inline-block;
     width: 40%; }
-  .input .microsoftaccount .microsoftaccount-new-address {
+  #input .microsoftaccount .microsoftaccount-new-address {
     position: relative;
     padding: 0; }
-  .input .microsoftaccount .microsoftaccount-new-address-input {
+  #input .microsoftaccount .microsoftaccount-new-address-input {
     width: 100%;
     padding-right: 6.9em;
     text-align: right; }
-  .input .microsoftaccount .emaildomain.outlook {
+  #input .microsoftaccount .emaildomain.outlook {
     position: absolute;
     right: 0.5em;
     top: 0.55em; }
-  .input .datatransfer .transferuser,
-  .input .datatransfer .transferpassword {
+  #input .datatransfer .transferuser,
+  #input .datatransfer .transferpassword {
     width: 47.2%; }
-  .input .datatransfer .transfermedia,
-  .input .datatransfer .transfersource {
+  #input .datatransfer .transfermedia,
+  #input .datatransfer .transfersource {
     width: 95%; }
-  .input .printcontrols {
+  #input .printcontrols {
     text-align: center;
     margin-top: 6em;
     margin-bottom: 5em; }
-    .input .printcontrols .previewbutton,
-    .input .printcontrols .printbutton {
+    #input .printcontrols .previewbutton,
+    #input .printcontrols .printbutton {
       margin: 1em auto; }
-    .input .printcontrols .printbutton {
+    #input .printcontrols .resetbutton,
+    #input .printcontrols .resetbutton:visited {
+      text-transform: uppercase;
+      font-size: 0.8em;
+      text-decoration: underline;
+      color: black;
+      font-weight: bold; }
+    #input .printcontrols .resetbutton:hover {
+      text-decoration: none;
+      color: deeppink; }
+    #input .printcontrols .printbutton {
       display: block;
       text-transform: uppercase;
       letter-spacing: 0.5em;
@@ -458,7 +468,7 @@ body {
       border-width: 0.2em;
       border-bottom-color: deeppink;
       border-bottom-width: 0.4em; }
-    .input .printcontrols .printbutton:hover {
+    #input .printcontrols .printbutton:hover {
       background: deeppink;
       color: white;
       border-bottom-color: white; }
@@ -588,7 +598,7 @@ body {
     border: 0.05em solid #555; } }
 @media print {
   .appheader,
-  .input {
+  #input {
     display: none; }
 
   .output {
@@ -614,7 +624,7 @@ body {
     <h1 class="app-title">Setup Generator</h1>
     <div><a href="https://github.com/danfoy/setupgenerator/commits/master" target="_blank" class="app-version">v{{ version }}</a></div>
   </header>
-<div class="input">
+<div id="input">
   <form id="inputform">
 
 
@@ -676,6 +686,103 @@ body {
       </ul>
     </fieldset>
 
+    
+
+    <!-- User Accounts -->
+    <fieldset v-if="setupoptions.customusers" name="useraccounts" class="input-section useraccounts">
+      <legend for="useraccounts" class="section-label">User Accounts</legend>
+
+      <div>
+        <p>Number of accounts:</p>
+        <label><input type="radio" name="accountcount" v-model="useraccounts.count" value="1">1</label>
+        <label><input type="radio" name="accountcount" v-model="useraccounts.count" value="2">2</label>
+        <label><input type="radio" name="accountcount" v-model="useraccounts.count" value="3">3</label>
+        <label><input type="radio" name="accountcount" v-model="useraccounts.count" value="4">4</label>
+      </div>
+
+      <fieldset name="account1" class="useraccount">
+        <legend for="account1">User Account 1</legend>
+        <input type="text" v-model="useraccounts.account1.username" placeholder="Account Name" class="accountname">
+        <input type="text" v-model="useraccounts.account1.password" placeholder="Password (optional)" class="accountpassword">
+        <input type="text" v-if="useraccounts.account1.password" v-model="useraccounts.account1.hint" placeholder="Password Hint" class="accounthint">
+        <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account1.admin" disabled>Administrator</label>
+      </fieldset>
+
+      <fieldset v-if="useraccounts.count >= 2" name="account2" class="useraccount">
+        <legend for="account2">User Account 2</legend>
+        <input type="text" v-model="useraccounts.account2.username" placeholder="Account Name" class="accountname">
+        <input type="text" v-model="useraccounts.account2.password" placeholder="Password (optional)" class="accountpassword">
+        <input type="text" v-if="useraccounts.account2.password" v-model="useraccounts.account2.hint" placeholder="Password Hint" class="accounthint">
+        <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account2.admin">Administrator</label>
+      </fieldset>
+
+      <fieldset v-if="useraccounts.count >= 3" name="account3" class="useraccount">
+        <legend for="account3">User Account 3</legend>
+        <input type="text" v-model="useraccounts.account3.username" placeholder="Account Name" class="accountname">
+        <input type="text" v-model="useraccounts.account3.password" placeholder="Password (optional)" class="accountpassword">
+        <input type="text" v-if="useraccounts.account3.password" v-model="useraccounts.account3.hint" placeholder="Password Hint" class="accounthint">
+        <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account3.admin">Administrator</label>
+      </fieldset>
+
+      <fieldset v-if="useraccounts.count >= 4" name="account4" class="useraccount">
+        <legend for="account4">User Account 4</legend>
+        <input type="text" v-model="useraccounts.account4.username" placeholder="Account Name" class="accountname">
+        <input type="text" v-model="useraccounts.account4.password" placeholder="Password (optional)" class="accountpassword">
+        <input type="text" v-if="useraccounts.account4.password" v-model="useraccounts.account4.hint" placeholder="Password Hint" class="accounthint">
+        <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account4.admin">Administrator</label>
+      </fieldset>
+
+    </fieldset>
+
+
+    
+    <!-- Software -->
+    <fieldset v-if="setupoptions.installsoftware" name="software" class="input-section software">
+      <legend class="section-label" for="software">Software</legend>
+      <ul>
+        <li><label><input type="checkbox" v-model="software" value="Knowhow Cloud">Knowhow Cloud</label></li>
+        <li><label><input type="checkbox" v-model="software" value="Office">Office</label></li>
+        <li><label><input type="checkbox" v-model="software" value="McAfee">McAfee</label></li>
+        <li><label><input type="checkbox" v-model="software" value="Norton">Norton</label></li>
+        <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="iTunes">iTunes</label></li>
+        <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="Adobe Reader">Adobe Reader</label></li>
+        <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="CinemaNow">CinemaNow</label></li>
+        <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="World of Warcraft">World of Warcraft</label></li>
+        <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="Links Bundle">Links Bundle</label></li>
+      </ul>
+      <fieldset name="customsoftware" class="customsoftware">
+        <legend for="customsoftware">Custom Software</legend>
+        <ul v-if="customsoftware[0]">
+          <li v-for="software in customsoftware"><label><input type="checkbox" checked disabled>{{ software }}</label></li>
+        </ul>
+        <input type="text" v-model="temp.customsoftware" placeholder="Custom Software">
+        <button type="button" v-on:click="addCustomSoftware">Add to list</button>
+        <button type="button" v-on:click="resetCustomSoftware">Reset</button>
+      </fieldset>
+    </fieldset>
+
+
+    
+    <!-- Data Transfer -->
+    <fieldset v-if="setupoptions.datatransfer" name="notes" class="input-section datatransfer">
+      <legend class="section-label" for="datatransfer">Data Transfer</legend>
+      <div v-if="basicinfo.platform == 'Windows' || basicinfo.platform == 'Mac'" class="infoblock">
+        <p>We will attempt to transfer all files from each user's account folder. This includes your documents, photos, and desktop folders. If you have any files stored elsewhere on the machine please describe them in the notes section below.</p>
+        <p>Note that we are unable to transfer applications.</p>
+      </div>
+      <input type="text" v-model="datatransfer.account1.username" placeholder="Admin Username" class="transferuser">
+      <input type="text" v-model="datatransfer.account1.password" placeholder="Admin Password" class="transferpassword">
+      <input type="text" v-model="datatransfer.source" placeholder="Describe transfer source (e.g. 'Dell Tower', 'HP Laptop')" class="transfersource">
+      <input type="text" v-model="datatransfer.media" placeholder="Describe transfer media (e.g. '1TB Seagate harddrive')" class="transfermedia">
+      <textarea placeholder="Notes" v-model="datatransfer.notes" class="transfernotes"></textarea>
+    </fieldset>
+
+    
+
+    <!-- Email -->
+    <fieldset v-if="setupoptions.email" name="email" class="input-section email">
+
+    
 
     <!-- Apple ID -->
     <fieldset v-if="basicinfo.platform=='Mac' || basicinfo.platform=='iOS'" name="appleid" class="input-section appleid">
@@ -773,87 +880,11 @@ body {
       </fieldset>
 
     </fieldset>
-
-
-    <!-- User Accounts -->
-    <fieldset v-if="setupoptions.customusers" name="useraccounts" class="input-section useraccounts">
-      <legend for="useraccounts" class="section-label">User Accounts</legend>
-
-      <div>
-        <p>Number of accounts:</p>
-        <label><input type="radio" name="accountcount" v-model="useraccounts.count" value="1">1</label>
-        <label><input type="radio" name="accountcount" v-model="useraccounts.count" value="2">2</label>
-        <label><input type="radio" name="accountcount" v-model="useraccounts.count" value="3">3</label>
-        <label><input type="radio" name="accountcount" v-model="useraccounts.count" value="4">4</label>
-      </div>
-
-      <fieldset name="account1" class="useraccount">
-        <legend for="account1">User Account 1</legend>
-        <input type="text" v-model="useraccounts.account1.username" placeholder="Account Name" class="accountname">
-        <input type="text" v-model="useraccounts.account1.password" placeholder="Password (optional)" class="accountpassword">
-        <input type="text" v-if="useraccounts.account1.password" v-model="useraccounts.account1.hint" placeholder="Password Hint" class="accounthint">
-        <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account1.admin" disabled>Administrator</label>
-      </fieldset>
-
-      <fieldset v-if="useraccounts.count >= 2" name="account2" class="useraccount">
-        <legend for="account2">User Account 2</legend>
-        <input type="text" v-model="useraccounts.account2.username" placeholder="Account Name" class="accountname">
-        <input type="text" v-model="useraccounts.account2.password" placeholder="Password (optional)" class="accountpassword">
-        <input type="text" v-if="useraccounts.account2.password" v-model="useraccounts.account2.hint" placeholder="Password Hint" class="accounthint">
-        <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account2.admin">Administrator</label>
-      </fieldset>
-
-      <fieldset v-if="useraccounts.count >= 3" name="account3" class="useraccount">
-        <legend for="account3">User Account 3</legend>
-        <input type="text" v-model="useraccounts.account3.username" placeholder="Account Name" class="accountname">
-        <input type="text" v-model="useraccounts.account3.password" placeholder="Password (optional)" class="accountpassword">
-        <input type="text" v-if="useraccounts.account3.password" v-model="useraccounts.account3.hint" placeholder="Password Hint" class="accounthint">
-        <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account3.admin">Administrator</label>
-      </fieldset>
-
-      <fieldset v-if="useraccounts.count >= 4" name="account4" class="useraccount">
-        <legend for="account4">User Account 4</legend>
-        <input type="text" v-model="useraccounts.account4.username" placeholder="Account Name" class="accountname">
-        <input type="text" v-model="useraccounts.account4.password" placeholder="Password (optional)" class="accountpassword">
-        <input type="text" v-if="useraccounts.account4.password" v-model="useraccounts.account4.hint" placeholder="Password Hint" class="accounthint">
-        <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account4.admin">Administrator</label>
-      </fieldset>
-
-    </fieldset>
-
-
-    <!-- Software -->
-    <fieldset v-if="setupoptions.installsoftware" name="software" class="input-section software">
-      <legend class="section-label" for="software">Software</legend>
-      <ul>
-        <li><label><input type="checkbox" v-model="software" value="Knowhow Cloud">Knowhow Cloud</label></li>
-        <li><label><input type="checkbox" v-model="software" value="Office">Office</label></li>
-        <li><label><input type="checkbox" v-model="software" value="McAfee">McAfee</label></li>
-        <li><label><input type="checkbox" v-model="software" value="Norton">Norton</label></li>
-        <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="iTunes">iTunes</label></li>
-        <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="Adobe Reader">Adobe Reader</label></li>
-        <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="CinemaNow">CinemaNow</label></li>
-        <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="World of Warcraft">World of Warcraft</label></li>
-        <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="Links Bundle">Links Bundle</label></li>
-      </ul>
-      <fieldset name="customsoftware" class="customsoftware">
-        <legend for="customsoftware">Custom Software</legend>
-        <ul v-if="customsoftware[0]">
-          <li v-for="software in customsoftware"><label><input type="checkbox" checked disabled>{{ software }}</label></li>
-        </ul>
-        <input type="text" v-model="temp.customsoftware" placeholder="Custom Software">
-        <button type="button" v-on:click="addCustomSoftware">Add to list</button>
-        <button type="button" v-on:click="resetCustomSoftware">Reset</button>
-      </fieldset>
-    </fieldset>
-
-
-    <!-- Email -->
-    <fieldset v-if="setupoptions.email" name="email" class="input-section email">
       <legend for="email" class="section-label">Existing Email Account</legend>
         <input type="text" v-model="email.account1.address" placeholder="Email Address" class="email-existing-address">
         <input type="text" v-model="email.account1.password" placeholder="password" class="email-existing-password">
     </fieldset>
+    
     
     
     <!-- Microsoft Account -->
@@ -877,21 +908,7 @@ body {
 
     </fieldset>
 
-
-    <!-- Data Transfer -->
-    <fieldset v-if="setupoptions.datatransfer" name="notes" class="input-section datatransfer">
-      <legend class="section-label" for="datatransfer">Data Transfer</legend>
-      <div v-if="basicinfo.platform == 'Windows' || basicinfo.platform == 'Mac'" class="infoblock">
-        <p>We will attempt to transfer all files from each user's account folder. This includes your documents, photos, and desktop folders. If you have any files stored elsewhere on the machine please describe them in the notes section below.</p>
-        <p>Note that we are unable to transfer applications.</p>
-      </div>
-      <input type="text" v-model="datatransfer.account1.username" placeholder="Admin Username" class="transferuser">
-      <input type="text" v-model="datatransfer.account1.password" placeholder="Admin Password" class="transferpassword">
-      <input type="text" v-model="datatransfer.source" placeholder="Describe transfer source (e.g. 'Dell Tower', 'HP Laptop')" class="transfersource">
-      <input type="text" v-model="datatransfer.media" placeholder="Describe transfer media (e.g. '1TB Seagate harddrive')" class="transfermedia">
-      <textarea placeholder="Notes" v-model="datatransfer.notes" class="transfernotes"></textarea>
-    </fieldset>
-
+    
 
     <!-- Notes -->
     <fieldset v-if="basicinfo.colleague && basicinfo.sku" name="notes" class="input-section notes">
@@ -899,8 +916,12 @@ body {
       <textarea placeholder="Notes" v-model="notes"></textarea>
     </fieldset>
 
-    <div class="printcontrols">
-      <button type="button" class="printbutton" @click="printSheet">Print</button><label class="previewbutton"><input type="checkbox" v-model="meta.printpreview"> Worksheet Preview</label>
+ 
+    
+    <div v-if="setupinfo.service" class="printcontrols">
+      <a class="resetbutton" href="#input" @click="resetAll()">Reset</a>
+      <button type="button" class="printbutton" @click="printSheet">Print</button>
+      <label class="previewbutton"><input type="checkbox" v-model="meta.printpreview"> Worksheet Preview</label>
     </div>
 
 
@@ -11611,7 +11632,7 @@ var data = {
     }
 };
 
-/*global document */
+/*global document, window */
 
 /* 
 
@@ -11621,17 +11642,21 @@ printSheet uses document.execCommand() to resolve a bug where IE11 disregards '@
 
 var methods = {
   addCustomSoftware: function () {
-      this.customsoftware.push(this.temp.customsoftware);
-      this.temp.customsoftware = '';
-    },
-    resetCustomSoftware: function () {
-      this.customsoftware = [];
-      this.temp.customsoftware = '';
-    },
-    printSheet: function () {
-      document.execCommand('print', false, null);
-    }
+    this.customsoftware.push(this.temp.customsoftware);
+    this.temp.customsoftware = '';
+  },
+  resetCustomSoftware: function () {
+    this.customsoftware = [];
+    this.temp.customsoftware = '';
+  },
+  printSheet: function () {
+    document.execCommand('print', false, null);
+  },
+  resetAll: function () {
+    window.location.reload();
+  }
 };
+
 var computed = {
   customerInfoComplete: function () {
       if (
