@@ -60,7 +60,7 @@
       </ul>
     </fieldset>
 
-    
+
 
     <!-- User Accounts -->
     <fieldset v-if="setupoptions.customusers" name="useraccounts" class="input-section useraccounts">
@@ -109,7 +109,7 @@
     </fieldset>
 
 
-    
+
     <!-- Software -->
     <fieldset v-if="setupoptions.installsoftware" name="software" class="input-section software">
       <legend class="section-label" for="software">Software</legend>
@@ -136,7 +136,7 @@
     </fieldset>
 
 
-    
+
     <!-- Data Transfer -->
     <fieldset v-if="setupoptions.datatransfer" name="notes" class="input-section datatransfer">
       <legend class="section-label" for="datatransfer">Data Transfer</legend>
@@ -151,12 +151,16 @@
       <textarea placeholder="Notes" v-model="datatransfer.notes" class="transfernotes"></textarea>
     </fieldset>
 
-    
+
 
     <!-- Email -->
     <fieldset v-if="setupoptions.email" name="email" class="input-section email">
+      <legend for="email" class="section-label">Existing Email Account</legend>
+      <input type="text" v-model="email.account1.address" placeholder="Email Address" class="email-existing-address">
+      <input type="text" v-model="email.account1.password" placeholder="password" class="email-existing-password">
+    </fieldset>
 
-    
+
 
     <!-- Apple ID -->
     <fieldset v-if="basicinfo.platform=='Mac' || basicinfo.platform=='iOS'" name="appleid" class="input-section appleid">
@@ -246,7 +250,7 @@
         <input type="text" v-model="googleaccount.new.password" placeholder="Password" class="googleaccount-password">
         <input type="text" v-model="googleaccount.new.dob" placeholder="Date of Birth" class="googleaccount-dob">
       </fieldset>
-      
+
       <fieldset v-if="googleaccount.type == 'existing'" name="googleaccount-new" class="googleaccount-existing">
         <legend for="googleaccount-new">Existing Google Account</legend>
         <input type="text" v-model="googleaccount.existing.address" placeholder="youraccount@gmail.com" class="googleaccount-address">
@@ -254,13 +258,9 @@
       </fieldset>
 
     </fieldset>
-      <legend for="email" class="section-label">Existing Email Account</legend>
-        <input type="text" v-model="email.account1.address" placeholder="Email Address" class="email-existing-address">
-        <input type="text" v-model="email.account1.password" placeholder="password" class="email-existing-password">
-    </fieldset>
-    
-    
-    
+
+
+
     <!-- Microsoft Account -->
     <fieldset v-if="software.includes('Office') || software.includes('McAfee') || software.includes('Norton')" name="microsoftaccount" class="input-section microsoftaccount">
       <legend for="microsoftaccount" class="section-label">Microsoft Accounts</legend>
@@ -282,7 +282,7 @@
 
     </fieldset>
 
-    
+
 
     <!-- Notes -->
     <fieldset v-if="basicinfo.colleague && basicinfo.sku" name="notes" class="input-section notes">
@@ -290,8 +290,8 @@
       <textarea placeholder="Notes" v-model="notes"></textarea>
     </fieldset>
 
- 
-    
+
+
     <div v-if="setupinfo.service" class="printcontrols">
       <a class="resetbutton" href="#input" @click="resetAll()">Reset</a>
       <button type="button" class="printbutton" @click="printSheet">Print</button>

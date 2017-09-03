@@ -14,7 +14,7 @@ var creationDate = function () {
 };
 
 var data = {
-    version: '0.9.9',
+    version: '0.9.10',
     meta: {
         printpreview: false
     },
