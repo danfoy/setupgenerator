@@ -251,11 +251,7 @@ body {
     border-bottom-width: 2px;
     border-radius: 0.25em;
     box-sizing: border-box;
-    margin-bottom: 1%; }
-  #input input,
-  #input select,
-  #input textarea,
-  #input button {
+    margin-bottom: 1%;
     padding: 0.5em; }
   #input input[type='checkbox'],
   #input input[type='radio'] {
@@ -1066,6 +1062,7 @@ body {
     </tr>
 
 
+
     <!-- Google Account -->
     <tr v-if="basicinfo.platform == 'Android'">
       <td>
@@ -1121,6 +1118,7 @@ body {
     </tr>
 
 
+
     <!-- User Accounts -->
     <tr v-if="setupoptions.customusers && useraccounts.account1.username">
       <td>
@@ -1157,6 +1155,7 @@ body {
         </table>
       </td>
     </tr>
+
 
 
     <!-- Email Accounts -->
@@ -1224,6 +1223,7 @@ body {
     </tr>
 
 
+
     <!-- Data Transfer -->
     <tr v-if="setupoptions.datatransfer">
       <td>
@@ -1246,6 +1246,7 @@ body {
     </tr>
 
 
+
     <!-- Software -->
     <tr v-if="software[0] || customsoftware[0]">
       <td>
@@ -1260,6 +1261,7 @@ body {
         </table>
       </td>
     </tr>
+
 
 
     <!-- Notes -->
@@ -1282,6 +1284,7 @@ body {
 
       </td>
     </tr>
+
 
 
     <!-- Contact -->
@@ -1318,6 +1321,7 @@ body {
         </table>
       </td>
     </tr>
+
 
 
     <!-- Signature -->

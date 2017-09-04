@@ -241,11 +241,7 @@ body {
     border-bottom-width: 2px;
     border-radius: 0.25em;
     box-sizing: border-box;
-    margin-bottom: 1%; }
-  #input input,
-  #input select,
-  #input textarea,
-  #input button {
+    margin-bottom: 1%;
     padding: 0.5em; }
   #input input[type='checkbox'],
   #input input[type='radio'] {
