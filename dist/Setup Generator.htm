@@ -180,7 +180,7 @@ body {
     color: #777; }
 
 .nojs .appheader,
-.nojs .input {
+.nojs #input {
   display: none; }
 
 @media screen {
@@ -943,7 +943,7 @@ body {
       <td>
 
         <h1 v-if="basicinfo.platform && setupinfo.service" class="header-title">{{ basicinfo.platform }} <span v-if="setupinfo.exdemo">Ex-Demo </span>{{ setupinfo.service }}<span class="header-sku">{{  basicinfo.sku }}</span></h1>
-        <div v-if="basicinfo.colleague && basicinfo.date" class="header-byline">Submitted by {{ basicinfo.colleague }} on {{ basicinfo.date }} using v{{ version }}</div>
+        <div v-if="basicinfo.colleague && basicinfo.date" class="header-byline">Submitted by {{ basicinfo.colleague }} on {{ basicinfo.date }} at {{ basicinfo.time }} using v{{ version }}</div>
 
 
 
@@ -11498,23 +11498,31 @@ var creationDate = function () {
         day: 'numeric',
         weekday: 'long',
         month: 'long',
-        year: 'numeric',
+        year: 'numeric'
+    };
+    var localDate = machineDate.toLocaleDateString('en-GB', dateOptions);
+    return localDate;
+};
+var creationTime = function () {
+    var machineDate = new Date();
+    var dateOptions = {
         hour12: false,
         hour: '2-digit',
         minute: '2-digit'
     };
-    var localDate = machineDate.toLocaleString('en-GB', dateOptions);
-    return localDate;
+    var localTime = machineDate.toLocaleTimeString('en-GB', dateOptions);
+    return localTime;
 };
 
 var data = {
-    version: '0.9.10',
+    version: '0.9.11',
     meta: {
         printpreview: false
     },
     basicinfo: {
         colleague: '',
         date: creationDate(),
+        time: creationTime(),
         platform: '',
         sku: ''
     },

@@ -170,7 +170,7 @@ body {
     color: #777; }
 
 .nojs .appheader,
-.nojs .input {
+.nojs #input {
   display: none; }
 
 @media screen {

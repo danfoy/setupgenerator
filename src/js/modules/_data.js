@@ -4,23 +4,31 @@ var creationDate = function () {
         day: 'numeric',
         weekday: 'long',
         month: 'long',
-        year: 'numeric',
+        year: 'numeric'
+    };
+    var localDate = machineDate.toLocaleDateString('en-GB', dateOptions);
+    return localDate;
+};
+var creationTime = function () {
+    var machineDate = new Date();
+    var dateOptions = {
         hour12: false,
         hour: '2-digit',
         minute: '2-digit'
     };
-    var localDate = machineDate.toLocaleString('en-GB', dateOptions);
-    return localDate;
+    var localTime = machineDate.toLocaleTimeString('en-GB', dateOptions);
+    return localTime;
 };
 
 var data = {
-    version: '0.9.10',
+    version: '0.9.11',
     meta: {
         printpreview: false
     },
     basicinfo: {
         colleague: '',
         date: creationDate(),
+        time: creationTime(),
         platform: '',
         sku: ''
     },
