@@ -990,7 +990,7 @@ body {
           </tr>
 
           <tr v-if="setupinfo.exdemo" line="Reset to factory defaults" is="lineitem"></tr>
-          <tr v-if="basicinfo.platform==='Windows' && setupoptions.recoverymedia" line="Create recovery media" v-bind:class="{'prechecked': setupinfo.presetup}" is="lineitem"></tr>
+          <tr v-if="basicinfo.platform==='Windows' && setupoptions.recoverymedia && setupinfo.service != 'Factory Reset'" line="Create recovery media" v-bind:class="{'prechecked': setupinfo.presetup}" is="lineitem"></tr>
           <tr v-if="setupoptions.runupdates" line="Run updates" is="lineitem"></tr>
           <tr v-if="setupinfo.exdemo" line="Clean ex-display item" is="lineitem"></tr>
           <tr v-if="microsoftaccount.type==='new' || appleid.type==='new' || googleaccount.type==='new'" line="Printed new account info letter" is="lineitem"></tr>
@@ -11515,7 +11515,7 @@ var creationTime = function () {
 };
 
 var data = {
-    version: '0.9.11',
+    version: '0.9.12',
     meta: {
         printpreview: false
     },
