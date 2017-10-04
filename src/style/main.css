@@ -494,6 +494,7 @@ body {
 .output .header-title {
   font-size: 1.6em;
   font-weight: bold;
+  margin-top: 0;
   margin-bottom: 0; }
 .output .header-sku {
   float: right; }
@@ -515,7 +516,8 @@ body {
   border: 0;
   text-align: right;
   font-weight: 700;
-  vertical-align: middle; }
+  vertical-align: middle;
+  padding-right: 0.8em; }
 .output .output-notes-data {
   display: block; }
 .output .title-column {
@@ -576,8 +578,7 @@ body {
     padding: 0 4em; }
 
   .output-scaffold {
-    padding: 0 4em;
-    padding-top: 2em;
+    padding: 4em 4em 0 4em;
     padding-bottom: 4em;
     margin-bottom: 4em;
     box-shadow: 0.25em 0.25em 0 #999;
@@ -589,4 +590,7 @@ body {
 
   .output {
     font-size: 10pt;
-    display: block; } }
+    display: block; }
+
+  .output-scaffold {
+    padding-top: 0; } }

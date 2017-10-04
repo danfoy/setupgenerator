@@ -43,6 +43,7 @@ $output-border: 0.05em solid black;
   .header-title {
     font-size: 1.6em;
     font-weight: bold;
+    margin-top: 0;
     margin-bottom: 0;
   }
   .header-sku {
@@ -75,6 +76,7 @@ $output-border: 0.05em solid black;
       text-align: right;
       font-weight: 700;
       vertical-align: middle;
+      padding-right: 0.8em;
     }
   }
   .output-notes-data {

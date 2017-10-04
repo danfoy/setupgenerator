@@ -21,7 +21,7 @@ var creationTime = function () {
 };
 
 var data = {
-    version: '0.9.13',
+    version: '0.9.14',
     meta: {
         printpreview: false
     },
