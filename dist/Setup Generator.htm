@@ -993,7 +993,7 @@ body {
           <tr v-if="basicinfo.platform==='Windows' && setupoptions.recoverymedia && setupinfo.service != 'Factory Reset'" line="Create recovery media" v-bind:class="{'prechecked': setupinfo.presetup}" is="lineitem"></tr>
           <tr v-if="setupoptions.runupdates" line="Run updates" is="lineitem"></tr>
           <tr v-if="setupinfo.exdemo" line="Clean ex-display item" is="lineitem"></tr>
-          <tr v-if="microsoftaccount.type==='new' || appleid.type==='new' || googleaccount.type==='new'" line="Printed new account info letter" is="lineitem"></tr>
+          <tr v-if="microsoftaccount.type==='new' || appleid.type==='new' || googleaccount.type==='new'" line="Print new account info letter" is="lineitem"></tr>
         </table>
       </td>
     </tr>
@@ -11515,7 +11515,7 @@ var creationTime = function () {
 };
 
 var data = {
-    version: '0.9.12',
+    version: '0.9.13',
     meta: {
         printpreview: false
     },

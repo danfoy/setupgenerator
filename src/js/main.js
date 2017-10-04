@@ -10143,7 +10143,7 @@ var creationTime = function () {
 };
 
 var data = {
-    version: '0.9.12',
+    version: '0.9.13',
     meta: {
         printpreview: false
     },
