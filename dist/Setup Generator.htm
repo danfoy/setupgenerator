@@ -1197,7 +1197,7 @@ body {
         <table class="output-section microsoftaccount">
           <tr class="output-section-header-row">
             <td>
-              <h2 class="output-section-header">Add <span v-if="microsoftaccount.type == 'existing'">Existing</span><span v-if="microsoftaccount.type == 'new'">New</span> Microsoft Account</h2>
+              <h2 class="output-section-header"><span v-if="microsoftaccount.type == 'existing'">Add Existing</span><span v-if="microsoftaccount.type == 'new'">Create New</span> Microsoft Account</h2>
             </td>
           </tr>
           <tr v-if="microsoftaccount.type == 'existing'">
@@ -11519,7 +11519,7 @@ var creationTime = function () {
 };
 
 var data = {
-    version: '0.9.14',
+    version: '0.9.15',
     meta: {
         printpreview: false
     },

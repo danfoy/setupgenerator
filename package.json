@@ -1,6 +1,6 @@
 {
   "name": "setupgenerator",
-  "version": "0.9.14",
+  "version": "0.9.15",
   "description": "Creates a printable worksheet based on user input.",
   "author": {
     "name": "Dan Foy",
