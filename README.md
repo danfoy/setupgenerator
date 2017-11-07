@@ -32,7 +32,7 @@ The output is compiled using [Grunt](http://www.gruntjs.com) and therefore requi
 
 ### on macOS
  
-* Download Node from [the Node website](http://www.nodejs.org).
+* Download Node from [the Node website](http://www.nodejs.org) and git from [the git website](https://git-scm.com/downloads) (macOS comes with git preinstalled, but it's an old version).
 * Run `gem install sass` in the terminal to download and install the SASS CSS preprocessor.
 * In the terminal, navigate to where you would like to store the `setupgenerator` folder.
 * Run `git clone https://github.com/danfoy/setupgenerator.git` in the terminal.
@@ -40,3 +40,14 @@ The output is compiled using [Grunt](http://www.gruntjs.com) and therefore requi
 * Run `grunt` in the terminal to compile the output. 
     * You can also run `grunt watch` to automatically recompile to `dist` after tracked files in `src` are modified and saved.
     * Note that if new files are added to `src` they will be need to be manually added to `gruntfile.js` in order to be included in the output.
+
+### on Linux
+
+* Install [node](https://nodejs.org/en/download/) and [Ruby](https://www.ruby-lang.org/en/documentation/installation/) from source, or via whichever package manager your distro uses. You probably already have [git](https://git-scm.com/downloads).
+* Follow instructions from bullet 2 above.
+
+### on Windows
+
+* I don't use Windows.
+* You'll need all of the above, plus [git for Windows](https://git-scm.com/downloads), probably also [bash](https://msdn.microsoft.com/en-gb/commandline/wsl/about?f=255&MSPPError=-2147217396).
+* If someone wants to write a guide for Windows feel free to send a pull request, but I can't see that happening tbqh.
