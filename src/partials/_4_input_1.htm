@@ -38,9 +38,9 @@
 
       <fieldset v-if="basicinfo.platform" name="service" class="service">
         <legend for="service">Service</legend>
-        <label v-if="basicinfo.platform == 'Windows' && setupinfo.presetup == false"><input type="radio" name="service" value="Walk Out Working" v-model="setupinfo.service">Walk Out Working</label>
-        <label><input type="radio" name="service" value="Setup and Personalise" v-model="setupinfo.service">Setup and Personalise</label>
-        <label><input type="radio" name="service" value="Setup and Showhow" v-model="setupinfo.service">Setup and Showhow</label>
+        <label v-if="basicinfo.platform == 'Windows' && setupinfo.presetup == false"><input type="radio" name="service" value="Set-Up" v-model="setupinfo.service">Set-Up</label>
+        <label><input type="radio" name="service" value="Set-up and Personalise" v-model="setupinfo.service">Set-up and Personalise</label>
+        <label><input type="radio" name="service" value="Set-up, Personalise and Tutorial" v-model="setupinfo.service">Set-up, Personalise and Tutorial</label>
         <label v-if="setupinfo.exdemo"><input type="radio" name="service" value="Factory Reset" v-model="setupinfo.service">Factory Reset Only</label>
       </fieldset>
 
@@ -48,7 +48,7 @@
 
 
     <!-- Setup Options -->
-    <fieldset v-if="basicinfo.platform && setupinfo.service && setupinfo.service != 'Walk Out Working' && setupinfo.service != 'Factory Reset'" name="setupoptions" class="input-section setupoptions">
+    <fieldset v-if="basicinfo.platform && setupinfo.service && setupinfo.service != 'Set-Up' && setupinfo.service != 'Factory Reset'" name="setupoptions" class="input-section setupoptions">
       <legend for="setupoptions" class="section-label">Options</legend>
       <ul>
         <li v-if="basicinfo.platform == 'Windows' && setupinfo.presetup == false"><label><input type="checkbox" v-model="setupoptions.recoverymedia">Create Recovery Media</label></li>
