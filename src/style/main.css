@@ -263,6 +263,17 @@ body {
     padding: 3%;
     margin: 4.5em 5%;
     box-sizing: border-box; }
+    #input .input-section .note {
+      font-size: 80%;
+      color: #ccc;
+      font-style: italic;
+      text-align: left;
+      display: block;
+      width: 75%;
+      border: 1px solid #ccc;
+      border-radius: 0.5em;
+      padding: 1.5em 3em;
+      margin: 2em auto 1em auto; }
   #input .section-label {
     position: absolute;
     display: inline-block;
@@ -425,6 +436,11 @@ body {
   #input .datatransfer .transfermedia,
   #input .datatransfer .transfersource {
     width: 95%; }
+  #input .tutorial .tutorial-date {
+    clear: left;
+    width: 30%; }
+  #input .tutorial .tutorial-time {
+    width: 15%; }
   #input .printcontrols {
     text-align: center;
     margin-top: 6em;
@@ -502,6 +518,9 @@ body {
   font-style: italic;
   font-size: 0.8em;
   color: #555; }
+.output .header-onorder {
+  float: right;
+  font-style: normal; }
 .output .inline-title {
   font-weight: bold; }
 .output .output-section-contact .date-column,

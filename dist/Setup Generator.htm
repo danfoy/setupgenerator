@@ -273,6 +273,17 @@ body {
     padding: 3%;
     margin: 4.5em 5%;
     box-sizing: border-box; }
+    #input .input-section .note {
+      font-size: 80%;
+      color: #ccc;
+      font-style: italic;
+      text-align: left;
+      display: block;
+      width: 75%;
+      border: 1px solid #ccc;
+      border-radius: 0.5em;
+      padding: 1.5em 3em;
+      margin: 2em auto 1em auto; }
   #input .section-label {
     position: absolute;
     display: inline-block;
@@ -435,6 +446,11 @@ body {
   #input .datatransfer .transfermedia,
   #input .datatransfer .transfersource {
     width: 95%; }
+  #input .tutorial .tutorial-date {
+    clear: left;
+    width: 30%; }
+  #input .tutorial .tutorial-time {
+    width: 15%; }
   #input .printcontrols {
     text-align: center;
     margin-top: 6em;
@@ -512,6 +528,9 @@ body {
   font-style: italic;
   font-size: 0.8em;
   color: #555; }
+.output .header-onorder {
+  float: right;
+  font-style: normal; }
 .output .inline-title {
   font-weight: bold; }
 .output .output-section-contact .date-column,
@@ -651,8 +670,9 @@ body {
     <fieldset v-if="customerinfo.title && customerinfo.firstname && customerinfo.surname && customerinfo.telephone" name="setupinfo" class="input-section setupinfo">
       <legend for="setupinfo" class="section-label">Setup Information</legend>
 
-      <label><input type="checkbox" v-model="setupinfo.presetup">Unit is pre-setup</label>
-      <label><input type="checkbox" v-model="setupinfo.exdemo">Unit is ex-demo</label>
+      <label><input type="checkbox" v-model="setupinfo.presetup">Pre-Setup</label>
+      <label><input type="checkbox" v-model="setupinfo.exdemo">Ex-Demo</label>
+      <label><input type="checkbox" v-model="setupinfo.onorder">On Order</label>
 
       <fieldset name="platform" class="platform">
         <legend for="platform">Platform</legend>
@@ -909,6 +929,25 @@ body {
     </fieldset>
 
 
+    <!-- Tutorial -->
+    <fieldset v-if="setupinfo.service=='Set-up, Personalise and Tutorial'" name="tutorial" class="input-section tutorial">
+      <legend for="tutorial" class="section-label">Tutorial</legend>
+
+        <label><input type="radio" name="booked" value="now" v-model="tutorial.booked">Book tutorial date now</label>
+        <label><input type="radio" name="booked" value="later" v-model="tutorial.booked">Book tutorial date later</label>
+    
+      <fieldset v-if="tutorial.booked == 'now'" name="tutorial-slot" class="tutorial-slot">
+        <legend for="tutorial-slot">Tutorial Slot</legend>
+        <input type="text" placeholder="Tutorial date" class="tutorial-date" v-model="tutorial.date">
+        <input type="text" placeholder="Tutorial time" class="tutorial-time" v-model="tutorial.time">
+        
+        <p class="note">Please refer to the Tutorial Diary before booking tutorial dates.<span v-if="setupoptions.datatransfer == false"><br>Generally speaking, tutorials should not be booked less than <span v-if="setupoptions.runupdates">72</span><span v-if="setupoptions.runupdates == false">48</span> hours <span v-if="setupinfo.onorder">after the item is due to arrive in store</span><span v-if="setupinfo.onorder == false">in advance</span><span v-if="setupoptions.runupdates"> to allow time for system updates to complete</span>.</span>
+        <span v-if="setupoptions.datatransfer"><br>As your set-up includes a data transfer, consult with Team Knowhow for a completion estimate.</span></p>
+      </fieldset>
+
+    </fieldset>
+
+
 
     <!-- Notes -->
     <fieldset v-if="basicinfo.colleague && basicinfo.sku" name="notes" class="input-section notes">
@@ -947,7 +986,8 @@ body {
       <td>
 
         <h1 v-if="basicinfo.platform && setupinfo.service" class="header-title">{{ basicinfo.platform }} <span v-if="setupinfo.exdemo">Ex-Demo </span>{{ setupinfo.service }}<span class="header-sku">{{  basicinfo.sku }}</span></h1>
-        <div v-if="basicinfo.colleague && basicinfo.date" class="header-byline">Submitted by {{ basicinfo.colleague }} on {{ basicinfo.date }} at {{ basicinfo.time }} using v{{ version }}</div>
+        <span v-if="basicinfo.colleague && basicinfo.date" class="header-byline">Submitted by {{ basicinfo.colleague }} on {{ basicinfo.date }} at {{ basicinfo.time }} using v{{ version }} <span v-if="setupinfo.onorder" class="header-onorder">(on order)</span></span>
+        <span v-if="setupinfo.service=='Set-up, Personalise and Tutorial' && ( (tutorial.date && tutorial.time) || tutorial.booked == 'later')" class="header-byline"><br>Tutorial <span v-if="tutorial.booked == 'now'">booked for <span style="text-transform: capitalize">{{ tutorial.date }}</span> at {{ tutorial.time }}</span><span v-if="tutorial.booked == 'later'">slot to be booked at a later date.</span></span>
 
 
 
@@ -983,6 +1023,7 @@ body {
     </tr>
 
 
+
     <!-- Setup Options -->
     <tr v-if="setupinfo.exdemo || setupinfo.presetup || setupinfo.service == 'Set-Up' || (basicinfo.platform==='Windows' && setupoptions.recoverymedia)|| setupoptions.datatransfer || setupoptions.existingemail || setupoptions.installsoftware || setupoptions.runupdates || microsoftaccount.type==='new' || appleid.type==='new' || googleaccount.type==='new'">
       <td>
@@ -1001,6 +1042,7 @@ body {
         </table>
       </td>
     </tr>
+
 
 
     <!-- Apple ID -->
@@ -11519,7 +11561,7 @@ var creationTime = function () {
 };
 
 var data = {
-    version: '0.9.16',
+    version: '0.10.0',
     meta: {
         printpreview: false
     },
@@ -11541,7 +11583,8 @@ var data = {
     setupinfo: {
         presetup: false,
         exdemo: false,
-        service: ''
+        service: '',
+        onorder: false
     },
     setupoptions: {
         recoverymedia: true,
@@ -11641,6 +11684,11 @@ var data = {
             address: '',
             password: ''
         }
+    },
+    tutorial: {
+      booked: '',
+      date: '',
+      time: ''
     },
     notes: '',
     temp: {

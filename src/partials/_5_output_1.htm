@@ -8,7 +8,8 @@
       <td>
 
         <h1 v-if="basicinfo.platform && setupinfo.service" class="header-title">{{ basicinfo.platform }} <span v-if="setupinfo.exdemo">Ex-Demo </span>{{ setupinfo.service }}<span class="header-sku">{{  basicinfo.sku }}</span></h1>
-        <div v-if="basicinfo.colleague && basicinfo.date" class="header-byline">Submitted by {{ basicinfo.colleague }} on {{ basicinfo.date }} at {{ basicinfo.time }} using v{{ version }}</div>
+        <span v-if="basicinfo.colleague && basicinfo.date" class="header-byline">Submitted by {{ basicinfo.colleague }} on {{ basicinfo.date }} at {{ basicinfo.time }} using v{{ version }} <span v-if="setupinfo.onorder" class="header-onorder">(on order)</span></span>
+        <span v-if="setupinfo.service=='Set-up, Personalise and Tutorial' && ( (tutorial.date && tutorial.time) || tutorial.booked == 'later')" class="header-byline"><br>Tutorial <span v-if="tutorial.booked == 'now'">booked for <span style="text-transform: capitalize">{{ tutorial.date }}</span> at {{ tutorial.time }}</span><span v-if="tutorial.booked == 'later'">slot to be booked at a later date.</span></span>
 
 
 
@@ -44,6 +45,7 @@
     </tr>
 
 
+
     <!-- Setup Options -->
     <tr v-if="setupinfo.exdemo || setupinfo.presetup || setupinfo.service == 'Set-Up' || (basicinfo.platform==='Windows' && setupoptions.recoverymedia)|| setupoptions.datatransfer || setupoptions.existingemail || setupoptions.installsoftware || setupoptions.runupdates || microsoftaccount.type==='new' || appleid.type==='new' || googleaccount.type==='new'">
       <td>
@@ -62,6 +64,7 @@
         </table>
       </td>
     </tr>
+
 
 
     <!-- Apple ID -->
