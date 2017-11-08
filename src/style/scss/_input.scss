@@ -74,6 +74,18 @@
       padding: 3%;
       margin: 4.5em 5%;
       box-sizing: border-box;
+      .note {
+        font-size: 80%;
+        color: #ccc;
+        font-style: italic;
+        text-align: left;
+        display: block;
+        width: 75%;
+        border: 1px solid #ccc;
+        border-radius: 0.5em;
+        padding: 1.5em 3em;
+        margin: 2em auto 1em auto;
+      }
     }
     .section-label {
       position: absolute;
@@ -290,6 +302,15 @@
       .transfermedia,
       .transfersource {
         width: 95%;
+      }
+    }
+    .tutorial {
+      .tutorial-date {
+        clear: left;
+        width: 30%;
+      }
+      .tutorial-time {
+        width: 15%;
       }
     }
     .printcontrols {

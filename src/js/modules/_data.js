@@ -21,7 +21,7 @@ var creationTime = function () {
 };
 
 var data = {
-    version: '0.9.16',
+    version: '0.10.0',
     meta: {
         printpreview: false
     },
@@ -43,7 +43,8 @@ var data = {
     setupinfo: {
         presetup: false,
         exdemo: false,
-        service: ''
+        service: '',
+        onorder: false
     },
     setupoptions: {
         recoverymedia: true,
@@ -143,6 +144,11 @@ var data = {
             address: '',
             password: ''
         }
+    },
+    tutorial: {
+      booked: '',
+      date: '',
+      time: ''
     },
     notes: '',
     temp: {

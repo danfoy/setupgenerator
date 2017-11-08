@@ -25,8 +25,9 @@
     <fieldset v-if="customerinfo.title && customerinfo.firstname && customerinfo.surname && customerinfo.telephone" name="setupinfo" class="input-section setupinfo">
       <legend for="setupinfo" class="section-label">Setup Information</legend>
 
-      <label><input type="checkbox" v-model="setupinfo.presetup">Unit is pre-setup</label>
-      <label><input type="checkbox" v-model="setupinfo.exdemo">Unit is ex-demo</label>
+      <label><input type="checkbox" v-model="setupinfo.presetup">Pre-Setup</label>
+      <label><input type="checkbox" v-model="setupinfo.exdemo">Ex-Demo</label>
+      <label><input type="checkbox" v-model="setupinfo.onorder">On Order</label>
 
       <fieldset name="platform" class="platform">
         <legend for="platform">Platform</legend>
@@ -278,6 +279,25 @@
         <legend for="existingmicrosoftaccount">Existing Email Account</legend>
         <input type="text" v-model="microsoftaccount.existing.address" placeholder="Email Address" class="microsoftaccount-existing-address">
         <input type="text" v-model="microsoftaccount.existing.password" placeholder="password" class="microsoftaccount-existing-password">
+      </fieldset>
+
+    </fieldset>
+
+
+    <!-- Tutorial -->
+    <fieldset v-if="setupinfo.service=='Set-up, Personalise and Tutorial'" name="tutorial" class="input-section tutorial">
+      <legend for="tutorial" class="section-label">Tutorial</legend>
+
+        <label><input type="radio" name="booked" value="now" v-model="tutorial.booked">Book tutorial date now</label>
+        <label><input type="radio" name="booked" value="later" v-model="tutorial.booked">Book tutorial date later</label>
+    
+      <fieldset v-if="tutorial.booked == 'now'" name="tutorial-slot" class="tutorial-slot">
+        <legend for="tutorial-slot">Tutorial Slot</legend>
+        <input type="text" placeholder="Tutorial date" class="tutorial-date" v-model="tutorial.date">
+        <input type="text" placeholder="Tutorial time" class="tutorial-time" v-model="tutorial.time">
+        
+        <p class="note">Please refer to the Tutorial Diary before booking tutorial dates.<span v-if="setupoptions.datatransfer == false"><br>Generally speaking, tutorials should not be booked less than <span v-if="setupoptions.runupdates">72</span><span v-if="setupoptions.runupdates == false">48</span> hours <span v-if="setupinfo.onorder">after the item is due to arrive in store</span><span v-if="setupinfo.onorder == false">in advance</span><span v-if="setupoptions.runupdates"> to allow time for system updates to complete</span>.</span>
+        <span v-if="setupoptions.datatransfer"><br>As your set-up includes a data transfer, consult with Team Knowhow for a completion estimate.</span></p>
       </fieldset>
 
     </fieldset>
