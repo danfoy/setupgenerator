@@ -99,6 +99,11 @@ $output-border: 0.05em solid black;
   .output-address,
   .output-notes-data {
     white-space: pre-line;
+    word-wrap: break-word;
+    font-family: inherit;
+    font-size: inherit;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   .tickbox {
     border-left: $output-border;

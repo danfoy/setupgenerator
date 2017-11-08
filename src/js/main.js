@@ -10143,7 +10143,7 @@ var creationTime = function () {
 };
 
 var data = {
-    version: '0.10.1',
+    version: '0.10.2',
     meta: {
         printpreview: false
     },

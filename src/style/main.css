@@ -548,7 +548,12 @@ body {
   position: relative; }
 .output .output-address,
 .output .output-notes-data {
-  white-space: pre-line; }
+  white-space: pre-line;
+  word-wrap: break-word;
+  font-family: inherit;
+  font-size: inherit;
+  margin-top: 0;
+  margin-bottom: 0; }
 .output .tickbox {
   border-left: 0.05em solid black;
   width: 2.1em;
