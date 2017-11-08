@@ -25,9 +25,9 @@
     <fieldset v-if="customerinfo.title && customerinfo.firstname && customerinfo.surname && customerinfo.telephone" name="setupinfo" class="input-section setupinfo">
       <legend for="setupinfo" class="section-label">Setup Information</legend>
 
-      <label><input type="checkbox" v-model="setupinfo.presetup">Pre-Setup</label>
-      <label><input type="checkbox" v-model="setupinfo.exdemo">Ex-Demo</label>
-      <label><input type="checkbox" v-model="setupinfo.onorder">On Order</label>
+      <label v-if="!setupinfo.exdemo && !setupinfo.presetup"><input type="checkbox" v-model="setupinfo.onorder">On Order</label>
+      <label v-if="!setupinfo.onorder && !setupinfo.presetup"><input type="checkbox" v-model="setupinfo.exdemo">Ex-Demo</label>
+      <label v-if="!setupinfo.onorder && !setupinfo.exdemo"><input type="checkbox" v-model="setupinfo.presetup">Pre-Setup</label>
 
       <fieldset name="platform" class="platform">
         <legend for="platform">Platform</legend>
