@@ -1,0 +1,11 @@
+{
+  "esversion": 6,
+  "globals": {
+    "Vue": true,
+    "data": true,
+    "document": true,
+    "computed": true,
+    "methods": true,
+    "window": true
+  }
+}
