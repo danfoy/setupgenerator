@@ -1,6 +1,6 @@
 /* global module */
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
   // Config
   grunt.initConfig({
@@ -31,7 +31,7 @@ module.exports = function(grunt) {
           'src/js/modules/_computed.js',
           'src/js/modules/_components.js',
           'src/js/modules/_app.js'],
-        dest: 'src/js/main.js'
+        dest: 'src/js/main.native.js'
       },
       partials: {
         src: [
@@ -49,6 +49,14 @@ module.exports = function(grunt) {
       }
     },
 
+    babel: {
+      dist: {
+        files: {
+          "src/js/main.js": "src/js/main.native.js"
+        }
+      }
+    },
+
     watch: {
       sass: {
         files: [
@@ -59,7 +67,7 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: ['src/js/modules/*.js'],
-        tasks: ['concat:scripts', 'concat:partials']
+        tasks: ['concat:scripts', 'babel:dist', 'concat:partials']
       },
       partials: {
         files: ['src/partials/*htm'],
@@ -73,8 +81,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-babel');
 
   // Run
-  grunt.registerTask('default', ['sass', 'concat:scripts', 'concat:partials']);
+  grunt.registerTask('default', ['sass', 'concat:scripts', 'babel:dist', 'concat:partials']);
 
 };

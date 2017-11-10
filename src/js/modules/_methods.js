@@ -1,5 +1,3 @@
-/*global document, window */
-
 /* 
 
 printSheet uses document.execCommand() to resolve a bug where IE11 disregards '@media print' media queries.

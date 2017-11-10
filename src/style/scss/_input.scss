@@ -1,79 +1,97 @@
-  $fieldset-border: 0.2em solid #000;
-  #input {
-    fieldset {
-      border: $fieldset-border;
-      border-radius: 0.25em;
-      background: #fff;
-      box-shadow: 0 0 1em 0.2em #ccc;
-    }
-    label {
-      padding: 0 2.5%;
-      margin-bottom: 2.5%;
-      cursor: pointer;
-    }
-    input,
-    select,
-    textarea,
-    button {
-      border: 1px solid black;
-      border-bottom-width: 2px;
-      border-radius: 0.25em;
-      box-sizing: border-box;
-      margin-bottom: 1%;
-      padding: 0.5em;
-    }
-    input[type='checkbox'],
-    input[type='radio'] {
-      margin-right: 0.5em;
-      display: inline-block;
-      cursor: pointer;
-    }
-    button {
-      background: #fff;
-      cursor: pointer;
-    }
-    textarea {
-      width: 95%;
-      margin-left: 2.5%;
-      margin-right: 2.5%;
-      height: 6em;
-      box-sizing: border-box;
-    }
-    /* ::placeholder {
-      text-transform: uppercase;
-      font-size: 0.8em;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      vertical-align: middle;
-      color: #aaa;
-      padding: 0.5em !important;
-    }
-    :-ms-input-placeholder {
-      text-transform: uppercase;
-      font-size: 0.8em;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      vertical-align: middle;
-      color: #aaa;
-      padding: 0.5em !important;
-    }
-    textarea::placeholder {
-      line-height: 6em;
-      vertical-align: middle;
-      text-align: center;
-    }
-    textarea:-ms-input-placeholder {}
-    select {
-      height: 2.3em;
-    } */
+#input {
+  label {
+    padding: 0 2.5%;
+    margin-bottom: 2.5%;
+    cursor: pointer;
+  }
+  input,
+  select,
+  textarea,
+  button {
+    border: 1px solid black;
+    border-bottom-width: 2px;
+    border-radius: 0.25em;
     box-sizing: border-box;
-    text-align: left;
+    margin-bottom: 1%;
+    padding: 0.5em;
+  }
+  input[type='checkbox'],
+  input[type='radio'] {
+    margin-right: 0.5em;
+    display: inline-block;
+    cursor: pointer;
+  }
+  button {
+    background: #fff;
+    cursor: pointer;
+  }
+  textarea {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    height: 6em;
+    box-sizing: border-box;
+  }
+  /* ::placeholder {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    vertical-align: middle;
+    color: #aaa;
+    padding: 0.5em !important;
+  }
+  :-ms-input-placeholder {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    vertical-align: middle;
+    color: #aaa;
+    padding: 0.5em !important;
+  }
+  textarea::placeholder {
+    line-height: 6em;
+    vertical-align: middle;
+    text-align: center;
+  }
+  textarea:-ms-input-placeholder {}
+  select {
+    height: 2.3em;
+  } */
+  box-sizing: border-box;
+  text-align: left;
+  .input-section {
+    border: 0.2em solid #000;
+    border-radius: 0.25em;
+    background: #fff;
+    box-shadow: 0 0 1em 0.2em #ccc;
+    text-align: center;
+    position: relative;
+    padding: 3%;
+    margin: 4.5em 5%;
+    box-sizing: border-box;
     .input-section {
-      text-align: center;
+      margin: 3%;
+      padding: 2.5% 2.5% 1.5% 2.5%;
+      border-color: #999;
       position: relative;
-      padding: 3%;
-      margin: 4.5em 5%;
       box-sizing: border-box;
+      .section-label {
+        padding: 0.5em 1em;
+        background: #fff;
+        border: 0.15em solid #999;
+        border-top-color: deeppink;
+        border-radius: 0.25em;
+        font-size: 0.8em;
+        font-weight: 700;
+        position: relative;
+        top: 0;
+        left: 0;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
       .note {
         font-size: 80%;
         color: #ccc;
@@ -88,268 +106,252 @@
       }
     }
     .section-label {
-      position: absolute;
+    position: absolute;
+    display: inline-block;
+    left: 2em;
+    top: -3.825em;
+    height: 3.81em;
+    width: auto;
+    border: 0.2em solid #000;
+    border-top-color: deeppink;
+    border-bottom: 0;
+    border-radius: 0.25em;
+    padding: 1.1em 1.5em 0.2em 1.5em;
+    background: #fff;
+    font-size: 0.8em;
+    font-weight: 700;
+    cursor: default;
+  }
+  .section-label.complete {
+    border-top-color: lightgreen;
+    border-top-width: 0.4em;
+    padding: 0.9em 1.5em 0.2em 1.5em;
+  }
+  }
+
+  .infoblock {
+    padding: 2.5% 15% 5% 15%;
+    text-align: left;
+    color: #555;
+    font-size: 0.9em;
+    font-style: italic;
+  }
+  .basicinfo {
+    text-align: center;
+    .colleague,
+    .productsku {
+      text-align: center;
+      width: 40%;
+    }
+    .platform {
+      text-align: center;
+    }
+  }
+  .customerinfo {
+    input,
+    textarea {
+      margin: inherit 2.5%;
+    }
+    .customerinfo-title {
+      width: 15%;
+    }
+    .customerinfo-firstname,
+    .customerinfo-surname {
+      width: 41.5%
+    }
+    .customerinfo-telephone,
+    .customerinfo-alttelephone {
+      width: 49.5%;
+    }
+  }
+  .setupinfo {
+    label {
       display: inline-block;
-      left: 2em;
-      top: -3.825em;
-      height: 3.81em;
-      width: auto;
-      border-top: $fieldset-border;
-      border-top-color: deeppink;
-      border-left: $fieldset-border;
-      border-right: $fieldset-border;
-      border-radius: 0.25em;
-      padding: 1.1em 1.5em 0.2em 1.5em;
-      background: #fff;
-      font-size: 0.8em;
-      font-weight: 700;
-      cursor: default;
     }
-    .section-label.complete {
-      border-top-color: lightgreen;
-      border-top-width: 0.4em;
-      padding: 0.9em 1.5em 0.2em 1.5em;
-    }
-    .input-section fieldset {
-      margin: 3%;
-      padding: 2.5% 2.5% 1.5% 2.5%;
-      border-color: #999;
+  }
+  .setupoptions,
+  .software {
+    ul {
       position: relative;
-      box-sizing: border-box;
-    }
-    .input-section fieldset legend {
-      padding: 0.5em 1em;
-      background: #fff;
-      border: 0.15em solid #999;
-      border-top-color: deeppink;
-      border-radius: 0.25em;
-      font-size: 0.8em;
-      font-weight: 700;
-      cursor: default;
-    }
-    .infoblock {
-      padding: 2.5% 15% 5% 15%;
+      list-style-type: none;
+      padding: 0 0 0 12%;
       text-align: left;
-      color: #555;
-      font-size: 0.9em;
-      font-style: italic;
     }
-    .basicinfo {
-      text-align: center;
-      .colleague,
-      .productsku {
-        text-align: center;
-        width: 40%;
-      }
-      .platform {
-        text-align: center;
-      }
+    li {
+      display: inline-block;
+      width: 32%;
     }
-    .customerinfo {
-      input,
-      textarea {
-        margin: inherit 2.5%;
-      }
-      .customerinfo-title {
-        width: 15%;
-      }
-      .customerinfo-firstname,
-      .customerinfo-surname {
-        width: 41.5%
-      }
-      .customerinfo-telephone,
-      .customerinfo-alttelephone {
-        width: 49.5%;
-      }
+    label {
+      display: inline-block;
+      padding: 0.5em;
     }
-    .setupinfo {
-      label {
-        display: inline-block;
-      }
-    }
-    .setupoptions,
-    .software {
+    .customsoftware {
+      margin-top: 1.5em;
       ul {
-        position: relative;
-        list-style-type: none;
-        padding: 0 0 0 12%;
-        text-align: left;
+        margin-bottom: 2.5em;
       }
-      li {
-        display: inline-block;
-        width: 32%;
-      }
-      label {
-        display: inline-block;
-        padding: 0.5em;
-      }
-      .customsoftware {
-        margin-top: 1.5em;
-        ul {
-          margin-bottom: 2.5em;
-        }
-        input[type='text'] {
-          width: 40%;
-        }
-        button {
-          width: 29%;
-        }
-      }
-    }
-    .appleid {
-      .appleid-existingemail,
-      .appleid-existingpassword {
-        width: 45%;
-      }
-      .appleid-newemail,
-      .appleid-newpassword,
-      .appleid-dob {
-        width: 28%;
-      }
-      .appleid-newemail {
-        padding-left: 0;
-        padding-right: 1%;
-      }
-      .recoveryquestion-question {
-        width: 65%;
-      }
-      .recoveryquestion-answer {
-        width: 30%;
-      }
-    }
-    .googleaccount-existing {
-      .googleaccount-address,
-      .googleaccount-password {
+      input[type='text'] {
         width: 40%;
       }
-    }
-    .googleaccount-new {
-      .googleaccount-address,
-      .googleaccount-password {
-        width: 35%;
-      }
-      .googleaccount-dob {
-        width: 22%;
-      }
-    }
-    .useraccounts {
-      .accountname,
-      .accountpassword {
-        width: 40%;
-      }
-      .accounthint {
-        display: block;
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .accountadmin {
-        display: block;
-        margin-top: 2.5%;
-      }
-    }
-    .email {
-      .email-new-address,
-      .email-new-password,
-      .email-existing-address,
-      .email-existing-password {
-        display: inline-block;
-        width: 40%;
-      }
-      .email-new-address {
-        position: relative;
-        padding: 0;
-      }
-      .email-new-address-input {
-        width: 100%;
-        padding-right: 6.9em;
-        text-align: right;
-      }
-      .emaildomain.outlook {
-        position: absolute;
-        right: 0.5em;
-        top: 0.55em;
-      }
-    }
-    .microsoftaccount {
-      .microsoftaccount-new-address,
-      .microsoftaccount-new-password,
-      .microsoftaccount-existing-address,
-      .microsoftaccount-existing-password {
-        display: inline-block;
-        width: 40%;
-      }
-      .microsoftaccount-new-address {
-        position: relative;
-        padding: 0;
-      }
-      .microsoftaccount-new-address-input {
-        width: 100%;
-        padding-right: 6.9em;
-        text-align: right;
-      }
-      .emaildomain.outlook {
-        position: absolute;
-        right: 0.5em;
-        top: 0.55em;
-      }
-    }
-    .datatransfer {
-      .transferuser,
-      .transferpassword {
-        width: 47.2%;
-      }
-      .transfermedia,
-      .transfersource {
-        width: 95%;
-      }
-    }
-    .tutorial {
-      .tutorial-date {
-        clear: left;
-        width: 30%;
-      }
-      .tutorial-time {
-        width: 15%;
-      }
-    }
-    .printcontrols {
-      text-align: center;
-      margin-top: 6em;
-      margin-bottom: 5em;
-      .previewbutton,
-      .printbutton {
-        margin: 1em auto;
-      }
-      .resetbutton,
-      .resetbutton:visited {
-        text-transform: uppercase;
-        font-size: 0.8em;
-        text-decoration: underline;
-        color: black;
-        font-weight: bold;
-      }
-      .resetbutton:hover {
-        text-decoration: none;
-        color: deeppink;
-      }
-      .printbutton {
-        display: block;
-        text-transform: uppercase;
-        letter-spacing: 0.5em;
-        padding: 1em 2.5em 1em 3em;
-        font-size: 1.5em;
-        font-weight: bold;
-        border: 0.2em solid;
-        border-color: black;
-        border-width: 0.2em;
-        border-bottom-color: deeppink;
-        border-bottom-width: 0.4em;
-      }
-      .printbutton:hover {
-        background: deeppink;
-        color: white;
-        border-bottom-color: white;
+      button {
+        width: 29%;
       }
     }
   }
+  .appleid {
+    .appleid-existingemail,
+    .appleid-existingpassword {
+      width: 45%;
+    }
+    .appleid-newemail,
+    .appleid-newpassword,
+    .appleid-dob {
+      width: 28%;
+    }
+    .appleid-newemail {
+      padding-left: 0;
+      padding-right: 1%;
+    }
+    .recoveryquestion-question {
+      width: 65%;
+    }
+    .recoveryquestion-answer {
+      width: 30%;
+    }
+  }
+  .googleaccount-existing {
+    .googleaccount-address,
+    .googleaccount-password {
+      width: 40%;
+    }
+  }
+  .googleaccount-new {
+    .googleaccount-address,
+    .googleaccount-password {
+      width: 35%;
+    }
+    .googleaccount-dob {
+      width: 22%;
+    }
+  }
+  .useraccounts {
+    .accountname,
+    .accountpassword {
+      width: 40%;
+    }
+    .accounthint {
+      display: block;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .accountadmin {
+      display: block;
+      margin-top: 2.5%;
+    }
+  }
+  .email {
+    .email-new-address,
+    .email-new-password,
+    .email-existing-address,
+    .email-existing-password {
+      display: inline-block;
+      width: 40%;
+    }
+    .email-new-address {
+      position: relative;
+      padding: 0;
+    }
+    .email-new-address-input {
+      width: 100%;
+      padding-right: 6.9em;
+      text-align: right;
+    }
+    .emaildomain.outlook {
+      position: absolute;
+      right: 0.5em;
+      top: 0.55em;
+    }
+  }
+  .microsoftaccount {
+    .microsoftaccount-new-address,
+    .microsoftaccount-new-password,
+    .microsoftaccount-existing-address,
+    .microsoftaccount-existing-password {
+      display: inline-block;
+      width: 40%;
+    }
+    .microsoftaccount-new-address {
+      position: relative;
+      padding: 0;
+    }
+    .microsoftaccount-new-address-input {
+      width: 100%;
+      padding-right: 6.9em;
+      text-align: right;
+    }
+    .emaildomain.outlook {
+      position: absolute;
+      right: 0.5em;
+      top: 0.55em;
+    }
+  }
+  .datatransfer {
+    .transferuser,
+    .transferpassword {
+      width: 47.2%;
+    }
+    .transfermedia,
+    .transfersource {
+      width: 95%;
+    }
+  }
+  .tutorial {
+    .tutorial-date {
+      clear: left;
+      width: 30%;
+    }
+    .tutorial-time {
+      width: 15%;
+    }
+  }
+  .printcontrols {
+    text-align: center;
+    margin-top: 6em;
+    margin-bottom: 5em;
+    .previewbutton,
+    .printbutton {
+      margin: 1em auto;
+    }
+    .resetbutton,
+    .resetbutton:visited {
+      text-transform: uppercase;
+      font-size: 0.8em;
+      text-decoration: underline;
+      color: black;
+      font-weight: bold;
+    }
+    .resetbutton:hover {
+      text-decoration: none;
+      color: deeppink;
+    }
+    .printbutton {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.5em;
+      padding: 1em 2.5em 1em 3em;
+      font-size: 1.5em;
+      font-weight: bold;
+      border: 0.2em solid;
+      border-color: black;
+      border-width: 0.2em;
+      border-bottom-color: deeppink;
+      border-bottom-width: 0.4em;
+    }
+    .printbutton:hover {
+      background: deeppink;
+      color: white;
+      border-bottom-color: white;
+    }
+  }
+}

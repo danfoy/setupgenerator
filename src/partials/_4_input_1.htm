@@ -3,54 +3,51 @@
 
 
     <!-- Basic Info -->
-    <fieldset name="basicinfo" class="input-section basicinfo">
-      <legend class="section-label" for="basicinfo">Basic Information</legend>
+    <form-section name="basicinfo" title="Basic Info">
 
       <input type="text" placeholder="Colleague Name" v-model="basicinfo.colleague" class="colleague">
       <input type="text" placeholder="Product SKU" v-model="basicinfo.sku" class="productsku">
 
-      <fieldset v-if="basicinfo.colleague && basicinfo.sku" name="customerinfo" class="customerinfo">
-        <legend for="customerinfo" v-bind:class="{complete: customerInfoComplete}">Customer Information</legend>
+
+      <form-section v-if="basicinfo.colleague && basicinfo.sku" name="customerinfo" title="Customer Information">
         <input type="text" placeholder="Title" v-model="customerinfo.title" class="customerinfo-title">
         <input type="text" placeholder="First Name" v-model="customerinfo.firstname" class="customerinfo-firstname">
         <input type="text" placeholder="Surname" v-model="customerinfo.surname" class="customerinfo-surname">
         <input type="tel" placeholder="Telephone Number" v-model="customerinfo.telephone" class="customerinfo-telephone">
         <input type="tel" placeholder="Alternate Telephone Number" v-model="customerinfo.alttelephone" class="customerinfo-alttelephone">
-      </fieldset>
+      </form-section>
 
-    </fieldset>
+    </form-section>
+
 
 
     <!-- Setup Info -->
-    <fieldset v-if="customerinfo.title && customerinfo.firstname && customerinfo.surname && customerinfo.telephone" name="setupinfo" class="input-section setupinfo">
-      <legend for="setupinfo" class="section-label">Setup Information</legend>
+    <form-section name="setupinfo" title="Setup Information" v-if="customerinfo.title && customerinfo.firstname && customerinfo.surname && customerinfo.telephone">
 
       <label v-if="!setupinfo.exdemo && !setupinfo.presetup"><input type="checkbox" v-model="setupinfo.onorder">On Order</label>
       <label v-if="!setupinfo.onorder && !setupinfo.presetup"><input type="checkbox" v-model="setupinfo.exdemo">Ex-Demo</label>
       <label v-if="!setupinfo.onorder && !setupinfo.exdemo"><input type="checkbox" v-model="setupinfo.presetup">Pre-Setup</label>
 
-      <fieldset name="platform" class="platform">
-        <legend for="platform">Platform</legend>
+      <form-section name="platform" title="Platform">
         <label><input type="radio" name="platform" value="Windows" v-model="basicinfo.platform">Windows</label>
         <label v-if="!setupinfo.presetup"><input type="radio" name="platform" value="Mac" v-model="basicinfo.platform">Mac</label>
         <label v-if="!setupinfo.presetup"><input type="radio" name="platform" value="iOS" v-model="basicinfo.platform">iOS</label>
         <label v-if="!setupinfo.presetup"><input type="radio" name="platform" value="Android" v-model="basicinfo.platform">Android</label>
-      </fieldset>
+      </form-section>
 
-      <fieldset v-if="basicinfo.platform" name="service" class="service">
-        <legend for="service">Service</legend>
+      <form-section v-if="basicinfo.platform" name="service" title="Service">
         <label v-if="basicinfo.platform == 'Windows' && setupinfo.presetup == false"><input type="radio" name="service" value="Set-Up" v-model="setupinfo.service">Set-Up</label>
         <label><input type="radio" name="service" value="Set-up and Personalise" v-model="setupinfo.service">Set-up and Personalise</label>
         <label><input type="radio" name="service" value="Set-up, Personalise and Tutorial" v-model="setupinfo.service">Set-up, Personalise and Tutorial</label>
         <label v-if="setupinfo.exdemo"><input type="radio" name="service" value="Factory Reset" v-model="setupinfo.service">Factory Reset Only</label>
-      </fieldset>
+      </form-section>
 
-    </fieldset>
+    </form-section>
 
 
     <!-- Setup Options -->
-    <fieldset v-if="basicinfo.platform && setupinfo.service && setupinfo.service != 'Set-Up' && setupinfo.service != 'Factory Reset'" name="setupoptions" class="input-section setupoptions">
-      <legend for="setupoptions" class="section-label">Options</legend>
+    <form-section name="setupoptions" title="Options" v-if="basicinfo.platform && setupinfo.service && setupinfo.service != 'Set-Up' && setupinfo.service != 'Factory Reset'">
+
       <ul>
         <li v-if="basicinfo.platform == 'Windows' && setupinfo.presetup == false"><label><input type="checkbox" v-model="setupoptions.recoverymedia">Create Recovery Media</label></li>
         <li v-if="basicinfo.platform == 'Windows' || basicinfo.platform == 'Mac'"><label><input type="checkbox" v-model="setupoptions.customusers">Customise User Accounts</label></li>
@@ -59,13 +56,13 @@
         <li><label><input type="checkbox" v-model="setupoptions.installsoftware">Install software</label></li>
         <li><label><input type="checkbox" v-model="setupoptions.runupdates">Run updates</label></li>
       </ul>
-    </fieldset>
+
+    </form-section>
 
 
 
     <!-- User Accounts -->
-    <fieldset v-if="setupoptions.customusers" name="useraccounts" class="input-section useraccounts">
-      <legend for="useraccounts" class="section-label">User Accounts</legend>
+    <form-section v-if="setupoptions.customusers" name="useraccounts" title="User Accounts">
 
       <div>
         <p>Number of accounts:</p>
@@ -75,45 +72,41 @@
         <label><input type="radio" name="accountcount" v-model="useraccounts.count" value="4">4</label>
       </div>
 
-      <fieldset name="account1" class="useraccount">
-        <legend for="account1">User Account 1</legend>
+      <form-section name="account1" title="User Account 1">
         <input type="text" v-model="useraccounts.account1.username" placeholder="Account Name" class="accountname">
         <input type="text" v-model="useraccounts.account1.password" placeholder="Password (optional)" class="accountpassword">
         <input type="text" v-if="useraccounts.account1.password" v-model="useraccounts.account1.hint" placeholder="Password Hint" class="accounthint">
         <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account1.admin" disabled>Administrator</label>
-      </fieldset>
+      </form-section>
 
-      <fieldset v-if="useraccounts.count >= 2" name="account2" class="useraccount">
-        <legend for="account2">User Account 2</legend>
+      <form-section v-if="useraccounts.count >= 2" name="account2" title="User Account 2">
         <input type="text" v-model="useraccounts.account2.username" placeholder="Account Name" class="accountname">
         <input type="text" v-model="useraccounts.account2.password" placeholder="Password (optional)" class="accountpassword">
         <input type="text" v-if="useraccounts.account2.password" v-model="useraccounts.account2.hint" placeholder="Password Hint" class="accounthint">
         <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account2.admin">Administrator</label>
-      </fieldset>
+      </form-section>
 
-      <fieldset v-if="useraccounts.count >= 3" name="account3" class="useraccount">
-        <legend for="account3">User Account 3</legend>
+      <form-section v-if="useraccounts.count >= 3" name="account3" title="User Account 3">
         <input type="text" v-model="useraccounts.account3.username" placeholder="Account Name" class="accountname">
         <input type="text" v-model="useraccounts.account3.password" placeholder="Password (optional)" class="accountpassword">
         <input type="text" v-if="useraccounts.account3.password" v-model="useraccounts.account3.hint" placeholder="Password Hint" class="accounthint">
         <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account3.admin">Administrator</label>
-      </fieldset>
+      </form-section>
 
-      <fieldset v-if="useraccounts.count >= 4" name="account4" class="useraccount">
-        <legend for="account4">User Account 4</legend>
+      <form-section v-if="useraccounts.count >= 4" name="account4" title="User Account 4">
         <input type="text" v-model="useraccounts.account4.username" placeholder="Account Name" class="accountname">
         <input type="text" v-model="useraccounts.account4.password" placeholder="Password (optional)" class="accountpassword">
         <input type="text" v-if="useraccounts.account4.password" v-model="useraccounts.account4.hint" placeholder="Password Hint" class="accounthint">
         <label class="accountadmin"><input type="checkbox" v-model="useraccounts.account4.admin">Administrator</label>
-      </fieldset>
+      </form-section>
 
-    </fieldset>
+    </form-section>
 
 
 
     <!-- Software -->
-    <fieldset v-if="setupoptions.installsoftware" name="software" class="input-section software">
-      <legend class="section-label" for="software">Software</legend>
+    <form-section v-if="setupoptions.installsoftware" name="software" title="Software">
+
       <ul>
         <li><label><input type="checkbox" v-model="software" value="Knowhow Cloud">Knowhow Cloud</label></li>
         <li><label><input type="checkbox" v-model="software" value="Office">Office</label></li>
@@ -125,22 +118,22 @@
         <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="World of Warcraft">World of Warcraft</label></li>
         <li v-if="basicinfo.platform == 'Windows'"><label><input type="checkbox" v-model="software" value="Links Bundle">Links Bundle</label></li>
       </ul>
-      <fieldset name="customsoftware" class="customsoftware">
-        <legend for="customsoftware">Custom Software</legend>
+
+      <form-section name="customsoftware" title="Custom Software">
         <ul v-if="customsoftware[0]">
           <li v-for="software in customsoftware"><label><input type="checkbox" checked disabled>{{ software }}</label></li>
         </ul>
         <input type="text" v-model="temp.customsoftware" placeholder="Custom Software">
         <button type="button" v-on:click="addCustomSoftware">Add to list</button>
         <button type="button" v-on:click="resetCustomSoftware">Reset</button>
-      </fieldset>
-    </fieldset>
+      </form-section>
+
+    </form-section>
 
 
 
     <!-- Data Transfer -->
-    <fieldset v-if="setupoptions.datatransfer" name="notes" class="input-section datatransfer">
-      <legend class="section-label" for="datatransfer">Data Transfer</legend>
+    <form-section v-if="setupoptions.datatransfer" name="notes" title="Data Transfer">
       <div v-if="basicinfo.platform == 'Windows' || basicinfo.platform == 'Mac'" class="infoblock">
         <p>We will attempt to transfer all files from each user's account folder. This includes your documents, photos, and desktop folders. If you have any files stored elsewhere on the machine please describe them in the notes section below.</p>
         <p>Note that we are unable to transfer applications.</p>
@@ -150,30 +143,27 @@
       <input type="text" v-model="datatransfer.source" placeholder="Describe transfer source (e.g. 'Dell Tower', 'HP Laptop')" class="transfersource">
       <input type="text" v-model="datatransfer.media" placeholder="Describe transfer media (e.g. '1TB Seagate harddrive')" class="transfermedia">
       <textarea placeholder="Notes" v-model="datatransfer.notes" class="transfernotes"></textarea>
-    </fieldset>
+    </form-section>
 
 
 
     <!-- Email -->
-    <fieldset v-if="setupoptions.email" name="email" class="input-section email">
-      <legend for="email" class="section-label">Existing Email Account</legend>
+    <form-section v-if="setupoptions.email" name="email" title="Existing Email Account">
       <input type="text" v-model="email.account1.address" placeholder="Email Address" class="email-existing-address">
       <input type="text" v-model="email.account1.password" placeholder="password" class="email-existing-password">
-    </fieldset>
+    </form-section>
 
 
 
     <!-- Apple ID -->
-    <fieldset v-if="basicinfo.platform=='Mac' || basicinfo.platform=='iOS'" name="appleid" class="input-section appleid">
-      <legend for="appleid" class="section-label">Apple ID</legend>
+    <form-section v-if="basicinfo.platform=='Mac' || basicinfo.platform=='iOS'" name="appleid" title="Apple ID">
 
       <div>
         <label><input type="radio" name="appleid-type" v-model="appleid.type" value="existing">Use existing Apple ID</label>
         <label><input type="radio" name="appleid-type" v-model="appleid.type" value="new">Create a new Apple ID</label>
       </div>
 
-      <fieldset v-if="appleid.type=='existing'" name="appleid-existing" class="appleid-existing">
-        <legend for="appleid-existing">Existing Apple ID</legend>
+      <form-section v-if="appleid.type=='existing'" name="appleid-existing" title="Existing Apple ID">
         <div>
           <input type="text" v-model="appleid.existing.email" placeholder="Email Address" class="appleid-existingemail">
           <input type="text" v-model="appleid.existing.password" placeholder="Password" class="appleid-existingpassword">
@@ -183,10 +173,9 @@
           </div>
         </div>
 
-      </fieldset>
+      </form-section>
 
-      <fieldset v-if="appleid.type=='new'" name="appleid-new" class="appleid-new">
-        <legend for="appleid-new">New Apple ID</legend>
+      <form-section v-if="appleid.type=='new'" name="appleid-new" title="New Apple ID">
         <div>
           <label class="appleid-newemail"><input type="text" v-model="appleid.new.email" placeholder="new username">@icloud.com</label>
           <input class="appleid-newpassword" type="text" v-model="appleid.new.password" placeholder="Password">
@@ -231,84 +220,76 @@
         </select>
           <input type="text" v-model="appleid.new.recoveryquestion3.answer" class="recoveryquestion-answer" placeholder="Answer">
         </div>
-      </fieldset>
-    </fieldset>
+      </form-section>
+    </form-section>
 
 
 
     <!-- Google Account -->
-    <fieldset v-if="basicinfo.platform == 'Android'" name="googleaccount" class="input-section googleaccount">
-      <legend for="googleaccount" class="section-label">Google Account</legend>
+    <form-section v-if="basicinfo.platform == 'Android'" name="googleaccount" title="Google Account">
 
       <div>
         <label><input type="radio" name="googleaccounttype" v-model="googleaccount.type" value="new">Create a new Google Account</label>
         <label><input type="radio" name="googleaccounttype" v-model="googleaccount.type" value="existing">Use an existing Google Account</label>
       </div>
 
-      <fieldset v-if="googleaccount.type == 'new'" name="googleaccount-new" class="googleaccount-new">
-        <legend for="googleaccount-new">New Google Account</legend>
+      <form-section v-if="googleaccount.type == 'new'" name="googleaccount-new" title="New Google Account">
         <input type="text" v-model="googleaccount.new.address" placeholder="youraccount@gmail.com" class="googleaccount-address">
         <input type="text" v-model="googleaccount.new.password" placeholder="Password" class="googleaccount-password">
         <input type="text" v-model="googleaccount.new.dob" placeholder="Date of Birth" class="googleaccount-dob">
-      </fieldset>
+      </form-section>
 
-      <fieldset v-if="googleaccount.type == 'existing'" name="googleaccount-new" class="googleaccount-existing">
-        <legend for="googleaccount-new">Existing Google Account</legend>
+      <form-section v-if="googleaccount.type == 'existing'" name="googleaccount-new" title="Existing Google Account">
         <input type="text" v-model="googleaccount.existing.address" placeholder="youraccount@gmail.com" class="googleaccount-address">
         <input type="text" v-model="googleaccount.existing.password" placeholder="Password" class="googleaccount-password">
-      </fieldset>
+      </form-section>
 
-    </fieldset>
+    </form-section>
 
 
 
     <!-- Microsoft Account -->
-    <fieldset v-if="software.includes('Office') || software.includes('McAfee') || software.includes('Norton')" name="microsoftaccount" class="input-section microsoftaccount">
-      <legend for="microsoftaccount" class="section-label">Microsoft Accounts</legend>
+    <form-section v-if="software.includes('Office') || software.includes('McAfee') || software.includes('Norton')" name="microsoftaccount" title="Microsoft Accounts">
 
       <label><input type="radio" name="microsoftaccounttype" v-model="microsoftaccount.type" value="new">Create a new Microsoft Account</label>
       <label><input type="radio" name="microsoftaccounttype" v-model="microsoftaccount.type" value="existing">Sign in to an existing Microsoft Account</label>
 
-      <fieldset v-if="microsoftaccount.type == 'new'" name="newmicrosoftaccount">
-        <legend for="newmicrosoftaccount">New Microsoft Account</legend>
+      <form-section v-if="microsoftaccount.type == 'new'" name="newmicrosoftaccount" title="New Microsoft Account">
         <label class="microsoftaccount-new-address"><input type="text" v-model="microsoftaccount.new.address" placeholder="yourname" class="microsoftaccount-new-address-input"><span class="emaildomain outlook">@outlook.com</span></label>
         <input type="text" v-model="microsoftaccount.new.password" placeholder="password" class="microsoftaccount-new-password">
-      </fieldset>
+      </form-section>
 
-      <fieldset v-if="microsoftaccount.type == 'existing'" name="existingmicrosoftaccount">
-        <legend for="existingmicrosoftaccount">Existing Email Account</legend>
+      <form-section v-if="microsoftaccount.type == 'existing'" name="existingmicrosoftaccount" title="Existing Email Account">
         <input type="text" v-model="microsoftaccount.existing.address" placeholder="Email Address" class="microsoftaccount-existing-address">
         <input type="text" v-model="microsoftaccount.existing.password" placeholder="password" class="microsoftaccount-existing-password">
-      </fieldset>
+      </form-section>
 
-    </fieldset>
+    </form-section>
+
 
 
     <!-- Tutorial -->
-    <fieldset v-if="setupinfo.service=='Set-up, Personalise and Tutorial'" name="tutorial" class="input-section tutorial">
-      <legend for="tutorial" class="section-label">Tutorial</legend>
+    <form-section v-if="setupinfo.service=='Set-up, Personalise and Tutorial'" name="tutorial" title="Tutorial">
 
-        <label><input type="radio" name="booked" value="now" v-model="tutorial.booked">Book tutorial date now</label>
-        <label><input type="radio" name="booked" value="later" v-model="tutorial.booked">Book tutorial date later</label>
-    
-      <fieldset v-if="tutorial.booked == 'now'" name="tutorial-slot" class="tutorial-slot">
-        <legend for="tutorial-slot">Tutorial Slot</legend>
+      <label><input type="radio" name="booked" value="now" v-model="tutorial.booked">Book tutorial date now</label>
+      <label><input type="radio" name="booked" value="later" v-model="tutorial.booked">Book tutorial date later</label>
+
+      <form-section v-if="tutorial.booked == 'now'" name="tutorial-slot" title="Tutorial Slot">
         <input type="text" placeholder="Tutorial date" class="tutorial-date" v-model="tutorial.date">
         <input type="text" placeholder="Tutorial time" class="tutorial-time" v-model="tutorial.time">
-        
-        <p class="note">Please refer to the Tutorial Diary before booking tutorial dates.<span v-if="setupoptions.datatransfer == false"><br>Generally speaking, tutorials should not be booked less than <span v-if="setupoptions.runupdates">72</span><span v-if="setupoptions.runupdates == false">48</span> hours <span v-if="setupinfo.onorder">after the item is due to arrive in store</span><span v-if="setupinfo.onorder == false">in advance</span><span v-if="setupoptions.runupdates"> to allow time for system updates to complete</span>.</span>
-        <span v-if="setupoptions.datatransfer"><br>As your set-up includes a data transfer, consult with Team Knowhow for a completion estimate.</span></p>
-      </fieldset>
 
-    </fieldset>
+        <p class="note">Please refer to the Tutorial Diary before booking tutorial dates.<span v-if="setupoptions.datatransfer == false"><br>Generally speaking, tutorials should not be booked less than <span v-if="setupoptions.runupdates">72</span><span v-if="setupoptions.runupdates == false">48</span> hours <span v-if="setupinfo.onorder">after the item is due to arrive in store</span><span v-if="setupinfo.onorder == false">in advance</span><span v-if="setupoptions.runupdates"> to allow time for system updates to complete</span>.</span>
+          <span v-if="setupoptions.datatransfer"><br>As your set-up includes a data transfer, consult with Team Knowhow for a completion estimate.</span></p>
+      </form-section>
+
+    </form-section>
 
 
 
     <!-- Notes -->
-    <fieldset v-if="basicinfo.colleague && basicinfo.sku" name="notes" class="input-section notes">
-      <legend class="section-label" for="notes">Notes</legend>
+    <form-section v-if="basicinfo.colleague && basicinfo.sku" name="notes" title="Notes">
       <textarea placeholder="Notes" v-model="notes"></textarea>
-    </fieldset>
+    </form-section>
 
 
 

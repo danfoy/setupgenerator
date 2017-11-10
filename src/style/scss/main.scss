@@ -1,9 +1,9 @@
 // Master SASS
 
-
 @import 'normalize';
 
 @import 'variables';
+@import 'animate';
 
 @import 'globals';
 
@@ -11,6 +11,3 @@
 
 @import 'output';
 @import 'print';
-
-@import 'components/basicinfo';
-@import 'components/software'

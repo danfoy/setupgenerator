@@ -1,5 +1,3 @@
-/*global document */
-
 function checkjs () {
   var appel = document.getElementById('app');
   var checkjsmsg = document.getElementById('checkjsmsg');

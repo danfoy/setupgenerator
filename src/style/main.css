@@ -156,6 +156,51 @@ template {
 [hidden] {
   display: none; }
 
+.animated {
+  animation-duration: 0.30s;
+  animation-fill-mode: both; }
+
+@keyframes headerintro {
+  from {
+    transform: scale3d(1, 1, 1);
+    opacity: 0; }
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+    opacity: 0.2; }
+  to {
+    transform: scale3d(1, 1, 1);
+    opacity: 1; } }
+.appheader {
+  animation-name: headerintro;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  transform-origin: center bottom; }
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100px, 0); }
+  to {
+    opacity: 1;
+    transform: none; } }
+.fadein {
+  animation-name: fadein; }
+
+.basicinfo {
+  animation-name: fadein;
+  animation-delay: 1s;
+  animation-duration: 0.3s;
+  animation-fill-mode: both; }
+
+@keyframes fadeout {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    transform: translate3d(50px, 0, 0); } }
+.fadeout {
+  animation-name: fadeout; }
+
 body {
   font-family: sans-serif;
   text-align: center; }
@@ -177,14 +222,12 @@ body {
   body {
     background: #eee; } }
 .appheader {
-  margin-bottom: 8em; }
+  margin-bottom: 5em; }
   .appheader .app-title {
     margin: 1em 2em 0 2em;
     padding: 0 0 0 0;
-    text-transform: uppercase;
     display: inline-block;
-    border-bottom: 1px solid #aaa;
-    font-size: 2.7em;
+    font-size: 3em;
     cursor: default; }
   .appheader .app-version {
     font-size: 0.6em;
@@ -224,11 +267,6 @@ body {
   } */
   box-sizing: border-box;
   text-align: left; }
-  #input fieldset {
-    border: 0.2em solid #000;
-    border-radius: 0.25em;
-    background: #fff;
-    box-shadow: 0 0 1em 0.2em #ccc; }
   #input label {
     padding: 0 2.5%;
     margin-bottom: 2.5%;
@@ -258,58 +296,66 @@ body {
     height: 6em;
     box-sizing: border-box; }
   #input .input-section {
+    border: 0.2em solid #000;
+    border-radius: 0.25em;
+    background: #fff;
+    box-shadow: 0 0 1em 0.2em #ccc;
     text-align: center;
     position: relative;
     padding: 3%;
     margin: 4.5em 5%;
     box-sizing: border-box; }
-    #input .input-section .note {
-      font-size: 80%;
-      color: #ccc;
-      font-style: italic;
-      text-align: left;
-      display: block;
-      width: 75%;
-      border: 1px solid #ccc;
-      border-radius: 0.5em;
-      padding: 1.5em 3em;
-      margin: 2em auto 1em auto; }
-  #input .section-label {
-    position: absolute;
-    display: inline-block;
-    left: 2em;
-    top: -3.825em;
-    height: 3.81em;
-    width: auto;
-    border-top: 0.2em solid #000;
-    border-top-color: deeppink;
-    border-left: 0.2em solid #000;
-    border-right: 0.2em solid #000;
-    border-radius: 0.25em;
-    padding: 1.1em 1.5em 0.2em 1.5em;
-    background: #fff;
-    font-size: 0.8em;
-    font-weight: 700;
-    cursor: default; }
-  #input .section-label.complete {
-    border-top-color: lightgreen;
-    border-top-width: 0.4em;
-    padding: 0.9em 1.5em 0.2em 1.5em; }
-  #input .input-section fieldset {
-    margin: 3%;
-    padding: 2.5% 2.5% 1.5% 2.5%;
-    border-color: #999;
-    position: relative;
-    box-sizing: border-box; }
-  #input .input-section fieldset legend {
-    padding: 0.5em 1em;
-    background: #fff;
-    border: 0.15em solid #999;
-    border-top-color: deeppink;
-    border-radius: 0.25em;
-    font-size: 0.8em;
-    font-weight: 700;
-    cursor: default; }
+    #input .input-section .input-section {
+      margin: 3%;
+      padding: 2.5% 2.5% 1.5% 2.5%;
+      border-color: #999;
+      position: relative;
+      box-sizing: border-box; }
+      #input .input-section .input-section .section-label {
+        padding: 0.5em 1em;
+        background: #fff;
+        border: 0.15em solid #999;
+        border-top-color: deeppink;
+        border-radius: 0.25em;
+        font-size: 0.8em;
+        font-weight: 700;
+        position: relative;
+        top: 0;
+        left: 0;
+        height: auto;
+        display: block;
+        margin: 0 auto; }
+      #input .input-section .input-section .note {
+        font-size: 80%;
+        color: #ccc;
+        font-style: italic;
+        text-align: left;
+        display: block;
+        width: 75%;
+        border: 1px solid #ccc;
+        border-radius: 0.5em;
+        padding: 1.5em 3em;
+        margin: 2em auto 1em auto; }
+    #input .input-section .section-label {
+      position: absolute;
+      display: inline-block;
+      left: 2em;
+      top: -3.825em;
+      height: 3.81em;
+      width: auto;
+      border: 0.2em solid #000;
+      border-top-color: deeppink;
+      border-bottom: 0;
+      border-radius: 0.25em;
+      padding: 1.1em 1.5em 0.2em 1.5em;
+      background: #fff;
+      font-size: 0.8em;
+      font-weight: 700;
+      cursor: default; }
+    #input .input-section .section-label.complete {
+      border-top-color: lightgreen;
+      border-top-width: 0.4em;
+      padding: 0.9em 1.5em 0.2em 1.5em; }
   #input .infoblock {
     padding: 2.5% 15% 5% 15%;
     text-align: left;

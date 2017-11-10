@@ -1,0 +1,81 @@
+// Global styles
+
+.animated {
+  animation-duration: 0.30s;
+  animation-fill-mode: both;
+}
+
+
+
+
+// Entrances
+
+
+@keyframes headerintro {
+  from {
+    transform: scale3d(1, 1, 1);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+    opacity: 0.2;
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+}
+
+.appheader {
+  animation-name: headerintro;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  transform-origin: center bottom;
+}
+
+
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fadein {
+  animation-name: fadein;
+}
+
+.basicinfo {
+  animation-name: fadein;
+  animation-delay: 1s;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+
+
+
+
+// Exits
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(50px, 0, 0);
+  }
+}
+
+.fadeout {
+  animation-name: fadeout;
+}
