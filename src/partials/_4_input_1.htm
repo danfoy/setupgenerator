@@ -255,8 +255,8 @@
       <label><input type="radio" name="microsoftaccounttype" v-model="microsoftaccount.type" value="existing">Sign in to an existing Microsoft Account</label>
 
       <form-section v-if="microsoftaccount.type == 'new'" name="newmicrosoftaccount" title="New Microsoft Account">
-        <label class="microsoftaccount-new-address"><input type="text" v-model="microsoftaccount.new.address" placeholder="yourname" class="microsoftaccount-new-address-input"><span class="emaildomain outlook">@outlook.com</span></label>
-        <input type="text" v-model="microsoftaccount.new.password" placeholder="password" class="microsoftaccount-new-password">
+        <label class="microsoftaccount-new-address"><input type="text" v-model="microsoftaccount.new.address" v-bind:placeholder="customerinfo.firstname.toLowerCase() + '.' + customerinfo.surname.toLowerCase() + customerinfo.telephone.toString().split('').reverse().join('').slice(0,2).split('').reverse().join('')" class="microsoftaccount-new-address-input"><span class="emaildomain outlook">@outlook.com</span></label>
+        <input type="text" v-model="microsoftaccount.new.password" placeholder="Password" class="microsoftaccount-new-password">
         <input type="text" v-model="microsoftaccount.new.dob" placeholder="Date of Birth" class="microsoftaccount-new-dob">
       </form-section>
 
