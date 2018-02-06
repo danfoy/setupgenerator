@@ -9222,7 +9222,7 @@ var creationTime = function () {
 };
 
 var data = {
-  version: '0.12.0',
+  version: '0.12.1',
   meta: {
     printpreview: false
   },

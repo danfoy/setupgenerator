@@ -14,7 +14,7 @@ $output-border: 0.05em solid black;
     margin-top: 1em;
     position: relative;
     td {
-      padding: 0.5em 2.5em 0.5em 0.5em;
+      padding: 0.5em;
       border: $output-border;
       height: 1em;
       position: relative;
@@ -165,9 +165,22 @@ $output-border: 0.05em solid black;
     }
   }
   .microsoftaccount {
-    .email-address,
-    .email-password {
-      width: 50%;
+    .microsoft-account-existing {
+      .email-address,
+      .email-password {
+        width: 50%;
+      }
+    }
+    .microsoft-account-new {
+      .email-address {
+        width: 40%;
+      }
+      .email-password {
+        width: 30%;
+      }
+      .email-dob {
+        width: 30%;
+      }
     }
   }
 }

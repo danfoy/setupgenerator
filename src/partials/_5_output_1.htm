@@ -264,7 +264,7 @@
               <h2 class="output-section-header"><span v-if="microsoftaccount.type == 'existing'">Add Existing</span><span v-if="microsoftaccount.type == 'new'">Create New</span> Microsoft Account</h2>
             </td>
           </tr>
-          <tr v-if="microsoftaccount.type == 'existing'">
+          <tr v-if="microsoftaccount.type == 'existing'" class="microsoft-account-existing">
             <td class="email-address">
               <strong>Email:</strong> {{ microsoftaccount.existing.address }}
             </td>
@@ -272,16 +272,19 @@
               <strong>Password:</strong> {{ microsoftaccount.existing.password }}
             </td>
           </tr>
-          <tr v-if="microsoftaccount.type == 'new'">
+          <tr v-if="microsoftaccount.type == 'new'" class="microsoft-account-new">
             <td class="email-address">
               <strong>Email:</strong> {{ microsoftaccount.new.address }}@outlook.com
             </td>
             <td class="email-password">
               <strong>Password:</strong> {{ microsoftaccount.new.password }}
             </td>
+            <td class="email-dob">
+              <strong>DOB:</strong> {{ microsoftaccount.new.dob }}
+            </td>
           </tr>
           <tr>
-            <td colspan="2">
+            <td colspan="3">
               <strong>Corrections:</strong>
               <div class="tickbox"></div>
             </td>
