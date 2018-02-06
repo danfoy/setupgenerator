@@ -257,6 +257,7 @@
       <form-section v-if="microsoftaccount.type == 'new'" name="newmicrosoftaccount" title="New Microsoft Account">
         <label class="microsoftaccount-new-address"><input type="text" v-model="microsoftaccount.new.address" placeholder="yourname" class="microsoftaccount-new-address-input"><span class="emaildomain outlook">@outlook.com</span></label>
         <input type="text" v-model="microsoftaccount.new.password" placeholder="password" class="microsoftaccount-new-password">
+        <input type="text" v-model="microsoftaccount.new.dob" placeholder="Date of Birth" class="microsoftaccount-new-dob">
       </form-section>
 
       <form-section v-if="microsoftaccount.type == 'existing'" name="existingmicrosoftaccount" title="Existing Email Account">

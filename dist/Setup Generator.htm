@@ -476,8 +476,13 @@ body {
     display: inline-block;
     width: 40%; }
   #input .microsoftaccount .microsoftaccount-new-address {
+    width: 40%;
     position: relative;
     padding: 0; }
+  #input .microsoftaccount .microsoftaccount-new-password {
+    width: 35%; }
+  #input .microsoftaccount .microsoftaccount-new-dob {
+    width: 20%; }
   #input .microsoftaccount .microsoftaccount-new-address-input {
     width: 100%;
     padding-right: 6.9em;
@@ -953,6 +958,7 @@ body {
       <form-section v-if="microsoftaccount.type == 'new'" name="newmicrosoftaccount" title="New Microsoft Account">
         <label class="microsoftaccount-new-address"><input type="text" v-model="microsoftaccount.new.address" placeholder="yourname" class="microsoftaccount-new-address-input"><span class="emaildomain outlook">@outlook.com</span></label>
         <input type="text" v-model="microsoftaccount.new.password" placeholder="password" class="microsoftaccount-new-password">
+        <input type="text" v-model="microsoftaccount.new.dob" placeholder="Date of Birth" class="microsoftaccount-new-dob">
       </form-section>
 
       <form-section v-if="microsoftaccount.type == 'existing'" name="existingmicrosoftaccount" title="Existing Email Account">
@@ -10672,7 +10678,7 @@ var creationTime = function () {
 };
 
 var data = {
-  version: '0.11.0',
+  version: '0.12.0',
   meta: {
     printpreview: false
   },
@@ -10793,7 +10799,8 @@ var data = {
     },
     new: {
       address: '',
-      password: ''
+      password: '',
+      dob: ''
     }
   },
   tutorial: {

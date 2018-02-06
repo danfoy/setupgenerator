@@ -466,8 +466,13 @@ body {
     display: inline-block;
     width: 40%; }
   #input .microsoftaccount .microsoftaccount-new-address {
+    width: 40%;
     position: relative;
     padding: 0; }
+  #input .microsoftaccount .microsoftaccount-new-password {
+    width: 35%; }
+  #input .microsoftaccount .microsoftaccount-new-dob {
+    width: 20%; }
   #input .microsoftaccount .microsoftaccount-new-address-input {
     width: 100%;
     padding-right: 6.9em;

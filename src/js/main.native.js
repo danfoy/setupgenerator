@@ -10141,7 +10141,7 @@ var creationTime = function () {
 };
 
 var data = {
-    version: '0.11.0',
+    version: '0.12.0',
     meta: {
         printpreview: false
     },
@@ -10262,7 +10262,8 @@ var data = {
         },
         new: {
             address: '',
-            password: ''
+            password: '',
+            dob: ''
         }
     },
     tutorial: {
