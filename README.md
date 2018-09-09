@@ -50,4 +50,4 @@ The output is compiled using [Grunt](http://www.gruntjs.com) and therefore requi
 
 * I don't use Windows.
 * You'll need all of the above, plus [git for Windows](https://git-scm.com/downloads), probably also [bash](https://msdn.microsoft.com/en-gb/commandline/wsl/about?f=255&MSPPError=-2147217396).
-* If someone wants to write a guide for Windows feel free to send a pull request, but I can't see that happening tbqh.
+* If someone wants to write a guide for Windows feel free to send a pull request.
